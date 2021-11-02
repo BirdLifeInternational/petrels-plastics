@@ -67,10 +67,11 @@ plot_grid(upr_half,lwr_half)
 #looking at graph 40
 
 #comment out 3 rows below to work out n species per eez
-top40 <- dat[dat$score > 14,]
-t40_eezs <- eezs_used[eezs_used$pop %in% top40$sp_country,]
-eezs_used <- t40_eezs
+#top40 <- dat[dat$score > 14,]
+#t40_eezs <- eezs_used[eezs_used$pop %in% top40$sp_country,]
+#eezs_used <- t40_eezs
 
+table(eezs_used$s)
 
 #figure out what to do with multiple sovereign cases
 unique(eezs_used$POL_TYPE)
@@ -197,6 +198,9 @@ eezs_group <- eezs_used %>%
 
 score_threshold <- 0.05
 
+top40 <- subset(dat, score > score_threshold)
+#top40 <- dat
+
 top40 <- top40[order(top40$score),]
 
 for(i in 1:nrow(top40)){
@@ -226,6 +230,8 @@ for(i in 1:nrow(top40)){
 }
 nrow(all_sp)
 #save new df
+
+
 
 #change some labels
 unique(all_sp$group)
@@ -417,3 +423,63 @@ eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
         axis.text = element_text(colour = "black"));eezs
 dev.off()
 dev.off()
+
+#Table for supplementary ####
+
+for(i in 1:nrow(dat)){
+  species_df <- eezs_used[eezs_used$pop == dat$sp_country[i],]
+  
+  if(nrow(species_df > 1)){
+    species_df_crop <- species_df[species_df$prop >= score_threshold,]
+    species_df_crop_low <- species_df[species_df$prop < score_threshold,]
+    
+    species_df_crop <- species_df_crop[order(-species_df_crop$prop),]
+    
+    species_df_crop[nrow(species_df_crop)+1,] <- species_df_crop[nrow(species_df_crop),]
+    species_df_crop[nrow(species_df_crop),]$prop <- sum(species_df_crop_low$prop)
+    species_df_crop[nrow(species_df_crop),]$group <- nrow(species_df_crop_low)
+    
+    print(sum(species_df_crop$prop))
+  } else {
+    species_df_crop <- species_df
+  }
+  
+  if(i == 1){
+    all_sp_sup <- species_df_crop
+  } else {
+    all_sp_sup <- rbind(all_sp_sup,species_df_crop)
+  }
+  
+}
+nrow(all_sp_sup)
+
+all_sp_sup$npops <- NULL
+
+pops <- unique(all_sp_sup$pop)
+for(i in 1:length(pops)){
+  pop <- subset(all_sp_sup,pop == pops[i])
+  pop$Label <- 1:nrow(pop)
+  if(i == 1){
+    all_pops <- pop
+  } else {
+    all_pops <- rbind(all_pops,pop)
+  }
+}
+
+head(all_pops,20)
+
+all_pops$Percent <- all_pops$prop*100
+all_pops$prop <- NULL
+
+pops_table <- all_pops %>% 
+  pivot_wider(names_from = Label,values_from = c(group,Percent)) %>%
+  select(c(species,breeding_country,group_1,Percent_1,
+           group_2,Percent_2,group_3,Percent_3,group_4,Percent_4,
+           group_5,Percent_5,group_6,Percent_6,group_7,Percent_7)) %>%
+  data.frame()
+head(pops_table)
+
+write.csv(pops_table,paste0(dir,"/eezs_percent_allpops.csv"),
+          row.names = F)
+
+
