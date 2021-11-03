@@ -219,30 +219,21 @@ for (i in c(1:nrow(pops))){#
   #dev.off()
   
   #plot png temp comment out ####
-  #png(paste0(dir_1by1,"/maps2/",pop,"_br_sum.png"), width=1400,height=760)
-  #par(mfrow=c(1,1))
-  #plot(over,main=paste0(pops$common_name[i],", ",pops$pop[i],
-  #                      "\nBreeding season plastic exposure score = ",
-  #                      round(over_val_br,2)),
-  #     col=cols_inf,legend=F)
-  #plot(land,col="#dbdbdb", 
-  #     border = "#c7c7c7", add=T)
-  #points(colloc$lon_colony,colloc$lat_colony,pch=18,
-  #       cex=2.8,col="#004fd9")
-  #dev.off()
-  
-  pdf(paste0(dir_1by1,"/maps_pdf/",pop,"_br.pdf"),
-      paper = "a4r",width = 0, height = 0)
+  #pdf(paste0(dir_1by1,"/maps_pdf/",pop,"_br.pdf"),
+  #    paper = "a4r",width = 0, height = 0)
+  png(paste0(dir_1by1,"/maps2/",pop,"_br_sum.png"), width=1400,height=760)
   par(mfrow=c(1,1))
   plot(over,main=paste0(pops$common_name[i]," ",pops$species[i],", ",pops$pop[i],
                         "\nBreeding season plastic exposure score = ",
                         round(over_val_br,2)),
+       cex.main=2,
        col=cols_inf,legend=F)
   plot(land,col="grey75", 
        border = NA, add=T)
   points(colloc$lon_colony,colloc$lat_colony,pch=18,
-         cex=2.5,col="#004fd9")
+         cex=2.8,col="#004fd9")
   dev.off()
+
   
   pops$over_val_br[i] <- over_val_br
   
@@ -263,24 +254,14 @@ for (i in c(1:nrow(pops))){#
       #dev.off()
       
       #plot png temp comment out ####
-      #png(paste0(dir_1by1,"/maps2/",pop,"_nonbr_sum.png"), width=1400,height=760)
-      #par(mfrow=c(1,1))
-      #plot(over,main=paste0(pops$common_name[i],", ",pops$pop[i],
-      #                      "\nNon-breeding season plastic exposure score = ",
-      #                      round(over_val_nonbr,2)),
-      #     col=cols_inf,legend=F)
-      #plot(land,col="#dbdbdb", 
-      #     border = "#c7c7c7", add=T)  
-      #points(colloc$lon_colony,colloc$lat_colony,pch=18,
-      #       cex=2.8,col="#004fd9")
-      #dev.off()
-      
-      pdf(paste0(dir_1by1,"/maps_pdf/",pop,"_nonbr.pdf"),
-          paper = "a4r",width = 0, height = 0)
+      png(paste0(dir_1by1,"/maps2/",pop,"_nonbr_sum.png"), width=1400,height=760)
+      #pdf(paste0(dir_1by1,"/maps_pdf/",pop,"_nonbr.pdf"),
+      #    paper = "a4r",width = 0, height = 0)
       par(mfrow=c(1,1))
       plot(over,main=paste0(pops$common_name[i]," ",pops$species[i],", ",pops$pop[i],
                             "\nNon-breeding season plastic exposure score = ",
                             round(over_val_br,2)),
+           cex.main=2,
            col=cols_inf,legend=F)
       plot(land,col="grey75", 
            border = NA, add=T)
