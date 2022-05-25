@@ -3,7 +3,7 @@ Global assessment of marine plastic exposure for oceanic birds.
 
 Link to publication when available: 
 
-## This repository contains two folders
+## Folder descriptions
 
 ### 1_full_analysis_petrels
 This contains the full code used for the analysis presented in the linked publication. 
@@ -45,3 +45,7 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Sum scores in each exposure map to produce exposure score
   - Export exposure maps as tifs and images
   - Export exposure scores for eahc month for each population as csv
+- 06_combine_by_population
+- 07_combine_by_season
+- 08_combine_by_species
+- 09_overlay_with_EEZ
