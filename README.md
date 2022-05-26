@@ -44,8 +44,33 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Multiply plastic x bird raster to produce exposure map
   - Sum scores in each exposure map to produce exposure score
   - Export exposure maps as tifs and images
-  - Export exposure scores for eahc month for each population as csv
+  - Export exposure scores for each month for each population as csv
 - 06_combine_by_population
 - 07_combine_by_season
 - 08_combine_by_species
 - 09_overlay_with_EEZ
+
+
+## Input files
+- 01_cleaning_data
+  - Tracking data csvs in folder "input_data/tracking_data"
+  - "equinoxes.csv" in folder "input_data"
+- 02_populations
+  -  cleaned tracking data csvs per datasets produced by script "01_cleaning_data"
+- 03_kernels
+  - cleaned tracking data csvs per population produced by script "02_populations"
+- 04_phenology
+  - cleaned tracking data csvs per population produced by script "02_populations"
+- 05_aggregate_1by1_months
+  - plastics density raster ".tif" in fodler "input_data"
+  - kernel density rasters ".tif" produced by "03_kernels"
+
+- 06_combine_by_population
+- 07_combine_by_season
+  - 
+- 08_combine_by_species
+  - population_sizes csv in folder "input_data"
+- 09_overlay_with_EEZ
+  - EEZ shapefile in folder "input_data"
+
+
