@@ -16,7 +16,7 @@ This folder contains a simplified version of the code that removes any code rela
 Both folders contain codes that should be run in the order provided by the numbers in the script names:
 - 01_cleaning_data
   - Reads in tracking data files
-  - Filters based on speed, location, exquinox periods, etc. appropriate to tag type (GPS/PTT/GPS)
+  - Filters based on species, speed, location, exquinox periods, etc. appropriate to tag type (GPS/PTT/GPS)
   - Subsamples to 2 locations per day
   - Creates plots and exports to csvs in a new folder
 - 02_populations
@@ -54,22 +54,26 @@ Both folders contain codes that should be run in the order provided by the numbe
 ## Input files
 - 01_cleaning_data
   - Tracking data csvs in folder "input_data/tracking_data"
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - "Species_list_IUCN.csv" in folder "input_data"
   - "equinoxes.csv" in folder "input_data"
 - 02_populations
-  -  cleaned tracking data csvs per datasets produced by script "01_cleaning_data"
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - Cleaned tracking data csvs per datasets produced by script "01_cleaning_data" in folder "outputs"
 - 03_kernels
-  - cleaned tracking data csvs per population produced by script "02_populations"
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
 - 04_phenology
-  - cleaned tracking data csvs per population produced by script "02_populations"
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
 - 05_aggregate_1by1_months
-  - plastics density raster ".tif" in fodler "input_data"
-  - kernel density rasters ".tif" produced by "03_kernels"
-
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - Plastics density raster ".tif" in fodler "input_data"
+  - Kernel density rasters ".tif" produced by "03_kernels" in folder "outputs"
 - 06_combine_by_population
 - 07_combine_by_season
-  - 
 - 08_combine_by_species
-  - population_sizes csv in folder "input_data"
+  - "population_sizes.csv" in folder "input_data"
 - 09_overlay_with_EEZ
   - EEZ shapefile in folder "input_data"
 
