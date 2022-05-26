@@ -23,7 +23,7 @@ Both folders contain codes that should be run in the order provided by the numbe
   -  Reads in cleaned tracking data
   -  Groups tracking datasets into populations
   -  Exports tracking data in 1 csv per population
-  -  Exports csv of colony locations
+  -  Exports csv of colony locations, and sample sizes for population and species
 - 03_kernels
   - Read in tracking data csvs for each population
   - Group into months, removing any with fewer than 5 locations
