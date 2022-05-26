@@ -296,6 +296,7 @@ write.csv(df3,paste0(data_std,"Puffinus puffinus_UK.csv"),
 output <- paste0(dir,"/outputs/02_pops")
 
 head(pops)
+
 #all pops points locations ####
 for(i in 1:length(files)){
   pop <- read.csv(paste0(output,"/",files[i]))
@@ -317,7 +318,7 @@ all_pops$common_name <- ifelse(all_pops$common_name == "Band-rumped Storm Petrel
 
 all_pops$pop <- gsub(".*_","",all_pops$sp_pop)
 
-
+#summarise by species
 sample_sizes <- all_pops %>% 
   group_by(scientific_name) %>%
   summarise(common_name = unique(common_name),
@@ -331,9 +332,99 @@ sum(sample_sizes$individuals)
 sum(sample_sizes$n_pops)
 sum(sample_sizes$locations)
 
-write.csv(sample_sizes,paste0(dir,"/outputs/02_sample_sizes.csv"),
+# tracking years ####
+
+data_std <- paste0(dir, "/outputs/02_pops/")
+files <- list.files(data_std,pattern = ".csv");files
+pops <- as.data.frame(files)
+pops$sp_pop <- NA
+pops$years <- NA
+pops$min_year <- NA
+pops$max_year <- NA
+pops$mean_year <- NA
+pops$n_years <- NA
+
+for(i in 1:length(files)){
+  pop <- read.csv(paste0(data_std,"/",files[i]))
+  
+  pops$species[i] <- as.character(pop$scientific_name[1])
+  
+  pops$sp_pop[i] <- substr(files[i],1,nchar(files[i])-4)
+  
+  pop$year <- as.numeric(substr(pop$dtime,1,4))
+  
+  years <- unique(pop$year)
+  
+  pops$years[i] <- paste(years,collapse="_")
+  pops$min_year[i] <- min(years)
+  pops$max_year[i] <- max(years)
+  pops$mean_year[i] <- mean(years)
+  pops$n_years[i] <- length(years)
+  pops$yrs09_19[i] <- ifelse(any(2010:2018 %in% years),1,0)
+  print(i)
+  
+  if(i==1){
+    all_years <- years 
+  } else {
+    all_years <- c(all_years,years)
+  }
+  
+}
+
+head(pops)
+
+hist(all_years)
+
+mean(all_years)
+
+length(all_years[all_years > 2008 & all_years < 2020])
+
+length(all_years[all_years > 2008 & all_years < 2020])/length(all_years)
+
+pops$year_range <- paste0(pops$min_year,"-",pops$max_year)
+
+sum(pops$yrs09_19)/148
+
+mean(pops$mean_year)
+mean(pops$min_year)
+mean(pops$max_year)
+
+year_sample_sizes <- pops %>% 
+  group_by(species) %>%
+  summarise(mean_year = mean(mean_year)) %>%
+  data.frame();year_sample_sizes
+
+sample_sizes$mean_tracking_year <- round(year_sample_sizes$mean_year)
+
+write.csv(sample_sizes,paste0(dir,"/outputs/02_sample_sizes_species.csv"),
           row.names = F)
 
+#sample sizes by population
+all_pops$unique_months <- substr(all_pops$dtime,1,7)
+
+sample_sizes_pops <- all_pops %>% 
+  group_by(sp_pop) %>%
+  summarise(scientific_name = unique(scientific_name),
+            common_name = unique(common_name),
+            population = unique(pop),
+            individuals = length(unique(unique_id)),
+            locations = n(),
+            unique_months = length(unique(unique_months))) %>%
+  data.frame();sample_sizes_pops
+
+#add info about tracking years
+sample_sizes_pops$n_years <- pops$n_years
+sample_sizes_pops$year_range <- pops$year_range
+sample_sizes_pops$mean_year <- round(pops$mean_year)
+sample_sizes_pops$years  <- pops$years
+sample_sizes_pops$sp_pop  <- NULL
+
+head(sample_sizes_pops)
+
+write.csv(pops,paste0(dir,"/outputs/02_sample_sizes_pops.csv"),
+          row.names = F)
+
+#save all tracking locations in 1 csv
 write.csv(all_pops,paste0(dir,"/outputs/02_all_locations.csv"), row.names = F)
 
 #save colony locations

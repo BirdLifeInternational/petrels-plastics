@@ -1,0 +1,105 @@
+species,site,colony,population,pop_arithmetric_mean
+Ardenna carneipes,Lord Howe Island,Lord Howe Island,Lord Howe Island,22654
+Ardenna carneipes,New Zealand,,New Zealand,11660
+Ardenna carneipes,Western Australia,Breaksea Island,Breaksea Island,27141
+Ardenna gravis,Gough,Gough Island,Gough,980000
+Ardenna gravis,Tristan da Cunha,,Tristan da Cunha,3716000
+Ardenna grisea,Falkland Islands (Islas Malvinas),,Falkland Islands,165009
+Ardenna grisea,New Zealand,Codfish Island,Codfish Island,170000
+Ardenna grisea,New Zealand,,North Island,2213
+Ardenna pacifica,New Calendonia,,New Calendonia,500000
+Ardenna pacifica,Hawaii,Kauai,Hawaii,318000
+Ardenna pacifica,Mauritius,Round,Mauritius,68347
+Ardenna pacifica,Reunion Island,Reunion,Reunion,114537
+Ardenna pacifica,Seychelles,,Seychelles,123037
+Ardenna pacifica,Southern Great Barrier Reef,Heron Island,Heron Island,291874
+Ardenna pacifica,Western Australia,Lowendal Islands & Houtman Abrolhos,Lowendal & Houtman Abrolhoss,76000
+Bulweria bulwerii,Azores,Vila,Azores,50
+Bulweria bulwerii,Canarias,,Canarias,1000
+Bulweria bulwerii,Cape Verde,,Cape Verde,50
+Bulweria bulwerii,Madeira,Selvagens,Madeira,5000
+Calonectris borealis,Azores,,Azores,188000
+Calonectris borealis,Canary Islands,,Canarias,30000
+Calonectris borealis,Madeira,,Madeira,36000
+Calonectris borealis,Portugal,Berlengas,Berlengas,1025
+Calonectris diomedea,,,Balearic Archipelago,864
+Calonectris diomedea,Chafarinas,Chafarinas,Chafarinas,765
+Calonectris diomedea,,,Malta,9323
+Calonectris diomedea,La Maddalena Archipelago,,La Maddalena Archipelago,256
+Calonectris diomedea,Linosa,,Linosa,10000
+Calonectris diomedea,Tremiti Archipelago,Capraia,Tremiti Archipelago,350
+Calonectris diomedea,Tuscany Archipelago,Pianosa-LaScola,Tuscany Archipelago,368
+Calonectris diomedea,Zembra,Zembra,Zembra,145235
+Calonectris leucomelas,Iwate,,Iwate,51459
+Calonectris leucomelas,,,Mikura,2650000
+Calonectris leucomelas,Niigata,Awa Island,Niigata,10650
+Calonectris leucomelas,Korea,Korea,Korea,24282
+Daption capense,Davis,Hop Island,Davis,50
+Daption capense,Pointe Geologie,Ile des Petrels,Pointe Geologie,492
+Fulmarus glacialis,Bjørnøya,BjÃ¸rnÃ¸ya,Bjørnøya,30000
+Fulmarus glacialis,Cape Vera,Cape Vera,Cape Vera,8679
+Fulmarus glacialis,Faroe Islands,Faroe Islands,Faroe Islands,600000
+Fulmarus glacialis,Iceland,Breidafjordur,Breidafjordur,1150000
+Fulmarus glacialis,Jan Mayen,Jan Mayen,Jan Mayen,77460
+Fulmarus glacialis,Norway,Jarsteinen,Norway,5600
+Fulmarus glacialis,,,Scotland,485852
+Fulmarus glacialis,Svalbard,Alkefjellet,Svalbard,34553
+Fulmarus glacialoides,Davis,Hop Island,Davis,2576
+Fulmarus glacialoides,Pointe Geologie,Ile des Petrels,Pointe Geologie,53
+Halobaena caerulea,Kerguelen,Iles Kerguelen,Kerguelen,150000
+Halobaena caerulea,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,70000
+Hydrobates castro,Azores,Praia Islet,Azores,978
+Hydrobates castro,Egg Island,Egg Island,St Helena,5829
+Hydrobates castro,Portugal,Berlengas,Berlengas,146
+Hydrobates leucorhous,,,Newfoundland,2316799
+Hydrobates leucorhous,,,Nova Scotia,52106
+Hydrobates leucorhous,Gillam Island,Gillam Islands,Gillam Island,500000
+Hydrobates pelagicus,Benidorm Island,Benidorm,Benidorm Island,537
+Hydrobates pelagicus,Capo caccia,Capo caccia,Capo caccia,650
+Hydrobates pelagicus,Filfla,Filfla,Malta,6530
+Hydrobates pelagicus,High Island,High Island,Ireland,99065
+Hydrobates pelagicus,Shetland,Mousa,Shetland,21370
+Pachyptila belcheri,Kerguelen,Iles Kerguelen,Kerguelen,850000
+Pachyptila belcheri,New Island,New Island,New Island,1081000
+Pachyptila desolata,Kerguelen,Iles Kerguelen,Kerguelen,2500000
+Pachyptila desolata,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,22000000
+Pachyptila turtur,Australia,Kanowna Island,Kanowna Island,1367500
+Pachyptila turtur,New Zealand,Dunedin,Dunedin,1456000
+Pachyptila vittata,Gough,Gough Island,Gough,875000
+Pachyptila vittata,Tristan da Cunha,,Tristan da Cunha,575000
+Pelagodroma marina,Boa Vista,PÃ¡ssaros,Cape Verde,8650
+Pelagodroma marina,Madeira,Selvagens,Madeira,94168
+Pelecanoides urinatrix,Australia,Kanowna Island,Kanowna Island,150000
+Pelecanoides urinatrix,New Zealand,,North Island,900000
+Pelecanoides urinatrix,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,3800000
+Procellaria aequinoctialis,Antipodes Islands,Antipodes Islands,Antipodes Islands,75000
+Procellaria aequinoctialis,Crozet,Crozet,Crozet,23600
+Procellaria aequinoctialis,Kerguelen,Iles Kerguelen,Kerguelen,234000
+Procellaria aequinoctialis,Prince Edward Islands,Marion Island,Prince Edward Islands,36000
+Procellaria aequinoctialis,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,681000
+Procellaria cinerea,Antipodes Islands,Antipodes Islands,Antipodes Islands,53000
+Procellaria cinerea,Gough,Gough Island,Gough,17500
+Procellaria cinerea,Kerguelen,Iles Kerguelen,Kerguelen,3400
+Procellaria cinerea,Prince Edward Islands,Fred's Hill Route,Prince Edward Islands,2500
+Pterodroma arminjoniana,Round Island,Round Island,Round Island,1000
+Pterodroma arminjoniana,Trindade Island,,Trindade Island,1228
+Pterodroma cookii,New Zealand,Codfish Island,Codfish Island,4956
+Pterodroma cookii,New Zealand,Little Barrier Island,Little Barrier Island,286000
+Pterodroma leucoptera,Cabbage Tree Island,Cabbage Tree Island,Cabbage Tree Island,823
+Pterodroma leucoptera,New Caledonia,New Caledonia,New Caledonia,5500
+Pterodroma mollis,Antipodes,Antipodes Islands,Antipodes,3000
+Pterodroma mollis,Gough,Gough Island,Gough,400000
+Pterodroma nigripennis,Chatham Island,South East Island,Chatham Islands,47
+Pterodroma nigripennis,Phillip Island (Norfolk Island),Phillip Island,Phillip Island,5500
+Puffinus assimilis,Lord Howe Island,Lord Howe Island,Lord Howe Island,85
+Puffinus assimilis,Mokohinau,Burgess Island,E of Aukland,5050
+Puffinus lherminieri,Azores,Vila,Azores,1185
+Puffinus lherminieri,,,Cape Verde,5000
+Puffinus lherminieri,,,Madeira,1642
+Puffinus puffinus,,,Ireland,32545
+Puffinus puffinus,Iceland,Heimaey,Heimaey,5660
+Puffinus puffinus,,,UK,299722
+Puffinus yelkouan,,,Iles Hyeres,1500
+Puffinus yelkouan,,,Malta,1500
+Thalassoica antarctica,Davis,Hop Island,Davis,1000
+Thalassoica antarctica,Svarthamaren,Svarthamaren,Svarthamaren,250000
