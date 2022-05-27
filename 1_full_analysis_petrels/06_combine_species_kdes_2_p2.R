@@ -5,7 +5,7 @@
 
 rm(list=ls()) 
 
-# Maps of all kernels combined for Win Cowger
+# Maps of all kernels combined 
 
 ################ LOADING PACKAGES ###################
 
@@ -26,16 +26,15 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved")  
 
-output <- paste0(dir,"/outputs/02_pops")
-
 land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") 
 
-dir_demClasses <- paste0(dir,"/outputs/06_pops")
+outputs <- paste0(dir,"/outputs/06_pops")
+dir.create()
 files <- list.files(dir_demClasses, pattern="tif");files
 
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
-pops <- read.csv(paste0(dir,"/outputs/05_phenology/pops.csv"))
+pops <- read.csv(paste0(dir,"/outputs/04_phenology.csv"))
 
 #add up the species ####
 subset_safely <- function(x, index) {
@@ -58,7 +57,7 @@ pops$seasons <- ifelse(is.na(pops$nonbreeding),0.5,1)
 #this will weight by number of tracked months
 #read in pop sizes
 
-pop_sizes <- read.csv("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/population_sizes_csv.csv")
+pop_sizes <- read.csv(paste0(dir,"/input_data/population_sizes.csv"))
 pop_sizes$site <- NULL
 pop_sizes$colony <- NULL
 pop_sizes$species_pop <- paste(pop_sizes$species,pop_sizes$population,sep="_")
@@ -83,9 +82,9 @@ head(pops)
 pops$weighting <- all_sp$popsize_weighting[match(pops$species_pop,all_sp$species_pop)]
 pops$weighting <- ifelse(is.na(pops$weighting),1,pops$weighting)
 
-write.csv(pops,paste0(dir,"/outputs/pop_size_weightings.csv"),row.names = F)
+write.csv(pops,paste0(dir,"/outputs/06_pop_size_weightings.csv"),row.names = F)
 
-#what to about pops with only breeding season data????????        ######################################################
+#pops with only breeding season data ####
 
 species <- unique(pops$species)
 species_weights <- as.data.frame(species)

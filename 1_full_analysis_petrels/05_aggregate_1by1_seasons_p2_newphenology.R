@@ -39,47 +39,21 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-dir_demClasses <- paste0(dir,"/scripts_results/03_kernels")
+dir_demClasses <- paste0(dir,"/outputs/03_kernels")
 
 ## DIRECTION TO YOUR RESULTS
-dir_seasons <- paste0(dir,"/scripts_results/06_combine_by_season")
+dir_seasons <- paste0(dir,"/outputs/06_combine_by_season")
 
-dir.create(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2_newphen/")) 
-dir.create(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2_newphen/maps/")) #added - BC
-dir.create(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2_newphen/maps_pdf/")) #added - BC
-#dir.create(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_mean/")) 
-#dir.create(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_mean/maps/")) #added - BC
+dir.create(paste0(dir,"/outputs/04_combine_by_seasons/")) 
+dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_p2_newphen/maps/")) #added - BC
+dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_p2_newphen/maps_pdf/")) #added - BC
+#dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean/")) 
+#dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean/maps/")) #added - BC
 
-#dir_1by1m <- paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_mean")
+#dir_1by1m <- paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean")
 
-####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
-#read in plastics data
-m <- raster(paste0(dir,"/input_data/PlasticsRaster.tif"))
-m
-
-yelblus <- c(brewer.pal(n = 9, name = "YlGnBu"),"#00172e")
-cols <- colorRampPalette(yelblus)(255)
-colsviri <- cols[20:255]
-
-plot(m,col=(colsviri))
-
-## rescale to sum to 1
-m2 <- m
-m2[is.na(m2)] <- 0 
-p_sum1    <- m2/sum(getValues(m2))
-p_sum1[is.na(m)] <- NA
-
-RES <- res(p_sum1) # the resolution of the raster (in degrees)
-
-# res_lon = RES[1]*pi/180 (in radians) and res_lat = RES[2]*pi/180 (in radians)
-R <- 6371007.2 # the Earth's authalic radius (in meters)
-lat <- yFromRow(m, 1:nrow(m)) # latitude of the centroid of each cell (in degrees, need to be converted in radians)
-area <- (sin(pi/180*(lat + RES[2]/2)) - sin(pi/180*(lat - RES[2]/2))) * (RES[1] * pi/180) * R^2
-r_area <- setValues(m, rep(area, each=ncol(m))) # gives the area of each grid cell in meters 
-plot(r_area, col=colsviri)
-
-pops <- read.csv(paste0(dir,"/scripts_results/05_phenology/pops_literature_test.csv"))
+pops <- read.csv(paste0(dir,"/outputs/05_phenology/pops_literature_test.csv"))
 
 head(pops)
 pops$breeding <- as.character(pops$breeding)
@@ -118,7 +92,7 @@ head(pops)
 cols_inferno <- rev(inferno(20))
 cols_inf <- colorRampPalette(c(cols_inferno))(255)
 
-all_pops <- read.csv(paste0(dir,"/scripts_results/all_locations2.csv"))
+all_pops <- read.csv(paste0(dir,"/outputs/all_locations2.csv"))
 all_pops$pop_loc <- paste(all_pops$pop,all_pops$lon_colony,all_pops$lat_colony)
 
 #add latlon of colony to pops datasheets
@@ -303,7 +277,7 @@ write.csv(pops, paste0(dir_1by1, "/results_rasters_br_p2_v2_com_phen.csv"),
           row.names = F)  
 
 
-pops_orig <- read.csv(paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2",
+pops_orig <- read.csv(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_p2",
                              "/results_rasters_br_p2_v2.csv")) 
 
 pops$mean_br_orig <- pops_orig
@@ -339,7 +313,7 @@ mean(pops$diff_percent_br, na.rm=T)
 pops$br_n_com <- NA
 pops$nonbr_n_com <- NA
 
-for (i in c(42:nrow(pops))){#
+for (i in c(1:nrow(pops))){#
   
   colloc <- all_pops[all_pops$sp_pop==pops$species_pop[i],]
   if(pops$species_pop[i] == "Ardenna bulleri_Aorangi Island"){
