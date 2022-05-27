@@ -13,8 +13,7 @@ library(tidyverse)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
+dir <- paste0("Drive:/Folder") 
 
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
@@ -39,10 +38,6 @@ dir_out <- paste0(dir,"/outputs/05_combine_by_population")
 dir.create(dir_out)
 
 pop_exposure$density_sum <- NA
-
-#42 failed "Fulmarus glacialis_Bjørnøya"
-
-pop_exposure$sp_pop <- ifelse(pop_exposure$sp_pop == "Fulmarus glacialis_Bjørnøya","Fulmarus glacialis_Bjornoya",pop_exposure$sp_pop)
 
 write.csv(pop_exposure,paste0(dir,"/outputs/05_exposure_scores_by_population.csv"),
           row.names = F)  
@@ -74,8 +69,6 @@ for (i in 1:nrow(pop_exposure)){
 }
 
 range(pop_exposure$density_sum)
-#the ones with low numbers are seem to be high lat N species with NAs in the plastic data
-
 
 
 
