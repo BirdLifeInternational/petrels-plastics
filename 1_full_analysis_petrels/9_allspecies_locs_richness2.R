@@ -18,72 +18,26 @@ library(cowplot)
 library(viridis)
 library(stringr)
 library(RColorBrewer)
-#library(terra)
-#library(gdalUtils)
-
-#install.packages("raster")
-#install.packages("terra")
-#install.packages("gdalUtils")
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## GENERAL DIR
+## paste home directory here
 dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+              "Methods") 
 
-## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
-#dir_demClasses <- paste0(dir,"/scripts_results/09_sum_demClasses")
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
+land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-output <- paste0(dir,"/scripts_results/02_pops")
-
-library(rgdal)
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved")  ## changed - BC
-
-plot(land, main = "All populations")
-
-files <- list.files(output);files
-
-r <- raster()
-
-png(paste0(dir,"/scripts_results/all_locations.png"), width=2000,height=1125)
+output <- paste0(dir,"/outputs/02_pops")
 
 
-#all pops points locations ####
-#for(i in 1:length(files)){
-#  pop <- read.csv(paste0(output,"/",files[i]))
-#  if(i==1){all_pops <- pop} else {all_pops <- rbind(all_pops,pop)}
-#  print(i)
-#}
-#all_pops <- all_pops[!is.na(all_pops$scientific_name), ]
-#write.csv(all_pops,paste0(dir,"/scripts_results/all_locations.csv"), row.names = F)
-
-all_pops <- read.csv(paste0(dir,"/scripts_results/all_locations.csv"))
-
-length(unique(all_pops$bird_id))
+all_pops <- read.csv(paste0(dir,"/outputs/02_all_locations.csv"))
 
 all_pops$scientific_name <- as.character(all_pops$scientific_name)
-all_pops$group <- "Other Petrels"
 
-unique(all_pops$scientific_name)
-
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Pterodroma"),
-                         "Gadfly Petrels",all_pops$group)
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Hydrobates"),
-                         "Storm-Petrels",all_pops$group)
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Oceanites"),
-                         "Storm-Petrels",all_pops$group)
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Puffinus"),
-                         "Shearwaters",all_pops$group)
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Ardenna"),
-                         "Shearwaters",all_pops$group)
-all_pops$group <- ifelse(grepl(all_pops$scientific_name,pattern = "Calonectris"),
-                         "Shearwaters",all_pops$group)
-
-#for webinar
 yelblus <- c(brewer.pal(n = 9, name = "YlGnBu"),"#00172e")
 cols <- colorRampPalette(yelblus)(6)
 
+plot(land, main = "All populations")
 points(latitude~longitude,
        data=all_pops,
        pch=16, cex=0.05)
@@ -107,56 +61,6 @@ points(lat_colony~lon_colony,
        pch=16, cex=1.5, col="red")
 dev.off()
 dev.off()
-
-
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", main = "All populations")
-
-points(latitude~longitude,
-       data=all_pops[all_pops$group == "Gadfly Petrels",],
-       pch=16, cex=0.05, col=cols[4])
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Gadfly Petrels",],
-       pch=16, cex=1.5, col="red")
-
-
-points(latitude~longitude,
-       data=all_pops[all_pops$group == "Storm-Petrels",],
-       pch=16, cex=0.05, col=cols[3])
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Storm-Petrels",],
-       pch=16, cex=1.5, col="red")
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Gadfly Petrels",],
-       pch=16, cex=1.5, col="red")
-
-points(latitude~longitude,
-       data=all_pops[all_pops$group == "Shearwaters",],
-       pch=16, cex=0.05, col=cols[2])
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Shearwaters",],
-       pch=16, cex=1.5, col="red")
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Gadfly Petrels",],
-       pch=16, cex=1.5, col="red")
-points(lat_colony~lon_colony,
-       data=all_pops[all_pops$group == "Storm-Petrels",],
-       pch=16, cex=1.5, col="red")
-
-points(latitude~longitude,
-       data=all_pops[all_pops$group == "Other Petrels",],
-       pch=16, cex=0.05, col=cols[2])
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=16, cex=1.5, col="red")
 
 
 
@@ -223,43 +127,6 @@ str_split_n <- function(string, pattern, n) {
 pops$species <- str_split_n(pops$species_pop,"_",1)
 
 species <- unique(pops$species);species
-
-#combine monthly maps into species maps, then rescale to 1 ####
-#this will weight by number of tracked months
-for (i in 1:length(species)){
-  
-  sp_files <- list.files(dir_demClasses, pattern=species[i]);sp_files
-  
-  for(j in 1:length(sp_files)){
-    
-    a <- raster(paste0(dir_demClasses,"/",sp_files[j]))
-    a[is.na(a)] <- 0 
-    b <- sum(getValues(a)) # total number of birds in the 10km x 10km raster
-    
-    ## reprojecting and rescaling
-    a_proj <- projectRaster(a, m, method = "bilinear")
-    a_proj2 <- a_proj * r_area / 100000000 # rescaling the values in each cell
-    a_proj2[is.na(a_proj2)] <- 0 
-    a_proj2[is.na(m)] <- NA
-    if(j == 1){
-      rast_sum <- a_proj2
-      count <- 1
-    } else {
-      rast_sum <- a_proj2 + rast_sum
-      count <- count + 1
-    }
-    
-  }
-  rast_sum <- rast_sum/count
-  raster_name <- paste0(dir,"/scripts_results/06_species/",species[i],".tif")
-  writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
-  print(species[i])
-  print(i)
-}
-
-rast_sum[is.na(rast_sum)] <- 0
-
-a_proj3[is.na(a_proj3)] <- 0
 
 #then plot all the species
 for (i in 1:length(species)){
@@ -418,7 +285,7 @@ raster_name_2 <- paste0(dir,"/all_birds_distribution_by_season.tif")
 writeRaster(a_all, filename=raster_name_2, format="GTiff", overwrite=TRUE)
 
 
-#species richness map2 ####
+#species richness map ####
 files <- list.files(paste0(dir,"/scripts_results/06_species/"),pattern="tif");files
 for (i in 1:length(files)){
   
@@ -452,102 +319,6 @@ raster_name_2 <- paste0(dir,"/all_birds_sp_richness.tif")
 writeRaster(sp_rich, filename=raster_name_2, format="GTiff", overwrite=TRUE)
 
 
-range(sp_rich@data@values,na.rm=T)
-
-cols_sp <- c("white",
-  colorRampPalette(yelblus)(max(sp_rich@data@values,na.rm=T)))
 
 
-par(mfrow=c(1,1))
-plot(sp_rich,col=cols_sp)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=18, cex=1, col="red")
-
-png(paste0(dir,"/scripts_results/species_richness_cols.png"), width=2000,height=1125)
-par(mfrow=c(1,1))
-plot(sp_rich,col=cols_sp)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=18, cex=3, col="red")
-dev.off()
-
-
-
-#breeding season overlap ####
-over <- a_all_seasons * p_sum1*100000
-over_score <- over
-summary(over_score@data@values)
-
-max(over_score@data@values,na.rm=T)
-
-plot(over,col=cols_seasons2)
-over_cap <- over
-over_cap@data@values <- ifelse(over_cap@data@values > max(over_score@data@values,na.rm=T)/100, 
-                               max(over_score@data@values,na.rm=T)/100,
-                               over_cap@data@values)
-plot(over_cap,col=cols)
-plot(land,col="#dbdbdb", 
-     border = "#dbdbdb", add=T)
-
-png(paste0(dir,"/scripts_results/all_seasons_overlap_cap_cols.png"), width=2000,height=1125)
-par(mfrow=c(1,1))
-plot(over_cap,col=cols)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=18, cex=6, col="red")
-dev.off()
-dev.off()
-
-png(paste0(dir,"/scripts_results/all_seasons_overlap_cap_cols.png"), width=2000,height=1125)
-par(mfrow=c(1,1))
-plot(over_cap,col=cols)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=18, cex=6, col="red")
-dev.off()
-dev.off()
-
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=18, cex=3, col="red")
-
-#species richness overlap ####
-over_sprich <- sp_rich * p_sum1*100000
-over_sprich[over_sprich == 0] <- NA
-
-over_sprich_score <- over_sprich
-summary(over_sprich_score@data@values)
-
-max(over_sprich_score@data@values,na.rm=T)
-
-plot(over_sprich,col=cols_seasons2)
-over_sprich_cap <- over_sprich
-over_sprich_cap@data@values <- ifelse(over_sprich_cap@data@values > 
-                                 max(over_sprich_score@data@values,na.rm=T)/10, 
-                               max(over_sprich_score@data@values,na.rm=T)/10,
-                               over_sprich_cap@data@values)
-plot(over_sprich_cap,col=cols)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-
-
-png(paste0(dir,"/scripts_results/species_richness_overlap.png"), width=2000,height=1125)
-par(mfrow=c(1,1))
-plot(over_sprich_cap,col=cols)
-plot(land,col="#dbdbdb", 
-     border = "#c7c7c7", add=T)
-points(lat_colony~lon_colony,
-       data=all_pops,
-       pch=16, cex=1.5, col="red")
-dev.off()
-dev.off()
 

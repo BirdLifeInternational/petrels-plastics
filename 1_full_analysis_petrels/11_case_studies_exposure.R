@@ -20,9 +20,9 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 dir_1by1 <- paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2")
 dat <- read.csv(paste0(dir_1by1, "/results_rasters_br_p2.csv"))
 
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC 
+land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-all_pops <- read.csv(paste0(dir,"/scripts_results/all_locations.csv"))
+#all_pops <- read.csv(paste0(dir,"/scripts_results/all_locations.csv"))
 
 m <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
 m2 <- m

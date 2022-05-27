@@ -45,11 +45,11 @@ land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolve
 dir_demClasses <- paste0(dir,"/outputs/03_kernels")
 
 ## DIRECTION TO YOUR RESULTS
-dir.create(paste0(dir,"/outputs/05_aggregate_1by1_grid/")) 
-dir.create(paste0(dir,"/outputs/05_aggregate_1by1_grid/maps/"))
-dir.create(paste0(dir,"/outputs/05_aggregate_1by1_grid/na_maps/")) 
+dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid/")) 
+dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid/maps/"))
+dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid/na_maps/")) 
 
-dir_1by1 <- paste0(dir,"/outputs/05_aggregate_1by1_grid")
+dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
@@ -178,7 +178,7 @@ for (i in 1:length(files)){#
   print(i)
 }
 
-write.csv(dat, paste0(dir, "/outputs/05_exposure_scores_by_month.csv"),
+write.csv(dat, paste0(dir, "/outputs/04_exposure_scores_by_month.csv"),
           row.names = F)  
 head(nas)
 nas$percent_na <- nas$nas/nas$vals*100
