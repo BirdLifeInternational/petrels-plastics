@@ -22,11 +22,17 @@ land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolve
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 
-dat <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_month.csv"))  
+dat <- read.csv(paste0(dir,"/outputs/04_exposure_scores_by_month.csv"))  
 head(dat)
 
-#combine by population
+#read in phenology data
+pops <- read.csv(paste0(dir,"/outputs/06_phenology.csv"))
+head(pops)
 
+
+
+
+#combine by population
 pop_exposure <- dat %>%
   group_by(sp_pop) %>%
   summarise(species = species[1],

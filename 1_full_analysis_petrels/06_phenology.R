@@ -1,5 +1,6 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Labelling breeding and non-breeding months based on distance to the colony
+## and comparison to breeding schedules from the literature
 ## Beth Clark Mar 2021
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -27,15 +28,16 @@ library(RColorBrewer)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- "Drive:/folder" 
+dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
+              "Methods") 
 
 ## PROJECTIONS
 land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
 proj_wgs84 <- CRS(proj4string(land))
 
 ## TO SAVE RESULTS
-dir.create(paste0(dir,"/outputs/04_phenology/")) 
-dir_phen <- paste0(dir,"/outputs/04_phenology") 
+dir.create(paste0(dir,"/outputs/06_phenology/")) 
+dir_phen <- paste0(dir,"/outputs/06_phenology") 
 
 ################# LOADING SPP DATA ##################
 data_std <- paste0(dir, "/outputs/02_pops/")
@@ -56,6 +58,15 @@ for(dataset_number in c(1:length(files))){ #
   print(files[dataset_number])
   name_png <- str_remove(files[dataset_number],".csv")
   df <- read.csv(paste0(data_std,files[dataset_number]))  
+  
+  if(files[dataset_number] == "Procellaria aequinoctialis_Crozet.csv"){
+    df$lat_colony <- -46.41
+    df$lon_colony <- 51.77
+  }
+  if(files[dataset_number] == "Procellaria conspicillata_Tristan da Cunha.csv"){
+    df$lat_colony <- -37.31
+    df$lon_colony <- -12.73
+  }
   
   head(df)
   df <- subset(df, latitude < 90)
@@ -92,7 +103,6 @@ for(dataset_number in c(1:length(files))){ #
   half2 <- median(df$coldist)
   mean1 <- mean(months_sum$mean_coldist)
   mean2 <- mean(df$coldist)
-  #third2 <- quantile(months_sum$coldist, c(.666))[[1]]
   
   devices <- unique(df$device)
   months <- unique(df$month)
@@ -103,18 +113,18 @@ for(dataset_number in c(1:length(files))){ #
     months_sum$br <- NA
     months_sum$br <- ifelse(months_sum$mean_coldist <= mean(months_sum$mean_coldist),"br","nonbr")
     months_sum$br <- ifelse(months_sum$min_coldist > 200,"nonbr",months_sum$br)
-    
-    
+
+      
     if(nlevels(months) >= 9) {
       for(i in 2:(nrow(months_sum)-1)){
         if(months_sum$br[i+1] == "br" & months_sum$br[i-1] == "br"){
           months_sum$br[i] <- "br"
-        }
+       }
         if(months_sum$br[i+1] == "nonbr" & months_sum$br[i-1] == "nonbr"){
           months_sum$br[i] <- "nonbr"
         }
       }
-      
+    
       if(months_sum$br[2] == "br" & months_sum$br[nrow(months_sum)] == "br"){ months_sum$br[1] <- "br"}
       if(months_sum$br[2] == "nonbr" & months_sum$br[nrow(months_sum)] == "nonbr"){ months_sum$br[1] <- "nonbr"}
       if(months_sum$br[1] == "br" & months_sum$br[nrow(months_sum)-1] == "br"){ months_sum$br[nrow(months_sum)] <- "br"}
@@ -176,14 +186,37 @@ for(dataset_number in c(1:length(files))){ #
            col=factor(df$month),pch=16)
     points(df$time_of_year,df$mean_coldist,
            col="blue",pch=16, cex=0.4)
-    
     dev.off()
-    
   }
-  
-  
 }
 
 
-write.csv(pops,paste0(dir,"/outputs/04_phenology.csv"),
+pops <- read.csv(paste0(dir,"/input_data/breeding_months.csv"))
+
+head(pops)
+pops$tracks_breeding <- as.character(pops$tracks_breeding)
+pops$nonbreeding <- as.character(pops$nonbreeding)
+pops$ref_breeding <- as.character(pops$ref_breeding)
+pops$ref_nonbreeding <- as.character(pops$ref_nonbreeding)
+pops$com_breeding <- as.character(pops$com_breeding)
+pops$com_nonbreeding <- as.character(pops$com_nonbreeding)
+
+pops$tracks_breeding <- ifelse(nchar(pops$tracks_breeding) == 1,paste0("0",pops$tracks_breeding),pops$tracks_breeding)
+pops$nonbreeding <- ifelse(nchar(pops$nonbreeding) == 1,paste0("0",pops$nonbreeding),pops$nonbreeding)
+pops$ref_breeding <- ifelse(nchar(pops$ref_breeding) == 1,paste0("0",pops$ref_breeding),pops$ref_breeding)
+pops$ref_nonbreeding <- ifelse(nchar(pops$ref_nonbreeding) == 1,paste0("0",pops$ref_nonbreeding),pops$ref_nonbreeding)
+pops$com_breeding <- ifelse(nchar(pops$com_breeding) == 1,paste0("0",pops$com_breeding),pops$com_breeding)
+pops$com_nonbreeding <- ifelse(nchar(pops$com_nonbreeding) == 1,paste0("0",pops$com_nonbreeding),pops$com_nonbreeding)
+
+pops$over_val_br <- NA
+pops$over_val_nonbr <- NA
+pops$pop_exposure <- NA
+
+
+
+write.csv(pops,paste0(dir,"/outputs/06_phenology.csv"),
           row.names = F)
+
+
+
+

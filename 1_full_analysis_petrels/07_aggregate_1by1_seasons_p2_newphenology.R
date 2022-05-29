@@ -1,26 +1,7 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Mapping the global distribution of seabird populations
-## R script to aggregate results into a 5x5 degree grid
-## Ana Carneiro and Anne-Sophie Bonnet-Lebrun
-## July 2018
+## Combining rasters and scores for each month into averages by season
+## Beth Clark 2022
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#Adapted by Beth Clark Mar 2020 for overlap with 1x1 degree plastics data
-
-
-# This code uses as input a 10 km x 10 km raster containing the predicted number of birds in each cell. This raster is 
-# first projected into WGS84 (longitude and latitude), with a resolution roughly equivalent to the initial 10 km2 resolution, 
-# i.e. 1x1 degrees. Since degree cells at high latitudes do not have the same area as cells at low latitudes, 
-# a spatially heterogeneous rescaling is necessary to avoid distorting the values (number of predicted birds per cell). 
-# That rescaling is done by dividing the value of the cell by the area of the original cell (10 km2) and multiplying it by the 
-# area of the new cell (which depends on the latitude of the cell). 
-# 
-# To calculate the area of each grid cell, we consider a spherical model of the Earth. The radius of this sphere is the Earth's authalic radius (R = 6371007.2m).
-# The curved surface area of a grid cell spanning longitudes lon0 to lon1 (lon1 > lon0) and latitudes lat0 to lat1 (lat1 > lat0) is:
-# A = (lon1 - lon0)*(sin(lat1) - sin(lat0)*R^2
-# (see answer 2 - https://gis.stackexchange.com/questions/29734/how-to-calculate-area-of-1-x-1-degree-cells-in-a-raster) 
-# So for a grid of resolution res_lon and res_lat, a cell centred on lon and lat (all latitudes and resolutions in radians) has an area of:
-# A = (lon + res_lon/2 - (lon - res_lon/2))*(sin(lat + res_lat/2) - sin(lat - res_lat/2))*R^2 = res_lon*(sin(lat + res_lat/2) - sin(lat - res_lat/2))
 
 rm(list=ls()) 
 ################ LOADING PACKAGES ###################
@@ -28,6 +9,7 @@ rm(list=ls())
 library(raster)
 library(rgdal)
 library(cowplot)
+library(viridis)
 library(stringr)
 library(RColorBrewer)
 
@@ -39,36 +21,20 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-dir_demClasses <- paste0(dir,"/outputs/03_kernels")
+## DIRECTION TO YOUR RASTERS 
+dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
+
+dat <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_month.csv"))  
+head(dat)
 
 ## DIRECTION TO YOUR RESULTS
-dir_seasons <- paste0(dir,"/outputs/06_combine_by_season")
+dir_seasons <- paste0(dir,"/outputs/07_combine_by_season")
 
-dir.create(paste0(dir,"/outputs/04_combine_by_seasons/")) 
-dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_p2_newphen/maps/")) #added - BC
-dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_p2_newphen/maps_pdf/")) #added - BC
-#dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean/")) 
-#dir.create(paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean/maps/")) #added - BC
+dir.create(dir_seasons)
+dir.create(paste0(dir_seasons,"/maps/")) 
+dir.create(paste0(dir_seasons,"/maps_pdf/")) 
 
-#dir_1by1m <- paste0(dir,"/outputs/04_aggregate_1by1_grid_br_mean")
-
-
-pops <- read.csv(paste0(dir,"/outputs/05_phenology/pops_literature_test.csv"))
-
-head(pops)
-pops$breeding <- as.character(pops$breeding)
-pops$nonbreeding <- as.character(pops$nonbreeding)
-pops$ref_breeding <- as.character(pops$ref_breeding)
-pops$ref_nonbreeding <- as.character(pops$ref_nonbreeding)
-pops$com_breeding <- as.character(pops$com_breeding)
-pops$com_nonbreeding <- as.character(pops$com_nonbreeding)
-
-pops$breeding <- ifelse(nchar(pops$breeding) == 1,paste0("0",pops$breeding),pops$breeding)
-pops$nonbreeding <- ifelse(nchar(pops$nonbreeding) == 1,paste0("0",pops$nonbreeding),pops$nonbreeding)
-pops$ref_breeding <- ifelse(nchar(pops$ref_breeding) == 1,paste0("0",pops$ref_breeding),pops$ref_breeding)
-pops$ref_nonbreeding <- ifelse(nchar(pops$ref_nonbreeding) == 1,paste0("0",pops$ref_nonbreeding),pops$ref_nonbreeding)
-pops$com_breeding <- ifelse(nchar(pops$com_breeding) == 1,paste0("0",pops$com_breeding),pops$com_breeding)
-pops$com_nonbreeding <- ifelse(nchar(pops$com_nonbreeding) == 1,paste0("0",pops$com_nonbreeding),pops$com_nonbreeding)
+pops <- read.csv(paste0(dir,"/outputs/06_phenology.csv"))
 
 pops$over_val_br <- NA
 pops$over_val_nonbr <- NA
@@ -84,15 +50,15 @@ pops$species <- pop_names[seq(1,length(pop_names),by=2)]
 pops$pop <- pop_names[seq(2,length(pop_names),by=2)]
 head(pops)
 
-names <- read.csv("C:/Users/bethany.clark/OneDrive - BirdLife International/Requests/Species_list_petrels2.csv")
+names <- read.csv(paste0(dir,"/input_data/Species_list_IUCN.csv"))
 head(names)
 
-pops$common_name <- names$Common.name[match(pops$species,names$Scientific.name)]
+pops$common_name <- names$common_name[match(pops$species,names$scientific_name)]
 head(pops)
 cols_inferno <- rev(inferno(20))
 cols_inf <- colorRampPalette(c(cols_inferno))(255)
 
-all_pops <- read.csv(paste0(dir,"/outputs/all_locations2.csv"))
+all_pops <- read.csv(paste0(dir,"/outputs/02_all_locations.csv"))
 all_pops$pop_loc <- paste(all_pops$pop,all_pops$lon_colony,all_pops$lat_colony)
 
 #add latlon of colony to pops datasheets
@@ -468,3 +434,24 @@ for (i in c(1:nrow(pops))){#
 
 pops$mean_br_com <- pops$over_val_br / pops$br_n
 pops$mean_nonr_com <- pops$over_val_nonbr / pops$nonbr_n
+
+write.csv(pops, paste0(dir_1by1, "/)7_exposure_by_season.csv"),
+          row.names = F)  
+
+pops <- read.csv(paste0(dir,"/outputs/05_phenology/pops_literature_test.csv"))
+
+head(pops)
+pops$breeding <- as.character(pops$breeding)
+pops$nonbreeding <- as.character(pops$nonbreeding)
+pops$ref_breeding <- as.character(pops$ref_breeding)
+pops$ref_nonbreeding <- as.character(pops$ref_nonbreeding)
+pops$com_breeding <- as.character(pops$com_breeding)
+pops$com_nonbreeding <- as.character(pops$com_nonbreeding)
+
+pops$breeding <- ifelse(nchar(pops$breeding) == 1,paste0("0",pops$breeding),pops$breeding)
+pops$nonbreeding <- ifelse(nchar(pops$nonbreeding) == 1,paste0("0",pops$nonbreeding),pops$nonbreeding)
+pops$ref_breeding <- ifelse(nchar(pops$ref_breeding) == 1,paste0("0",pops$ref_breeding),pops$ref_breeding)
+pops$ref_nonbreeding <- ifelse(nchar(pops$ref_nonbreeding) == 1,paste0("0",pops$ref_nonbreeding),pops$ref_nonbreeding)
+pops$com_breeding <- ifelse(nchar(pops$com_breeding) == 1,paste0("0",pops$com_breeding),pops$com_breeding)
+pops$com_nonbreeding <- ifelse(nchar(pops$com_nonbreeding) == 1,paste0("0",pops$com_nonbreeding),pops$com_nonbreeding)
+

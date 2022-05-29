@@ -20,7 +20,7 @@ dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-dat <- read.csv(paste0(dir,"/outputs/04_exposure_scores_by_month.csv"))  
+dat <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_month.csv"))  
 head(dat)
 
 #combine by population
@@ -34,7 +34,7 @@ pop_exposure <- dat %>%
   data.frame() ; head(pop_exposure)
 
 #combine into maps per population ####
-dir_out <- paste0(dir,"/outputs/05_combine_by_population")
+dir_out <- paste0(dir,"/outputs/05_populations")
 dir.create(dir_out)
 
 pop_exposure$density_sum <- NA

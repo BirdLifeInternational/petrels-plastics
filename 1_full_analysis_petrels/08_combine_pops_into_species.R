@@ -1,11 +1,10 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Combine scores for months into scores for seasons, populations, species
+## Combine scores for populations into scores for species
+## weighted by population size
 ## And export maps - Beth Clark Mar 2020  
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rm(list=ls()) 
-
-# Maps of all kernels combined 
 
 ################ LOADING PACKAGES ###################
 
@@ -26,15 +25,15 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved")  
 
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") 
+outputs <- paste0(dir,"/outputs/06_species")
+dir.create(outputs)
 
-outputs <- paste0(dir,"/outputs/06_pops")
-dir.create()
-files <- list.files(dir_demClasses, pattern="tif");files
+pop_rasters <- paste0(dir,"/outputs/05_populations")
+files <- list.files(pop_rasters, pattern="tif");files
 
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
-pops <- read.csv(paste0(dir,"/outputs/04_phenology.csv"))
+pops <- read.csv(paste0(dir,"/outputs/0_phenology.csv"))
 
 #add up the species ####
 subset_safely <- function(x, index) {
@@ -106,12 +105,12 @@ species_weights <- read.csv(paste0(dir,"/species_weights_br.csv"))
 
 for (i in 1:length(species)){
   
-  sp_files <- list.files(dir_demClasses, pattern=species[i]);sp_files
+  sp_files <- list.files(pop_rasters, pattern=species[i]);sp_files
   sp_weightings <- pops[pops$species == species[i],];sp_weightings
   
   for(j in 1:length(sp_files)){
     
-    a <- raster(paste0(dir_demClasses,"/",sp_files[j]))
+    a <- raster(paste0(pop_rasters,"/",sp_files[j]))
     
     if(j == 1){
       rast_sum <- a*sp_weightings$weighting[j]
