@@ -4,13 +4,13 @@ rm(list=ls())
 library(tidyverse)
 library(viridis)
 library(cowplot)
+library(ggtext)
 se <- function(x) sqrt(var(x)/length(x))
 
 dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
               "Methods") ## copy and paste here your working directory
 
 seasons <- read.csv(paste0(dir,"/scripts_results/05_phenology/pops.csv"))
-
 
 dir_1by1 <- paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2")
 
@@ -29,7 +29,7 @@ dat$pop_size_weight <- pop_size_weight$weighting
 head(pop_size_weight)
 head(dat)
 
-names <- read.csv("C:/Users/bethany.clark/OneDrive - BirdLife International/Requests/Species_list_petrels2.csv")
+names <- read.csv(paste0(homedir,"/input_data/Species_list_IUCN.csv"))
 head(names)
 
 dat$common_name <- names$Common.name[match(dat$species,names$Scientific.name)]
@@ -40,7 +40,6 @@ dat$sci_name_pop <- dat$species_pop
 dat$species_pop <- paste0(dat$common_name,", ",dat$pop)
 dat$sci_name <- dat$species
 dat$species <- dat$common_name
-
 
 dat$season_diff_raw <- dat$mean_br - dat$mean_nonbr
 dat$season_diff <- abs(dat$mean_br - dat$mean_nonbr)
@@ -215,6 +214,13 @@ df_sp$common_name <- df_sp$species
 df_sp$species <- paste(df_sp$common_name,
                        df_sp$iucn,sep=" ")
 
+#test for difference when including population weightings or not
+just_multipops <- subset(df_sp,n != 1)
+cor.test(just_multipops$mean,just_multipops$wmean)
+plot(just_multipops$mean,just_multipops$wmean)
+plot(just_multipops$mean,just_multipops$wmean, xlim = c(0,25),ylim = c(0,25))
+#weighted mean very highly correlated with unweighted mean
+
 write.csv(df_sp, paste0(dir,"/scripts_results/supplementary_csvs/species_scores.csv"),
           row.names = F)
 
@@ -229,8 +235,6 @@ df_sp <- df_sp[order(-df_sp$mean),]
 
 upper <- df_sp[df_sp$half=="upr",]
 lower <- df_sp[df_sp$half=="lwr",]
-
-library(ggtext)
 
 upr_half <- ggplot(upper,
                    aes(reorder(species,mean),mean)) +
@@ -325,21 +329,6 @@ all_iucn <- ggplot(iucn_bars,
   theme(plot.margin=unit(c(1,1,-1,-1),"cm"))+
   theme(text=element_text(size = 55,colour="black"));all_iucn#+
 
-mod1 <- glm(prop ~ type, family="binomial",
-  data = iucn_bars)
-
-
-
-
-c_tab <- as.table(rbind(c(10,20),c(30,40)))
-dimnames(M) <- list(group = c("Group1", "Group2"),
-                    count = c("Count1","Count2"))
-c_tab
-(Xsq <- chisq.test(c_tab))  # Prints test summary
-Xsq$observed   # observed counts (same as M)
-Xsq$expected   # expected counts under the null
-Xsq$residuals  # Pearson residuals
-Xsq$stdres     # standardized residuals
 
 
 png(paste0(dir,"/scripts_results/iucn.png"), 
