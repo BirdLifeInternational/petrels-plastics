@@ -31,7 +31,7 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
               "Methods") 
 
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") #Changed - BC  
+land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 proj_wgs84 <- CRS(proj4string(land))
 
 ## TO SAVE KERNEL RESULTS

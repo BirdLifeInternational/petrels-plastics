@@ -38,16 +38,14 @@ library(adehabitatHR)
 dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
               "Methods") ## copy and paste here your working directory
 
-## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
-#dir_demClasses <- paste0(dir,"/scripts_results/09_sum_demClasses")
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
+land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
 pops <- read.csv(paste0(dir,"/scripts_results/05_phenology/pops.csv"))
 
-#eez ####
+#EEZ ####
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
-eez_file <- readOGR(dsn=paste0(dir,"/EEZ_land_union_v3_202003"), layer = "EEZ_Land_v3_202030") 
-#martin did not use a polygon for highseas, but coded NAs as high seas
+eez_file <- readOGR(dsn=paste0(dir,"/input_data/EEZ_land_union_v3_202003"), layer = "EEZ_Land_v3_202030") 
+
 #make a polygon for the high seas
 #1. make polygon covering whole earth
 y_coords <- c(90,90,-90,-90,90)
@@ -67,6 +65,7 @@ plot(eez_file, add=T)
 plot(eez_file)
 
 eez <- bind(eez_file,highseas)
+
 #to check
 plot(highseas,col="green")
 plot(eez[22,],add=T,col="red",border="orange");eez[22,]
