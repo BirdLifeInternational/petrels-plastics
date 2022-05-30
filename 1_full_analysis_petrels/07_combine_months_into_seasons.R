@@ -23,7 +23,7 @@ land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolve
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 files <- list.files(dir_1by1, full.names = TRUE,pattern="tif"); head(files)
 
-dir_seasons <- paste0(dir,"/outputs/07_combine_by_season")
+dir_seasons <- paste0(dir,"/outputs/07_seasons")
 dir.create(dir_seasons)
 dir.create(paste0(dir_seasons,"/maps/")) 
 dir.create(paste0(dir_seasons,"/maps_pdf/")) 

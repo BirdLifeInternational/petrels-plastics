@@ -1,105 +1,105 @@
-species,site,colony,population,pop_arithmetric_mean
-Ardenna carneipes,Lord Howe Island,Lord Howe Island,Lord Howe Island,22654
-Ardenna carneipes,New Zealand,,New Zealand,11660
-Ardenna carneipes,Western Australia,Breaksea Island,Breaksea Island,27141
-Ardenna gravis,Gough,Gough Island,Gough,980000
-Ardenna gravis,Tristan da Cunha,,Tristan da Cunha,3716000
-Ardenna grisea,Falkland Islands (Islas Malvinas),,Falkland Islands,165009
-Ardenna grisea,New Zealand,Codfish Island,Codfish Island,170000
-Ardenna grisea,New Zealand,,North Island,2213
-Ardenna pacifica,New Calendonia,,New Calendonia,500000
-Ardenna pacifica,Hawaii,Kauai,Hawaii,318000
-Ardenna pacifica,Mauritius,Round,Mauritius,68347
-Ardenna pacifica,Reunion Island,Reunion,Reunion,114537
-Ardenna pacifica,Seychelles,,Seychelles,123037
-Ardenna pacifica,Southern Great Barrier Reef,Heron Island,Heron Island,291874
-Ardenna pacifica,Western Australia,Lowendal Islands & Houtman Abrolhos,Lowendal & Houtman Abrolhoss,76000
-Bulweria bulwerii,Azores,Vila,Azores,50
-Bulweria bulwerii,Canarias,,Canarias,1000
-Bulweria bulwerii,Cape Verde,,Cape Verde,50
-Bulweria bulwerii,Madeira,Selvagens,Madeira,5000
-Calonectris borealis,Azores,,Azores,188000
-Calonectris borealis,Canary Islands,,Canarias,30000
-Calonectris borealis,Madeira,,Madeira,36000
-Calonectris borealis,Portugal,Berlengas,Berlengas,1025
-Calonectris diomedea,,,Balearic Archipelago,864
-Calonectris diomedea,Chafarinas,Chafarinas,Chafarinas,765
-Calonectris diomedea,,,Malta,9323
-Calonectris diomedea,La Maddalena Archipelago,,La Maddalena Archipelago,256
-Calonectris diomedea,Linosa,,Linosa,10000
-Calonectris diomedea,Tremiti Archipelago,Capraia,Tremiti Archipelago,350
-Calonectris diomedea,Tuscany Archipelago,Pianosa-LaScola,Tuscany Archipelago,368
-Calonectris diomedea,Zembra,Zembra,Zembra,145235
-Calonectris leucomelas,Iwate,,Iwate,51459
-Calonectris leucomelas,,,Mikura,2650000
-Calonectris leucomelas,Niigata,Awa Island,Niigata,10650
-Calonectris leucomelas,Korea,Korea,Korea,24282
-Daption capense,Davis,Hop Island,Davis,50
-Daption capense,Pointe Geologie,Ile des Petrels,Pointe Geologie,492
-Fulmarus glacialis,Bjørnøya,BjÃ¸rnÃ¸ya,Bjørnøya,30000
-Fulmarus glacialis,Cape Vera,Cape Vera,Cape Vera,8679
-Fulmarus glacialis,Faroe Islands,Faroe Islands,Faroe Islands,600000
-Fulmarus glacialis,Iceland,Breidafjordur,Breidafjordur,1150000
-Fulmarus glacialis,Jan Mayen,Jan Mayen,Jan Mayen,77460
-Fulmarus glacialis,Norway,Jarsteinen,Norway,5600
-Fulmarus glacialis,,,Scotland,485852
-Fulmarus glacialis,Svalbard,Alkefjellet,Svalbard,34553
-Fulmarus glacialoides,Davis,Hop Island,Davis,2576
-Fulmarus glacialoides,Pointe Geologie,Ile des Petrels,Pointe Geologie,53
-Halobaena caerulea,Kerguelen,Iles Kerguelen,Kerguelen,150000
-Halobaena caerulea,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,70000
-Hydrobates castro,Azores,Praia Islet,Azores,978
-Hydrobates castro,Egg Island,Egg Island,St Helena,5829
-Hydrobates castro,Portugal,Berlengas,Berlengas,146
-Hydrobates leucorhous,,,Newfoundland,2316799
-Hydrobates leucorhous,,,Nova Scotia,52106
-Hydrobates leucorhous,Gillam Island,Gillam Islands,Gillam Island,500000
-Hydrobates pelagicus,Benidorm Island,Benidorm,Benidorm Island,537
-Hydrobates pelagicus,Capo caccia,Capo caccia,Capo caccia,650
-Hydrobates pelagicus,Filfla,Filfla,Malta,6530
-Hydrobates pelagicus,High Island,High Island,Ireland,99065
-Hydrobates pelagicus,Shetland,Mousa,Shetland,21370
-Pachyptila belcheri,Kerguelen,Iles Kerguelen,Kerguelen,850000
-Pachyptila belcheri,New Island,New Island,New Island,1081000
-Pachyptila desolata,Kerguelen,Iles Kerguelen,Kerguelen,2500000
-Pachyptila desolata,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,22000000
-Pachyptila turtur,Australia,Kanowna Island,Kanowna Island,1367500
-Pachyptila turtur,New Zealand,Dunedin,Dunedin,1456000
-Pachyptila vittata,Gough,Gough Island,Gough,875000
-Pachyptila vittata,Tristan da Cunha,,Tristan da Cunha,575000
-Pelagodroma marina,Boa Vista,PÃ¡ssaros,Cape Verde,8650
-Pelagodroma marina,Madeira,Selvagens,Madeira,94168
-Pelecanoides urinatrix,Australia,Kanowna Island,Kanowna Island,150000
-Pelecanoides urinatrix,New Zealand,,North Island,900000
-Pelecanoides urinatrix,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,3800000
-Procellaria aequinoctialis,Antipodes Islands,Antipodes Islands,Antipodes Islands,75000
-Procellaria aequinoctialis,Crozet,Crozet,Crozet,23600
-Procellaria aequinoctialis,Kerguelen,Iles Kerguelen,Kerguelen,234000
-Procellaria aequinoctialis,Prince Edward Islands,Marion Island,Prince Edward Islands,36000
-Procellaria aequinoctialis,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,681000
-Procellaria cinerea,Antipodes Islands,Antipodes Islands,Antipodes Islands,53000
-Procellaria cinerea,Gough,Gough Island,Gough,17500
-Procellaria cinerea,Kerguelen,Iles Kerguelen,Kerguelen,3400
-Procellaria cinerea,Prince Edward Islands,Fred's Hill Route,Prince Edward Islands,2500
-Pterodroma arminjoniana,Round Island,Round Island,Round Island,1000
-Pterodroma arminjoniana,Trindade Island,,Trindade Island,1228
-Pterodroma cookii,New Zealand,Codfish Island,Codfish Island,4956
-Pterodroma cookii,New Zealand,Little Barrier Island,Little Barrier Island,286000
-Pterodroma leucoptera,Cabbage Tree Island,Cabbage Tree Island,Cabbage Tree Island,823
-Pterodroma leucoptera,New Caledonia,New Caledonia,New Caledonia,5500
-Pterodroma mollis,Antipodes,Antipodes Islands,Antipodes,3000
-Pterodroma mollis,Gough,Gough Island,Gough,400000
-Pterodroma nigripennis,Chatham Island,South East Island,Chatham Islands,47
-Pterodroma nigripennis,Phillip Island (Norfolk Island),Phillip Island,Phillip Island,5500
-Puffinus assimilis,Lord Howe Island,Lord Howe Island,Lord Howe Island,85
-Puffinus assimilis,Mokohinau,Burgess Island,E of Aukland,5050
-Puffinus lherminieri,Azores,Vila,Azores,1185
-Puffinus lherminieri,,,Cape Verde,5000
-Puffinus lherminieri,,,Madeira,1642
-Puffinus puffinus,,,Ireland,32545
-Puffinus puffinus,Iceland,Heimaey,Heimaey,5660
-Puffinus puffinus,,,UK,299722
-Puffinus yelkouan,,,Iles Hyeres,1500
-Puffinus yelkouan,,,Malta,1500
-Thalassoica antarctica,Davis,Hop Island,Davis,1000
-Thalassoica antarctica,Svarthamaren,Svarthamaren,Svarthamaren,250000
+species,site,colony,population,est_n_breeding_pairs,source_est_n_breeding_pairs
+Ardenna carneipes,Lord Howe Island,Lord Howe Island,Lord Howe Island,22654,"Lavers, J. L., Hutton, I. & Bond, A. L. Changes in technology and imperfect detection of nest contents impedes reliable estimates of population trends in burrowing seabirds. Glob. Ecol. Conserv. 17, e00579 (2019)."
+Ardenna carneipes,New Zealand,,New Zealand,11660,"Waugh, S. M., Tennyson, A. J. D., Taylor, G. A. & Wilson, K.-J. Population sizes of shearwaters (Puffinus spp.) breeding in New Zealand, with recommendations for monitoring. Tuhinga 24, 159-204 (2019)."
+Ardenna carneipes,Western Australia,Breaksea Island,Breaksea Island,27141,"Lavers, J. L. Population status and threats to Flesh-footed Shearwaters (Puffinus carneipes) in South and Western Australia. ICES Journal of Marine Science 72, 316-327 (2015)."
+Ardenna gravis,Gough,Gough Island,Gough,980000,"Cuthbert, R. Breeding biology of the Atlantic Petrel, Pterodroma incerta, and a population estimate of this and other burrowing petrels on Gough Island, South Atlantic Ocean. Emu 104, 221–228 (2004)."
+Ardenna gravis,Tristan da Cunha,,Tristan da Cunha,3716000,"Cuthbert, R. Breeding biology of the Atlantic Petrel, Pterodroma incerta, and a population estimate of this and other burrowing petrels on Gough Island, South Atlantic Ocean. Emu 104, 221–228 (2004)."
+Ardenna grisea,Falkland Islands (Islas Malvinas),,Falkland Islands,165009,"Clark, T. J. et al. Integrating habitat and partial survey data to estimate the regional population of a globally declining seabird species, the sooty shearwater. Global Ecology and Conservation 17, e00554 (2019)."
+Ardenna grisea,New Zealand,Codfish Island,Codfish Island,170000,"Waugh, S. M., Tennyson, A. J. D., Taylor, G. A. & Wilson, K.-J. Population sizes of shearwaters (Puffinus spp.) breeding in New Zealand, with recommendations for monitoring. Tuhinga 24, 159-204 (2019)."
+Ardenna grisea,New Zealand,,North Island,2213,"Waugh, S. M., Tennyson, A. J. D., Taylor, G. A. & Wilson, K.-J. Population sizes of shearwaters (Puffinus spp.) breeding in New Zealand, with recommendations for monitoring. Tuhinga 24, 159-204 (2019)."
+Ardenna pacifica,New Calendonia,,New Calendonia,500000,"Benoit, M. P. & Bretagnolle, V. Seabirds of the Southern Lagoon of New Caledonia; Distribution, Abundance and Threats. Waterbirds 25, 202-213, (2002)."
+Ardenna pacifica,Hawaii,Kauai,Hawaii,318000,"Felis, J.J., Kelsey, E.C., Adams, J., Stenske, J.G. & White, L.M. Population estimates for selected breeding seabirds at K?lauea Point National Wildlife Refuge, Kaua?i, in 2019: USGS Data Series 1130 (2020)."
+Ardenna pacifica,Mauritius,Round,Mauritius,68347,"Kappes, M. A., Coustaut, K. & Le Corre, M. Census of Wedge-tailed Shearwaters Puffinus pacificus breeding at D’Arros Island and St Joseph Atoll, Seychelles. Marine Ornithology 41, 29–34 (2013)."
+Ardenna pacifica,Reunion Island,Reunion,Reunion,114537,Danielle Zuanda Keys The foraging ecology of wedge-tailed shearwaters (Ardenna pacifica) in the tropical western Indian Ocean. Master of Science at the Nelson Mandela University (2018).
+Ardenna pacifica,Seychelles,,Seychelles,123037,Danielle Zuanda Keys The foraging ecology of wedge-tailed shearwaters (Ardenna pacifica) in the tropical western Indian Ocean. Master of Science at the Nelson Mandela University (2018).
+Ardenna pacifica,Southern Great Barrier Reef,Heron Island,Heron Island,291874,"Dyer, P.K., et al. Breeding numbers and population trends of Wedge-tailed Shearwater (Puffinus pacificus) and Black Noddy (Anous minutus) in the Capricornia Cays, southern Great Barrier Reef. Emu. 105, 249–257. (2005)."
+Ardenna pacifica,Western Australia,Lowendal Islands & Houtman Abrolhos,Lowendal & Houtman Abrolhoss,76000,"Surman, C.A., Nicholson, L.W. & Phillips, R.A. Distribution and patterns of migration of a tropical seabird community in the Eastern Indian Ocean. J Ornithol 159, 867–877. (2018)."
+Bulweria bulwerii,Azores,Vila,Azores,50,"Neves, V. C., Nolf, D. & Clarke, M. R. Diet of Bulwer's Petrel (Bulweria bulwerii) in the Azores, NE Atlantic. Waterbirds 34, 357-362 (2011)."
+Bulweria bulwerii,Canarias,,Canarias,1000,"BirdLife International. European Red List of Birds. Office for Official Publications of the European Communities, Luxembourg (2015)."
+Bulweria bulwerii,Cape Verde,,Cape Verde,50,"Megysi, J. L. & O'Daniel, D. L. Bulwer's Petrel (Bulweria bulwerii), version 1.0. In Birds of the World (S. M. Billerman, Editor). Cornell Lab of Ornithology, Ithaca, NY, USA. (2020)."
+Bulweria bulwerii,Madeira,Selvagens,Madeira,5000,"BirdLife International. European Red List of Birds. Office for Official Publications of the European Communities, Luxembourg (2015)."
+Calonectris borealis,Azores,,Azores,188000,"Fontaine, R., Gimenez, O. & Joël Bried, J. The impact of introduced predators, light-induced mortality of fledglings and poaching on the dynamics of the Cory’s shearwater (Calonectris diomedea) population from the Azores, northeastern subtropical Atlantic. Biological Conservation 144, 1998-2011. (2011)."
+Calonectris borealis,Canary Islands,,Canarias,30000,BirdLife International European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/22732244_calonectris_borealis.pdf (2015).
+Calonectris borealis,Madeira,,Madeira,36000,"Granadeiro et al, IBA fact sheet (Madeira): Important Bird Areas factsheet: Desertas. http://datazone.birdlife.org/site/factsheet/desertas-iba-portugal/details (2006)."
+Calonectris borealis,Portugal,Berlengas,Berlengas,1025,BirdLife International European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/22732244_calonectris_borealis.pdf (2015).
+Calonectris diomedea,,,Balearic Archipelago,864,BirdLife International (2021) Species factsheet: Calonectris diomedea. Downloaded from http://www.birdlife.org on 09/03/2021.
+Calonectris diomedea,Chafarinas,Chafarinas,Chafarinas,765,BirdLife International (2021) Species factsheet: Calonectris diomedea. Downloaded from http://www.birdlife.org on 09/03/2021.
+Calonectris diomedea,,,Malta,9323,BirdLife International (2021) Species factsheet: Calonectris diomedea. Downloaded from http://www.birdlife.org on 09/03/2021.
+Calonectris diomedea,La Maddalena Archipelago,,La Maddalena Archipelago,256,"Baccetti, N. et al. Breeding shearwaters on Italian islands: population size, island selection and co-existence with their main alien predator, the black rat. Riv. Ital. Orn., Milano 78, 83-100. (2009). "
+Calonectris diomedea,Linosa,,Linosa,10000,"Baccetti, N. et al. Breeding shearwaters on Italian islands: population size, island selection and co-existence with their main alien predator, the black rat. Riv. Ital. Orn., Milano 78, 83-100. (2009). "
+Calonectris diomedea,Tremiti Archipelago,Capraia,Tremiti Archipelago,350,"Defos du Rau, P. et al. Reassessment of the size of the Scopoli’s Shearwater population at its main breeding site resulted in a tenfold increase: implications for the species conservation. J Ornithol 156, 877–892 (2015). "
+Calonectris diomedea,Tuscany Archipelago,Pianosa-LaScola,Tuscany Archipelago,368,"Defos du Rau, P. et al. Reassessment of the size of the Scopoli’s Shearwater population at its main breeding site resulted in a tenfold increase: implications for the species conservation. J Ornithol 156, 877–892 (2015). "
+Calonectris diomedea,Zembra,Zembra,Zembra,145235,BirdLife International (2021) Species factsheet: Calonectris diomedea. Downloaded from http://www.birdlife.org on 09/03/2021.
+Calonectris leucomelas,Iwate,,Iwate,51459,"Oka N. The distribution of streaked shearwater colonies, with special attention to population size, area of sea where located and surface water temperature. Journal of the Yamashina Institute for Ornithology, 35 pp. 164-188 (2004)."
+Calonectris leucomelas,,,Mikura,2650000,"Oka N. The distribution of streaked shearwater colonies, with special attention to population size, area of sea where located and surface water temperature. Journal of the Yamashina Institute for Ornithology, 35 pp. 164-188 (2004)."
+Calonectris leucomelas,Niigata,Awa Island,Niigata,10650,"Oka N. The distribution of streaked shearwater colonies, with special attention to population size, area of sea where located and surface water temperature. Journal of the Yamashina Institute for Ornithology, 35 pp. 164-188 (2004)."
+Calonectris leucomelas,Korea,Korea,Korea,24282,"Hart, K.A., Choi, C.-Y., Bond, A.L., Humphries, G.R.W., Yoo, J.-C. and Nam, K.-B. Streaked Shearwaters Calonectris leucomelas of the Korean Peninsula: distribution, status and potential threats. Forktail 31:55–63 (2015)."
+Daption capense,Davis,Hop Island,Davis,50,"Arnould, J. P. Y. & Whitehead, M. D. The diet of Antarctic petrels, cape petrels and southern fulmars rearing chicks in Prydz Bay. Antarctic Science 3, 19-27 (1991)."
+Daption capense,Pointe Geologie,Ile des Petrels,Pointe Geologie,492,"Micol, T. & Jouventin, P. Long-term population trends in seven Antarctic seabirds at Pointe Géologie (Terre Adélie) Human impact compared with environmental change. Polar Biology 24: 175–185 (2001)."
+Fulmarus glacialis,Bjørnøya,BjÃ¸rnÃ¸ya,Bjørnøya,30000,Fauchald P. et al. The status and trends of seabirds breeding in Norway and Svalbard – NINA Report 1151. 84 pp. (2015).
+Fulmarus glacialis,Cape Vera,Cape Vera,Cape Vera,8679,"Gaston, A., Mallory, M., Gilchrist, H., & O'Donovan, K. Status, Trends and Attendance Patterns of the Northern Fulmar Fulmarus glacialis in Nunavut, Canada. Arctic, 59, 165-178. (2006)."
+Fulmarus glacialis,Faroe Islands,Faroe Islands,Faroe Islands,600000,BirdLife International (2015) European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/ 22697866_fulmarus_glacialis.pdf
+Fulmarus glacialis,Iceland,Breidafjordur,Breidafjordur,1150000,BirdLife International (2015) European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/ 22697866_fulmarus_glacialis.pdf
+Fulmarus glacialis,Jan Mayen,Jan Mayen,Jan Mayen,77460,"Mallory, M. L., Hatch, S. A. & Nettleship, D. N. Northern Fulmar (Fulmarus glacialis), version 1.0. In Birds of the World (S. M. Billerman, Editor). Cornell Lab of Ornithology, Ithaca, NY, USA. (2020)."
+Fulmarus glacialis,Norway,Jarsteinen,Norway,5600,BirdLife International (2015) European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/ 22697866_fulmarus_glacialis.pdf
+Fulmarus glacialis,,,Scotland,485852,"Mitchell, P. I., Newton, S. F., Ratcliffe, N. & Dunn, T. E. (Eds.). Seabird Populations of Britain and Ireland: results of the Seabird 2000 census (1998-2002). Published by T and A.D. Poyser, London (2004)."
+Fulmarus glacialis,Svalbard,Alkefjellet,Svalbard,34553,Fauchald P. et al. The status and trends of seabirds breeding in Norway and Svalbard – NINA Report 1151. 84 pp. (2015).
+Fulmarus glacialoides,Davis,Hop Island,Davis,2576,"Creuwels, J. C. S., Poncet, S., Hodum, P. J. & van Franeker, J. A. Distribution and abundance of the Southern Fulmar Fulmarus glacialoides. Polar Biology 30, 1083–1097 (2007)."
+Fulmarus glacialoides,Pointe Geologie,Ile des Petrels,Pointe Geologie,53,"Creuwels, J. C. S., Poncet, S., Hodum, P. J. & van Franeker, J. A. Distribution and abundance of the Southern Fulmar Fulmarus glacialoides. Polar Biology 30, 1083–1097 (2007)."
+Halobaena caerulea,Kerguelen,Iles Kerguelen,Kerguelen,150000,"Weimerskirch, H., Zotier, R. & Jouventin, P. The Avifauna of the Kerguelen Islands. Emu 89, 15-29 (1989)."
+Halobaena caerulea,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,70000,"Clarke, A., et al. Important Bird Areas South Georgia. British Birds 105, 118-144 (2012)."
+Hydrobates castro,Azores,Praia Islet,Azores,978,"Monteiro, L. R. Status and distribution of Fea's Petrel, Bulwer's Petrel, Manx Shearwater, Little Shearwater and Band-Rumped Storm-Petrel in the Azores Archipelago. Waterbirds 22, 358-366 (1999)."
+Hydrobates castro,Egg Island,Egg Island,St Helena,5829,BirdLife International (2021) Important Bird Areas factsheet: West Coast.
+Hydrobates castro,Portugal,Berlengas,Berlengas,146,BirdLife International European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/ 22735803_hydrobates_castro.pdf (2015).
+Hydrobates leucorhous,,,Newfoundland,2316799,"Robertson, G.J., Russell, J., Bryant, R., Fifield, D.A. & Stenhouse, I.J. Size and trends of Leach’s Storm-petrel Oceanodroma leucorhoa breeding populations in Newfoundland. Atlantic Seabirds 8, 41-50 (2006)."
+Hydrobates leucorhous,,,Nova Scotia,52106,"Hedd, A. et al. Foraging areas, offshore habitat use, and colony overlap by incubating Leach’s storm-petrels Oceanodroma leucorhoa in the Northwest Atlantic. PLoS ONE 13, e0194389 (2018)."
+Hydrobates leucorhous,Gillam Island,Gillam Islands,Gillam Island,500000,"Halpin L. R., Pollet I. L., Lee C., Morgan K. H., & Carter H. R. Year-round movements of sympatric Fork-tailed (Oceanodroma furcata) and Leach’s (O. leucorhoa) storm-petrels. Journal of Field Ornithology 89, 207-220 (2018)."
+Hydrobates pelagicus,Benidorm Island,Benidorm,Benidorm Island,537,"Ruiz Garcia, D (2020). Hábitat de nidificación y éxito reproductor del paíño europeo en la isla de Benidorm. https://dspace.uib.es/xmlui/bitstream/handle/11201/154482/Ruiz_Garcia_Daniel.pdf?sequence=1&isAllowed=y"
+Hydrobates pelagicus,Capo caccia,Capo caccia,Capo caccia,650,"Natura 2000 fact sheet, Capo Caccia."
+Hydrobates pelagicus,Filfla,Filfla,Malta,6530,BirdLife International (2015) European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/22698477_hydrobates_pelagicus.pdf
+Hydrobates pelagicus,High Island,High Island,Ireland,99065,"Mitchell, P. I., Newton, S. F., Ratcliffe, N. & Dunn, T. E. (Eds.). Seabird Populations of Britain and Ireland: results of the Seabird 2000 census (1998-2002). Published by T and A.D. Poyser, London (2004)."
+Hydrobates pelagicus,Shetland,Mousa,Shetland,21370,"Mitchell, P. I., Newton, S. F., Ratcliffe, N. & Dunn, T. E. (Eds.). Seabird Populations of Britain and Ireland: results of the Seabird 2000 census (1998-2002). Published by T and A.D. Poyser, London (2004)."
+Pachyptila belcheri,Kerguelen,Iles Kerguelen,Kerguelen,850000,"Weimerskirch, H., Zotier, R. & Jouventin, P. The Avifauna of the Kerguelen Islands. Emu 89, 15-29 (1989)."
+Pachyptila belcheri,New Island,New Island,New Island,1081000,"Catry, P., Campos, A., Segurado, P. et al. Population census and nesting habitat selection of thin-billed prion Pachyptila belcheri on New Island, Falkland Islands. Polar Biol 26, 202–207 (2003)."
+Pachyptila desolata,Kerguelen,Iles Kerguelen,Kerguelen,2500000,"Weimerskirch, H., Zotier, R. & Jouventin, P. The Avifauna of the Kerguelen Islands. Emu 89, 15-29 (1989)."
+Pachyptila desolata,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,22000000,"Clarke, A., et al. Important Bird Areas South Georgia. British Birds 105, 118-144 (2012)."
+Pachyptila turtur,Australia,Kanowna Island,Kanowna Island,1367500,"Baker, G.B., Gales, R., Hamilton, S. and Wilkinson, V. Albatrosses and petrels in Australia: a review of their conservation and management. Emu 102, 71–97 (2002)."
+Pachyptila turtur,New Zealand,Dunedin,Dunedin,1456000,"Jamieson, S.E. et al. A review of the distribution and size of prion (Pachyptila spp.) colonies throughout New Zealand. Tuhinga 27: 56–80 (2016)."
+Pachyptila vittata,Gough,Gough Island,Gough,875000,"Caravaggi, A., Cuthbert, R. J., Ryan, P. G., Cooper, J. & Bond, A. L. The impacts of introduced House Mice on the breeding success of nesting seabirds on Gough Island. Ibis 161: 648-661 (2018)."
+Pachyptila vittata,Tristan da Cunha,,Tristan da Cunha,575000,"Dilley, B.J. Population estimates of burrownesting petrels breeding at the Nightingale Island group, Tristan da Cunha Archipelago. Marine Ornithology 47: 267–275 (2019)."
+Pelagodroma marina,Boa Vista,PÃ¡ssaros,Cape Verde,8650,"Hazevoet, C. J. Sixth report on birds from the Cape Verde Islands, including records of 25 taxa new to the archipelago. Zoologia Cabovardiana 1, 3-44 (2010)."
+Pelagodroma marina,Madeira,Selvagens,Madeira,94168,BirdLife International (2015) European Red List of Birds. http://datazone.birdlife.org/userfiles/file/Species/erlob/supplementarypdfs/22698453_pelagodroma_marina.pdf
+Pelecanoides urinatrix,Australia,Kanowna Island,Kanowna Island,150000,"Fromant A. et al. Temporal and spatial differences in the post-breeding behaviour of a ubiquitous Southern Hemisphere seabird, the common diving petrel. R. Soc. Open Sci.7200670 (2020)."
+Pelecanoides urinatrix,New Zealand,,North Island,900000,"Fromant A. et al. Temporal and spatial differences in the post-breeding behaviour of a ubiquitous Southern Hemisphere seabird, the common diving petrel. R. Soc. Open Sci.7200670 (2020)."
+Pelecanoides urinatrix,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,3800000,"Fromant A. et al. Temporal and spatial differences in the post-breeding behaviour of a ubiquitous Southern Hemisphere seabird, the common diving petrel. R. Soc. Open Sci.7200670 (2020)."
+Procellaria aequinoctialis,Antipodes Islands,Antipodes Islands,Antipodes Islands,75000,"Rexer-Huber, K. White-chinned petrel distribution, abundance and connectivity: NZ populations and their global context. Report to NZ Department of Conservation. Parker Conservation, Dunedin pp 13 (2017)."
+Procellaria aequinoctialis,Crozet,Crozet,Crozet,23600,"Barbraud, C., et al. Demographic response of a population of white-chinned petrels Procellaria aequinoctialis to climate and longline ?shery bycatch. J. Appl. Ecol. 45, 1460–1467 (2008)."
+Procellaria aequinoctialis,Kerguelen,Iles Kerguelen,Kerguelen,234000,"Peter G Ryan, Ben J Dilley, M. Genevieve W. Jones (2012) The distribution and abundance of white-chinned petrels (Procellaria aequinoctialis) breeding at the sub-Antarctic Prince Edward Islands. Polar Biology 35: 1851-1859."
+Procellaria aequinoctialis,Prince Edward Islands,Marion Island,Prince Edward Islands,36000,"Peter G Ryan, Ben J Dilley, M. Genevieve W. Jones (2012) The distribution and abundance of white-chinned petrels (Procellaria aequinoctialis) breeding at the sub-Antarctic Prince Edward Islands. Polar Biology 35: 1851-1859."
+Procellaria aequinoctialis,South Georgia (Islas Georgias del Sur),Bird Island (SGSSI (IGSISS)),South Georgia,681000,"Barbraud, C., Delord, K., Marteau, C. & Weimerskirch, H. Estimates of population size of white?chinned petrels and grey petrels at Kerguelen Islands and sensitivity to fisheries. Animal Conservation 12: 258-265 (2009)."
+Procellaria cinerea,Antipodes Islands,Antipodes Islands,Antipodes Islands,53000,"Barbraud, C., Delord, K., Marteau, C. & Weimerskirch, H. Estimates of population size of white?chinned petrels and grey petrels at Kerguelen Islands and sensitivity to fisheries. Animal Conservation 12: 258-265 (2009)."
+Procellaria cinerea,Gough,Gough Island,Gough,17500,"Barbraud, C., Delord, K., Marteau, C. & Weimerskirch, H. Estimates of population size of white?chinned petrels and grey petrels at Kerguelen Islands and sensitivity to fisheries. Animal Conservation 12: 258-265 (2009)."
+Procellaria cinerea,Kerguelen,Iles Kerguelen,Kerguelen,3400,"Barbraud, C., Delord, K., Marteau, C. & Weimerskirch, H. Estimates of population size of white?chinned petrels and grey petrels at Kerguelen Islands and sensitivity to fisheries. Animal Conservation 12: 258-265 (2009)."
+Procellaria cinerea,Prince Edward Islands,Fred's Hill Route,Prince Edward Islands,2500,Agreement on the Conservation of Albatrosses and Petrels. 2009. ACAP Species assessments: Grey Petrel Procellaria cinerea. Downloaded from http://www.acap.aq on 28 September 2021.
+Pterodroma arminjoniana,Round Island,Round Island,Round Island,1000,"Brown, R. M. et al. Range expansion and hybridization in Round Island petrels (Pterodroma spp.): evidence from microsatellite genotypes. Molecular Ecology 19, 3157-3170. (2010)."
+Pterodroma arminjoniana,Trindade Island,,Trindade Island,1228,"Krüger, L. et al. Population estimate of Trindade Petrel Pterodroma arminjoniana by the use of Predictive Nest Habitat Modelling. Bird Conservation International 28, 197-207. (2018)."
+Pterodroma cookii,New Zealand,Codfish Island,Codfish Island,4956,"Miskelly, C. M., Gilad, D., Taylor, G. A., Tennyson, A. J. D. & Waugh, S. M. A Review of the distribution and size of gadfly petrel (Pterodroma spp.) colonies throughout New Zealand. Tuhinga 30: 99-177 (2019). "
+Pterodroma cookii,New Zealand,Little Barrier Island,Little Barrier Island,286000,"Miskelly, C. M., Gilad, D., Taylor, G. A., Tennyson, A. J. D. & Waugh, S. M. A Review of the distribution and size of gadfly petrel (Pterodroma spp.) colonies throughout New Zealand. Tuhinga 30: 99-177 (2019). "
+Pterodroma leucoptera,Cabbage Tree Island,Cabbage Tree Island,Cabbage Tree Island,823,"Priddel, D. & Carlile, N. Population size and breeding success of Gould’s petrel Pterodroma leucoptera leucoptera on Cabbage Tree Island, New South Wales: 1996–97 to 2005–06. Corella 31: 79-82 (2007)."
+Pterodroma leucoptera,New Caledonia,New Caledonia,New Caledonia,5500,"Rayner, M. J. et al. Niche partitioning by three Pterodroma petrel species during non-breeding in the equatorial Pacific Ocean. MEPS 549, 217-229 (2016)."
+Pterodroma mollis,Antipodes,Antipodes Islands,Antipodes,3000,"Miskelly, C. M., Gilad, D., Taylor, G. A., Tennyson, A. J. D. & Waugh, S. M. A Review of the distribution and size of gadfly petrel (Pterodroma spp.) colonies throughout New Zealand. Tuhinga 30: 99-177 (2019)."
+Pterodroma mollis,Gough,Gough Island,Gough,400000,"Cuthbert, R. Breeding biology of the Atlantic Petrel, Pterodroma incerta, and a population estimate of this and other burrowing petrels on Gough Island, South Atlantic Ocean. Emu 104:221-228 (2004)."
+Pterodroma nigripennis,Chatham Island,South East Island,Chatham Islands,47,"Miskelly, C. M., Gilad, D., Taylor, G. A., Tennyson, A. J. D. & Waugh, S. M. A Review of the distribution and size of gadfly petrel (Pterodroma spp.) colonies throughout New Zealand. Tuhinga 30: 99-177 (2019)."
+Pterodroma nigripennis,Phillip Island (Norfolk Island),Phillip Island,Phillip Island,5500,"Priddel, D. et al. A review of the seabirds of Phillip Island in the Norfolk Island Group. Notornis 57, 113-127 (2010)."
+Puffinus assimilis,Lord Howe Island,Lord Howe Island,Lord Howe Island,85,"Priddel, D., Hutton, I., Carlile, N. & Bester, A. Little shearwaters, Puffinus assimilis assimilis breeding on Lord Howe Island. Emu 103: 67-70 (2003)."
+Puffinus assimilis,Mokohinau,Burgess Island,E of Aukland,5050,"Waugh, S. M., Tennyson, A. J. D., Taylor, G. A. & Wilson, K.-J. Population sizes of shearwaters (Puffinus spp.) breeding in New Zealand, with recommendations for monitoring. Tuhinga 24, 159-204 (2019)."
+Puffinus lherminieri,Azores,Vila,Azores,1185,"Monteiro, L. R. Status and distribution of Fea's Petrel, Bulwer's Petrel, Manx Shearwater, Little Shearwater and Band-Rumped Storm-Petrel in the Azores Archipelago. Waterbirds 22, 358-366 (1999)."
+Puffinus lherminieri,,,Cape Verde,5000,BirdLife International. Puffinus lherminieri. The IUCN Red List of Threatened Species 2018: e.T45959182A132669169. https://dx.doi.org/10.2305/IUCN.UK.2018-2.RLTS.T45959182A132669169.en (2018).
+Puffinus lherminieri,,,Madeira,1642,BirdLife International. Puffinus lherminieri. The IUCN Red List of Threatened Species 2018: e.T45959182A132669169. https://dx.doi.org/10.2305/IUCN.UK.2018-2.RLTS.T45959182A132669169.en (2018).
+Puffinus puffinus,,,Ireland,32545,"Mitchell, P. I., Newton, S. F., Ratcliffe, N. & Dunn, T. E. (Eds.). Seabird Populations of Britain and Ireland: results of the Seabird 2000 census (1998-2002). Published by T and A.D. Poyser, London (2004)."
+Puffinus puffinus,Iceland,Heimaey,Heimaey,5660,"Hansen, E. S., Hansen, B. R., Hilmarsson, J. O. & Sigurðsson, I. A. Change in the stock size of the hull in Ystaklettur, Vestmannaeyjar 1991–2009. Poster Biology Conference, 6-7. Nov 2009, in Askja, University of Iceland. "
+Puffinus puffinus,,,UK,299722,"Mitchell, P. I., Newton, S. F., Ratcliffe, N. & Dunn, T. E. (Eds.). Seabird Populations of Britain and Ireland: results of the Seabird 2000 census (1998-2002). Published by T and A.D. Poyser, London (2004)."
+Puffinus yelkouan,,,Iles Hyeres,1500,"Bourgeois, K., & Vidal, E. The endemic Mediterranean yelkouan shearwater Puffinus yelkouan: distribution, threats and a plea for more data. Oryx 42, 187–194 (2008)."
+Puffinus yelkouan,,,Malta,1500,"Bourgeois, K., & Vidal, E. The endemic Mediterranean yelkouan shearwater Puffinus yelkouan: distribution, threats and a plea for more data. Oryx 42, 187–194 (2008)."
+Thalassoica antarctica,Davis,Hop Island,Davis,1000,"van Franeker, J. A., Gavrilo, M., Mehlum, F., Veit, R. R. & Woehler, E. J. Distribution and Abundance of the Antarctic Petrel. The International Journal of Waterbird Biology 22, 14-28 (1999)."
+Thalassoica antarctica,Svarthamaren,Svarthamaren,Svarthamaren,250000,"van Franeker, J. A., Gavrilo, M., Mehlum, F., Veit, R. R. & Woehler, E. J. Distribution and Abundance of the Antarctic Petrel. The International Journal of Waterbird Biology 22, 14-28 (1999)."
