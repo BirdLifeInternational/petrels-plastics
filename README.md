@@ -30,13 +30,7 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Use kernel density to create rasters of density of tracked locations for each month
   - Export rasters as tifs
   - Plot density maps and locations for checking
-- 04_phenology
-  - Read in tracking data csvs for each population
-  - Calculate distance to the colony for each location
-  - Estimate whether each month is more likely to be breeding or non-breeding for the tracked individuals in each population
-  - Export csv containing estimated breeding schedules "04_phenology.csv"
-  - Export plots for each population for checking
-- 05_aggregate_1by1_months
+- 04_aggregate_1by1_months
   - Read in the plastics density raster
   - For each population for each month, read in the tracking location density rasters
   - Reformat the grid cells for each tracking data raster to match the plastic raster in 1x1 degrees
@@ -45,10 +39,31 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Sum scores in each exposure map to produce exposure score
   - Export exposure maps as tifs and images
   - Export exposure scores for each month for each population as csv
-- 06_combine_by_population
-- 07_combine_by_season
+- 05_combine_by_population
+  - read in rasters for each population, export 1 mean raster per population
+  - import the monthly exposure scores and export mean by population
+- 06_phenology
+  - Read in tracking data csvs for each population
+  - Calculate distance to the colony for each location
+  - Estimate whether each month is more likely to be breeding or non-breeding for the tracked individuals in each population
+  - Export csv containing estimated breeding schedules "06_phenology.csv"
+  - Export plots for each population for checking - 06_phenology
+- 07_combine_by_seasons
+  - read in rasters for each month
+  - read in breeding schedules (from phenology script or literature)
+  - export 1 mean raster per population per season
+  - import the monthly exposure scores and export mean by population
 - 08_combine_by_species
-- 09_overlay_with_EEZ
+  - read in rasters for each population
+  - read in population sizes 
+  - read in breeding schedules (from phenology script or literature)
+  - export 1 mean raster per species weighted by population size and seasons tracked
+  - import the monthly exposure scores and export mean by species weighted by population size and seasons tracked
+- ##_combine by country
+- ##_overlay_with_EEZ
+- ##_plot maps
+- ##_plot results graphs
+
 
 
 ## Input files
@@ -63,15 +78,16 @@ Both folders contain codes that should be run in the order provided by the numbe
 - 03_kernels
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
   - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
-- 04_phenology
-  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
-  - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
-- 05_aggregate_1by1_months
+- 04_aggregate_1by1_months
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
   - Plastics density raster ".tif" in fodler "input_data"
   - Kernel density rasters ".tif" produced by "03_kernels" in folder "outputs"
-- 06_combine_by_population
+- 05_combine_by_population
+- 06_phenology
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
 - 07_combine_by_season
+  - phenology
 - 08_combine_by_species
   - "population_sizes.csv" in folder "input_data"
 - 09_overlay_with_EEZ
