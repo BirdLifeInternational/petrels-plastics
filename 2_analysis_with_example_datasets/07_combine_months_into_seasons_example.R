@@ -22,8 +22,6 @@ dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-
-
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 files <- list.files(dir_1by1, full.names = TRUE,pattern="tif"); head(files)
@@ -78,21 +76,6 @@ p_sum1[is.na(plastics)] <- NA
 
 collocs <- read.csv(paste0(dir,"/outputs/02_colony_locations.csv"))
 collocs$sp_pop <- paste(collocs$species,collocs$population,sep="_")
-collocs$lat_colony <- ifelse(collocs$sp_pop == "Ardenna bulleri_Aorangi Island",
-                             -35.50, collocs$lat_colony)
-collocs$lon_colony <- ifelse(collocs$sp_pop == "Ardenna bulleri_Aorangi Island",
-                             174.75, collocs$lon_colony)
-
-#42 failed "Fulmarus glacialis_Bjørnøya"
-pops$species_pop <- ifelse(pops$species_pop == "Fulmarus glacialis_Bjørnøya",
-                           "Fulmarus glacialis_Bjornoya",pops$species_pop)
-head(dat)
-dat$population <- ifelse(dat$population == "Bjørnøya","Bjornoya",dat$population)
-dat$sp_pop <- ifelse(dat$sp_pop == "Fulmarus glacialis_Bjørnøya",
-                           "Fulmarus glacialis_Bjornoya",dat$sp_pop)
-
-dat$sp_pop <- ifelse(dat$sp_pop == "Ardenna pacifica_Lowendal . Houtman Abrolhoss",
-                     "Ardenna pacifica_Lowendal & Houtman Abrolhoss",dat$sp_pop)
 
 for (i in 1:nrow(pops)){
   
