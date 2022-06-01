@@ -17,12 +17,9 @@ library(RColorBrewer)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
-
-
 
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
@@ -66,22 +63,16 @@ cols <- colorRampPalette(yelblus)(255)
 colsviri <- cols[20:255]
 
 #read in plastics data
-plastics <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
+plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+
 ## rescale to 1
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
 p_sum1    <- plastics2/sum(getValues(plastics2))
 p_sum1[is.na(plastics)] <- NA
 
-#
-
-
 collocs <- read.csv(paste0(dir,"/outputs/02_colony_locations.csv"))
 collocs$sp_pop <- paste(collocs$species,collocs$population,sep="_")
-collocs$lat_colony <- ifelse(collocs$sp_pop == "Ardenna bulleri_Aorangi Island",
-                             -35.50, collocs$lat_colony)
-collocs$lon_colony <- ifelse(collocs$sp_pop == "Ardenna bulleri_Aorangi Island",
-                             174.75, collocs$lon_colony)
 
 #42 failed "Fulmarus glacialis_Bjørnøya"
 pops$species_pop <- ifelse(pops$species_pop == "Fulmarus glacialis_Bjørnøya",

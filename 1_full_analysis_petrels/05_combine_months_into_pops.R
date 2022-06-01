@@ -14,8 +14,7 @@ library(tidyverse)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")

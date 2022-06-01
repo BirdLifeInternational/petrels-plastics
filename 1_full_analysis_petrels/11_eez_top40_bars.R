@@ -1,4 +1,3 @@
-
 #Use eez results and create summary statistics
 rm(list=ls()) 
 
@@ -8,15 +7,15 @@ library(cowplot)
 library(viridis)
 
 ## GENERAL DIR
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+
+## paste home directory here
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+
 #eezs_used <- read.csv(paste0(dir,"/eezs_used.csv"))
 #eezs <- read.csv(paste0(dir,"/eezs.csv"))
 
 #eezs_used <- read.csv(paste0(dir,"/eezs_used_br_weights_countries.csv"))
 eezs_used <- read.csv(paste0(dir,"/eezs_used_br_weights_countries_sum.csv"))
-
-
 
 head(eezs_used)
 eezs_used$MRGID_EEZ <- NULL; eezs_used$MRGID_TER1 <- NULL

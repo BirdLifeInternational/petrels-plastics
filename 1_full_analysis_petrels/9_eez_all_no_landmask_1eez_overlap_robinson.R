@@ -1,46 +1,36 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Mapping the global distribution of seabird populations
-## R script to aggregate results into a 5x5 degree grid
-## Ana Carneiro and Anne-Sophie Bonnet-Lebrun
-## July 2018
+## Calculate proportions of exposure among marine
+## political regions (EEZs and the high seas)
+## 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#Adapted by Beth Clark Mar 2020 for overlap with 1x1 degree plastics data
 rm(list=ls()) 
 
 ################ LOADING PACKAGES ###################
-library(sp) #1.3-2
 library(raster) #3.1-5
 library(rgdal) #1.4-8
-library(cowplot) #1.0.0
-library(viridis)#0.5.1
-library(stringr)#1.4.0
+library(rgeos)#0.5-3
 library(RColorBrewer)#1.1-2
+library(sf)#0.9-4
+library(tidyverse)#1.3.0
+library(sp) #1.3-2
+library(viridis)#0.5.1
+
+library(cowplot) #1.0.0
+library(stringr)#1.4.0
 library(geomerge)#0.3.2
 library(maptools)#1.0-1
 library(gridExtra)#2.3
-library(sf)#0.9-4
-library(tidyverse)#1.3.0
-library(rgeos)#0.5-3
 library(adehabitatHR)
-
-#the above versions were used, but to reproject to the new equal earth project,
-#the rgdal package needed to be updated. this might mess up previous processes
-#that use custom equal area projections centred on the geomean of the data
-#and so we might need to return to previous versions.
-
-#install.packages("proj4")
-#library(proj4)#1.0-10.1
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## GENERAL DIR
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+## paste home directory here
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
-pops <- read.csv(paste0(dir,"/scripts_results/05_phenology/pops.csv"))
+pops <- read.csv(paste0(dir,"/outputs/06_phenology.csv"))
 
 #EEZ ####
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
@@ -68,9 +58,9 @@ eez <- bind(eez_file,highseas)
 
 #to check
 plot(highseas,col="green")
-plot(eez[22,],add=T,col="red",border="orange");eez[22,]
+plot(eez[1,],add=T,col="red",border="orange");eez[1,]
 
-#rm(eez_file)
+rm(eez_file)
 
 eez@data$UNION[nrow(eez@data)] <- "High Seas"
 eez@data$TERRITORY1[nrow(eez@data)] <- "High Seas"
@@ -81,230 +71,33 @@ tail(eez@data)
 
 plot(eez,col="blue")
 
-eez_proj <- eez
+sp_files <- list.files(paste0(dir,"/outputs/06_species/"))
 
-sp_files <- list.files(paste0(dir,"/scripts_results/06_species/"))
-
-bird_dist <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Methods/scripts_results/all_birds_distribution.tif")
-plot(bird_dist)
+bird_dist <- raster(paste0(dir,"/outputs/08_all_species_distribution.tif"))
 b <- bird_dist
 b[is.na(b)] <- 0 
-sum(getValues(b))
 b_sum1 <- b/sum(getValues(b))
 b_sum1[is.na(bird_dist)] <- NA
-
-m <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
-
-## rescale to 1
-m2 <- m
-m2[is.na(m2)] <- 0 
-p_sum1    <- m2/sum(getValues(m2))
-p_sum1[is.na(m)] <- NA
-
-#plot(p_sum1, main = "million plastic piece per 10km2")
-
-a <- b_sum1 * p_sum1
-
-
-yelblus <- c(brewer.pal(n = 9, name = "YlGnBu"),"#00172e")
-
-col_birds <- c(colorRampPalette(yelblus)(1000))
 b_sum1[b_sum1 == 0] <- NA
 
-# define Robinson projection
-proj <- "+proj=robin"
+#read in plastics data
+plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
 
-# load an example land shapefile from rnaturalearth dataset
-#world <- ne_countries(scale = "medium", returnclass = "sf")
+## rescale to 1
+plastics2 <- plastics
+plastics2[is.na(plastics2)] <- 0 
+p_sum1    <- plastics2/sum(getValues(plastics2))
+p_sum1[is.na(plastics)] <- NA
 
-# project shapefile and raster to Robinson projection
-land_sf <- st_as_sf(land)
-world_prj <- land_sf %>% st_transform(proj)
-b_dens_proj <- projectRaster(b_sum1, crs = proj)
+# exposure ####
+exposure <- b_sum1 * p_sum1
+exposure[exposure == 0] <- NA
 
-# convert raster to dataframe for ggplot
-bat_df <- rasterToPoints(b_dens_proj) %>% as_tibble()
+#overlap with eez ####
+eez_over <- raster::extract(exposure,eez,fun=sum,na.rm = T)
+eez$over <- eez_over
 
-# generate quick ggplot figure
-p1 <- ggplot() +
-  geom_raster(aes(x = x, y = y, fill = all_birds_distribution), 
-              data = bat_df) +
-  geom_sf(aes(), colour = "grey50", fill = "grey50", 
-          data = world_prj);p1
-
-# if you can simply mask it then create a polygon that is a square larger than the map area
-# then cookie cut out the map region
-
-# define a box to clip shapefile to - make slightly bigger than required to avoid edge clip effects
-CP <- sf::st_bbox(c(xmin = -180, xmax = 180, ymin = -90, ymax = 90)) %>%
-  sf::st_as_sfc() %>%
-  sf::st_segmentize(1) %>% st_set_crs(4326)
-CP_prj <- CP %>% st_transform(crs = proj)
-
-# get the bounding box in transformed coordinates and expand by 10%
-xlim <- st_bbox(CP_prj)[c("xmin", "xmax")]*1.2
-ylim <- st_bbox(CP_prj)[c("ymin", "ymax")]*1.2
-
-# turn into enclosing rectangle
-encl_rect <- 
-  list(
-    cbind(
-      c(xlim[1], xlim[2], xlim[2], xlim[1], xlim[1]), 
-      c(ylim[1], ylim[1], ylim[2], ylim[2], ylim[1])
-    )
-  ) %>%
-  st_polygon() %>%
-  st_sfc(crs = proj)
-
-# calculate the area outside the earth outline as the difference
-# between the enclosing rectangle and the earth outline
-cookie <- st_difference(encl_rect, CP_prj)
-
-# cookie cut/ mask plot
-p2 <- ggplot() +
-  theme_minimal() +
-  scale_fill_gradientn(colors = col_birds)+
-  theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = all_birds_distribution),
-              data = bat_df) +
-  geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
-  geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
-  xlab("") + ylab("");p2
-# I've coloured the line black so you can see it - make this white in the final figure
-
-#plot bird density ####
-
-png(paste0(dir,"/scripts_results/density_weight_pop_season_rob.png"),
-    width=2000,height=1125)
-p2
-dev.off()
-dev.off()
-
-#plot species richness ####
-
-sp_rich <- raster(paste0(dir,"/all_birds_sp_richness.tif"))
-cols_sp <- c("white",
-             colorRampPalette(yelblus)(sp_rich@data@max))
-
-all_pops <- read.csv(paste0(dir,"/scripts_results/all_locations.csv"))
-cols <- all_pops[!duplicated(all_pops[
-  c("lon_colony","lat_colony","scientific_name")]),]
-cols <- subset(cols,!is.na(cols$lat_colony))
-
-sp::coordinates(cols) <- ~lon_colony+lat_colony
-proj4string(cols) <- proj4string(land)
-
-cols_prj <- spTransform(cols,proj)
-cols_df <- as.data.frame(cols_prj)
-
-# convert raster to dataframe for ggplot
-sp_rich_prj <- projectRaster(sp_rich, crs = proj)
-r_df <- rasterToPoints(sp_rich_prj) %>% as_tibble()
-
-p1 <- ggplot() +
-  theme_minimal() +
-  scale_fill_gradientn(colors = cols_sp)+
-  theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = all_birds_sp_richness),
-              data = r_df) +
-  geom_sf(aes(), colour = NA, fill = "grey75", 
-          data = world_prj) +
-  geom_point(aes(x=lon_colony,y=lat_colony),
-             data=cols_df,colour="red",pch=18,size=6)+
-  geom_sf(aes(), fill = "white", color = "black", 
-          data = cookie, size = .5) +
-  xlab("") + ylab("");p1
-
-png(paste0(dir,"/scripts_results/sp_rich_rob.png"), 
-    width=2000,height=1125)
-par(mfrow=c(1,1))
-p1
-dev.off()
-dev.off()
-
-#plot plastic ####
-p_cap <- m
-p_cap[p_cap > 2422700.2] <- 2422700.2
-p_dens_proj <- projectRaster(p_cap, crs = proj)
-
-# convert raster to dataframe for ggplot
-p_df <- rasterToPoints(p_dens_proj) %>% as_tibble()
-
-cols <- rev(inferno(3000))
-p3 <- ggplot() +
-  theme_minimal() +
-  scale_fill_gradientn(colors = cols)+
-  #scale_fill_viridis(option="inferno",direction=-1)+
-  theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = AverageForBeth2),
-              data = p_df) +
-  geom_sf(aes(), colour = NA, fill = "grey75", 
-          data = world_prj) +
-  geom_sf(aes(), fill = "white", color = "black", 
-          data = cookie, size = .5) +
-  xlab("") + ylab("");p3
-
-png(paste0(dir,"/scripts_results/plastic_cap10_rob.png"), 
-    width=2000,height=1125)
-par(mfrow=c(1,1))
-p3
-dev.off()
-dev.off()
-
-a[a == 0] <- NA
-a_cap <- a
-a_cap[a_cap > 1.483366e-08] <- 1.483366e-08
-
-#plot exposure ####
-o_dens_proj <- projectRaster(a_cap, crs = proj)
-
-# convert raster to dataframe for ggplot
-o_df <- rasterToPoints(o_dens_proj) %>% as_tibble()
-
-#cols <- rev(inferno(5000))
-p4 <- ggplot() +
-  theme_minimal() +
-  scale_fill_viridis(option="inferno",direction=-1)+
-  #scale_fill_gradientn(colors = cols)+
-  theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = layer),
-              data = o_df) +
-  geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
-  geom_sf(aes(), fill = "white", color = "black", 
-          data = cookie, size = .5) +
-  xlab("") + ylab("");p4
-
-png(paste0(dir,"/scripts_results/overlap_cap_rob.png"), 
-    width=2000,height=1125)
-p4
-dev.off()
-dev.off()
-
-#plot overlap + eez ####
-eez_sf <- st_as_sf(eez_file)
-eez_prj <- eez_sf %>% st_transform(proj)
-p5 <- ggplot() +
-  theme_minimal() +
-  scale_fill_viridis(option="inferno",direction=-1)+
-  theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = layer),
-              data = o_df) +
-  geom_sf(aes(), fill = NA, colour = "#2684ff", data = eez_prj) +
-  geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
-  geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
-  xlab("") + ylab("");p5
-
-png(paste0(dir,"/scripts_results/overlap_cap_eez_rob.png"), width=2000,height=1125)
-p5
-dev.off()
-dev.off()
-
-
-#overlap
-eez_over <- raster::extract(a,eez_proj,fun=sum,na.rm = T)
-eez_proj$over <- eez_over
-
-rank_eezs <- as.data.frame(eez_proj@data)
+rank_eezs <- as.data.frame(eez@data)
 
 rank_eezs <- rank_eezs[order(-rank_eezs$over),]
 head(rank_eezs)
@@ -312,7 +105,10 @@ head(rank_eezs)
 rank_used <- subset(rank_eezs,over != 0)
 rank_used$prop <- rank_used$over/sum(rank_used$over)
 
-write.csv(rank_used,paste0(dir,"/eezs_used_allbirds.csv"),row.names = F)
+names(rank_used)
+
+write.csv(rank_used,paste0(dir,"/11_eezs_used_all_species.csv"),
+          row.names = F)
 
 
 #Use eez results and create summary statistics ####
@@ -451,12 +247,12 @@ eezs_country_highimpact$percent <- (eezs_country_highimpact$total/
 plot1 <- ggplot(eezs_country_highimpact,aes(x=label,y=total,fill=cat2))+
   geom_bar(stat="identity",position="fill",colour="white") +
   scale_fill_viridis(option="inferno",discrete = T) +
-  theme_bw()
+  theme_bw(); plot1
 
 
 
 write.csv(eezs_country,
-          paste0(dir,"/scripts_results/eezs_by_country.csv"),
+          paste0(dir,"/outputs/11_eezs_by_country.csv"),
                  row.names=F)
 
 

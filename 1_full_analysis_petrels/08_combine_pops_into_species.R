@@ -30,9 +30,8 @@ str_split_n <- function(string, pattern, n) {
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## GENERAL DIR
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+## paste home directory here
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 outputs <- paste0(dir,"/outputs/08_species")
 dir.create(outputs)
@@ -79,8 +78,10 @@ head(pops)
 pops$pop_size_weight <- all_sp$popsize_weighting[match(pops$sp_pop,all_sp$species_pop)]
 pops$pop_size_weight <- ifelse(is.na(pops$pop_size_weight),1,pops$pop_size_weight)
 
-pops$pop_x_seasons_weight <- all_sp$pop_x_season_weighting[match(pops$sp_pop,all_sp$species_pop)]
-pops$pop_x_seasons_weight <- ifelse(is.na(pops$pop_x_seasons_weight),1,pops$pop_x_seasons_weight)
+pops$pop_x_seasons_weight <- all_sp$pop_x_season_weighting[match(pops$sp_pop,
+                                                                 all_sp$species_pop)]
+pops$pop_x_seasons_weight <- ifelse(is.na(pops$pop_x_seasons_weight),
+                                    1,pops$pop_x_seasons_weight)
 head(pops)
 
 pops$exposure <- pop_exposure$population_exposure
@@ -88,7 +89,8 @@ pops$exposure <- pop_exposure$population_exposure
 #species, weighted by pop size ####
 df_species <- pops %>% 
   group_by(species) %>%
-  summarise(species_exposure = stats::weighted.mean(population_exposure,pop_x_seasons_weight),
+  summarise(species_exposure = stats::weighted.mean(population_exposure,
+                                                    pop_x_seasons_weight),
             unweighted_mean = mean(population_exposure),
             n_pops = n()
             ) %>%
@@ -97,8 +99,8 @@ df_species <- pops %>%
 #test the correlation between weighted and unweighted means
 df_species_multipop <- subset(df_species, n_pops != 1)
 
-cor.test(df_species_multipop$species_exposure ,df_species_multipop$unweighted_mean)
-plot(df_species_multipop$species_exposure ,df_species_multipop$unweighted_mean)
+cor.test(df_species_multipop$species_exposure,df_species_multipop$unweighted_mean)
+plot(df_species_multipop$species_exposure,df_species_multipop$unweighted_mean)
 
 df_species$seasons <- NA
 
@@ -125,7 +127,8 @@ for (i in 1:length(df_species$species)){
   print(i)
 }
 
-write.csv(df_species,paste0(dir,"/outputs/08_exposure_scores_by_species.csv"),row.names = F)
+write.csv(df_species,paste0(dir,"/outputs/08_exposure_scores_by_species.csv"),
+          row.names = F)
 
 #then combine rasters for all the species
 #weighting those with only breeding season tracking at 0.5
@@ -134,16 +137,27 @@ for (i in 1:nrow(df_species)){
   
   a <- sp*df_species$seasons[i]
   
+  a_flat <- a
+  a_flat[a_flat != 0] <- 1
+  
   if(i == 1){
     a_all <- a
+    a_all_flat <- a_flat
   } else {
     a_all <- a+a_all
+    a_all_flat <- a_flat + a_all_flat
   }
-  plot(a_all,main=df_species$species[i])
 }
 
 plot(a_all)
-
-raster_name_2 <- paste0(dir,"/outputs/08_all_species_distribution.tif")
-writeRaster(a_all, filename=raster_name_2, 
+raster_name_dist <- paste0(dir,"/outputs/08_all_species_distribution.tif")
+writeRaster(a_all, filename=raster_name_dist, 
             format="GTiff", overwrite=TRUE)
+
+plot(a_all_flat)
+raster_name_richness <- paste0(dir,"/outputs/08_species_richness.tif")
+writeRaster(a_all_flat, filename=raster_name_richness, 
+            format="GTiff", overwrite=TRUE)
+
+
+

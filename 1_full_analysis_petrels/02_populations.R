@@ -6,8 +6,8 @@ rm(list=ls())
 library(tidyverse)
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-                  "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+
 dir.create(paste0(dir, "/outputs/02_pops/")) 
 
 ################# LOADING SPP DATA ##################
@@ -444,7 +444,10 @@ all_colonies <- all_pops %>%
 
 #Issue with error in colony location for 1 population
 #need to remove line 2
-all_colonies2 <- subset(all_colonies, sp_pop_colloc != "Ardenna bulleri_Aorangi Island_-45.92_170.48")
+all_colonies$sp_pop_colloc <- paste(all_colonies$species,all_colonies$population,
+                                    all_colonies$lat_colony,all_colonies$lon_colony)
+
+all_colonies <- subset(all_colonies, sp_pop_colloc != "Ardenna bulleri Aorangi Island -45.92 170.48")
 
 all_colonies$sp_pop_colloc <- NULL
 

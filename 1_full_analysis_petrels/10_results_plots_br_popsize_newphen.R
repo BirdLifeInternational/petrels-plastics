@@ -7,18 +7,16 @@ library(cowplot)
 library(ggtext)
 se <- function(x) sqrt(var(x)/length(x))
 
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+## paste home directory here
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
-seasons <- read.csv(paste0(dir,"/scripts_results/05_phenology/pops.csv"))
+seasons <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))
+pops <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))
+species <- read.csv(paste0(dir,"/outputs/08_exposure_scores_by_species"))
+
+head(seasons)
 
 dir_1by1 <- paste0(dir,"/scripts_results/04_aggregate_1by1_grid_br_p2")
-
-dat <- read.csv(paste0(dir_1by1, "/results_rasters_br_p2.csv"))
-dat$mean_nonbr <- dat$mean_nonr
-dat$mean_nonr <- NULL
-
-pop_size_weight <- read.csv(paste0(dir,"/scripts_results/pop_size_weightings.csv"))
 
 
 #add common name & IUCN & pop size weighting
@@ -47,9 +45,6 @@ summary(dat)
 
 head(dat)
 dat$n_months <- dat$br_n + dat$nonbr_n
-dat$yr_overval <- ((dat$br_n*dat$mean_br) + 
-                  (dat$nonbr_n*dat$mean_nonbr))/dat$n_months
-dat$yr_overval <- ifelse(is.na(dat$yr_overval),dat$mean_br,dat$yr_overval )
 
 #save for supplementary materials
 
@@ -185,22 +180,7 @@ dev.off()
 
 head(dat)
 
-#species, weighted by pop size ####
-df_season <- dat %>% 
-  group_by(species,season) %>%
-  summarise(wmean = weighted.mean(season_over_val,pop_size_weight),
-            s_mean = mean(season_over_val)) %>%
-  data.frame();head(df_season)
 
-df_season_multipop <- subset(df_season, wmean != s_mean)
-
-df_br <- subset(df_season_multipop, season == "br_n")
-cor.test(df_br$wmean,df_br$s_mean)
-plot(df_br$wmean,df_br$s_mean)
-
-df_nbr <- subset(df_season_multipop, season == "nonbr_n")
-cor.test(df_nbr$wmean,df_nbr$s_mean)
-plot(df_nbr$wmean,df_nbr$s_mean)
 
 
 table(df_season$season)

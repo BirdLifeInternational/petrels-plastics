@@ -23,23 +23,16 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## GENERAL DIR
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") ## copy and paste here your working directory
+## paste home directory here
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
-## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
-
-output <- paste0(dir,"/scripts_results/02_pops")
-
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved")  ## changed - BC
+land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved")
 
 dir_demClasses <- paste0(dir,"/scripts_results/06_pops")
 files <- list.files(dir_demClasses, pattern="tif");files
 
 #read in plastics data
-#m <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/VanSebForBeth2.tif")
-m <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
+plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
 plot(log(m),col=rev(viridis(255)))
 
 m

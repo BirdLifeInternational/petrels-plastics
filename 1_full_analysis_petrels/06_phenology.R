@@ -28,8 +28,7 @@ library(RColorBrewer)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 ## PROJECTIONS
 land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  

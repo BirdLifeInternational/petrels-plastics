@@ -60,8 +60,7 @@ sessionInfo()
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
 
@@ -77,7 +76,7 @@ dir.create(paste0(dir_1by1,"/na_maps/"))
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
 #read in plastics data
-plastics <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
+plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
 
 plot(log(plastics))
 

@@ -30,8 +30,7 @@ lu=function (x=x) length(unique(x))
 ######### GENERAL DIRECTORIES AND FILES ##############
 
 ## paste home directory here
-homedir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-                  "Methods") 
+dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 dir <- paste0(homedir,"/outputs/01_cleaning_data/")
 dir_eq <- paste0(dir,"/equinox/")
