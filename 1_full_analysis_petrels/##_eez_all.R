@@ -1,7 +1,7 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Calculate proportions of exposure among marine
 ## political regions (EEZs and the high seas)
-## 
+## Beth Clark 2022
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rm(list=ls()) 
@@ -105,7 +105,7 @@ head(rank_eezs)
 rank_used <- subset(rank_eezs,over != 0)
 rank_used$prop <- rank_used$over/sum(rank_used$over)
 
-names(rank_used)
+head(rank_used)
 
 write.csv(rank_used,paste0(dir,"/11_eezs_used_all_species.csv"),
           row.names = F)
