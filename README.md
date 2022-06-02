@@ -14,16 +14,18 @@ This folder contains a simplified version of the code that removes any code rela
 
 ## How to Run
 Both folders contain codes that should be run in the order provided by the numbers in the script names:
+- 00_plastics_raster
+  - If needed, read in the plastic model estimate csvs, take and average and write out as a raster .tif
 - 01_cleaning_data
-  - Reads in tracking data files
-  - Filters based on species, speed, location, exquinox periods, etc. appropriate to tag type (GPS/PTT/GPS)
-  - Subsamples to 2 locations per day
-  - Creates plots and exports to csvs in a new folder
+  - Read in tracking data files
+  - Filter based on species, speed, location, exquinox periods, etc. appropriate to tag type (GPS/PTT/GPS)
+  - Subsample to 2 locations per day
+  - Create plots and exports to csvs in a new folder
 - 02_populations
-  -  Reads in cleaned tracking data
-  -  Groups tracking datasets into populations
-  -  Exports tracking data in 1 csv per population
-  -  Exports csv of colony locations, and sample sizes for population and species
+  -  Read in cleaned tracking data
+  -  Group tracking datasets into populations
+  -  Export tracking data in 1 csv per population
+  -  Export csv of colony locations, and sample sizes for population and species
 - 03_kernels
   - Read in tracking data csvs for each population
   - Group into months, removing any with fewer than 5 locations
@@ -40,8 +42,8 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Export exposure maps as tifs and images
   - Export exposure scores for each month for each population as csv
 - 05_combine_by_population
-  - read in rasters for each population, export 1 mean raster per population
-  - import the monthly exposure scores and export mean by population
+  - Read in rasters for each population, export 1 mean raster per population
+  - Import the monthly exposure scores and export mean by population
 - 06_phenology
   - Read in tracking data csvs for each population
   - Calculate distance to the colony for each location
@@ -49,25 +51,34 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Export csv containing estimated breeding schedules "06_phenology.csv"
   - Export plots for each population for checking - 06_phenology
 - 07_combine_by_seasons
-  - read in rasters for each month
-  - read in breeding schedules (from phenology script or literature)
-  - export 1 mean exposure map per population per season
-  - import the monthly exposure scores and export mean by population
-  - test for differences from using different breeding schedules (literature v 06_phenology script)
+  - Read in rasters for each month
+  - Read in breeding schedules (from phenology script or literature)
+  - Export 1 mean exposure map per population per season
+  - Import the monthly exposure scores and export mean by population
+  - Test for differences from using different breeding schedules (literature v 06_phenology script)
 - 08_combine_by_species
-  - read in rasters for each population
-  - read in population sizes 
-  - read in breeding schedules (from phenology script or literature)
-  - export 1 mean raster per species weighted by population size and seasons tracked
-  - import the monthly exposure scores and export mean by species weighted by population size and seasons tracked
+  - Read in rasters for each population
+  - Read in population sizes 
+  - Read in breeding schedules (from phenology script or literature)
+  - Export 1 mean raster per species weighted by population size and seasons tracked
+  - Import the monthly exposure scores and export mean by species weighted by population size and seasons tracked
+- 09_plot maps
+  - Read in the all species maps from 08_combine_by_species and the plastic raster and creates maps for Fig. 1
+  - Read in distributions for case studies and produces maps for: 
+    - European Storm-petrels from 5 colonies
+    - Yelkuoan and Scopoli's Shearwaters from Malta
+    - Cook's Petrels from 2 colonies
+- 10_exposure_score_plots
+  - Read in the csvs of exposure scores by season and species and creates plots in Fig.2. and Fig.3.
 - ##_combine by country
 - ##_overlay_with_EEZ
-- ##_plot maps
-- ##_plot results graphs
+
 
 
 
 ## Input files
+- 00_plastics_raster
+  - In folder "/input_data/plastics_data/": "lebretonmodel_abundance.csv", "maximenkomodel_abundance.csv" & "vansebillemodel_abundance.csv"
 - 01_cleaning_data
   - Tracking data csvs in folder "input_data/tracking_data"
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
@@ -81,26 +92,38 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
 - 04_aggregate_1by1_months
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
-  - Plastics density raster ".tif" in fodler "input_data"
+  - Plastics density raster "/outputs/00_PlasticsRaster.tif"
   - Kernel density rasters ".tif" produced by "03_kernels" in folder "outputs"
 - 05_combine_by_population
-  - monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
-  - exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
+  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
 - 06_phenology
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
   - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
 - 07_combine_by_season
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
-  - Plastics density raster ".tif" in fodler "input_data"
-  - monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
-  - exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
-  - breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
+  - Plastics density raster "/outputs/00_PlasticsRaster.tif
+  - Monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
+  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
 - 08_combine_by_species
-  - exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
-  - breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
+  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
   - "population_sizes.csv" in folder "input_data"
-- 09_overlay_with_EEZ
-  - EEZ shapefile in folder "input_data"
+- 09_plot_maps
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - "/outputs/08_all_species_distribution.tif"
+  - "/outputs/00_PlasticsRaster.tif"
+  - "/outputs/02_colony_locations.csv"
+  - "/outputs/08_species_richness.tif"
+  - EEZ shapefile in "/input_data/EEZ_land_union_v3_202003"
+  - For case studies:
+    - Season-specific distribution .tifs in "/outputs/07_seasons"
+    - "/outputs/07_exposure_scores_by_season.csv"
+- 10_exposure_score_plots
+  - "/outputs/07_exposure_scores_by_season.csv"
+  - "/outputs/08_exposure_scores_by_species.csv"
+  - "/input_data/Species_list_IUCN.csv"
 
 
 ## Graphical representation of the method 
