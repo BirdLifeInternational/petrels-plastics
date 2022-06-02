@@ -61,6 +61,8 @@ pop_sizes$seasons <- pops$seasons[base::match(pop_sizes$species_pop,pops$sp_pop)
 pop_sizes$pop_x_seasons <- pop_sizes$est_n_breeding_pairs*pop_sizes$seasons
 head(pop_sizes)
 
+
+
 multipop_species <- unique(pop_sizes$species)
 for(i in 1:length(multipop_species)){
   species <- subset(pop_sizes,species == multipop_species[i])
@@ -83,8 +85,6 @@ pops$pop_x_seasons_weight <- all_sp$pop_x_season_weighting[match(pops$sp_pop,
 pops$pop_x_seasons_weight <- ifelse(is.na(pops$pop_x_seasons_weight),
                                     1,pops$pop_x_seasons_weight)
 head(pops)
-
-pops$exposure <- pop_exposure$population_exposure
 
 #species, weighted by pop size ####
 df_species <- pops %>% 
@@ -147,6 +147,7 @@ for (i in 1:nrow(df_species)){
     a_all <- a+a_all
     a_all_flat <- a_flat + a_all_flat
   }
+  print(i)
 }
 
 plot(a_all)

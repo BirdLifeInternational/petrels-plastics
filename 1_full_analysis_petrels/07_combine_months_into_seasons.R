@@ -82,9 +82,6 @@ dat$population <- ifelse(dat$population == "Bjørnøya","Bjornoya",dat$population)
 dat$sp_pop <- ifelse(dat$sp_pop == "Fulmarus glacialis_Bjørnøya",
                            "Fulmarus glacialis_Bjornoya",dat$sp_pop)
 
-dat$sp_pop <- ifelse(dat$sp_pop == "Ardenna pacifica_Lowendal . Houtman Abrolhoss",
-                     "Ardenna pacifica_Lowendal & Houtman Abrolhoss",dat$sp_pop)
-
 for (i in 1:nrow(pops)){
   
   pop <- pops$species_pop[i];pop

@@ -53,7 +53,7 @@ large_sites <- c("Portugal","Australia","New Zealand","New South Wales","Iceland
 #kauwahaia == bethell's beach a grisea
 
 files_list$pop <- ifelse(files_list$pop %in% large_sites, files_list$colony,files_list$pop)
-files_list$pop <- ifelse(files_list$pop == "Lowendal Islands & Houtman Abrolhos", "Lowendal & Houtman Abrolhoss",files_list$pop)
+files_list$pop <- ifelse(files_list$pop == "Lowendal Islands & Houtman Abrolhos", "Lowendal and Houtman Abrolhoss",files_list$pop)
 files_list$pop <- ifelse(files_list$pop %in% c("Mokohinau","Tiritiri Matangi"), "E of Aukland",files_list$pop)
 
 files_list$pop <- ifelse(files_list$species == "Procellaria westlandica", "Punakaiki",files_list$pop)

@@ -18,6 +18,8 @@ pops <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))
 seasons <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))
 species <- read.csv(paste0(dir,"/outputs/08_exposure_scores_by_species.csv"))
 
+summary(species$species_exposure)
+
 #add common name & IUCN
 names_iucn <- read.csv(paste0(dir,"/input_data/Species_list_IUCN.csv"))
 head(names_iucn)
@@ -127,7 +129,7 @@ lwr_half <- ggplot(lower,
   theme_bw() 
 plot_grid(upr_half,lwr_half)
 
-#add the population level scores
+#add the population level scores ####
 
 head(pops)
 max(pops$population_exposure)
@@ -138,6 +140,21 @@ pops$species_label <- species$species_label[
 pops_upper <- subset(pops,species %in% upper$species)
 pops_lower <- subset(pops,species %in% lower$species)
 
+#add in dashed line for the score if plastic was evenly distributed
+#read in plastics data
+plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics[is.na(plastics)] <- 0 
+p_sum1 <- plastics/sum(getValues(plastics))
+p_sum1_mean <- p_sum1
+p_sum1_mean[!is.na(plastics)] <- mean(getValues(p_sum1))
+exp <- p_sum1_mean*p_sum1
+mean_plastic_score <- sum(getValues(exp))*1000000
+mean_plastic_score
+
+#how many species above this?
+above_mean <- subset(species,species_exposure > mean_plastic_score)
+above_mean
+table(above_mean$iucn) 
 
 upr_half <- ggplot(upper, aes(reorder(species_label,
                                       species_exposure),

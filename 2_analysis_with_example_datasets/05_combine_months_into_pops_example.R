@@ -18,7 +18,7 @@ dir <- paste0("Drive:/Folder")
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
 
-dat <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_month.csv"))  
+dat <- read.csv(paste0(dir,"/outputs/04_exposure_scores_by_month.csv"))  
 head(dat)
 
 #combine by population
