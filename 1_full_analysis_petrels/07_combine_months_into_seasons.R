@@ -133,7 +133,7 @@ for (i in 1:nrow(pops)){
     
     pdf(paste0(dir_seasons,"/maps_pdf/",pop,"_br.pdf"), paper = "a4r",width = 0, height = 0)
     #png(paste0(dir_seasons,"/maps2/",pop,"_br_sum.png"), width=1400,height=760)  #, width=1399,height=455)
-    plot(br_exposure,main=paste0(pop,"\nBreeding season lastic exposure score = ",mean(br_exp$exposure_score)),
+    plot(br_exposure,main=paste0(pop,"\nBreeding season plastic exposure score = ",mean(br_exp$exposure_score)),
          col=cols_inf,legend=F)
     plot(land,col="grey75", 
          border = NA, add=T)

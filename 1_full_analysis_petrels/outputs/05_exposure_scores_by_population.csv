@@ -1,0 +1,149 @@
+"sp_pop","species","population","n_months","population_exposure"
+"Ardenna bulleri_Aorangi Island","Ardenna bulleri","Aorangi Island",13,16.1326615384615
+"Ardenna carneipes_Breaksea Island","Ardenna carneipes","Breaksea Island",3,13.6366
+"Ardenna carneipes_Lord Howe Island","Ardenna carneipes","Lord Howe Island",11,24.5861636363636
+"Ardenna carneipes_New Zealand","Ardenna carneipes","New Zealand",12,23.0188833333333
+"Ardenna creatopus_Isla Mocha and Juan Fernandez","Ardenna creatopus","Isla Mocha and Juan Fernandez",12,1.84520833333333
+"Ardenna gravis_Gough","Ardenna gravis","Gough",12,9.348275
+"Ardenna gravis_Tristan da Cunha","Ardenna gravis","Tristan da Cunha",12,5.80993333333333
+"Ardenna grisea_Codfish Island","Ardenna grisea","Codfish Island",12,13.3267166666667
+"Ardenna grisea_Falkland Islands","Ardenna grisea","Falkland Islands",12,1.8005
+"Ardenna grisea_North Island","Ardenna grisea","North Island",12,14.7251166666667
+"Ardenna pacifica_Hawaii","Ardenna pacifica","Hawaii",3,73.4256666666667
+"Ardenna pacifica_Heron Island","Ardenna pacifica","Heron Island",7,6.46138571428571
+"Ardenna pacifica_Lowendal . Houtman Abrolhoss","Ardenna pacifica","Lowendal . Houtman Abrolhoss",12,8.22294166666667
+"Ardenna pacifica_Mauritius","Ardenna pacifica","Mauritius",12,11.2108
+"Ardenna pacifica_New Calendonia","Ardenna pacifica","New Calendonia",2,1.4982
+"Ardenna pacifica_Reunion","Ardenna pacifica","Reunion",12,14.6295083333333
+"Ardenna pacifica_Seychelles","Ardenna pacifica","Seychelles",12,3.30993333333333
+"Ardenna tenuirostris_SE Australia","Ardenna tenuirostris","SE Australia",12,3.85119166666667
+"Bulweria bulwerii_Azores","Bulweria bulwerii","Azores",11,16.6713636363636
+"Bulweria bulwerii_Canarias","Bulweria bulwerii","Canarias",11,14.8242545454545
+"Bulweria bulwerii_Cape Verde","Bulweria bulwerii","Cape Verde",12,0.554025
+"Bulweria bulwerii_Madeira","Bulweria bulwerii","Madeira",12,8.50243333333333
+"Calonectris borealis_Azores","Calonectris borealis","Azores",12,9.11959166666667
+"Calonectris borealis_Berlengas","Calonectris borealis","Berlengas",12,7.46070833333333
+"Calonectris borealis_Canarias","Calonectris borealis","Canarias",12,6.04129166666667
+"Calonectris borealis_Madeira","Calonectris borealis","Madeira",12,9.00674166666667
+"Calonectris diomedea_Balearic Archipelago","Calonectris diomedea","Balearic Archipelago",11,283.464390909091
+"Calonectris diomedea_Chafarinas","Calonectris diomedea","Chafarinas",11,237.798227272727
+"Calonectris diomedea_La Maddalena Archipelago","Calonectris diomedea","La Maddalena Archipelago",12,209.205941666667
+"Calonectris diomedea_Linosa","Calonectris diomedea","Linosa",4,565.937525
+"Calonectris diomedea_Malta","Calonectris diomedea","Malta",12,301.954833333333
+"Calonectris diomedea_Tremiti Archipelago","Calonectris diomedea","Tremiti Archipelago",2,392.5772
+"Calonectris diomedea_Tuscany Archipelago","Calonectris diomedea","Tuscany Archipelago",2,243.1853
+"Calonectris diomedea_Zembra","Calonectris diomedea","Zembra",11,358.020045454545
+"Calonectris edwardsii_Cape Verde","Calonectris edwardsii","Cape Verde",12,6.147975
+"Calonectris leucomelas_Iwate","Calonectris leucomelas","Iwate",12,28.506875
+"Calonectris leucomelas_Korea","Calonectris leucomelas","Korea",7,76.5488
+"Calonectris leucomelas_Mikura","Calonectris leucomelas","Mikura",12,34.187425
+"Calonectris leucomelas_Niigata","Calonectris leucomelas","Niigata",3,29.8809
+"Daption capense_Davis","Daption capense","Davis",3,0.000933333333333333
+"Daption capense_Pointe Geologie","Daption capense","Pointe Geologie",6,0.622816666666667
+"Fulmarus glacialis_Bjornoya","Fulmarus glacialis","Bjørnøya",8,1.6167625
+"Fulmarus glacialis_Breidafjordur","Fulmarus glacialis","Breidafjordur",11,0.474236363636364
+"Fulmarus glacialis_Cape Vera","Fulmarus glacialis","Cape Vera",10,0.25315
+"Fulmarus glacialis_Faroe Islands","Fulmarus glacialis","Faroe Islands",11,0.847918181818182
+"Fulmarus glacialis_Jan Mayen","Fulmarus glacialis","Jan Mayen",11,0.781263636363636
+"Fulmarus glacialis_Norway","Fulmarus glacialis","Norway",11,2.09355454545455
+"Fulmarus glacialis_Scotland","Fulmarus glacialis","Scotland",12,1.38301666666667
+"Fulmarus glacialis_Svalbard","Fulmarus glacialis","Svalbard",8,1.5825625
+"Fulmarus glacialoides_Davis","Fulmarus glacialoides","Davis",4,0.00105
+"Fulmarus glacialoides_Pointe Geologie","Fulmarus glacialoides","Pointe Geologie",7,0.0871571428571429
+"Halobaena caerulea_Kerguelen","Halobaena caerulea","Kerguelen",12,0.242433333333333
+"Halobaena caerulea_South Georgia","Halobaena caerulea","South Georgia",12,0.04655
+"Hydrobates castro_Azores","Hydrobates castro","Azores",4,4.708475
+"Hydrobates castro_Berlengas","Hydrobates castro","Berlengas",12,6.74449166666667
+"Hydrobates castro_St Helena","Hydrobates castro","St Helena",4,7.233475
+"Hydrobates furcatus_Gillam Island","Hydrobates furcatus","Gillam Island",12,4.935475
+"Hydrobates jabejabe_Cape Verde","Hydrobates jabejabe","Cape Verde",8,0.3317
+"Hydrobates leucorhous_Gillam Island","Hydrobates leucorhous","Gillam Island",12,6.1723
+"Hydrobates leucorhous_Newfoundland","Hydrobates leucorhous","Newfoundland",4,0.73125
+"Hydrobates leucorhous_Nova Scotia","Hydrobates leucorhous","Nova Scotia",4,2.62625
+"Hydrobates monteiroi_Azores","Hydrobates monteiroi","Azores",3,5.3017
+"Hydrobates pelagicus_Benidorm Island","Hydrobates pelagicus","Benidorm Island",2,519.8338
+"Hydrobates pelagicus_Capo caccia","Hydrobates pelagicus","Capo caccia",1,306.116
+"Hydrobates pelagicus_Ireland","Hydrobates pelagicus","Ireland",1,1.3625
+"Hydrobates pelagicus_Malta","Hydrobates pelagicus","Malta",9,487.453566666667
+"Hydrobates pelagicus_Shetland","Hydrobates pelagicus","Shetland",2,1.00755
+"Oceanites oceanicus_South Shetland Islands","Oceanites oceanicus","South Shetland Islands",1,0.0078
+"Pachyptila belcheri_Kerguelen","Pachyptila belcheri","Kerguelen",11,1.17489090909091
+"Pachyptila belcheri_New Island","Pachyptila belcheri","New Island",11,0.218990909090909
+"Pachyptila desolata_Kerguelen","Pachyptila desolata","Kerguelen",12,6.763025
+"Pachyptila desolata_South Georgia","Pachyptila desolata","South Georgia",12,3.37171666666667
+"Pachyptila macgillivrayi_Gough","Pachyptila macgillivrayi","Gough",11,7.74418181818182
+"Pachyptila turtur_Dunedin","Pachyptila turtur","Dunedin",11,1.40281818181818
+"Pachyptila turtur_Kanowna Island","Pachyptila turtur","Kanowna Island",3,7.87133333333333
+"Pachyptila vittata_Gough","Pachyptila vittata","Gough",12,16.9533416666667
+"Pachyptila vittata_Tristan da Cunha","Pachyptila vittata","Tristan da Cunha",12,26.5423666666667
+"Pagodroma nivea_Pointe Geologie","Pagodroma nivea","Pointe Geologie",9,0.00254444444444444
+"Pelagodroma marina_Cape Verde","Pelagodroma marina","Cape Verde",2,0.35095
+"Pelagodroma marina_Madeira","Pelagodroma marina","Madeira",3,4.78963333333333
+"Pelecanoides garnotii_Paracas","Pelecanoides garnotii","Paracas",1,0.1783
+"Pelecanoides georgicus_South Georgia","Pelecanoides georgicus","South Georgia",10,0.21431
+"Pelecanoides urinatrix_Kanowna Island","Pelecanoides urinatrix","Kanowna Island",3,12.9595666666667
+"Pelecanoides urinatrix_North Island","Pelecanoides urinatrix","North Island",12,3.57925833333333
+"Pelecanoides urinatrix_South Georgia","Pelecanoides urinatrix","South Georgia",11,0.135781818181818
+"Pelecanoides whenuahouensis_Codfish Island","Pelecanoides whenuahouensis","Codfish Island",12,0.331441666666667
+"Procellaria aequinoctialis_Antipodes Islands","Procellaria aequinoctialis","Antipodes Islands",12,1.37551666666667
+"Procellaria aequinoctialis_Crozet","Procellaria aequinoctialis","Crozet",12,9.813225
+"Procellaria aequinoctialis_Kerguelen","Procellaria aequinoctialis","Kerguelen",12,11.2297166666667
+"Procellaria aequinoctialis_Prince Edward Islands","Procellaria aequinoctialis","Prince Edward Islands",12,7.32618333333333
+"Procellaria aequinoctialis_South Georgia","Procellaria aequinoctialis","South Georgia",12,2.75968333333333
+"Procellaria cinerea_Antipodes Islands","Procellaria cinerea","Antipodes Islands",11,0.421745454545455
+"Procellaria cinerea_Gough","Procellaria cinerea","Gough",12,5.56894166666667
+"Procellaria cinerea_Kerguelen","Procellaria cinerea","Kerguelen",11,2.34955454545455
+"Procellaria cinerea_Prince Edward Islands","Procellaria cinerea","Prince Edward Islands",12,3.868725
+"Procellaria conspicillata_Tristan da Cunha","Procellaria conspicillata","Tristan da Cunha",9,60.8191222222222
+"Procellaria parkinsoni_Great Barrier Island","Procellaria parkinsoni","Great Barrier Island",11,4.22792727272727
+"Procellaria westlandica_Punakaiki","Procellaria westlandica","Punakaiki",12,2.197025
+"Pseudobulweria aterrima_Reunion","Pseudobulweria aterrima","Reunion",12,14.4694666666667
+"Pseudobulweria rostrata_New Calendonia","Pseudobulweria rostrata","New Calendonia",6,1.76805
+"Pterodroma arminjoniana_Round Island","Pterodroma arminjoniana","Round Island",12,16.2041916666667
+"Pterodroma arminjoniana_Trindade Island","Pterodroma arminjoniana","Trindade Island",11,26.2560545454545
+"Pterodroma axillaris_Chatham Islands","Pterodroma axillaris","Chatham Islands",11,2.47110909090909
+"Pterodroma baraui_Reunion","Pterodroma baraui","Reunion",10,20.41206
+"Pterodroma cahow_Bermuda Island","Pterodroma cahow","Bermuda Island",12,10.4343833333333
+"Pterodroma cervicalis_Phillip Island","Pterodroma cervicalis","Phillip Island",3,4.99036666666667
+"Pterodroma cookii_Codfish Island","Pterodroma cookii","Codfish Island",12,1.327475
+"Pterodroma cookii_Little Barrier Island","Pterodroma cookii","Little Barrier Island",12,82.4357416666667
+"Pterodroma deserta_Madeira","Pterodroma deserta","Madeira",12,8.59875833333333
+"Pterodroma feae_Cape Verde","Pterodroma feae","Cape Verde",12,1.31159166666667
+"Pterodroma gouldi_Bethells Beach","Pterodroma gouldi","Bethells Beach",3,3.962
+"Pterodroma hasitata_Sierra de Bahoruco","Pterodroma hasitata","Sierra de Bahoruco",8,8.961025
+"Pterodroma incerta_Gough","Pterodroma incerta","Gough",11,17.2161636363636
+"Pterodroma inexpectata_Lake HaurokoPetrel Island","Pterodroma inexpectata","Lake HaurokoPetrel Island",11,9.18947272727273
+"Pterodroma lessonii_Adams Island","Pterodroma lessonii","Adams Island",12,0.798475
+"Pterodroma leucoptera_Cabbage Tree Island","Pterodroma leucoptera","Cabbage Tree Island",12,5.04413333333333
+"Pterodroma leucoptera_New Caledonia","Pterodroma leucoptera","New Caledonia",12,2.51368333333333
+"Pterodroma macroptera_Prince Edward Islands","Pterodroma macroptera","Prince Edward Islands",2,5.6542
+"Pterodroma madeira_Madeira","Pterodroma madeira","Madeira",12,4.227975
+"Pterodroma magentae_Chatham Islands","Pterodroma magentae","Chatham Islands",12,4.04963333333333
+"Pterodroma mollis_Antipodes","Pterodroma mollis","Antipodes",12,1.59433333333333
+"Pterodroma mollis_Gough","Pterodroma mollis","Gough",12,16.7005083333333
+"Pterodroma neglecta_Phillip Island","Pterodroma neglecta","Phillip Island",1,4.9623
+"Pterodroma nigripennis_Chatham Islands","Pterodroma nigripennis","Chatham Islands",12,39.3323666666667
+"Pterodroma nigripennis_Phillip Island","Pterodroma nigripennis","Phillip Island",2,4.59785
+"Pterodroma phaeopygia_Galapagos","Pterodroma phaeopygia","Galapagos",4,0.502825
+"Pterodroma pycrofti_Red Mercury Island","Pterodroma pycrofti","Red Mercury Island",11,1.80720909090909
+"Pterodroma sandwichensis_Hawaii","Pterodroma sandwichensis","Hawaii",5,101.5724
+"Pterodroma solandri_Lord Howe Island","Pterodroma solandri","Lord Howe Island",8,24.626
+"Pterodroma ultima_Henderson Island","Pterodroma ultima","Henderson Island",12,20.92925
+"Puffinus assimilis_E of Aukland","Puffinus assimilis","E of Aukland",12,2.89318333333333
+"Puffinus assimilis_Lord Howe Island","Puffinus assimilis","Lord Howe Island",10,4.46704
+"Puffinus bailloni_Seychelles","Puffinus bailloni","Seychelles",12,1.971825
+"Puffinus gavia_E of Aukland","Puffinus gavia","E of Aukland",12,5.45198333333333
+"Puffinus huttoni_Te Rae o Atiu","Puffinus huttoni","Te Rae o Atiu",2,3.0781
+"Puffinus lherminieri_Azores","Puffinus lherminieri","Azores",11,5.55099090909091
+"Puffinus lherminieri_Cape Verde","Puffinus lherminieri","Cape Verde",12,1.02573333333333
+"Puffinus lherminieri_Madeira","Puffinus lherminieri","Madeira",12,4.55003333333333
+"Puffinus mauretanicus_Balearic Archipelago","Puffinus mauretanicus","Balearic Archipelago",5,408.95514
+"Puffinus newelli_Hawaii","Puffinus newelli","Hawaii",5,87.52
+"Puffinus opisthomelas_Isla Natividad","Puffinus opisthomelas","Isla Natividad",5,3.93114
+"Puffinus puffinus_Heimaey","Puffinus puffinus","Heimaey",11,3.03108181818182
+"Puffinus puffinus_Ireland","Puffinus puffinus","Ireland",4,1.3816
+"Puffinus puffinus_UK","Puffinus puffinus","UK",12,5.40986666666667
+"Puffinus yelkouan_Iles Hyeres","Puffinus yelkouan","Iles Hyeres",12,405.789208333333
+"Puffinus yelkouan_Malta","Puffinus yelkouan","Malta",12,692.595375
+"Thalassoica antarctica_Davis","Thalassoica antarctica","Davis",3,0.000966666666666667
+"Thalassoica antarctica_Svarthamaren","Thalassoica antarctica","Svarthamaren",8,0.0185125
