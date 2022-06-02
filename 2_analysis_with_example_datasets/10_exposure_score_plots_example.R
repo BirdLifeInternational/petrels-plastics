@@ -12,7 +12,7 @@ library(ggtext)
 se <- function(x) sqrt(var(x)/length(x))
 
 ## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+dir <- ""
 
 pops <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))
 seasons <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))
@@ -62,63 +62,13 @@ seasons_plot$pop <- gsub(".*_","",seasons_plot$sp_pop)
 seasons_plot$species_pop <- paste0(seasons_plot$common_name,", ",
                                   seasons_plot$pop)
 
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop == "Pink-footed Shearwater, Isla Mocha and Juan Fernandez",
-                           "Pink-footed Shearwater, Isla Mocha & Juan Fernandez",
+seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop == "Incorrect name",
+                           "Correct name",
                            seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop == "Black-capped Petrel, Sierra de Bahoruco",
-                           "Black-capped Petrel, Dominican Republic",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Mottled Petrel, Lake HaurokoPetrel Island",
-                           "Mottled Petrel, Lake Hauroko Petrel Island",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Wedge-tailed Shearwater, New Calendonia",
-                           "Wedge-tailed Shearwater, New Caledonia",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Bulwer's Petrel, Cape Verde",
-                           "Bulwer's Petrel, Cabo Verde",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Cape Verde Shearwater, Cape Verde",
-                           "Cape Verde Shearwater, Cabo Verde",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Cape Verde Storm-petrel, Cape Verde",
-                           "Cape Verde Storm-petrel, Cabo Verde",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Tahiti Petrel, New Calendonia",
-                           "Tahiti Petrel, New Caledonia",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Audubon's Shearwater, Cape Verde",
-                           "Audubon's Shearwater, Cabo Verde",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Cape Verde Petrel, Cape Verde",
-                           "Cape Verde Petrel, Cabo Verde",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Hutton's Shearwater, Te Rae o Atiu",
-                           "Hutton's Shearwater, Kaikoura",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Grey-faced Petrel, Bethells Beach",
-                           "Grey-faced Petrel, Te Hanga/Bethells Beach" ,
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Sooty Shearwater, Codfish Island",
-                           "Sooty Shearwater, Codfish Island/Whenua Hou",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Cook's Petrel, Codfish Island",
-                           "Cook's Petrel, Codfish Island/Whenua Hou",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Sooty Shearwater, Falkland Islands",
-                           "Sooty Shearwater, Falkland Islands (Malvinas)",
-                           seasons_plot$species_pop)
-seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Sooty Shearwater, Falkland Islands",
-                           "Sooty Shearwater, Falkland Islands (Malvinas)",
-                           seasons_plot$species_pop)
-
-head(seasons_plot)
 
 #20 species with biggest season differences
-abovex <- subset(seasons_plot,season_diff > 23)
+abovex <- subset(seasons_plot,season_diff > 23) #edit to suitable value
 nrow(abovex)
-
-abovex$species_pop <- ifelse(abovex$species_pop == "Scopoli's Shearwater, La Maddalena Archipelago",
-                             "Scopoli's Shearwater, La Maddalena",abovex$species_pop)
 
 abovex$species_pop <- paste0(abovex$species_pop," ")
 
