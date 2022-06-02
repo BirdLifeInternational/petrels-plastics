@@ -117,7 +117,7 @@ for (i in 1:nrow(pops)){
     }  
     
     br_rast_mean <- br_rast_sum / length(br)
-    #writeRaster(br_rast_mean, filename=paste0(dir_seasons,"/" ,pop,"_br.tif"), format="GTiff", overwrite=TRUE)
+    writeRaster(br_rast_mean, filename=paste0(dir_seasons,"/" ,pop,"_br.tif"), format="GTiff", overwrite=TRUE)
     
     #plot results
     br_exposure <- br_rast_sum * p_sum1
@@ -150,7 +150,7 @@ for (i in 1:nrow(pops)){
     
     
     nonbr_rast_mean <- nonbr_rast_sum / length(nonbr)
-    #writeRaster(nonbr_rast_mean, filename=paste0(dir_seasons,"/" ,pop,"_nonbr.tif"), format="GTiff", overwrite=TRUE)
+    writeRaster(nonbr_rast_mean, filename=paste0(dir_seasons,"/" ,pop,"_nonbr.tif"), format="GTiff", overwrite=TRUE)
     
     nonbr_exposure <- nonbr_rast_sum * p_sum1
     
