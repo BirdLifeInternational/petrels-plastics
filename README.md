@@ -14,6 +14,8 @@ This folder contains a simplified version of the code that removes any code rela
 
 ## How to Run
 Both folders contain codes that should be run in the order provided by the numbers in the script names:
+- 00_plastics_raster
+  - If needed, read in the plastic model estimate csvs, take and average and write out as a raster .tif
 - 01_cleaning_data
   - Read in tracking data files
   - Filter based on species, speed, location, exquinox periods, etc. appropriate to tag type (GPS/PTT/GPS)
