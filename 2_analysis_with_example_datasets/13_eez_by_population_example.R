@@ -16,15 +16,122 @@ library(viridis)
 dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
 eezs_used <- read.csv(paste0(dir,"/outputs/11_eezs_used_all_species.csv"))
-dat <- read.csv(paste0(dir,"/outputs/12_species_country_scores.csv"))
+
+head(eezs_used)
+eezs_used$MRGID_EEZ <- NULL; eezs_used$MRGID_TER1 <- NULL
+eezs_used$MRGID_SOV1 <- NULL; eezs_used$MRGID_TER2 <- NULL
+eezs_used$MRGID_SOV2 <- NULL; eezs_used$MRGID_TER3 <- NULL
+eezs_used$MRGID_SOV3 <- NULL; eezs_used$ISO_TER1 <- NULL
+eezs_used$ISO_SOV1 <- NULL; eezs_used$ISO_TER2 <- NULL
+eezs_used$ISO_SOV2 <- NULL; eezs_used$ISO_TER3 <- NULL
+eezs_used$ISO_SOV3 <- NULL; eezs_used$UN_TER1 <- NULL
+eezs_used$UN_TER2 <- NULL; eezs_used$UN_TER3 <- NULL
+eezs_used$UN_SOV1 <- NULL; eezs_used$UN_SOV2 <- NULL
+eezs_used$UN_SOV3 <- NULL; eezs_used$Y_1 <- NULL
+eezs_used$x_1 <- NULL; eezs_used$id <- NULL
+head(eezs_used)
+
+eezs_used$species <- str_split_fixed(eezs_used$pop,"_",n=2)[,1]
+
+
+#eezs <- read.csv(paste0(dir,"/eezs_br_weights_countries.csv"))
+
+dat <- read.csv(paste0(dir,"/sp_country_scores.csv"))
 
 #plot top scores ####
-#subset to top 40 species_countries
+#split in half,
+dat$half <- ifelse(dat$score < median(dat$score),"lwr","upr")
+
+#plot of all pops in order in 2 columns
+upr_half <- ggplot(dat[dat$half=="upr",],
+                   aes(reorder(sp_country,score),score)) +
+  geom_point() +
+  coord_flip() +
+  xlab("") + ylab("Species mean overlap score") +
+  scale_y_continuous(limits = c(0,770),expand = c(0,0))+
+  theme(axis.ticks = element_blank())+
+  theme_bw()#; upr_half
+lwr_half <- ggplot(dat[dat$half=="lwr",],
+                   aes(reorder(sp_country,score),score)) +
+  geom_point() +
+  coord_flip() +
+  xlab("") + ylab("Species mean overlap score") +
+  scale_y_continuous(limits = c(0,770),expand = c(0,0))+
+  theme(axis.ticks = element_blank())+
+  theme_bw()
+plot_grid(upr_half,lwr_half)
+#2000x1125
+
+#subet to top # species_countries
+#looking at graph 40
 
 #comment out 3 rows below to work out n species per eez
 #top40 <- dat[dat$score > 14,]
 #t40_eezs <- eezs_used[eezs_used$pop %in% top40$sp_country,]
 #eezs_used <- t40_eezs
+
+table(eezs_used$s)
+
+#figure out what to do with multiple sovereign cases
+unique(eezs_used$POL_TYPE)
+
+eezs_used$POL_TYPE <- ifelse(is.na(eezs_used$POL_TYPE),"High Seas",eezs_used$POL_TYPE)
+eezs_used$AREA_KM2 <- ifelse(eezs_used$POL_TYPE == "High Seas",219116810,eezs_used$AREA_KM2)
+
+table(eezs_used$POL_TYPE)
+
+pol_type <- eezs_used %>%
+  group_by(POL_TYPE) %>% 
+  summarise(total = sum(over),
+            prop = sum(prop),
+            area = mean(AREA_KM2),#pops = paste(pop,collapse = "_")
+            npops = length(unique(pop)),
+            label = "total") %>%
+  data.frame();pol_type
+ggplot(pol_type,aes(x=label,y=total,fill=POL_TYPE))+
+  geom_bar(stat="identity",position="stack")
+
+#all joint regimes have only 2 soveriegns.
+#divide the total in half and add to the totals of each country
+
+joint_regime <- subset(eezs_used,POL_TYPE == "Joint regime (EEZ)")
+
+joint_regime$over <- joint_regime$over/2
+joint_regime$prop <- joint_regime$prop/2
+joint_regime$AREA_KM2 <- joint_regime$AREA_KM2/2
+
+joint_regime2 <- joint_regime
+
+joint_regime$TERRITORY2 <- NA
+joint_regime$SOVEREIGN2 <- NA
+
+joint_regime2$TERRITORY1 <- joint_regime2$TERRITORY2
+joint_regime2$SOVEREIGN1 <- joint_regime2$SOVEREIGN2
+
+joint_regime2$TERRITORY2 <- NA
+joint_regime2$SOVEREIGN2 <- NA
+
+eezs_used_notjoint <- subset(eezs_used,POL_TYPE != "Joint regime (EEZ)")
+
+eezs_used2 <- rbind(eezs_used_notjoint,joint_regime,joint_regime2)
+eezs_used <- eezs_used2
+
+#for landlocked countries, add to nearest country
+#Vatican + San Marino = Itlay
+
+italy <- c("Vatican City","San Marino")
+
+eezs_used$UNION <- ifelse(eezs_used$UNION %in% italy, "Italy",eezs_used$UNION)
+eezs_used$TERRITORY1 <- ifelse(eezs_used$TERRITORY1 %in% italy, "Italy",eezs_used$TERRITORY1)
+eezs_used$SOVEREIGN1 <- ifelse(eezs_used$SOVEREIGN1 %in% italy, "Italy",eezs_used$SOVEREIGN1)
+
+#Bouvet, can be added to the high seas.
+eezs_used$TERRITORY1 <- ifelse(eezs_used$UNION == "Bouvet", "High Seas",eezs_used$TERRITORY1)
+eezs_used$SOVEREIGN1 <- ifelse(eezs_used$UNION == "Bouvet", "High Seas",eezs_used$SOVEREIGN1)
+eezs_used$UNION <- ifelse(eezs_used$UNION == "Bouvet", "High Seas",eezs_used$UNION)
+
+
+
 
 #too many overlapping claims to ignore
 #for overlapping claims, 
