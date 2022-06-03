@@ -63,18 +63,23 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Export 1 mean raster per species weighted by population size and seasons tracked
   - Import the monthly exposure scores and export mean by species weighted by population size and seasons tracked
 - 09_plot maps
-  - Read in the all species maps from 08_combine_by_species and the plastic raster and creates maps for Fig. 1
-  - Read in distributions for case studies and produces maps for: 
+  - Read in the all species maps from 08_combine_by_species and the plastic raster and creates world maps for Fig. 1 and Fig. 4a
+    - Species richness with study colony locations
+    - All species tracking location distribution
+    - Plastic density estimate
+    - Exposure of petrels to plastics
+    - Exposure overlayed with EEZ outlines
+  - Read in distributions for case studies and produces maps for Fig. 3
     - European Storm-petrels from 5 colonies
     - Yelkuoan and Scopoli's Shearwaters from Malta
     - Cook's Petrels from 2 colonies
 - 10_exposure_score_plots
-  - Read in the csvs of exposure scores by season and species and creates plots in Fig.2. and Fig.3.
-- ##_combine by country
-- ##_overlay_with_EEZ
-
-
-
+  - Read in the csvs of exposure scores by season and species and creates plots in Fig. 2 and Fig. 3a
+- 11_eez_all_species_combined
+  - Calculate proportions of exposure among marine political regions (EEZs and the high seas)
+  - Plot the results for Fig. 4b
+- 12_combine_countries
+  - Combine population distributions by country for each species
 
 ## Input files
 - 00_plastics_raster
@@ -124,7 +129,14 @@ Both folders contain codes that should be run in the order provided by the numbe
   - "/outputs/07_exposure_scores_by_season.csv"
   - "/outputs/08_exposure_scores_by_species.csv"
   - "/input_data/Species_list_IUCN.csv"
-
+- 11_eez_all_species_combined
+  - EEZ shapefile in "/input_data/EEZ_land_union_v3_202003"
+  - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
+  - "/outputs/06_phenology.csv"
+  - "/outputs/08_all_species_distribution.tif"
+  - "/outputs/00_PlasticsRaster.tif"
+- 12_combine_countries
+ 
 
 ## Graphical representation of the method 
 Methods for calculating marine plastic exposure scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure, and percentages within spatial boundaries can be used to identify and rank regions of high exposure among all species and relate these to specific populations from specific jurisdictions.
