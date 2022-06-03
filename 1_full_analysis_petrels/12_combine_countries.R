@@ -48,6 +48,11 @@ p_sum1[is.na(plastics)] <- NA
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
 pops <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))  
+pops$tracks_breeding <- NULL
+pops$tracks_nonbreeding <- NULL
+pops$ref_breeding <- NULL
+pops$ref_nonbreeding <- NULL
+
 pop_exposure <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))  
 
 #add up the species ####
@@ -128,10 +133,9 @@ multicountry <- countries[countries$count > 1,]
 
 head(pops)
 
-
 multipop_species <- unique(multicountry$species)
 for(i in 1:length(multipop_species)){
-  species <- subset(pop_sizes,species == multipop_species[i])
+  species <- subset(pops,species == multipop_species[i])
   species$sp_pop_country <- paste(species$species_pop,species$breeding_country,sep="_")
   species$popsize_weighting <- 1
 
@@ -163,6 +167,8 @@ for(i in 1:length(multipop_species)){
   }
 }
 
+pops$weighting <- all_sp$popsize_weighting[match(pops$species_pop,all_sp$species_pop)]
+pops$weighting <- ifelse(is.na(pops$weighting),1,pops$weighting)
 
 #match to pops
 pops$sp_country <- paste(pops$species,pops$breeding_country,sep="_")
@@ -173,16 +179,12 @@ species_weights$seasons <- NA
 
 for (i in 1:length(species)){
   
-  sp_files <- list.files(dir_demClasses, pattern=species[i]);sp_files
+  sp_files <- list.files(pop_rasters, pattern=species[i]);sp_files
   sp_weightings <- pops[pops$species == species[i],];sp_weightings
   
   species_weights$seasons[i] <- max(sp_weightings$seasons)
   
 }
-
-write.csv(species_weights,paste0(dir,"/species_weights_br.csv"),row.names = F)
-
-species_weights <- read.csv(paste0(dir,"/species_weights_br.csv"))
 
 sp_country <- unique(pops$sp_country)
 sp_country_list <- as.data.frame(sp_country)
@@ -201,7 +203,7 @@ for (i in 1:nrow(sp_country_list)){
 
   for(j in 1:length(sp_country_df_files)){
     
-    a <- raster(paste0(dir_demClasses,"/",sp_country_df_files[j]))
+    a <- raster(paste0(pop_rasters,"/",sp_country_df_files[j]))
     
     if(j == 1){
       rast_sum <- a*sp_country_df$weighting[j]
@@ -231,7 +233,7 @@ for (i in 1:nrow(sp_country_list)){
   over_val <- round(sum(getValues(over_score))*1000000,4)
   
   sp_country_list$score[i] <- over_val
-  raster_name <- paste0(dir,"/scripts_results/06_countries_over/",
+  raster_name <- paste0(dir,"/outputs/12_breeding_countries/",
                         sp_country_list$sp_country[i],".tif")
   writeRaster(over, filename=raster_name, format="GTiff", overwrite=TRUE)
   print(i)
@@ -242,5 +244,5 @@ sp_country_list$breeding_country <- str_split_n(sp_country_list$sp_country,"_",2
 sp_country_list
 
 write.csv(sp_country_list,
-          paste0(dir,"/sp_country_scores.csv"),
+          paste0(dir,"/outputs/12_species_country_scores.csv"),
           row.names = F)

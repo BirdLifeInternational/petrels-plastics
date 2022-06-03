@@ -1,0 +1,149 @@
+sp_pop,years,min_year,max_year,mean_year,n_years,species,yrs09_19,year_range
+Ardenna bulleri_Aorangi Island,2011_2012_2013,2011,2013,2012,3,Ardenna bulleri,1,2011-2013
+Ardenna carneipes_Breaksea Island,2008,2008,2008,2008,1,Ardenna carneipes,0,2008-2008
+Ardenna carneipes_Lord Howe Island,2008_2007_2005,2005,2008,2006.666667,3,Ardenna carneipes,0,2005-2008
+Ardenna carneipes_New Zealand,2006_2007_2009_2010_2011_2012_2014_2013,2006,2014,2010.25,8,Ardenna carneipes,1,2006-2014
+Ardenna creatopus_Isla Mocha and Juan Fernandez,2002_2003_2004_2005_2016_2017_2015_2006_2011_2012_2013,2002,2017,2009.454545,11,Ardenna creatopus,1,2002-2017
+Ardenna gravis_Gough,2014_2013_2009_2010_2008_2012_2011,2008,2014,2011,7,Ardenna gravis,1,2008-2014
+Ardenna gravis_Tristan da Cunha,2009_2010_2015_2016,2009,2016,2012.5,4,Ardenna gravis,1,2009-2016
+Ardenna grisea_Codfish Island,2005_2006,2005,2006,2005.5,2,Ardenna grisea,0,2005-2006
+Ardenna grisea_Falkland Islands,2018_2017_2008_2009_2007,2007,2018,2011.8,5,Ardenna grisea,1,2007-2018
+Ardenna grisea_North Island,2010_2011_2012_2005,2005,2012,2009.5,4,Ardenna grisea,1,2005-2012
+Ardenna pacifica_Hawaii,2013_2014_2015,2013,2015,2014,3,Ardenna pacifica,1,2013-2015
+Ardenna pacifica_Heron Island,2013_2014,2013,2014,2013.5,2,Ardenna pacifica,1,2013-2014
+Ardenna pacifica_Lowendal and Houtman Abrolhoss,2010_2011_2012_2013,2010,2013,2011.5,4,Ardenna pacifica,1,2010-2013
+Ardenna pacifica_Mauritius,2011_2012_2013,2011,2013,2012,3,Ardenna pacifica,1,2011-2013
+Ardenna pacifica_New Calendonia,2017_2019_2018,2017,2019,2018,3,Ardenna pacifica,1,2017-2019
+Ardenna pacifica_Reunion,2010_2009_2011_2012,2009,2012,2010.5,4,Ardenna pacifica,1,2009-2012
+Ardenna pacifica_Seychelles,2007_2013_2014_2010_2008_2011_2009,2007,2014,2010.285714,7,Ardenna pacifica,1,2007-2014
+Ardenna tenuirostris_SE Australia,1997_2012_2013_2014_2010_2008_2007_2011_2006_2005,1997,2014,2008.3,10,Ardenna tenuirostris,1,1997-2014
+Bulweria bulwerii_Azores,2007_2008_2010_2011_2012_2013,2007,2013,2010.166667,6,Bulweria bulwerii,1,2007-2013
+Bulweria bulwerii_Canarias,2010_2011_2012_2013,2010,2013,2011.5,4,Bulweria bulwerii,1,2010-2013
+Bulweria bulwerii_Cape Verde,2011_2012_2010_2019_2018_2017_2007_2008_2009,2007,2019,2012.333333,9,Bulweria bulwerii,1,2007-2019
+Bulweria bulwerii_Madeira,2010_2013_2012_2009,2009,2013,2011,4,Bulweria bulwerii,1,2009-2013
+Calonectris borealis_Azores,2010_2015_2018_2017_2007_2002_2003_2005_2011_2012_2013_2014_2016,2002,2018,2011,13,Calonectris borealis,1,2002-2018
+Calonectris borealis_Berlengas,2011_2012_2010_2014_2013_2015_2007_2006,2006,2015,2011,8,Calonectris borealis,1,2006-2015
+Calonectris borealis_Canarias,2006_2010_2007_2012_2015_2011_2013_2003_2002_2004_2005_2008_2009_2014_2016,2002,2016,2009,15,Calonectris borealis,1,2002-2016
+Calonectris borealis_Madeira,2011_2014_2012_2015_2009_2010_2013_2008_2006_2007,2006,2015,2010.5,10,Calonectris borealis,1,2006-2015
+Calonectris diomedea_Balearic Archipelago,2015_2016_2014_2007_2013_2010_2012_2002_2003_2009_2011,2002,2016,2010.181818,11,Calonectris diomedea,1,2002-2016
+Calonectris diomedea_Chafarinas,2001_2000_2007_2011_2008_2009_2012_2013,2000,2013,2007.625,8,Calonectris diomedea,1,2000-2013
+Calonectris diomedea_La Maddalena Archipelago,2013_2011_2018_2019,2011,2019,2015.25,4,Calonectris diomedea,1,2011-2019
+Calonectris diomedea_Linosa,2008_2012_2009_2017_2016_2015,2008,2017,2012.833333,6,Calonectris diomedea,1,2008-2017
+Calonectris diomedea_Malta,2013_2012_2014_2010_2011_2015_2016_2009,2009,2016,2012.5,8,Calonectris diomedea,1,2009-2016
+Calonectris diomedea_Tremiti Archipelago,2009_2010,2009,2010,2009.5,2,Calonectris diomedea,1,2009-2010
+Calonectris diomedea_Tuscany Archipelago,2010_2011,2010,2011,2010.5,2,Calonectris diomedea,1,2010-2011
+Calonectris diomedea_Zembra,2014_2015_2016,2014,2016,2015,3,Calonectris diomedea,1,2014-2016
+Calonectris edwardsii_Cape Verde,2017_2018_2019_2015_2014_2011_2012_2013_2010_2006_2007_2008_2009_2016,2006,2019,2012.5,14,Calonectris edwardsii,1,2006-2019
+Calonectris leucomelas_Iwate,2011_2007_2006_2008,2006,2011,2008,4,Calonectris leucomelas,1,2006-2011
+Calonectris leucomelas_Korea,2008_2009_2010,2008,2010,2009,3,Calonectris leucomelas,1,2008-2010
+Calonectris leucomelas_Mikura,2005_2004_2007_2006_2008,2004,2008,2006,5,Calonectris leucomelas,0,2004-2008
+Calonectris leucomelas_Niigata,2011,2011,2011,2011,1,Calonectris leucomelas,1,2011-2011
+Daption capense_Davis,2015_2016,2015,2016,2015.5,2,Daption capense,1,2015-2016
+Daption capense_Pointe Geologie,2011,2011,2011,2011,1,Daption capense,1,2011-2011
+Fulmarus glacialis_Bjørnøya,2016_2015_2017_2018_2014_2019,2014,2019,2016.5,6,Fulmarus glacialis,1,2014-2019
+Fulmarus glacialis_Breidafjordur,2017_2018_2019_2016_2014_2015,2014,2019,2016.5,6,Fulmarus glacialis,1,2014-2019
+Fulmarus glacialis_Cape Vera,2004_2005_2006,2004,2006,2005,3,Fulmarus glacialis,0,2004-2006
+Fulmarus glacialis_Faroe Islands,2016_2017_2018_2015,2015,2018,2016.5,4,Fulmarus glacialis,1,2015-2018
+Fulmarus glacialis_Jan Mayen,2014_2015_2016_2017_2018_2019,2014,2019,2016.5,6,Fulmarus glacialis,1,2014-2019
+Fulmarus glacialis_Norway,2012_2013_2011_2017_2018_2019_2016_2015,2011,2019,2015.125,8,Fulmarus glacialis,1,2011-2019
+Fulmarus glacialis_Scotland,2011_2012_2013_2014_2006_2009_2010_2008_2007_2019_2018_2017_2016_2015,2006,2019,2012.5,14,Fulmarus glacialis,1,2006-2019
+Fulmarus glacialis_Svalbard,2016_2017_2018_2019_2015,2015,2019,2017,5,Fulmarus glacialis,1,2015-2019
+Fulmarus glacialoides_Davis,2015_2016,2015,2016,2015.5,2,Fulmarus glacialoides,1,2015-2016
+Fulmarus glacialoides_Pointe Geologie,2011_2012_2008,2008,2012,2010.333333,3,Fulmarus glacialoides,1,2008-2012
+Halobaena caerulea_Kerguelen,2012_2011,2011,2012,2011.5,2,Halobaena caerulea,1,2011-2012
+Halobaena caerulea_South Georgia,2010_2011,2010,2011,2010.5,2,Halobaena caerulea,1,2010-2011
+Hydrobates castro_Azores,2019_2020,2019,2020,2019.5,2,Hydrobates castro,0,2019-2020
+Hydrobates castro_Berlengas,2016_2017_2018,2016,2018,2017,3,Hydrobates castro,1,2016-2018
+Hydrobates castro_St Helena,2017_2018_2019,2017,2019,2018,3,Hydrobates castro,1,2017-2019
+Hydrobates furcatus_Gillam Island,2016_2017,2016,2017,2016.5,2,Hydrobates furcatus,1,2016-2017
+Hydrobates jabejabe_Cape Verde,2019_2018,2018,2019,2018.5,2,Hydrobates jabejabe,1,2018-2019
+Hydrobates leucorhous_Gillam Island,2016_2017,2016,2017,2016.5,2,Hydrobates leucorhous,1,2016-2017
+Hydrobates leucorhous_Newfoundland,2016_2017,2016,2017,2016.5,2,Hydrobates leucorhous,1,2016-2017
+Hydrobates leucorhous_Nova Scotia,2017_2013_2012_2014_2015_2019,2012,2019,2015,6,Hydrobates leucorhous,1,2012-2019
+Hydrobates monteiroi_Azores,2019_2018_2013,2013,2019,2016.666667,3,Hydrobates monteiroi,1,2013-2019
+Hydrobates pelagicus_Benidorm Island,2019,2019,2019,2019,1,Hydrobates pelagicus,0,2019-2019
+Hydrobates pelagicus_Capo caccia,2019,2019,2019,2019,1,Hydrobates pelagicus,0,2019-2019
+Hydrobates pelagicus_Ireland,2016,2016,2016,2016,1,Hydrobates pelagicus,1,2016-2016
+Hydrobates pelagicus_Malta,2017_2016,2016,2017,2016.5,2,Hydrobates pelagicus,1,2016-2017
+Hydrobates pelagicus_Shetland,2018_2014_2015_2016_2017,2014,2018,2016,5,Hydrobates pelagicus,1,2014-2018
+Oceanites oceanicus_South Shetland Islands,2020,2020,2020,2020,1,Oceanites oceanicus,0,2020-2020
+Pachyptila belcheri_Kerguelen,2012,2012,2012,2012,1,Pachyptila belcheri,1,2012-2012
+Pachyptila belcheri_New Island,2013_2012_2011_2010_2009,2009,2013,2011,5,Pachyptila belcheri,1,2009-2013
+Pachyptila desolata_Kerguelen,2012_2013,2012,2013,2012.5,2,Pachyptila desolata,1,2012-2013
+Pachyptila desolata_South Georgia,2010_2011_2012,2010,2012,2011,3,Pachyptila desolata,1,2010-2012
+Pachyptila macgillivrayi_Gough,2014_2015_2016,2014,2016,2015,3,Pachyptila macgillivrayi,1,2014-2016
+Pachyptila turtur_Dunedin,2011_2012,2011,2012,2011.5,2,Pachyptila turtur,1,2011-2012
+Pachyptila turtur_Kanowna Island,2017_2018_2019,2017,2019,2018,3,Pachyptila turtur,1,2017-2019
+Pachyptila vittata_Gough,2014_2015_2016_2010_2009,2009,2016,2012.8,5,Pachyptila vittata,1,2009-2016
+Pachyptila vittata_Tristan da Cunha,2015_2014,2014,2015,2014.5,2,Pachyptila vittata,1,2014-2015
+Pagodroma nivea_Pointe Geologie,2011_2012_2015_2016,2011,2016,2013.5,4,Pagodroma nivea,1,2011-2016
+Pelagodroma marina_Cape Verde,2019,2019,2019,2019,1,Pelagodroma marina,0,2019-2019
+Pelagodroma marina_Madeira,2019_2018,2018,2019,2018.5,2,Pelagodroma marina,1,2018-2019
+Pelecanoides garnotii_Paracas,2009_2012_2010,2009,2012,2010.333333,3,Pelecanoides garnotii,1,2009-2012
+Pelecanoides georgicus_South Georgia,2011,2011,2011,2011,1,Pelecanoides georgicus,1,2011-2011
+Pelecanoides urinatrix_Kanowna Island,2018_2017_2019,2017,2019,2018,3,Pelecanoides urinatrix,1,2017-2019
+Pelecanoides urinatrix_North Island,2010_2011_2012_2016,2010,2016,2012.25,4,Pelecanoides urinatrix,1,2010-2016
+Pelecanoides urinatrix_South Georgia,2010_2011,2010,2011,2010.5,2,Pelecanoides urinatrix,1,2010-2011
+Pelecanoides whenuahouensis_Codfish Island,2016_2015_2018_2019_2017,2015,2019,2017,5,Pelecanoides whenuahouensis,1,2015-2019
+Procellaria aequinoctialis_Antipodes Islands,2008_2009,2008,2009,2008.5,2,Procellaria aequinoctialis,0,2008-2009
+Procellaria aequinoctialis_Crozet,2007_2008_1997_2009_1996,1996,2009,2003.4,5,Procellaria aequinoctialis,0,1996-2009
+Procellaria aequinoctialis_Kerguelen,2006_2007_2008_2009,2006,2009,2007.5,4,Procellaria aequinoctialis,0,2006-2009
+Procellaria aequinoctialis_Prince Edward Islands,2009_2011_2012_2010_2013,2009,2013,2011,5,Procellaria aequinoctialis,1,2009-2013
+Procellaria aequinoctialis_South Georgia,2015_2014_2010_2009_1997_1998_1996_2003,1996,2015,2005.25,8,Procellaria aequinoctialis,1,1996-2015
+Procellaria cinerea_Antipodes Islands,2009_2010,2009,2010,2009.5,2,Procellaria cinerea,1,2009-2010
+Procellaria cinerea_Gough,2015_2016_2014,2014,2016,2015,3,Procellaria cinerea,1,2014-2016
+Procellaria cinerea_Kerguelen,2008_2009_2010_2011_2012_2013_2007,2007,2013,2010,7,Procellaria cinerea,1,2007-2013
+Procellaria cinerea_Prince Edward Islands,2013_2014_2015_2009_2010_2016,2009,2016,2012.833333,6,Procellaria cinerea,1,2009-2016
+Procellaria conspicillata_Tristan da Cunha,2006_2007_2009_2010,2006,2010,2008,4,Procellaria conspicillata,1,2006-2010
+Procellaria parkinsoni_Great Barrier Island,2005_2006_2007_2008_2009,2005,2009,2007,5,Procellaria parkinsoni,0,2005-2009
+Procellaria westlandica_Punakaiki,1996_1995_2011_2015_2012_2016_2007_2008,1995,2016,2007.5,8,Procellaria westlandica,1,1995-2016
+Pseudobulweria aterrima_Reunion,2017_2018,2017,2018,2017.5,2,Pseudobulweria aterrima,1,2017-2018
+Pseudobulweria rostrata_New Calendonia,2017_2018_2019,2017,2019,2018,3,Pseudobulweria rostrata,1,2017-2019
+Pterodroma arminjoniana_Round Island,2010_2012_2013_2011_2009,2009,2013,2011,5,Pterodroma arminjoniana,1,2009-2013
+Pterodroma arminjoniana_Trindade Island,2014_2013_2007,2007,2014,2011.333333,3,Pterodroma arminjoniana,1,2007-2014
+Pterodroma axillaris_Chatham Islands,2009_2010,2009,2010,2009.5,2,Pterodroma axillaris,1,2009-2010
+Pterodroma baraui_Reunion,2011_2010_2009_2008,2008,2011,2009.5,4,Pterodroma baraui,1,2008-2011
+Pterodroma cahow_Bermuda Island,2020_2009_2010,2009,2020,2013,3,Pterodroma cahow,1,2009-2020
+Pterodroma cervicalis_Phillip Island,2018_2019,2018,2019,2018.5,2,Pterodroma cervicalis,1,2018-2019
+Pterodroma cookii_Codfish Island,2009_2008_2007,2007,2009,2008,3,Pterodroma cookii,0,2007-2009
+Pterodroma cookii_Little Barrier Island,2008_2009_2007,2007,2009,2008,3,Pterodroma cookii,0,2007-2009
+Pterodroma deserta_Madeira,2012_2013_2008_2009_2011_2010_2017_2016_2015,2008,2017,2012.333333,9,Pterodroma deserta,1,2008-2017
+Pterodroma feae_Cape Verde,2007_2008_2009_2010_2015_2019_2017_2018,2007,2019,2012.875,8,Pterodroma feae,1,2007-2019
+Pterodroma gouldi_Bethells Beach,2012_2014_2013,2012,2014,2013,3,Pterodroma gouldi,1,2012-2014
+Pterodroma hasitata_Sierra de Bahoruco,2014_2018,2014,2018,2016,2,Pterodroma hasitata,1,2014-2018
+Pterodroma incerta_Gough,2014_2010_2011_2012_2013,2010,2014,2012,5,Pterodroma incerta,1,2010-2014
+Pterodroma inexpectata_Lake HaurokoPetrel Island,2010_2009_2011,2009,2011,2010,3,Pterodroma inexpectata,1,2009-2011
+Pterodroma lessonii_Adams Island,2011_2012_2013_2014,2011,2014,2012.5,4,Pterodroma lessonii,1,2011-2014
+Pterodroma leucoptera_Cabbage Tree Island,2011_2012_2010,2010,2012,2011,3,Pterodroma leucoptera,1,2010-2012
+Pterodroma leucoptera_New Caledonia,2010_2011,2010,2011,2010.5,2,Pterodroma leucoptera,1,2010-2011
+Pterodroma macroptera_Prince Edward Islands,2012_2017_2018_2013,2012,2018,2015,4,Pterodroma macroptera,1,2012-2018
+Pterodroma madeira_Madeira,2009_2008_2010_2007,2007,2010,2008.5,4,Pterodroma madeira,1,2007-2010
+Pterodroma magentae_Chatham Islands,2011_2012_2008_2009_2010,2008,2012,2010,5,Pterodroma magentae,1,2008-2012
+Pterodroma mollis_Antipodes,2011_2012_2013,2011,2013,2012,3,Pterodroma mollis,1,2011-2013
+Pterodroma mollis_Gough,2014_2011_2010_2009_2012_2013,2009,2014,2011.5,6,Pterodroma mollis,1,2009-2014
+Pterodroma neglecta_Phillip Island,2020,2020,2020,2020,1,Pterodroma neglecta,0,2020-2020
+Pterodroma nigripennis_Chatham Islands,2009_2010,2009,2010,2009.5,2,Pterodroma nigripennis,1,2009-2010
+Pterodroma nigripennis_Phillip Island,2018_2019,2018,2019,2018.5,2,Pterodroma nigripennis,1,2018-2019
+Pterodroma phaeopygia_Galapagos,2009_2010_2011,2009,2011,2010,3,Pterodroma phaeopygia,1,2009-2011
+Pterodroma pycrofti_Red Mercury Island,2009_2010_2011,2009,2011,2010,3,Pterodroma pycrofti,1,2009-2011
+Pterodroma sandwichensis_Hawaii,2017_2018_2019_2016_2006_2007_2008_2013_2014,2006,2019,2013.111111,9,Pterodroma sandwichensis,1,2006-2019
+Pterodroma solandri_Lord Howe Island,2007_2008,2007,2008,2007.5,2,Pterodroma solandri,0,2007-2008
+Pterodroma ultima_Henderson Island,2011_2012_2013_2015,2011,2015,2012.75,4,Pterodroma ultima,1,2011-2015
+Puffinus assimilis_E of Aukland,2011_2012,2011,2012,2011.5,2,Puffinus assimilis,1,2011-2012
+Puffinus assimilis_Lord Howe Island,2010_2011,2010,2011,2010.5,2,Puffinus assimilis,1,2010-2011
+Puffinus bailloni_Seychelles,2012_2013_2014,2012,2014,2013,3,Puffinus bailloni,1,2012-2014
+Puffinus gavia_E of Aukland,2011_2012,2011,2012,2011.5,2,Puffinus gavia,1,2011-2012
+Puffinus huttoni_Te Rae o Atiu,2018_2017,2017,2018,2017.5,2,Puffinus huttoni,1,2017-2018
+Puffinus lherminieri_Azores,2007_2008,2007,2008,2007.5,2,Puffinus lherminieri,0,2007-2008
+Puffinus lherminieri_Cape Verde,2011_2012_2013_2010_2014_2009_2018_2016_2019_2017_2007_2008,2007,2019,2012.833333,12,Puffinus lherminieri,1,2007-2019
+Puffinus lherminieri_Madeira,2012_2013_2014_2011_2010,2010,2014,2012,5,Puffinus lherminieri,1,2010-2014
+Puffinus mauretanicus_Balearic Archipelago,2014_2013_2016_2000_2011_2012_1999,1999,2016,2009.285714,7,Puffinus mauretanicus,1,1999-2016
+Puffinus newelli_Hawaii,2016_2017_2018_2019,2016,2019,2017.5,4,Puffinus newelli,1,2016-2019
+Puffinus opisthomelas_Isla Natividad,2017_2019_2018_2016,2016,2019,2017.5,4,Puffinus opisthomelas,1,2016-2019
+Puffinus puffinus_Heimaey,2006_2007_2012_2013_2011_2008_2009_2010_2014,2006,2014,2010,9,Puffinus puffinus,1,2006-2014
+Puffinus puffinus_Ireland,2014_2015,2014,2015,2014.5,2,Puffinus puffinus,1,2014-2015
+Puffinus puffinus_UK,2010_2011_2012_2009_2013_2007_2008_2017_2006_1999_2000_2005,1999,2017,2008.083333,12,Puffinus puffinus,1,1999-2017
+Puffinus yelkouan_Iles Hyeres,2006_2007_2009_2008_2010_2011_2012_2013,2006,2013,2009.5,8,Puffinus yelkouan,1,2006-2013
+Puffinus yelkouan_Malta,2017_2016_2013_2014_2009_2008_2010_2012,2008,2017,2012.375,8,Puffinus yelkouan,1,2008-2017
+Thalassoica antarctica_Davis,2015_2016,2015,2016,2015.5,2,Thalassoica antarctica,1,2015-2016
+Thalassoica antarctica_Svarthamaren,2012_2013_2014_2011,2011,2014,2012.5,4,Thalassoica antarctica,1,2011-2014
