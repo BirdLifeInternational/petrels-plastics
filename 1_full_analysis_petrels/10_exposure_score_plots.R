@@ -114,6 +114,8 @@ seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop ==  "Sooty Shearwat
                            seasons_plot$species_pop)
 
 head(seasons_plot)
+max(seasons_plot$season_diff,na.rm=T)
+mean(seasons_plot$season_diff,na.rm=T)
 
 #20 species with biggest season differences
 abovex <- subset(seasons_plot,season_diff > 23)

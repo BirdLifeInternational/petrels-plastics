@@ -16,13 +16,6 @@ library(tidyverse)#1.3.0
 library(sp) #1.3-2
 library(viridis)#0.5.1
 
-library(cowplot) #1.0.0
-library(stringr)#1.4.0
-library(geomerge)#0.3.2
-library(maptools)#1.0-1
-library(gridExtra)#2.3
-library(adehabitatHR)
-
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
@@ -102,20 +95,14 @@ rank_eezs <- as.data.frame(eez@data)
 rank_eezs <- rank_eezs[order(-rank_eezs$over),]
 head(rank_eezs)
 
-rank_used <- subset(rank_eezs,over != 0)
-rank_used$prop <- rank_used$over/sum(rank_used$over)
+eezs_used <- subset(rank_eezs,over != 0)
+eezs_used$prop <- eezs_used$over/sum(eezs_used$over)
 
-head(rank_used)
-
-write.csv(rank_used,paste0(dir,"/11_eezs_used_all_species.csv"),
-          row.names = F)
+head(eezs_used)
 
 
 #Use eez results and create summary statistics ####
 
-#need to combine the species in the same way as in the density section for this to work.
-#otherwise biased towards countries with many populations.
-eezs_used <- rank_used
 eezs_used$MRGID_EEZ <- NULL; eezs_used$MRGID_TER1 <- NULL
 eezs_used$MRGID_SOV1 <- NULL; eezs_used$MRGID_TER2 <- NULL
 eezs_used$MRGID_SOV2 <- NULL; eezs_used$MRGID_TER3 <- NULL
@@ -187,68 +174,72 @@ eezs_used$UNION <- ifelse(eezs_used$UNION == "Bouvet", "High Seas",eezs_used$UNI
 
 #for overlapping claims, make 1 combined value in the summary
 
-#eezs_used$cat <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
-#                        "Overlapping claim",eezs_used$TERRITORY1)
-
-eezs_used$cat <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
+eezs_used$sovereigns <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
                                       paste(eezs_used$SOVEREIGN1,eezs_used$SOVEREIGN2,eezs_used$SOVEREIGN3,sep="_")
                                       ,eezs_used$SOVEREIGN1)
+#count number of sovereigns used
+all_sovereigns <- c(eezs_used$SOVEREIGN1,eezs_used$SOVEREIGN2,eezs_used$SOVEREIGN3)
+unique(all_sovereigns) 
+length(unique(all_sovereigns)) - 2 #high seas and NA are not sovereigns
 
-table(eezs_used$overlapping_claim)
-
+write.csv(eezs_used,paste0(dir,"/11_eezs_used_all_species.csv"),
+          row.names = F)
 
 
 eezs_country <- eezs_used %>%
-  group_by(cat) %>% 
+  group_by(sovereigns) %>% 
   summarise(total = sum(over),
             prop = sum(prop),
             label = "total") %>%
   data.frame()
 
+eezs_country
+eezs_country$category <- ifelse(eezs_country$total < 2.575042e-07,
+                            "low exposure countries",eezs_country$sovereigns)
 
 eezs_country
-eezs_country$cat2 <- ifelse(eezs_country$total < 2.575042e-07,
-                            "low impact countries",eezs_country$cat)
 
-eezs_country
+eezs_country_lowexposure <- eezs_country[eezs_country$category == "low exposure countries",]
 
-eezs_country_lowimpact <- eezs_country[eezs_country$cat2 == "low impact countries",]
+eezs_country_highexposure <- eezs_country[eezs_country$category != "low exposure countries",]
 
-eezs_country_highimpact <- eezs_country[eezs_country$cat2 != "low impact countries",]
-
-eezs_country_lowimpact_summary <- c("lowimp",sum(eezs_country_lowimpact$total),
-                                    mean(eezs_country_lowimpact$prop),
-                                    "total","low impact countries")
+eezs_country_lowexposure_summary <- c("lowimp",sum(eezs_country_lowexposure$total),
+                                    mean(eezs_country_lowexposure$prop),
+                                    "total","low exposure countries")
 
 
-eezs_country_highimpact[nrow(eezs_country_highimpact)+1,] <- eezs_country_lowimpact_summary
-eezs_country_highimpact$total <- as.numeric(eezs_country_highimpact$total)
+eezs_country_highexposure[nrow(eezs_country_highexposure)+1,] <- eezs_country_lowexposure_summary
+eezs_country_highexposure$total <- as.numeric(eezs_country_highexposure$total)
 
-eezs_country_highimpact <- eezs_country_highimpact[order(-eezs_country_highimpact$total),]
+eezs_country_highexposure <- eezs_country_highexposure[order(-eezs_country_highexposure$total),]
 
-rank_list <- eezs_country_highimpact$cat2[order(-eezs_country_highimpact$total)]
+rank_list <- eezs_country_highexposure$category[order(-eezs_country_highexposure$total)]
 
-rank_list <- rank_list[rank_list != "low impact countries"]
+rank_list <- rank_list[rank_list != "low exposure countries"]
 rank_list <- rank_list[rank_list != "Overlapping claim"]
 
-level_list <- c(rank_list,"low impact countries","Overlapping claim")
+level_list <- c(rank_list,"low exposure countries","Overlapping claim")
 
 
-eezs_country_highimpact$cat2 <- as.factor(eezs_country_highimpact$cat2)
-eezs_country_highimpact$cat2 <- factor(eezs_country_highimpact$cat2, 
+eezs_country_highexposure$category <- as.factor(eezs_country_highexposure$category)
+eezs_country_highexposure$category <- factor(eezs_country_highexposure$category, 
                                        levels = as.factor(level_list))
 
-eezs_country_highimpact$percent <- (eezs_country_highimpact$total/
-                                      sum(eezs_country_highimpact$total))*100
+eezs_country_highexposure$percent <- (eezs_country_highexposure$total/
+                                      sum(eezs_country_highexposure$total))*100
 
 
-  
-
-plot1 <- ggplot(eezs_country_highimpact,aes(x=label,y=total,fill=cat2))+
+plot1 <- ggplot(eezs_country_highexposure,aes(
+                x=label,y=total,fill=category))+
   geom_bar(stat="identity",position="fill",colour="white") +
   scale_fill_viridis(option="inferno",discrete = T) +
   theme_bw(); plot1
 
+png(paste0(dir,"/outputs/11_eez_allspecies.png"), 
+    width=700,height=2000)
+plot1
+dev.off()
+dev.off()
 
 
 write.csv(eezs_country,

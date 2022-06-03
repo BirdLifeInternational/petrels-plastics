@@ -421,7 +421,7 @@ sample_sizes_pops$sp_pop  <- NULL
 
 head(sample_sizes_pops)
 
-write.csv(pops,paste0(dir,"/outputs/02_sample_sizes_pops.csv"),
+write.csv(sample_sizes_pops,paste0(dir,"/outputs/02_sample_sizes_pops.csv"),
           row.names = F)
 
 #save all tracking locations in 1 csv

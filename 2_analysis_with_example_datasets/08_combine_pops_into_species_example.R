@@ -48,9 +48,9 @@ pops$nonbreeding <- tracked_seasons$nonbreeding
 head(pops)
 pops$seasons <- ifelse(is.na(pops$nonbreeding)|is.na(pops$nonbreeding),0.5,1)
 
-#combine population maps into species maps, then rescale to 1 ####
-#this will weight by number of tracked months
-#read in pop sizes
+#combine population maps into species maps ####
+#this will weight by number of tracked season
+#and the relative population sizes
 
 pop_sizes <- read.csv(paste0(dir,"/input_data/population_sizes.csv"))
 pop_sizes$site <- NULL
