@@ -80,6 +80,9 @@ Both folders contain codes that should be run in the order provided by the numbe
   - Plot the results for Fig. 4b
 - 12_combine_countries
   - Combine population distributions by country for each species
+- 13_eez_by_population
+  - Calculation the proportion of exposure in each EEZ (or high seas) for each species in each breeing country
+  - Plot the results for Fig. 4c
 
 ## Input files
 - 00_plastics_raster
@@ -136,6 +139,12 @@ Both folders contain codes that should be run in the order provided by the numbe
   - "/outputs/08_all_species_distribution.tif"
   - "/outputs/00_PlasticsRaster.tif"
 - 12_combine_countries
+  - Rasters in "/outputs/05_populations"
+  - "/outputs/07_exposure_scores_by_season.csv"
+  - "/outputs/05_exposure_scores_by_population.csv"
+- 13_eez_by_population
+  - "/outputs/11_eezs_used_all_species.csv"
+  - "/outputs/12_species_country_scores.csv"
  
 
 ## Graphical representation of the method 
