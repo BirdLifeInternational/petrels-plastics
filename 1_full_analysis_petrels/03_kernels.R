@@ -26,36 +26,36 @@ library(tidyverse)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we are still in the base project "1_full_analysis_petrels" folder
+getwd()
 
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
-proj_wgs84 <- CRS(proj4string(land))
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
+proj_wgs84 <- sp::CRS(sp::proj4string(land))
 
 ## TO SAVE KERNEL RESULTS
 ## Create a folder in your computer to save kernel results 
-dir.create(paste0(dir,"/outputs/03_kernels"))
-dir.create(paste0(dir,"/outputs/03_kernels/locations_plots"))
-dir.create(paste0(dir,"/outputs/03_kernels/kde_plots")) 
-dir_kernels <- paste0(dir,"/outputs/03_kernels") 
+dir.create("outputs/03_kernels")
+dir.create("outputs/03_kernels/locations_plots")
+dir.create("outputs/03_kernels/kde_plots")
+dir_kernels <- "outputs/03_kernels/"
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std);files
 
-dataset_number <- 1
+# dataset_number <- 1  # testing
 for(dataset_number in 1:length(files)){ #
   print(dataset_number)
   print(files[dataset_number])
-  name_png <- str_remove(files[dataset_number],".csv")
+  name_png <- stringr::str_remove(files[dataset_number],".csv")
   df <- read.csv(paste0(data_std,files[dataset_number]))  
   
   head(df)
   
   df <- subset(df, latitude < 90)
   
-  png(filename = paste0(dir_kernels, "/locations_plots/", name_png, ".png"))
+  png(filename = paste0(dir_kernels, "locations_plots/", name_png, ".png"))
   plot(latitude~longitude, data=df, type="n", asp=1, 
        xlim=c(min(df$longitude)+0.2,max(df$longitude)-0.2), 
        ylim=c(min(df$latitude)+0.5, max(df$latitude)-0.5), 
@@ -108,14 +108,14 @@ for(dataset_number in 1:length(files)){ #
       so.grid <- expand.grid(LON = seq(lon_min, lon_max, by=1), 
                              LAT = seq(lat_min, lat_max, by=1))
       
-      coordinates(so.grid) <- ~LON+LAT
-      proj4string(so.grid) <- proj4string(land)
+      sp::coordinates(so.grid) <- ~LON+LAT
+      sp::proj4string(so.grid) <- sp::proj4string(land)
 
-      mean_loc <- geomean(cbind(tracks_wgs$longitude,tracks_wgs$latitude))
-      DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
-                           "+lat_0=",mean_loc[2])) 
+      mean_loc <- geosphere::geomean(cbind(tracks_wgs$longitude,tracks_wgs$latitude))
+      DgProj <- sp::CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
+                           " +lat_0=",mean_loc[2])) 
       
-      so.grid.proj <- spTransform(so.grid, CRS=DgProj)
+      so.grid.proj <- sp::spTransform(so.grid, CRS=DgProj)
       coords <- so.grid.proj@coords
       
       c <- min(coords[,1])-1000000   ## to check my min lon
@@ -127,22 +127,22 @@ for(dataset_number in 1:length(files)){ #
       a <- seq(c, d, by=10000)
       b <- seq(e, f, by=10000)
       null.grid <- expand.grid(x=a,y=b)
-      coordinates(null.grid) <- ~x+y
-      gridded(null.grid) <- TRUE
+      sp::coordinates(null.grid) <- ~x+y
+      sp::gridded(null.grid) <- TRUE
       class(null.grid)
       
-      coordinates(tracks_wgs) <- ~longitude+latitude
-      proj4string(tracks_wgs) <- proj4string(land)
-      tracks <- spTransform(tracks_wgs, CRS=DgProj)
+      sp::coordinates(tracks_wgs) <- ~longitude+latitude
+      sp::proj4string(tracks_wgs) <- sp::proj4string(land)
+      tracks <- sp::spTransform(tracks_wgs, CRS=DgProj)
       
       tracks$month <- factor(tracks@data$month)
       KDE_ref <- paste0(str_remove(files[dataset_number],".csv"), "_", 
                         months[month_number])
       
-      kudl <- kernelUD(tracks[,"month"], 
-                       grid = null.grid, h = 200000)  ## smoothing factor equals 200 km for GLS data
+      kudl <- adehabitatHR::kernelUD(tracks[,"month"], 
+                                     grid = null.grid, h = 200000)  ## smoothing factor equals 200 km for GLS data
       #image(kudl)
-      vud <- getvolumeUD(kudl)
+      vud <- adehabitatHR::getvolumeUD(kudl)
       ## store the volume under the UD (as computed by getvolumeUD)
       ## of the first animal in fud
       fud <- vud[[1]]
@@ -155,14 +155,14 @@ for(dataset_number in 1:length(files)){ #
       hr95 <- data.frame(hr95)
       ## Converts to a SpatialPixelsDataFrame
       coordinates(hr95) <- coordinates(fud)
-      gridded(hr95) <- TRUE
+      gsp::ridded(hr95) <- TRUE
       
       ## display the results
-      kde_spixdf <- estUDm2spixdf(kudl)
+      kde_spixdf <- adehabitatHR::estUDm2spixdf(kudl)
       kern95 <- kde_spixdf
       
-      stk_100 <- stack(kern95)
-      stk_95 <- stack(hr95)
+      stk_100 <- raster::stack(kern95)
+      stk_95 <- raster::stack(hr95)
       
       sum_all_100 <- stk_100[[1]]
       sum_all_95 <- stk_95[[1]]
@@ -171,56 +171,56 @@ for(dataset_number in 1:length(files)){ #
       
       rast <- sum_all_raw/sum(raster::getValues(sum_all_raw))
       rast[rast == 0] <- NA
-      #plot(rast)
+      # plot(rast)
       
-      KDERasName_sum <- paste0(dir_kernels, "/", KDE_ref, ".tif")
+      KDERasName_sum <- paste0(dir_kernels, KDE_ref, ".tif")
       
       x.matrix <- is.na(as.matrix(rast))
       colNotNA <- which(colSums(x.matrix) != nrow(rast))
       rowNotNA <- which(rowSums(x.matrix) != ncol(rast))
       
-      croppedExtent <- extent(rast, 
+      croppedExtent <- raster::extent(rast, 
                               r1 = rowNotNA[1]-2, 
                               r2 = rowNotNA[length(rowNotNA)]+2,
                               c1 = colNotNA[1]-2, 
                               c2 = colNotNA[length(colNotNA)]+2)
     
-      cropped <- crop(rast, croppedExtent)
+      cropped <- raster::crop(rast, croppedExtent)
       cropped[is.na(cropped)] <- 0
       #plot(cropped)
       
       #Land mask
-      mask_proj <- spTransform(land, DgProj)   ## changing projection
+      mask_proj <- sp::spTransform(land, DgProj)   ## changing projection
       mask_proj_pol <- as(mask_proj, "SpatialPolygons")   ## converting SpatialPolygonsDataFrame to SpatialPolygons
       
       ## set to NA cells that overlap mask (land)
-      rast_mask_na <- mask(cropped, mask_proj_pol, inverse = TRUE)
+      rast_mask_na <- raster::mask(cropped, mask_proj_pol, inverse = TRUE)
       rast_mask <- rast_mask_na
       rast_mask[is.na(rast_mask)] <- 0
-      rast_mask_sum1 <- rast_mask/sum(getValues(rast_mask))
+      rast_mask_sum1 <- rast_mask/sum(raster::getValues(rast_mask))
       #rast_mask[rast_mask == 0] <- NA
-      rast_mask_final <- mask(rast_mask_sum1, mask_proj_pol, inverse = TRUE)
+      rast_mask_final <- raster::mask(rast_mask_sum1, mask_proj_pol, inverse = TRUE)
       rast_mask_final2 <- rast_mask_final 
       
       #one dataset had too big a range, so a small amount was cropped ####
       if(files[dataset_number] == "Ardenna grisea_Codfish Island.csv"){
         if(month_number == 5){
-          rast_mask_final2 <- crop(rast_mask_final, 
-                                   extent(extent(rast_mask_final)[1],
-                                          extent(rast_mask_final)[2]-30000,
-                                          extent(rast_mask_final)[3]+20000,
-                                          extent(rast_mask_final)[4])) 
+          rast_mask_final2 <- raster::crop(rast_mask_final, 
+                                           extent(extent(rast_mask_final)[1],
+                                                  extent(rast_mask_final)[2]-30000,
+                                                  extent(rast_mask_final)[3]+20000,
+                                                  extent(rast_mask_final)[4])) 
         }
       }
       
       #PLOT & SAVE ####
-      mask_wgs84 <- projectRaster(rast_mask_final2,crs=proj_wgs84, over = F)
+      mask_wgs84 <- raster::projectRaster(rast_mask_final2, crs=proj_wgs84, over = F)
       
-      writeRaster(mask_wgs84, filename = KDERasName_sum, 
-                  format = "GTiff", overwrite = TRUE)
+      raster::writeRaster(mask_wgs84, filename = KDERasName_sum, 
+                          format = "GTiff", overwrite = TRUE)
       
       ## Plot
-      png(filename = paste0(dir_kernels, "/kde_plots/", KDE_ref, ".png"))
+      png(filename = paste0(dir_kernels, "kde_plots/", KDE_ref, ".png"))
       plot(mask_wgs84, main = KDE_ref)
       plot(land, add=T, col = "#66000000")
       dev.off()

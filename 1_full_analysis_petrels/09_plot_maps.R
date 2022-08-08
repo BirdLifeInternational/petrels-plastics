@@ -24,25 +24,26 @@ library(cowplot)
 #and so we might need to return to previous versions.
 
 ## Input data ####
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
 
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
-bird_dist <- raster(paste0(dir,"/outputs/08_all_species_distribution.tif"))
+land <- rgdal::readOGR(dsn = paste0("input_data/baselayer"), layer = "world-dissolved") 
+
+bird_dist <- raster::raster("outputs/08_all_species_distribution.tif")
 b <- bird_dist
 b[is.na(b)] <- 0 
-b_sum1 <- b/sum(getValues(b))
+b_sum1 <- b/sum(raster::getValues(b))
 b_sum1[is.na(bird_dist)] <- NA
 b_sum1[b_sum1 == 0] <- NA
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 
 ## rescale to 1
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
-p_sum1    <- plastics2/sum(getValues(plastics2))
+p_sum1    <- plastics2/sum(raster::getValues(plastics2))
 p_sum1[is.na(plastics)] <- NA
 
 yelblus <- c(brewer.pal(n = 9, name = "YlGnBu"),"#00172e")
@@ -55,12 +56,12 @@ proj <- "+proj=robin"
 #world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # project shapefile and raster to Robinson projection
-land_sf <- st_as_sf(land)
-world_prj <- land_sf %>% st_transform(proj)
-b_dens_proj <- projectRaster(b_sum1, crs = proj)
+land_sf <- sf::st_as_sf(land)
+world_prj <- land_sf %>% sf::st_transform(proj)
+b_dens_proj <- raster::projectRaster(b_sum1, crs = proj)
 
 # convert raster to dataframe for ggplot
-bat_df <- rasterToPoints(b_dens_proj) %>% as_tibble()
+bat_df <- raster::rasterToPoints(b_dens_proj) %>% as_tibble()
 
 # if you can simply mask it then create a polygon that is a square larger than the map area
 # then cookie cut out the map region
@@ -69,11 +70,11 @@ bat_df <- rasterToPoints(b_dens_proj) %>% as_tibble()
 CP <- sf::st_bbox(c(xmin = -180, xmax = 180, ymin = -90, ymax = 90)) %>%
   sf::st_as_sfc() %>%
   sf::st_segmentize(1) %>% st_set_crs(4326)
-CP_prj <- CP %>% st_transform(crs = proj)
+CP_prj <- CP %>% sf::st_transform(crs = proj)
 
 # get the bounding box in transformed coordinates and expand by 10%
-xlim <- st_bbox(CP_prj)[c("xmin", "xmax")]*1.2
-ylim <- st_bbox(CP_prj)[c("ymin", "ymax")]*1.2
+xlim <- sf::st_bbox(CP_prj)[c("xmin", "xmax")]*1.2
+ylim <- sf::st_bbox(CP_prj)[c("ymin", "ymax")]*1.2
 
 # turn into enclosing rectangle
 encl_rect <- 
@@ -83,29 +84,29 @@ encl_rect <-
       c(ylim[1], ylim[1], ylim[2], ylim[2], ylim[1])
     )
   ) %>%
-  st_polygon() %>%
-  st_sfc(crs = proj)
+  sf::st_polygon() %>%
+  sf::st_sfc(crs = proj)
 
 # calculate the area outside the earth outline as the difference
 # between the enclosing rectangle and the earth outline
-cookie <- st_difference(encl_rect, CP_prj)
+cookie <- sf::st_difference(encl_rect, CP_prj)
 
 #plot species richness ####
-colonies <- read.csv(paste0(dir,"/outputs/02_colony_locations.csv"))
+colonies <- read.csv("outputs/02_colony_locations.csv")
 colonies <- subset(colonies,!is.na(colonies$lat_colony))
 
 sp::coordinates(colonies) <- ~lon_colony+lat_colony
-proj4string(colonies) <- proj4string(land)
+sp::proj4string(colonies) <- sp::proj4string(land)
 
-colonies_prj <- spTransform(colonies,proj)
+colonies_prj <- sp::spTransform(colonies,proj)
 colonies_df <- as.data.frame(colonies_prj)
 
-sp_rich <- raster(paste0(dir,"/outputs/08_species_richness.tif"))
+sp_rich <- raster::raster("outputs/08_species_richness.tif")
 cols_sp_rich <- c("white",
                   colorRampPalette(yelblus)(sp_rich@data@max))
 # convert raster to dataframe for ggplot
-sp_rich_prj <- projectRaster(sp_rich, crs = proj)
-r_df <- rasterToPoints(sp_rich_prj) %>% as_tibble()
+sp_rich_prj <- raster::projectRaster(sp_rich, crs = proj)
+r_df <- raster::rasterToPoints(sp_rich_prj) %>% as_tibble()
 
 p1 <- ggplot() +
   theme_minimal() +
@@ -121,7 +122,7 @@ p1 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p1
 
-png(paste0(dir,"/outputs/09_species_richness.png"), 
+png("outputs/09_species_richness.png", 
     width=2000,height=1125)
 p1
 dev.off()
@@ -140,7 +141,7 @@ p2 <- ggplot() +
 
 #plot bird density ####
 
-png(paste0(dir,"/outputs/09_allspecies_density.png"),
+png("outputs/09_allspecies_density.png",
     width=2000,height=1125)
 p2
 dev.off()
@@ -148,12 +149,12 @@ dev.off()
 
 #plot plastic ####
 p_cap <- plastics
-p_max <- (max(getValues(plastics),na.rm = T))/10
+p_max <- (max(raster::getValues(plastics),na.rm = T))/10
 p_cap[p_cap > p_max] <- p_max
-p_dens_proj <- projectRaster(p_cap, crs = proj)
+p_dens_proj <- raster::projectRaster(p_cap, crs = proj)
 
 # convert raster to dataframe for ggplot
-p_df <- rasterToPoints(p_dens_proj) %>% as_tibble()
+p_df <- raster::rasterToPoints(p_dens_proj) %>% as_tibble()
 
 p3 <- ggplot() +
   theme_minimal() +
@@ -167,7 +168,7 @@ p3 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p3
 
-png(paste0(dir,"/outputs/09_plastic_capped_10percent.png"), 
+png("outputs/09_plastic_capped_10percent.png", 
     width=2000,height=1125)
 p3
 dev.off()
@@ -177,12 +178,12 @@ dev.off()
 exposure <- b_sum1 * p_sum1
 exposure[exposure == 0] <- NA
 e_cap <- exposure
-e_max <- (max(getValues(exposure),na.rm = T))/100
+e_max <- (max(raster::getValues(exposure),na.rm = T))/100
 e_cap[e_cap > e_max] <- e_max
-exposure_proj <- projectRaster(e_cap, crs = proj)
+exposure_proj <- raster::projectRaster(e_cap, crs = proj)
 
 # convert raster to dataframe for ggplot
-exposure_df <- rasterToPoints(exposure_proj) %>% as_tibble()
+exposure_df <- raster::rasterToPoints(exposure_proj) %>% as_tibble()
 p4 <- ggplot() +
   theme_minimal() +
   scale_fill_viridis(option="inferno",direction=-1)+
@@ -194,7 +195,7 @@ p4 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p4
 
-png(paste0(dir,"/outputs/09_exposure_capped_1percent.png"), 
+png("outputs/09_exposure_capped_1percent.png", 
     width=2000,height=1125)
 p4
 dev.off()
@@ -203,10 +204,10 @@ dev.off()
 #plot overlap + eez ####
 
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
-eez <- readOGR(dsn=paste0(dir,"/input_data/EEZ_land_union_v3_202003"), layer = "EEZ_Land_v3_202030") 
+eez <- rgdal::readOGR(dsn = "input_data/EEZ_land_union_v3_202003", layer = "EEZ_Land_v3_202030") 
 
-eez_sf <- st_as_sf(eez)
-eez_prj <- eez_sf %>% st_transform(proj)
+eez_sf <- sf::st_as_sf(eez)
+eez_prj <- eez_sf %>% sf::st_transform(proj)
 p5 <- ggplot() +
   theme_minimal() +
   scale_fill_viridis(option="inferno",direction=-1)+
@@ -218,15 +219,15 @@ p5 <- ggplot() +
   geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
   xlab("") + ylab("");p5
 
-png(paste0(dir,"/outputs/09_exposure_capped1percent_eez.png"), width=2000,height=1125)
+png("outputs/09_exposure_capped1percent_eez.png", width=2000,height=1125)
 p5
 dev.off()
 dev.off()
 
 #Case study figures for manuscript #####
 
-dir_1by1 <- paste0(dir,"/outputs/07_seasons")
-dat <- read.csv(paste0(dir, "/outputs/07_exposure_scores_by_season.csv"))
+dir_1by1 <- "outputs/07_seasons"
+dat <- read.csv("outputs/07_exposure_scores_by_season.csv")
 dat$species <- gsub("_.*","",dat$species_pop)
 head(dat)
 #1 storm petrel overlap for the breeding season for 5 colonies ####
@@ -237,10 +238,10 @@ files <- list.files(dir_1by1,pattern = "pelagicus")
 files <- files[files != "Hydrobates pelagicus_Malta_nonbr.tif"]
 
 for(i in 1:length(files)){
-  pop <- raster(paste0(dir_1by1,"/",files[i]))
+  pop <- raster::raster(paste0(dir_1by1,"/",files[i]))
   p2 <- pop
   p2[is.na(p2)] <- 0 
-  pop_sum1    <- p2/sum(getValues(p2))
+  pop_sum1    <- p2/sum(raster::getValues(p2))
   pop_sum1[is.na(pop)] <- NA
   
   pop_over <- p_sum1*pop_sum1
@@ -254,10 +255,10 @@ for(i in 1:length(files)){
 }
 
 # project shapefile and raster to Robinson projection
-b_dens_proj <- projectRaster(all_stormies, crs = proj)
+b_dens_proj <- raster::projectRaster(all_stormies, crs = proj)
 
 # convert raster to dataframe for ggplot
-bat_df <- rasterToPoints(b_dens_proj) %>% as_tibble()
+bat_df <- raster::rasterToPoints(b_dens_proj) %>% as_tibble()
 
 #add colony locations
 stormies_df <- colonies_df[colonies_df$species == "Hydrobates pelagicus",]
@@ -275,7 +276,7 @@ p1 <- ggplot() +
              colour="#004fd9",shape=18,size=30)+
   xlab("") + ylab("") ;p1
 
-png(paste0(dir,"/outputs/09_CaseStudy_Hydrobates_pelagicus.png"), 
+png("outputs/09_CaseStudy_Hydrobates_pelagicus.png", 
     width=10000,height=5625)
 p1
 dev.off()
@@ -291,22 +292,22 @@ dat_med <- dat_med[complete.cases(dat_med),];dat_med
 
 #the two species share the colony "Malta", so plot
 #data for this colony
-dir_seasons <- paste0(dir,"/outputs/07_seasons")
+dir_seasons <- "outputs/07_seasons"
 files <- list.files(dir_seasons,pattern = "diom")
 files <- files[str_detect(files,"Malta_nonbr")]
-all_scopolis <- raster(paste0(dir_1by1,"/",files[1]))
+all_scopolis <- raster::raster(paste0(dir_1by1,"/",files[1]))
 
 files <- list.files(dir_seasons,pattern = "yelk")
 files <- files[str_detect(files,"Malta_nonbr")]
-all_yelk <- raster(paste0(dir_1by1,"/",files[1]))
+all_yelk <- raster::raster(paste0(dir_1by1,"/",files[1]))
 
 # project shapefile and raster to Robinson projection
-yelk_dens_proj <- projectRaster(all_yelk, crs = proj)
-yelk_df <- rasterToPoints(yelk_dens_proj) %>% as_tibble()
+yelk_dens_proj <- raster::projectRaster(all_yelk, crs = proj)
+yelk_df <- raster::rasterToPoints(yelk_dens_proj) %>% as_tibble()
 names(yelk_df)[3] <- "layer"
 
-scop_dens_proj <- projectRaster(all_scopolis, crs = proj)
-scop_df <- rasterToPoints(scop_dens_proj) %>% as_tibble()
+scop_dens_proj <- raster::projectRaster(all_scopolis, crs = proj)
+scop_df <- raster::rasterToPoints(scop_dens_proj) %>% as_tibble()
 names(scop_df)[3] <- "layer"
 
 #add colony locations
@@ -321,7 +322,7 @@ no0_yelk[no0_yelk==0] <- NA
 ud50_yelk <-  yelk_dens_proj
 ud50_yelk[ud50_yelk>quantile(no0_yelk, probs = c((75/95)), type=7,names = FALSE)] <- 1
 plot(ud50_yelk)
-p_yelk <- rasterToContour(ud50_yelk)
+p_yelk <- raster::rasterToContour(ud50_yelk)
 p_yelk2 <- p_yelk[p_yelk$level == 0.5,]
 plot(p_yelk2)
 poly_yelk <- st_as_sf(p_yelk2)
@@ -331,7 +332,7 @@ no0_scop[no0_scop==0] <- NA
 ud50_scop <-  scop_dens_proj
 ud50_scop[ud50_scop>quantile(no0_scop, probs = c((75/95)), type=7,names = FALSE)] <- 1
 plot(ud50_scop)
-p_scop <- rasterToContour(ud50_scop)
+p_scop <- raster::rasterToContour(ud50_scop)
 p_scop2 <- p_scop[p_scop$level == 0.5,]
 plot(p_scop2)
 poly_scop <- st_as_sf(p_scop2)
@@ -370,13 +371,13 @@ scop<- ggplot() +
              colour="#004fd9",shape=18,size=24)+
   xlab("") + ylab("") ;scop
 
-png(paste0(dir,"/outputs/09_CaseStudy_YelkuoanShearwater.png"), 
+png("outputs/09_CaseStudy_YelkuoanShearwater.png", 
     width=5000,height=2625)
 yelk
 dev.off()
 dev.off()
 
-png(paste0(dir,"/outputs/09_CaseStudy_ScopoliShearwater.png"), 
+png("outputs/09_CaseStudy_ScopoliShearwater.png", 
     width=5000,height=2625)
 scop
 dev.off()
@@ -391,14 +392,14 @@ dat_cookii <- dat[dat$species == "Pterodroma cookii",];dat_cookii
 files <- list.files(dir_1by1,pattern = "cook")
 files <- files[str_detect(files,"nonbr")]
 
-lb_pop <- raster(paste0(dir_1by1,"/",files[2]))
+lb_pop <- raster::raster(paste0(dir_1by1,"/",files[2]))
 m2 <- lb_pop
 m2[is.na(m2)] <- 0 
-lb_sum1    <- m2/sum(getValues(m2))
+lb_sum1    <- m2/sum(raster::getValues(m2))
 lb_sum1[is.na(plastics)] <- NA
 
 lb_exp <- lb_sum1*p_sum1
-lb_df <- rasterToPoints(lb_exp) %>% as_tibble()
+lb_df <- raster::rasterToPoints(lb_exp) %>% as_tibble()
 names(lb_df)[3] <- "layer"
 
 #add colony locations
@@ -412,7 +413,7 @@ no0_lb[no0_lb==0] <- NA
 ud50_lb <-  lb_pop
 ud50_lb[ud50_lb>quantile(no0_lb, probs = c((75/95)), type=7,names = FALSE)] <- 1
 plot(ud50_lb)
-p_lb <- rasterToContour(ud50_lb)
+p_lb <- raster::rasterToContour(ud50_lb)
 p_lb2 <- p_lb[p_lb$level == 0.5,]
 plot(p_lb2)
 poly_lb <- st_as_sf(p_lb2)
@@ -431,16 +432,16 @@ lb <- ggplot() +
              colour="#004fd9",shape=18,size=24)+
   xlab("") + ylab("") ;lb
 
-png(paste0(dir,"/outputs/09_CaseStudy_CooksPetrel_LittleBarrier.png"), 
+png("outputs/09_CaseStudy_CooksPetrel_LittleBarrier.png", 
     width=5000,height=2625)
 lb
 dev.off()
 
-cod_pop <- raster(paste0(dir_1by1,"/",files[1]))
+cod_pop <- raster::raster(paste0(dir_1by1,"/",files[1]))
 
 m2 <- cod_pop
 m2[is.na(m2)] <- 0 
-cod_sum1    <- m2/sum(getValues(m2))
+cod_sum1    <- m2/sum(raster::getValues(m2))
 cod_sum1[is.na(m)] <- NA
 
 cod_exp <- cod_sum1*p_sum1
@@ -451,7 +452,7 @@ cod_exp <- cod_sum1*p_sum1
 #dens_proj <- projectRaster(cod_exp, crs = proj)
 #plot(dens_proj)
 #df <- rasterToPoints(dens_proj) %>% as_tibble()
-cf_df <- rasterToPoints(cod_exp) %>% as_tibble()
+cf_df <- raster::rasterToPoints(cod_exp) %>% as_tibble()
 names(cf_df)[3] <- "layer"
 
 #add colony locations
@@ -464,7 +465,7 @@ no0_cf[no0_cf==0] <- NA
 ud50_cf <-  cod_pop
 ud50_cf[ud50_cf>quantile(no0_cf, probs = c((75/95)), type=7,names = FALSE)] <- 1
 plot(ud50_cf)
-p_cf <- rasterToContour(ud50_cf)
+p_cf <- raster::rasterToContour(ud50_cf)
 p_cf2 <- p_cf[p_cf$level == 0.5,]
 plot(p_cf2)
 poly_cf <- st_as_sf(p_cf2)
@@ -484,7 +485,7 @@ cf <- ggplot() +
              colour="#004fd9",shape=18,size=24)+
   xlab("") + ylab("") ;cf
 
-png(paste0(dir,"//outputs/09_CaseStudy_CooksPetrel_Codfish.png"), 
+png("outputs/09_CaseStudy_CooksPetrel_Codfish.png", 
     width=5000,height=2625)
 cf
 dev.off()

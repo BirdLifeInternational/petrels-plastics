@@ -18,16 +18,16 @@ library(viridis)#0.5.1
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
 
-pops <- read.csv(paste0(dir,"/outputs/06_phenology.csv"))
+pops <- read.csv("outputs/06_phenology.csv")
 
 #EEZ ####
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
-eez_file <- readOGR(dsn=paste0(dir,"/input_data/EEZ_land_union_v3_202003"), layer = "EEZ_Land_v3_202030") 
+eez_file <- rgdal::readOGR(dsn = "input_data/EEZ_land_union_v3_202003", layer = "EEZ_Land_v3_202030") 
 
 #make a polygon for the high seas
 #1. make polygon covering whole earth
@@ -64,22 +64,22 @@ tail(eez@data)
 
 plot(eez,col="blue")
 
-sp_files <- list.files(paste0(dir,"/outputs/06_species/"))
+sp_files <- list.files("outputs/06_species/")
 
-bird_dist <- raster(paste0(dir,"/outputs/08_all_species_distribution.tif"))
+bird_dist <- raster::raster("outputs/08_all_species_distribution.tif")
 b <- bird_dist
 b[is.na(b)] <- 0 
-b_sum1 <- b/sum(getValues(b))
+b_sum1 <- b/sum(raster::getValues(b))
 b_sum1[is.na(bird_dist)] <- NA
 b_sum1[b_sum1 == 0] <- NA
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster::raster("outputs/00_PlasticsRaster.tif")
 
 ## rescale to 1
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
-p_sum1    <- plastics2/sum(getValues(plastics2))
+p_sum1    <- plastics2/sum(raster::getValues(plastics2))
 p_sum1[is.na(plastics)] <- NA
 
 # exposure ####
@@ -158,7 +158,7 @@ eezs_used2 <- rbind(eezs_used_notjoint,joint_regime,joint_regime2)
 eezs_used <- eezs_used2
 
 #for landlocked countries, add to nearest country
-#Vatican + San Marino = Itlay
+#Vatican + San Marino = Italy
 
 italy <- c("Vatican City","San Marino")
 
@@ -182,7 +182,7 @@ all_sovereigns <- c(eezs_used$SOVEREIGN1,eezs_used$SOVEREIGN2,eezs_used$SOVEREIG
 unique(all_sovereigns) 
 length(unique(all_sovereigns)) - 2 #high seas and NA are not sovereigns
 
-write.csv(eezs_used,paste0(dir,"/outputs/11_eezs_used_all_species.csv"),
+write.csv(eezs_used, "outputs/11_eezs_used_all_species.csv",
           row.names = F)
 
 
@@ -235,7 +235,7 @@ plot1 <- ggplot(eezs_country_highexposure,aes(
   scale_fill_viridis(option="inferno",discrete = T) +
   theme_bw(); plot1
 
-png(paste0(dir,"/outputs/11_eez_allspecies.png"), 
+png("outputs/11_eez_allspecies.png", 
     width=700,height=2000)
 plot1
 dev.off()
@@ -243,7 +243,7 @@ dev.off()
 
 
 write.csv(eezs_country,
-          paste0(dir,"/outputs/11_eezs_by_country.csv"),
+          "outputs/11_eezs_by_country.csv",
                  row.names=F)
 
 

@@ -27,24 +27,24 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
-proj_wgs84 <- CRS(proj4string(land))
+land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
+proj_wgs84 <- sp::CRS(sp::proj4string(land))
 
 ## TO SAVE RESULTS
-dir.create(paste0(dir,"/outputs/06_phenology/")) 
-dir_phen <- paste0(dir,"/outputs/06_phenology") 
+dir.create("outputs/06_phenology/")
+dir_phen <- "outputs/06_phenology/"
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std);files
 
 pops <- as.data.frame(files)
 names(pops) <- "species_pop"
-pops$species_pop <- str_remove(pops$species_pop,".csv")
+pops$species_pop <- stringr::str_remove(pops$species_pop,".csv")
 
 head(pops)
 pops$breeding <- NA
@@ -55,7 +55,7 @@ par(mfrow=c(2,1))
 
 for(dataset_number in c(1:length(files))){ #
   print(files[dataset_number])
-  name_png <- str_remove(files[dataset_number],".csv")
+  name_png <- stringr::str_remove(files[dataset_number],".csv")
   df <- read.csv(paste0(data_std,files[dataset_number]))  
   
   if(files[dataset_number] == "Procellaria aequinoctialis_Crozet.csv"){
@@ -76,8 +76,8 @@ for(dataset_number in c(1:length(files))){ #
   months <- sort(unique(df$month))
   #
   #calculate the distance from each point to the colony
-  df$coldist <- pointDistance(matrix(c(df$longitude, df$latitude),  ncol=2),
-                              matrix(c(df$lon_colony,df$lat_colony),ncol=2),longlat=TRUE)/1000
+  df$coldist <- raster::pointDistance(matrix(c(df$longitude, df$latitude),  ncol=2),
+                                      matrix(c(df$lon_colony,df$lat_colony),ncol=2),longlat=TRUE)/1000
   #make a column to combine dates into a single "year
   df$time_of_year <- paste0("1000",substr(df$dtime,5,nchar(df$dtime[1])))
   
@@ -137,7 +137,7 @@ for(dataset_number in c(1:length(files))){ #
     df$br <- months_sum$br[match(df$month,months_sum$month)]
     palette(brewer.pal(n = 12, name = "Paired"))
     
-    png(filename = paste0(dir_phen,"/" ,name_png, ".png"))
+    png(filename = paste0(dir_phen, name_png, ".png"))
     par(mfrow=c(2,1),mar = c(2.2, 4, 0.4, 0.4))
     plot(latitude~longitude, data=df, type="n", asp=1, 
          xlim=c(min(df$longitude)+0.2,max(df$longitude)-0.2), 
@@ -169,7 +169,7 @@ for(dataset_number in c(1:length(files))){ #
     
     palette(brewer.pal(n = 12, name = "Paired"))
     
-    png(filename = paste0(dir_phen,"/" ,name_png, ".png"))
+    png(filename = paste0(dir_phen, name_png, ".png"))
     par(mfrow=c(2,1),mar = c(2.2, 4, 0.4, 0.4))
     plot(latitude~longitude, data=df, type="n", asp=1, 
          xlim=c(min(df$longitude)+0.2,max(df$longitude)-0.2), 
@@ -190,22 +190,22 @@ for(dataset_number in c(1:length(files))){ #
 }
 
 
-pops <- read.csv(paste0(dir,"/input_data/breeding_months.csv"))
+pops <- read.csv("input_data/breeding_months.csv")
 
 head(pops)
 pops$tracks_breeding <- as.character(pops$tracks_breeding)
 pops$nonbreeding <- as.character(pops$nonbreeding)
 pops$ref_breeding <- as.character(pops$ref_breeding)
 pops$ref_nonbreeding <- as.character(pops$ref_nonbreeding)
-pops$com_breeding <- as.character(pops$com_breeding)
-pops$com_nonbreeding <- as.character(pops$com_nonbreeding)
+# pops$com_breeding <- as.character(pops$com_breeding)  # these fields aren't in the dataframe
+# pops$com_nonbreeding <- as.character(pops$com_nonbreeding)
 
 pops$tracks_breeding <- ifelse(nchar(pops$tracks_breeding) == 1,paste0("0",pops$tracks_breeding),pops$tracks_breeding)
 pops$nonbreeding <- ifelse(nchar(pops$nonbreeding) == 1,paste0("0",pops$nonbreeding),pops$nonbreeding)
 pops$ref_breeding <- ifelse(nchar(pops$ref_breeding) == 1,paste0("0",pops$ref_breeding),pops$ref_breeding)
 pops$ref_nonbreeding <- ifelse(nchar(pops$ref_nonbreeding) == 1,paste0("0",pops$ref_nonbreeding),pops$ref_nonbreeding)
-pops$com_breeding <- ifelse(nchar(pops$com_breeding) == 1,paste0("0",pops$com_breeding),pops$com_breeding)
-pops$com_nonbreeding <- ifelse(nchar(pops$com_nonbreeding) == 1,paste0("0",pops$com_nonbreeding),pops$com_nonbreeding)
+# pops$com_breeding <- ifelse(nchar(pops$com_breeding) == 1,paste0("0",pops$com_breeding),pops$com_breeding)  # these fields aren't in the dataframe
+# pops$com_nonbreeding <- ifelse(nchar(pops$com_nonbreeding) == 1,paste0("0",pops$com_nonbreeding),pops$com_nonbreeding)
 
 pops$over_val_br <- NA
 pops$over_val_nonbr <- NA
@@ -213,7 +213,7 @@ pops$pop_exposure <- NA
 
 
 
-write.csv(pops,paste0(dir,"/outputs/06_phenology.csv"),
+write.csv(pops, "outputs/06_phenology.csv",
           row.names = F)
 
 

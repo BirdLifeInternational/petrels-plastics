@@ -29,31 +29,31 @@ str_split_n <- function(string, pattern, n) {
 
 ## GENERAL DIRECTIONS AND FILES ####
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
-pop_rasters <- paste0(dir,"/outputs/05_populations")
-files <- list.files(pop_rasters, pattern="tif");files
+pop_rasters <- "outputs/05_populations"
+files <- list.files(pop_rasters, pattern="tif$");files
 
-outputs <- paste0(dir,"/outputs/12_breeding_countries")
+outputs <- "outputs/12_breeding_countries"
 dir.create(outputs)
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
-p_sum1    <- plastics2/sum(getValues(plastics2))
+p_sum1    <- plastics2/sum(raster::getValues(plastics2))
 p_sum1[is.na(plastics)] <- NA
 
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
-pops <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))  
+pops <- read.csv("outputs/07_exposure_scores_by_season.csv")  
 pops$tracks_breeding <- NULL
 pops$tracks_nonbreeding <- NULL
 pops$ref_breeding <- NULL
 pops$ref_nonbreeding <- NULL
 
-pop_exposure <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))  
+pop_exposure <- read.csv("outputs/05_exposure_scores_by_population.csv")
 
 #add up the species ####
 
@@ -104,7 +104,7 @@ length(unique(pops$breeding_country))
 #this will weight by number of tracked months
 #read in pop sizes
 
-pop_sizes <- read.csv(paste0(dir,"/input_data/population_sizes.csv"))
+pop_sizes <- read.csv("input_data/population_sizes.csv")
 pop_sizes$site <- NULL
 pop_sizes$colony <- NULL
 pop_sizes$source_est_n_breeding_pairs <- NULL
@@ -192,7 +192,7 @@ sp_country_list$seasons <- NA
 sp_country_list$n_pops <- NA
 sp_country_list$score <- NA
 
-all_files <- list.files(pop_rasters, pattern=".tif");all_files
+all_files <- list.files(pop_rasters, pattern=".tif$");all_files
 
 for (i in 1:nrow(sp_country_list)){
   
@@ -213,7 +213,7 @@ for (i in 1:nrow(sp_country_list)){
     
   }
   sp_country_list$seasons[i] <- max(sp_country_df$seasons)
-  #raster_name <- paste0(dir,"/scripts_results/06_countries_over/",
+  #raster_name <- paste0("scripts_results/06_countries_over/",
   #                      sp_country_list$sp_country[i],".tif")
   #writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
 
@@ -233,7 +233,7 @@ for (i in 1:nrow(sp_country_list)){
   over_val <- round(sum(getValues(over_score))*1000000,4)
   
   sp_country_list$score[i] <- over_val
-  raster_name <- paste0(dir,"/outputs/12_breeding_countries/",
+  raster_name <- paste0("outputs/12_breeding_countries/",
                         sp_country_list$sp_country[i],".tif")
   writeRaster(over, filename=raster_name, format="GTiff", overwrite=TRUE)
   print(i)
@@ -244,5 +244,5 @@ sp_country_list$breeding_country <- str_split_n(sp_country_list$sp_country,"_",2
 sp_country_list
 
 write.csv(sp_country_list,
-          paste0(dir,"/outputs/12_species_country_scores.csv"),
+          "outputs/12_species_country_scores.csv",
           row.names = F)

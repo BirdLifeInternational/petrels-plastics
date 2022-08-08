@@ -5,13 +5,11 @@
 rm(list=ls())
 library(tidyverse)
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
-
-dir.create(paste0(dir, "/outputs/02_pops/")) 
+## set up folders
+dir.create("outputs/02_pops/")
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/01_cleaning_data/")
+data_std <- "outputs/01_cleaning_data/"
 files <- list.files(data_std,pattern = ".csv");files
 
 files_list <- as.data.frame(files)
@@ -102,7 +100,7 @@ View(files_list)
 
 files_list$population <- paste0(files_list$colony,", ",files_list$site)
 
-#Not sure why but the brackets are messing up later scripts
+#Remove brackets from names (they mess up filepaths)
 files_list$pop <- ifelse(files_list$pop == 
                              "Falkland Islands (Islas Malvinas)",
                            "Falkland Islands",
@@ -114,19 +112,18 @@ files_list$pop <- ifelse(files_list$pop ==
                          files_list$pop)
 
 files_list$sp_pop <- paste(files_list$species,files_list$pop,sep="_")
-write.csv(files_list,paste0(dir,"/outputs/02_pops.csv"),row.names = F)
+write.csv(files_list,"outputs/02_pops.csv",row.names = F)
 
 pops <- unique(files_list$sp_pop)
 pops
 
-setwd(data_std)                       #Set to the folder with your files
-output <- paste0(dir,"/outputs/02_pops")
+output <- "outputs/02_pops"
 
 
 for(i in 1:length(pops)){
   sp_pops <- subset(files_list,sp_pop == pops[i])
   
-  Data<-do.call("rbind",lapply(as.character(sp_pops$files),read.csv,stringsAsFactors = F))  #Read all the files and combine
+  Data<-do.call("rbind",lapply(as.character(paste0(data_std, sp_pops$files)),read.csv,stringsAsFactors = F))  #Read all the files and combine
 
   print(sp_pops)
   
@@ -140,7 +137,7 @@ for(i in 1:length(pops)){
   
 }
 
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"  # now the raw data files are here
 files <- list.files(data_std);files
 
 #Looked at plots for kernels script and found some issues:
@@ -334,7 +331,7 @@ sum(sample_sizes$locations)
 
 # tracking years ####
 
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std,pattern = ".csv");files
 pops <- as.data.frame(files)
 pops$sp_pop <- NA
@@ -396,7 +393,7 @@ year_sample_sizes <- pops %>%
 
 sample_sizes$mean_tracking_year <- round(year_sample_sizes$mean_year)
 
-write.csv(sample_sizes,paste0(dir,"/outputs/02_sample_sizes_species.csv"),
+write.csv(sample_sizes,"outputs/02_sample_sizes_species.csv",
           row.names = F)
 
 #sample sizes by population
@@ -421,11 +418,11 @@ sample_sizes_pops$sp_pop  <- NULL
 
 head(sample_sizes_pops)
 
-write.csv(sample_sizes_pops,paste0(dir,"/outputs/02_sample_sizes_pops.csv"),
+write.csv(sample_sizes_pops,"outputs/02_sample_sizes_pops.csv",
           row.names = F)
 
 #save all tracking locations in 1 csv
-write.csv(all_pops,paste0(dir,"/outputs/02_all_locations.csv"), row.names = F)
+write.csv(all_pops,"outputs/02_all_locations.csv", row.names = F)
 
 #save colony locations
 all_pops$lat_colony_2dp <- round(all_pops$lat_colony,2)
@@ -451,7 +448,7 @@ all_colonies <- subset(all_colonies, sp_pop_colloc != "Ardenna bulleri Aorangi I
 
 all_colonies$sp_pop_colloc <- NULL
 
-write.csv(all_colonies,paste0(dir,"/outputs/02_colony_locations.csv"), row.names = F)
+write.csv(all_colonies,"outputs/02_colony_locations.csv", row.names = F)
 
 
 

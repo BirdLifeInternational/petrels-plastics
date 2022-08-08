@@ -29,28 +29,26 @@ lu=function (x=x) length(unique(x))
 
 ######### GENERAL DIRECTORIES AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
-
-dir <- paste0(homedir,"/outputs/01_cleaning_data/")
-dir_eq <- paste0(dir,"/equinox/")
-dir_maps <- paste0(dir_eq,"/maps/")
+## set up input and output folders
+dir <- "outputs/01_cleaning_data/"
+dir_eq <- paste0(dir,"equinox/")
+dir_maps <- paste0(dir_eq,"maps/")
 
 #if running for the first time, create directories for outputs
-#dir.create(paste0(homedir,"/outputs/")) 
-#dir.create(dir) 
-#dir.create(dir_eq) 
-#dir.create(dir_maps)
-#dir.create(paste0(dir,"/equinox_filtered/"))
-#dir.create(paste0(dir,"/maps/"))
+# dir.create("outputs/")
+# dir.create(dir) 
+# dir.create(dir_eq) 
+# dir.create(dir_maps)
+# dir.create(paste0(dir,"equinox_filtered/"))
+# dir.create(paste0(dir,"maps/"))
 
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(homedir,"/input_data/baselayer"), layer = "world-dissolved")  
+land <- readOGR(dsn = "input_data/baselayer", layer = "world-dissolved")  
 
 #Read in a list of the names of the target species for the study
-species_list <- read.csv(paste0(homedir,"/input_data/Species_list_IUCN.csv"))
+species_list <- read.csv("input_data/Species_list_IUCN.csv")
 
-equinoxes <- read.csv(paste0(homedir,"/input_data/equinoxes.csv"))
+equinoxes <- read.csv("input_data/equinoxes.csv")
 head(equinoxes)
 equinoxes$mar <- as.POSIXct(equinoxes$mar, format = "%d/%m/%Y %H:%M:%S", tz = "GMT")
 equinoxes$sep <- as.POSIXct(equinoxes$sep, format = "%d/%m/%Y %H:%M:%S", tz = "GMT")
@@ -62,9 +60,9 @@ equinoxes$sep_start <- equinoxes$sep - (7*24*60*60)
 equinoxes$sep_end <- equinoxes$sep + (21*24*60*60)
 
 ## DIRECTION OF THE ORIGINAL SPECIES FILES (AS DOWNLOADED FROM THE SEABIRD TRACKING DATABASE)
-datasets <- paste0(homedir,"/input_data/tracking_data/")
+datasets <- "input_data/tracking_data/"
 
-files <- list.files(datasets, pattern="csv");files
+files <- list.files(datasets, pattern = "csv");files
 
 skipped_age <- data.frame()
 skipped_species <- data.frame()
@@ -106,10 +104,10 @@ for(dataset_number in 1:length(files)){
     
     #create a bespoke equal areas projections
     mean_loc <- geosphere::geomean(cbind(df$longitude,df$latitude))
-    DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
-                         "+lat_0=",mean_loc[2]))
+    DgProj <- sp::CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
+                         " +lat_0=",mean_loc[2]))
     #remove non-adults
-    df <- subset(df,age != "immature")
+    df <- subset(df, age != "immature" & age != "juvenile")
     print(table(df$age))
     
     if(nrow(df) != 0){
@@ -150,7 +148,7 @@ for(dataset_number in 1:length(files)){
               b <- a[order(a$dtime), ]
               # Remove completely-duplicated rows
               b <- b[!duplicated(b),]
-              b$dtime <- adjust.duplicateTimes(b$dtime, b$track_id)
+              b$dtime <- trip::adjust.duplicateTimes(b$dtime, b$track_id)
               # Change times to hours since first fix
               b$hours <- as.numeric(difftime(b$dtime, min(b$dtime),units = "hours"))
               x2 <- rbind(x2, as.data.frame(b))} else {
@@ -162,11 +160,11 @@ for(dataset_number in 1:length(files)){
           ## APPLY MCCONNELL SPEED FILTER IN TRIP PACKAGE TO REMOVE ERRONEOUS FIXES
           x2 <- data.frame(lat = x1$latitude, lon = x1$longitude, DateTime = x1$dtime, id = x1$track_id)
           ## CREATE COORDINATE VARIABLE
-          coordinates(x2) <- c("lon","lat")
+          sp::coordinates(x2) <- c("lon","lat")
           ## CREATE TRIP OBJECT
-          tr <- trip(x2, c("DateTime","id"))
+          tr <- trip::trip(x2, c("DateTime","id"))
           ## MCCONNELL SPEED FILTER; ignore coordinates warning as data are lonlat
-          x1$Filter <- speedfilter(tr, max.speed = 90)
+          x1$Filter <- trip::speedfilter(tr, max.speed = 90)
           ## REMOVE FILTERED COORDINATES
           x1 <- subset(x1, x1$Filter==TRUE)
           x1$hours <- NULL
@@ -179,11 +177,11 @@ for(dataset_number in 1:length(files)){
         ################## LINEAR INTERPOLATION PTT AND GPS DATA #################
         x4 <- df
         
-        coordinates(x4) <- ~longitude+latitude
-        proj4string(x4) <- CRS(proj4string(land))
+        sp::coordinates(x4) <- ~longitude+latitude
+        sp::proj4string(x4) <- sp::CRS(sp::proj4string(land))
         
-        ## changing  to equa area projection
-        x4_laea <- spTransform(x4, DgProj)
+        ## changing  to equal area projection
+        x4_laea <- sp::spTransform(x4, DgProj)
         x4 <- as.data.frame(x4_laea)
         ## INTERPOLATION
         x5 <- data.frame()
@@ -211,9 +209,9 @@ for(dataset_number in 1:length(files)){
             #sort by bird then time
             #tracks <- dplyr::arrange(tracks, bird_id, track_time)
             
-            traj <- as.ltraj(xy=data.frame(tracks$longitude, tracks$latitude), 
-                             date=as.POSIXct(tracks$track_time, origin="1970/01/01", tz="GMT"), 
-                             id=tracks$id_stage, typeII = TRUE)
+            traj <- adehabitatLT::as.ltraj(xy=data.frame(tracks$longitude, tracks$latitude), 
+                                           date=as.POSIXct(tracks$track_time, origin="1970/01/01", tz="GMT"), 
+                                           id=tracks$id_stage, typeII = TRUE)
             
             ## Rediscretization every 12 hours (43200 seconds)
             tr <- adehabitatLT::redisltraj(traj, 43200, type="time")
@@ -297,7 +295,7 @@ for(dataset_number in 1:length(files)){
           
         }
         #export plots
-        png(filename = paste0(homedir,"/outputs/01_cleaning_data/equinox_filtered/", str_remove(files[dataset_number],".csv"),".png"))
+        png(filename = paste0("outputs/01_cleaning_data/equinox_filtered/", str_remove(files[dataset_number],".csv"),".png"))
         par(mfrow=c(2,1),mar = c(3, 4, 1, 1))
         plot(latitude~longitude, data=df, type="n", asp=1, main="", 
              frame = T, xlab="", ylab=paste(df$scientific_name[1]))
@@ -323,10 +321,10 @@ for(dataset_number in 1:length(files)){
         
         
         
-        coordinates(df) <- ~longitude+latitude
-        proj4string(df) <- CRS(proj4string(land))
+        sp::coordinates(df) <- ~longitude+latitude
+        sp::proj4string(df) <- sp::CRS(sp::proj4string(land))
         ## changing projection
-        x4_laea <- spTransform(df, DgProj)
+        x4_laea <- sp::spTransform(df, DgProj)
         df <- as.data.frame(x4_laea)
       }
       
@@ -353,8 +351,8 @@ for(dataset_number in 1:length(files)){
         
         print(col[i])
         sub_col <- x7[x7$colony_name==col[i],]
-        coordinates(sub_col) <- ~longitude+latitude
-        proj4string(sub_col) <- DgProj
+        sp::coordinates(sub_col) <- ~longitude+latitude
+        sp::proj4string(sub_col) <- DgProj
         
         ## removing land overlap at colony
         sub_col@data$device <- factor(sub_col@data$device)
@@ -368,13 +366,13 @@ for(dataset_number in 1:length(files)){
             
             if(col[i] != "At-Sea"){
               df_col <- data.frame(cbind(lon=sub_col$lon_colony[1], lat=sub_col$lat_colony[1]))
-              coordinates(df_col) <- ~lon+lat
+              sp::coordinates(df_col) <- ~lon+lat
               ## assigning projection
-              proj4string(df_col) <- CRS(proj4string(land))
+              sp::proj4string(df_col) <- sp::CRS(sp::proj4string(land))
               ## changing projection
-              col_laea <- spTransform(df_col, DgProj)
+              col_laea <- sp::spTransform(df_col, DgProj)
               ## buffers
-              buf_small <- gBuffer(col_laea, width = 5000)
+              buf_small <- rgeos::gBuffer(col_laea, width = 5000)
               gps <- a[is.na(over(a, buf_small)),]
             } else {
               gps <- a[is.na(a),]
@@ -389,13 +387,13 @@ for(dataset_number in 1:length(files)){
             
             if(col[i] != "At-Sea"){
               df_col <- data.frame(cbind(lon=sub_col$lon_colony[1], lat=sub_col$lat_colony[1]))
-              coordinates(df_col) <- ~lon+lat
+              sp::coordinates(df_col) <- ~lon+lat
               ## assigning projection
-              proj4string(df_col) <- CRS(proj4string(land))
+              sp::proj4string(df_col) <- sp::CRS(sp::proj4string(land))
               ## changing projection
-              col_laea <- spTransform(df_col, DgProj)
+              col_laea <- sp::spTransform(df_col, DgProj)
               ## buffers
-              buf_large <- gBuffer(col_laea, width = 15000)
+              buf_large <- rgeos::gBuffer(col_laea, width = 15000)
               ptt <- a[is.na(over(a, buf_large)),]
             } else {
               ptt <- a
@@ -424,10 +422,10 @@ for(dataset_number in 1:length(files)){
       } 
       
       df_all <-  rbind(gps_df, ptt_df, gls_df)
-      coordinates(df_all) <- ~longitude+latitude
-      proj4string(df_all) <- DgProj
+      sp::coordinates(df_all) <- ~longitude+latitude
+      sp::proj4string(df_all) <- DgProj
       ## changing projection
-      df_all_wgs <- spTransform(df_all, (proj4string(land)))
+      df_all_wgs <- sp::spTransform(df_all, (sp::proj4string(land)))
       df_all_wgs <- as.data.frame(df_all_wgs)
       df <- df_all_wgs
       df$original_track_id <- NULL
@@ -522,8 +520,8 @@ for(dataset_number in 1:length(files)){
   
   #create a bespoke equal areas projections
   mean_loc <- geosphere::geomean(cbind(df$longitude,df$latitude))
-  DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
-                       "+lat_0=",mean_loc[2]))
+  DgProj <- sp::CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
+                       " +lat_0=",mean_loc[2]))
   
   
   
@@ -543,10 +541,10 @@ for(dataset_number in 1:length(files)){
   
   ############# DATA CLEANING #############
   
-  coordinates(df) <- ~longitude+latitude
-  proj4string(df) <- CRS(proj4string(land))
+  sp::coordinates(df) <- ~longitude+latitude
+  sp::proj4string(df) <- sp::CRS(sp::proj4string(land))
   ## changing projection
-  x4_laea <- spTransform(df, DgProj)
+  x4_laea <- sp::spTransform(df, DgProj)
   df <- as.data.frame(x4_laea)
   
   
@@ -571,8 +569,8 @@ for(dataset_number in 1:length(files)){
     
     print(col[i])
     sub_col <- x7[x7$colony_name==col[i],]
-    coordinates(sub_col) <- ~longitude+latitude
-    proj4string(sub_col) <- DgProj
+    sp::coordinates(sub_col) <- ~longitude+latitude
+    sp::proj4string(sub_col) <- DgProj
     
     ## removing land overlap at colony
     sub_col@data$device <- factor(sub_col@data$device)
@@ -601,10 +599,10 @@ for(dataset_number in 1:length(files)){
   } 
   
   df_all <-  rbind(gls_df)
-  coordinates(df_all) <- ~longitude+latitude
-  proj4string(df_all) <- DgProj
+  sp::coordinates(df_all) <- ~longitude+latitude
+  sp::proj4string(df_all) <- DgProj
   ## changing projection
-  df_all_wgs <- spTransform(df_all, (proj4string(land)))
+  df_all_wgs <- sp::spTransform(df_all, (sp::proj4string(land)))
   df_all_wgs <- as.data.frame(df_all_wgs)
   df <- df_all_wgs
   df$original_track_id <- NULL

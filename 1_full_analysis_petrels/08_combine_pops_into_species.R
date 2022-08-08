@@ -30,17 +30,17 @@ str_split_n <- function(string, pattern, n) {
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
-outputs <- paste0(dir,"/outputs/08_species")
+outputs <- "/outputs/08_species"
 dir.create(outputs)
 
-pop_rasters <- paste0(dir,"/outputs/05_populations")
-files <- list.files(pop_rasters, pattern="tif");files
+pop_rasters <- "outputs/05_populations"
+files <- list.files(pop_rasters, pattern="tif$");files  # adjusted to not return .tif.aux.xml
 
-pops <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))  
-tracked_seasons <- read.csv(paste0(dir,"/input_data/breeding_months.csv"))
+pops <- read.csv("outputs/05_exposure_scores_by_population.csv")  
+tracked_seasons <- read.csv("input_data/breeding_months.csv")
 head(tracked_seasons)
 pops$breeding <- tracked_seasons$breeding
 pops$nonbreeding <- tracked_seasons$nonbreeding
@@ -52,7 +52,7 @@ pops$seasons <- ifelse(is.na(pops$nonbreeding)|is.na(pops$nonbreeding),0.5,1)
 #this will weight by number of tracked season
 #and the relative population sizes
 
-pop_sizes <- read.csv(paste0(dir,"/input_data/population_sizes.csv"))
+pop_sizes <- read.csv("input_data/population_sizes.csv")
 pop_sizes$site <- NULL
 pop_sizes$colony <- NULL
 pop_sizes$source_est_n_breeding_pairs <- NULL
@@ -104,7 +104,7 @@ df_species$seasons <- NA
 
 for (i in 1:length(df_species$species)){
   
-  sp_files <- list.files(pop_rasters, pattern=df_species$species[i]);sp_files
+  sp_files <- list.files(pop_rasters, pattern=df_species$species[i]);sp_files  # TODO: update to find only .tif not .tif.aux.xml files
   sp_weightings <- pops[pops$species == df_species$species[i],];sp_weightings
   
   for(j in 1:length(sp_files)){
@@ -119,19 +119,19 @@ for (i in 1:length(df_species$species)){
     
   }
   df_species$seasons[i] <- max(sp_weightings$seasons)
-  raster_name <- paste0(dir,"/outputs/08_species/",df_species$species[i],".tif")
-  writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
+  raster_name <- paste0("outputs/08_species/",df_species$species[i],".tif")
+  raster::writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
   print(df_species$species[i])
   print(i)
 }
 
-write.csv(df_species,paste0(dir,"/outputs/08_exposure_scores_by_species.csv"),
+write.csv(df_species,paste0("outputs/08_exposure_scores_by_species.csv"),
           row.names = F)
 
 #then combine rasters for all the species
 #weighting those with only breeding season tracking at 0.5
 for (i in 1:nrow(df_species)){
-  sp <- raster(paste0(dir,"/outputs/08_species/",df_species$species[i],".tif"))
+  sp <- raster::raster(paste0("outputs/08_species/",df_species$species[i],".tif"))  # TODO: as above?
   
   a <- sp*df_species$seasons[i]
   
@@ -149,14 +149,14 @@ for (i in 1:nrow(df_species)){
 }
 
 plot(a_all)
-raster_name_dist <- paste0(dir,"/outputs/08_all_species_distribution.tif")
-writeRaster(a_all, filename=raster_name_dist, 
-            format="GTiff", overwrite=TRUE)
+raster_name_dist <- paste0("outputs/08_all_species_distribution.tif")
+raster::writeRaster(a_all, filename=raster_name_dist, 
+                    format="GTiff", overwrite=TRUE)
 
 plot(a_all_flat)
-raster_name_richness <- paste0(dir,"/outputs/08_species_richness.tif")
-writeRaster(a_all_flat, filename=raster_name_richness, 
-            format="GTiff", overwrite=TRUE)
+raster_name_richness <- paste0("outputs/08_species_richness.tif")
+raster::writeRaster(a_all_flat, filename=raster_name_richness, 
+                    format="GTiff", overwrite=TRUE)
 
 
 

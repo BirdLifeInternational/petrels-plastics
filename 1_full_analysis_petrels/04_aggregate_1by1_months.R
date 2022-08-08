@@ -59,15 +59,15 @@ sessionInfo()
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're in the home proj folder "1_full_analysis_petrels"
+getwd()
 
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
+land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
-dir_demClasses <- paste0(dir,"/outputs/03_kernels")
+dir_demClasses <- "outputs/03_kernels"
 
 ## DIRECTION TO YOUR RESULTS
-dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
+dir_1by1 <- "outputs/04_aggregate_1by1_grid"
 
 dir.create(dir_1by1) 
 dir.create(paste0(dir_1by1,"/maps/"))
@@ -76,7 +76,7 @@ dir.create(paste0(dir_1by1,"/na_maps/"))
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster::raster("outputs/00_PlasticsRaster.tif")
 
 plot(log(plastics))
 
@@ -93,7 +93,7 @@ colsinf <- rev(inferno(200))
 ## rescale to 1
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
-p_sum1    <- plastics2/sum(getValues(plastics2))
+p_sum1    <- plastics2/sum(raster::getValues(plastics2))
 p_sum1[is.na(plastics)] <- NA
 
 res(p_sum1)
@@ -102,9 +102,9 @@ plot(p_sum1)
 RES <- res(plastics) # the resolution of the raster (in degrees)
 # res_lon = RES[1]*pi/180 (in radians) and res_lat = RES[2]*pi/180 (in radians)
 R <- 6371007.2 # the Earth's authalic radius (in meters)
-lat <- yFromRow(plastics, 1:nrow(plastics)) # latitude of the centroid of each cell (in degrees, need to be converted in radians)
+lat <- raster::yFromRow(plastics, 1:nrow(plastics)) # latitude of the centroid of each cell (in degrees, need to be converted in radians)
 area <- (sin(pi/180*(lat + RES[2]/2)) - sin(pi/180*(lat - RES[2]/2))) * (RES[1] * pi/180) * R^2
-r_area <- setValues(plastics, rep(area, each=ncol(plastics))) # gives the area of each grid cell in meters 
+r_area <- raster::setValues(plastics, rep(area, each=ncol(plastics))) # gives the area of each grid cell in meters 
 plot(r_area, col=colsviri)
 
 files <- list.files(dir_demClasses, full.names = TRUE,pattern="tif"); files
@@ -127,13 +127,13 @@ for (i in 1:length(files)){#
   
   a[is.na(a)] <- 0 
   
-  b <- sum(getValues(a)) 
+  b <- sum(raster::getValues(a)) 
   
   ## reprojecting and rescaling
-  a_proj <- projectRaster(a, plastics, method = "bilinear")
+  a_proj <- raster::projectRaster(a, plastics, method = "bilinear")
   a_proj2 <- a_proj * r_area / 100000000 # rescaling the values in each cell
   a_proj2[is.na(a_proj2)] <- 0 
-  c <- sum(getValues(a_proj2)) 
+  c <- sum(raster::getValues(a_proj2)) 
   
   
   #find number of NAs for plastics where birds are
@@ -156,14 +156,14 @@ for (i in 1:length(files)){#
   
   raster_name_2 <- paste0(dir_1by1, raster_name_1)
 
-  writeRaster(a_proj2, filename=raster_name_2, format="GTiff", overwrite=TRUE)
+  raster::writeRaster(a_proj2, filename=raster_name_2, format="GTiff", overwrite=TRUE)
   
   over <- a_proj2 * p_sum1
       
   over_score <- over
   summary(over_score@data@values)
   over_score[is.na(over_score)] <- 0
-  exposure_score <- round(sum(getValues(over_score))*1000000,4)
+  exposure_score <- round(sum(raster::getValues(over_score))*1000000,4)
   
   png(paste0(dir_1by1,"/maps/",name,".png"), width=1399,height=455)
   par(mfrow=c(1,2))
@@ -196,7 +196,7 @@ for (i in 1:length(files)){#
   print(i)
 }
 
-write.csv(dat, paste0(dir, "/outputs/04_exposure_scores_by_month.csv"),
+write.csv(dat, "outputs/04_exposure_scores_by_month.csv",
           row.names = F)  
 head(nas)
 nas$percent_na <- nas$nas/nas$vals*100

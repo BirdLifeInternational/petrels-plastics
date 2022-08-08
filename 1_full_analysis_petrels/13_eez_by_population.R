@@ -12,11 +12,11 @@ library(viridis)
 
 ## GENERAL DIR
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+## check we're still in rproj home directory "1_full_analysis_petrels"
+getwd()
 
-eezs_used <- read.csv(paste0(dir,"/outputs/11_eezs_used_all_species.csv"))
-dat <- read.csv(paste0(dir,"/outputs/12_species_country_scores.csv"))
+eezs_used <- read.csv("outputs/11_eezs_used_all_species.csv")
+dat <- read.csv("outputs/12_species_country_scores.csv")
 
 #plot top scores ####
 #subset to top 40 species_countries

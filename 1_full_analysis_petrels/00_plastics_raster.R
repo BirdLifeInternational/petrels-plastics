@@ -8,10 +8,9 @@ library(raster)
 library(rgdal)
 library(dplyr)
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
-dir_input <- paste0(dir,"/input_data/plastics_data/")
-dir_output <- paste0(dir,"/outputs/")
+## set up input and output folders
+dir_input <- "input_data/plastics_data/"
+dir_output <- "outputs/"
 
 #Data to read in ----
 Lebreton <- as.matrix(read.csv(paste0(dir_input,"lebretonmodel_abundance.csv"), header = F))
