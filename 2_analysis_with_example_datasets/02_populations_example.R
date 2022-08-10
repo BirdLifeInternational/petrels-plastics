@@ -6,12 +6,11 @@ rm(list=ls())
 library(tidyverse)
 
 ## paste home directory here
-dir <- "Drive:/folder" 
-
-dir.create(paste0(dir, "/outputs/02_pops/")) 
+dir.create("outputs/02_pops/")
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/01_cleaning_data/")
+data_std <- "outputs/01_cleaning_data/"
+
 files <- list.files(data_std,pattern = ".csv");files
 
 files_list <- as.data.frame(files)
@@ -30,9 +29,14 @@ for(i in 1:nrow(files_list)){
 
 files_list$pop <- files_list$site
 
-#for each population
-files_list$pop <- ifelse(files_list$pop %in% c("Colony1","Colony2"), "Population name",files_list$pop)
+#Rename sites and populations with shorter names that do not contain
+#special characters & group together populations
 
+#for each population
+#e.g. files_list$pop <- ifelse(files_list$pop %in% c("Colony1","Colony2"), "Population name",files_list$pop)
+files_list$pop <- ifelse(files_list$pop == "South Georgia (Islas Georgias del Sur)", "South Georgia",files_list$pop)
+large_sites <- c("Portugal")
+files_list$pop <- ifelse(files_list$pop %in% large_sites, files_list$colony,files_list$pop)
 
 #Remove and population with too few tracks
 files_list <- subset(files_list, files != "filename.csv")
@@ -41,13 +45,13 @@ files_list <- subset(files_list, files != "filename.csv")
 files_list$population <- paste0(files_list$colony,", ",files_list$site)
 
 files_list$sp_pop <- paste(files_list$species,files_list$pop,sep="_")
-write.csv(files_list,paste0(dir,"/outputs/02_pops.csv"),row.names = F)
+write.csv(files_list,"outputs/02_pops.csv",row.names = F)
 
 pops <- unique(files_list$sp_pop)
 pops
 
 setwd(data_std)                       #Set to the folder with your files
-output <- paste0(dir,"/outputs/02_pops")
+output <- "outputs/02_pops/"
 
 #read in the files combine datasets into population leve files
 for(i in 1:length(pops)){
@@ -66,7 +70,7 @@ for(i in 1:length(pops)){
   
 }
 
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- output
 files <- list.files(data_std);files
 
 #After running script 03 and looking at kernel plots, solve any issues
@@ -80,7 +84,6 @@ write.csv(df,paste0(data_std,"problem_dataset.csv"),
           row.names=FALSE) 
 
 #read in files to calculate sample sizes
-output <- paste0(dir,"/outputs/02_pops")
 
 head(pops)
 #all pops points locations ####
@@ -115,7 +118,7 @@ sum(sample_sizes$locations)
 
 # tracking years ####
 
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std,pattern = ".csv");files
 pops <- as.data.frame(files)
 pops$sp_pop <- NA
@@ -164,7 +167,7 @@ length(all_years[all_years > 2008 & all_years < 2020])/length(all_years)
 
 pops$year_range <- paste0(pops$min_year,"-",pops$max_year)
 
-sum(pops$yrs09_19)/148
+sum(pops$yrs09_19)/148 #change 148 to number of populations
 
 mean(pops$mean_year)
 mean(pops$min_year)
@@ -177,7 +180,7 @@ year_sample_sizes <- pops %>%
 
 sample_sizes$mean_tracking_year <- round(year_sample_sizes$mean_year)
 
-write.csv(sample_sizes,paste0(dir,"/outputs/02_sample_sizes_species.csv"),
+write.csv(sample_sizes,"outputs/02_sample_sizes_species.csv",
           row.names = F)
 
 #sample sizes by population
@@ -202,11 +205,11 @@ sample_sizes_pops$sp_pop  <- NULL
 
 head(sample_sizes_pops)
 
-write.csv(sample_sizes_pops,paste0(dir,"/outputs/02_sample_sizes_pops.csv"),
+write.csv(sample_sizes_pops,"outputs/02_sample_sizes_pops.csv",
           row.names = F)
 
 #save all tracking locations in 1 csv
-write.csv(all_pops,paste0(dir,"/outputs/02_all_locations.csv"), row.names = F)
+write.csv(all_pops,"outputs/02_all_locations.csv", row.names = F)
 
 #save colony locations
 all_pops$lat_colony_2dp <- round(all_pops$lat_colony,2)
@@ -225,4 +228,4 @@ all_colonies <- all_pops %>%
 
 all_colonies$sp_pop_colloc <- NULL
 
-write.csv(all_colonies,paste0(dir,"/outputs/02_colony_locations.csv"), row.names = F)
+write.csv(all_colonies,"outputs/02_colony_locations.csv", row.names = F)

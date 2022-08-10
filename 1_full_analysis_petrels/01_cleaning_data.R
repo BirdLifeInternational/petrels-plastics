@@ -8,6 +8,7 @@
 
 rm(list=ls())
 
+#If there are errors, can try installing these package versions:
 #install.packages("devtools")
 #require(devtools)
 #install_version("sp", version = "1.3-2", repos = "http://cran.us.r-project.org")

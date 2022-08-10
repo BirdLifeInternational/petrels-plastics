@@ -8,6 +8,7 @@
 
 rm(list=ls())
 
+#If there are errors, can try installing these package versions:
 #install.packages("devtools")
 #require(devtools)
 #install_version("sp", version = "1.3-2", repos = "http://cran.us.r-project.org")
@@ -30,14 +31,11 @@ lu=function (x=x) length(unique(x))
 ######### GENERAL DIRECTORIES AND FILES ##############
 
 ## paste home directory here
-dir <- "Drive:/folder" 
-
-dir <- paste0(homedir,"/outputs/01_cleaning_data/")
+dir <- "outputs/01_cleaning_data/"
 dir_eq <- paste0(dir,"/equinox/")
 dir_maps <- paste0(dir_eq,"/maps/")
 
 #if running for the first time, create directories for outputs
-dir.create(paste0(homedir,"/outputs/")) 
 dir.create(dir) 
 dir.create(dir_eq) 
 dir.create(dir_maps)
@@ -45,24 +43,24 @@ dir.create(paste0(dir,"/equinox_filtered/"))
 dir.create(paste0(dir,"/maps/"))
 
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(homedir,"/input_data/baselayer"), layer = "world-dissolved")  
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved")  
 
 #Read in a list of the names of the target species for the study
-species_list <- read.csv(paste0(homedir,"/input_data/Species_list_IUCN.csv"))
+species_list <- read.csv(paste0("input_data/Species_list_IUCN.csv"))
 
-equinoxes <- read.csv(paste0(homedir,"/input_data/equinoxes.csv"))
+equinoxes <- read.csv(paste0("input_data/equinoxes.csv"))
 head(equinoxes)
 equinoxes$mar <- as.POSIXct(equinoxes$mar, format = "%d/%m/%Y %H:%M:%S", tz = "GMT")
 equinoxes$sep <- as.POSIXct(equinoxes$sep, format = "%d/%m/%Y %H:%M:%S", tz = "GMT")
 
 #mark the start and end of the periods to filter out (it is asymmetrical)
 equinoxes$mar_start <- equinoxes$mar - (21*24*60*60) #-21 days
-equinoxes$mar_end <- equinoxes$mar + (7*24*60*60)    #+7 days
+equinoxes$mar_end   <- equinoxes$mar + (7*24*60*60)    #+7 days
 equinoxes$sep_start <- equinoxes$sep - (7*24*60*60)
-equinoxes$sep_end <- equinoxes$sep + (21*24*60*60)
+equinoxes$sep_end   <- equinoxes$sep + (21*24*60*60)
 
 ## DIRECTION OF THE ORIGINAL SPECIES FILES (AS DOWNLOADED FROM THE SEABIRD TRACKING DATABASE)
-datasets <- paste0(homedir,"/input_data/tracking_data/")
+datasets <- paste0("input_data/tracking_data/")
 
 files <- list.files(datasets, pattern="csv");files
 
@@ -286,7 +284,7 @@ for(dataset_number in 1:length(files)){
           
         }
         #export plots
-        png(filename = paste0(homedir,"/outputs/01_cleaning_data/equinox_filtered/", str_remove(files[dataset_number],".csv"),".png"))
+        png(filename = paste0("outputs/01_cleaning_data/equinox_filtered/", str_remove(files[dataset_number],".csv"),".png"))
         par(mfrow=c(2,1),mar = c(3, 4, 1, 1))
         plot(latitude~longitude, data=df, type="n", asp=1, main="", 
              frame = T, xlab="", ylab=paste(df$scientific_name[1]))
@@ -606,3 +604,4 @@ for(dataset_number in 1:length(files)){
   
 }
 
+#If [1] "1 NA", there are no files in the equinox filtered folder

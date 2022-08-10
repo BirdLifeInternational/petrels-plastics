@@ -155,7 +155,7 @@ for(dataset_number in 1:length(files)){ #
       hr95 <- data.frame(hr95)
       ## Converts to a SpatialPixelsDataFrame
       coordinates(hr95) <- coordinates(fud)
-      gsp::ridded(hr95) <- TRUE
+      sp::gridded(hr95) <- TRUE
       
       ## display the results
       kde_spixdf <- adehabitatHR::estUDm2spixdf(kudl)

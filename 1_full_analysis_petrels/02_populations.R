@@ -26,6 +26,8 @@ for(i in 1:nrow(files_list)){
   
 }
 
+#Rename sites and populations with shorter names that do not contain
+#special characters & group together populations
 files_list$pop <- files_list$site
 files_list$pop <- ifelse(files_list$pop == "Reunion Island", "Reunion",files_list$pop)
 files_list$pop <- ifelse(files_list$pop == "Columbretes", "Balearic Archipelago",files_list$pop)

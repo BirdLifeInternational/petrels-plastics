@@ -27,8 +27,6 @@ library(tidyverse)
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## paste home directory here
-dir <- "Drive:/folder" 
-
 ## PROJECTIONS
 land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") #Changed - BC  
 proj_wgs84 <- CRS(proj4string(land))
