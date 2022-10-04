@@ -150,4 +150,4 @@ Both folders contain codes that should be run in the order provided by the numbe
 ## Graphical representation of the method 
 Methods for calculating marine plastic exposure scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure, and percentages within spatial boundaries can be used to identify and rank regions of high exposure among all species and relate these to specific populations from specific jurisdictions.
 
-![image](https://user-images.githubusercontent.com/56324426/170684706-b4631aaa-f54d-4da8-8329-d4a3d1e45803.png)
+![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
