@@ -1,0 +1,378 @@
+years,sp_pop,months,suitable
+2011,Ardenna bulleri_Aorangi Island,03_04_05_06_07_08_09_10_11_12,no
+2012,Ardenna bulleri_Aorangi Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2013,Ardenna bulleri_Aorangi Island,1,no
+2005,Ardenna carneipes_Lord Howe Island,01_02_03_04_05_06_07_08_09_10_11,3?
+2007,Ardenna carneipes_Lord Howe Island,04_05_06_07_08_09_10,3?
+2008,Ardenna carneipes_Lord Howe Island,03_04_05_06_07_08_09_10_11,3?
+2006,Ardenna carneipes_New Zealand,04_05_06_07_08_09_10_11_12,3?
+2007,Ardenna carneipes_New Zealand,02_03_04,3?
+2009,Ardenna carneipes_New Zealand,12,3?
+2010,Ardenna carneipes_New Zealand,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2011,Ardenna carneipes_New Zealand,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2012,Ardenna carneipes_New Zealand,1,3?
+2008,Ardenna gravis_Gough,11_12,
+2009,Ardenna gravis_Gough,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Ardenna gravis_Gough,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Ardenna gravis_Gough,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Ardenna gravis_Gough,01_02_03_04_05_06_07_08_09_10_11_12,
+2013,Ardenna gravis_Gough,01_02_04_05_06_07_08_09_10_11_12,yes
+2014,Ardenna gravis_Gough,01_02_04_05_06_07_08_09_10_11,
+2007,Ardenna grisea_Falkland Islands,12,
+2008,Ardenna grisea_Falkland Islands,01_02_03_04_05_06_07_08_09_10_11_12,?
+2009,Ardenna grisea_Falkland Islands,01_02_03_04_05_06_07_08_09_11_12,?
+2017,Ardenna grisea_Falkland Islands,01_02_03_04_05_06_07_08_09_10_11_12,?
+2018,Ardenna grisea_Falkland Islands,01_02_03_04_10,
+2005,Ardenna grisea_North Island,03_04_05_06_07_08_09_10_11,3?
+2010,Ardenna grisea_North Island,11_12,
+2011,Ardenna grisea_North Island,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2012,Ardenna grisea_North Island,01_02_04_05_06_07_08_09_10_11_12,3?
+2010,Ardenna pacifica_Lowendal and Houtman Abrolhoss,12,no
+2011,Ardenna pacifica_Lowendal and Houtman Abrolhoss,01_02_03_04_05_06_07_08_09_10_11_12,no
+2012,Ardenna pacifica_Lowendal and Houtman Abrolhoss,01_02_04_05_06_07_08_09_10_11_12,no
+2013,Ardenna pacifica_Lowendal and Houtman Abrolhoss,01_02_04_05_06,no
+2011,Ardenna pacifica_Mauritius,11_12,
+2012,Ardenna pacifica_Mauritius,01_02_04_05_06_07_08_09_10_11_12,3?
+2013,Ardenna pacifica_Mauritius,01_02_04_05_06_07_08_09,
+2009,Ardenna pacifica_Reunion,12,
+2010,Ardenna pacifica_Reunion,01_02_03_04_05_06_07_08_09_10_11_12,
+2011,Ardenna pacifica_Reunion,12,
+2012,Ardenna pacifica_Reunion,01_02_04_05_06_07_08_09_10_11,
+2007,Ardenna pacifica_Seychelles,01_02_04_05_06_07_08,no
+2008,Ardenna pacifica_Seychelles,02_04_05_06_07_08_09,no
+2009,Ardenna pacifica_Seychelles,10_11_12,no
+2010,Ardenna pacifica_Seychelles,01_02_03_04_05_06_07_08_09_10_11_12,no
+2011,Ardenna pacifica_Seychelles,1,no
+2013,Ardenna pacifica_Seychelles,02_03_04_05_06_07_08_09,no
+2014,Ardenna pacifica_Seychelles,03_04_05_06_07_08_09,no
+2005,Ardenna tenuirostris_SE Australia,12,no
+2006,Ardenna tenuirostris_SE Australia,01_02,no
+2007,Ardenna tenuirostris_SE Australia,10_11_12,no
+2008,Ardenna tenuirostris_SE Australia,01_02_03_04_05_06_07_08_09_10_11_12,no
+2010,Ardenna tenuirostris_SE Australia,10_11_12,no
+2011,Ardenna tenuirostris_SE Australia,01_02,no
+2012,Ardenna tenuirostris_SE Australia,10_11,no
+2007,Bulweria bulwerii_Azores,08_09_10_11_12,no
+2008,Bulweria bulwerii_Azores,01_02_04_05_06_07,no
+2010,Bulweria bulwerii_Azores,07_08_09_10_11_12,no
+2011,Bulweria bulwerii_Azores,01_02_04_05_06_07,no
+2012,Bulweria bulwerii_Azores,06_07_08_09_10_11_12,no
+2013,Bulweria bulwerii_Azores,01_02_04_05_06_07_08,no
+2010,Bulweria bulwerii_Canarias,06_07_08_09_10_11_12,no
+2011,Bulweria bulwerii_Canarias,01_02_04_05_06_07_08_09_10_11_12,no
+2012,Bulweria bulwerii_Canarias,01_02_04_05_06_07_08_09_10_11_12,no
+2013,Bulweria bulwerii_Canarias,01_02_04_05_06_07,no
+2007,Bulweria bulwerii_Cape Verde,06_07_08_09_10_11_12,
+2008,Bulweria bulwerii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,?
+2009,Bulweria bulwerii_Cape Verde,01_02_03_04_05_06_07_08_09_10_11_12,?
+2010,Bulweria bulwerii_Cape Verde,01_02_03_04_05_06_07_08_09_10_11_12,?
+2011,Bulweria bulwerii_Cape Verde,01_02_03_04_05_06_07_08_09_10_11_12,?
+2012,Bulweria bulwerii_Cape Verde,01_02,
+2009,Bulweria bulwerii_Madeira,05_06_07_08_09_10_11_12,no
+2010,Bulweria bulwerii_Madeira,01_02_04_05_06_07_08_09_10_11,no
+2012,Bulweria bulwerii_Madeira,06_07_08_09_10_11_12,no
+2013,Bulweria bulwerii_Madeira,01_02_03_04_05_06,no
+2002,Calonectris borealis_Azores,07_08_09_10_11_12,
+2003,Calonectris borealis_Azores,01_02_03_04_05_06_07_08_09_10_11,?
+2010,Calonectris borealis_Azores,07_08_09_10_11_12,
+2011,Calonectris borealis_Azores,01_02_04_05_06_07_08_09_10_11_12,?
+2012,Calonectris borealis_Azores,01_02_04_05_06_07_08_09_10_11_12,?
+2013,Calonectris borealis_Azores,01_02_04_05_06_07,
+2014,Calonectris borealis_Azores,06_07_08_09_10_11_12,
+2015,Calonectris borealis_Azores,01_02_04_05_06_07_08_09_10_11_12,?
+2016,Calonectris borealis_Azores,01_02_04_05_06,
+2017,Calonectris borealis_Azores,07_08_09_10_11_12,
+2018,Calonectris borealis_Azores,01_02_03_04_05_06_07,
+2006,Calonectris borealis_Berlengas,10_11_12,no
+2007,Calonectris borealis_Berlengas,01_02_04_05_06_07,no
+2011,Calonectris borealis_Berlengas,08_09_10_11_12,no
+2012,Calonectris borealis_Berlengas,01_02_03_04_05_06_07_08_09,no
+2002,Calonectris borealis_Canarias,06_07_08_09_10_11_12,
+2003,Calonectris borealis_Canarias,01_02_03_04_05_06,
+2004,Calonectris borealis_Canarias,10_11_12,
+2005,Calonectris borealis_Canarias,01_02,
+2007,Calonectris borealis_Canarias,06_07_08_09_10_11_12,
+2008,Calonectris borealis_Canarias,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2009,Calonectris borealis_Canarias,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2010,Calonectris borealis_Canarias,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2011,Calonectris borealis_Canarias,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2012,Calonectris borealis_Canarias,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2013,Calonectris borealis_Canarias,01_02_04_05_06_07_08_09_10_11_12,
+2014,Calonectris borealis_Canarias,01_02_04_05_06_07_08_09_10_11_12,
+2015,Calonectris borealis_Canarias,01_02_04_05_06_07_08_09_10_11_12,
+2016,Calonectris borealis_Canarias,01_02_04_05_06_07_08,
+2006,Calonectris borealis_Madeira,06_07_08_09_10_11_12,
+2007,Calonectris borealis_Madeira,01_02_04_05_06_07_08_09_10_11_12,?
+2008,Calonectris borealis_Madeira,01_02_04_05_06_07_08_09_10_11_12,?
+2009,Calonectris borealis_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,?
+2010,Calonectris borealis_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,?
+2011,Calonectris borealis_Madeira,01_02_03_04_05_06,
+2002,Calonectris diomedea_Balearic Archipelago,07_08_09_10_11_12,
+2003,Calonectris diomedea_Balearic Archipelago,01_02_04_05,
+2009,Calonectris diomedea_Balearic Archipelago,06_07_08_09_10_11_12,
+2010,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_09_10_11_12,yes
+2014,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_09_10_11_12,yes
+2015,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07_08_10_11_12,
+2016,Calonectris diomedea_Balearic Archipelago,01_02_04_05_06_07,
+2000,Calonectris diomedea_Chafarinas,06_07_08_09_10_11_12,3
+2001,Calonectris diomedea_Chafarinas,01_02_04_05_06,
+2008,Calonectris diomedea_Chafarinas,06_07_08_09_10_11_12,3
+2009,Calonectris diomedea_Chafarinas,01_02_04_05_06,
+2011,Calonectris diomedea_Chafarinas,06_07_08_09_10_11_12,3
+2012,Calonectris diomedea_Chafarinas,01_02_04_05_06_07_08_09_10_11_12,
+2013,Calonectris diomedea_Chafarinas,01_02_04_05_06,
+2010,Calonectris diomedea_Malta,09_10_11_12,no
+2011,Calonectris diomedea_Malta,01_02_04_05_06_07,no
+2012,Calonectris diomedea_Malta,08_09_10_11_12,no
+2013,Calonectris diomedea_Malta,01_02_04_05_06_07_08_09_10_11_12,no
+2014,Calonectris diomedea_Malta,01_02_04_05_06_07_08,no
+2015,Calonectris diomedea_Malta,09_10_11_12,no
+2016,Calonectris diomedea_Malta,01_02,no
+2014,Calonectris diomedea_Zembra,06_07_08_09_10_11_12,no
+2015,Calonectris diomedea_Zembra,01_02_04_05_06_07_08_09_10_11_12,no
+2016,Calonectris diomedea_Zembra,01_02_04_05_06_07_08,no
+2006,Calonectris edwardsii_Cape Verde,07_08_09_10_11_12,
+2007,Calonectris edwardsii_Cape Verde,01_02_03_04_05_06_07_08_09_10_11_12,
+2008,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2009,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2014,Calonectris edwardsii_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2015,Calonectris edwardsii_Cape Verde,01_02_04_05_06,
+2006,Calonectris leucomelas_Iwate,09_10_11_12,no
+2007,Calonectris leucomelas_Iwate,01_02_03_04_05_06_07_08_09_10_11_12,no
+2008,Calonectris leucomelas_Iwate,01_02_03_04_05_06_07_08_09,no
+2004,Calonectris leucomelas_Mikura,10_11_12,no
+2005,Calonectris leucomelas_Mikura,01_02,no
+2006,Calonectris leucomelas_Mikura,10_11_12,no
+2007,Calonectris leucomelas_Mikura,01_02_03_04_05_06_07_08_09_10_11_12,no
+2008,Calonectris leucomelas_Mikura,01_02_03_04_05_06_07_08_09,no
+2014,Fulmarus glacialis_Bjørnøya,08_09_10_11_12,
+2015,Fulmarus glacialis_Bjørnøya,01_02_04_08_09_10_11_12,3
+2016,Fulmarus glacialis_Bjørnøya,01_02_04_08_09_10_11_12,3
+2017,Fulmarus glacialis_Bjørnøya,01_02_04_05_08_09_10_11_12,
+2018,Fulmarus glacialis_Bjørnøya,01_02_04_08_09_10_11_12,3
+2019,Fulmarus glacialis_Bjørnøya,01_02_04,
+2014,Fulmarus glacialis_Breidafjordur,07_08_09_10_11_12,
+2015,Fulmarus glacialis_Breidafjordur,01_02_04_05_06_07_08_09_10_11_12,yes
+2016,Fulmarus glacialis_Breidafjordur,01_02_04_05_06_07_08_09_10_11_12,yes
+2017,Fulmarus glacialis_Breidafjordur,01_02_04_05_06_07_08_09_10_11_12,yes
+2018,Fulmarus glacialis_Breidafjordur,01_02_04_05_06_07_08_09_10_11_12,yes
+2019,Fulmarus glacialis_Breidafjordur,01_02_04_05_06,
+2015,Fulmarus glacialis_Faroe Islands,07_08_09_10_11_12,no
+2016,Fulmarus glacialis_Faroe Islands,01_02_04_05_06_07_08_09_10_11_12,no
+2017,Fulmarus glacialis_Faroe Islands,01_02_04_05_06_07_08_09_10_11_12,no
+2018,Fulmarus glacialis_Faroe Islands,01_02_04_05_06_07,no
+2014,Fulmarus glacialis_Jan Mayen,07_08_09_10_11_12,
+2015,Fulmarus glacialis_Jan Mayen,01_02_04_05_07_08_09_10_11_12,?
+2016,Fulmarus glacialis_Jan Mayen,01_02_04_05_06_07_08_09_10_11_12,?
+2017,Fulmarus glacialis_Jan Mayen,01_02_04_05_06_07_08_09_10_11_12,?
+2018,Fulmarus glacialis_Jan Mayen,01_02_04_05_06_07_08_09_10_11_12,?
+2019,Fulmarus glacialis_Jan Mayen,01_02_04_05_06,
+2011,Fulmarus glacialis_Norway,06_07_08_09_10_11_12,
+2012,Fulmarus glacialis_Norway,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Fulmarus glacialis_Norway,01_02_04_05_06_07,
+2015,Fulmarus glacialis_Norway,07_08_09_10_11_12,
+2016,Fulmarus glacialis_Norway,01_02_04_05_06_07_08_09_10_11_12,yes
+2017,Fulmarus glacialis_Norway,01_02_04_05_06_07_08_09_10_11_12,yes
+2018,Fulmarus glacialis_Norway,01_02_04_05_06_07_08_09_10_11_12,yes
+2019,Fulmarus glacialis_Norway,01_02_04_05_06_07,
+2006,Fulmarus glacialis_Scotland,04_05_06_07_08_09_10_11_12,
+2007,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2008,Fulmarus glacialis_Scotland,01_02_03_04_05_06_07_08_09_10_11_12,
+2009,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Fulmarus glacialis_Scotland,01_02_03_04_05_06_07_08_09_10_11_12,
+2012,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08,
+2014,Fulmarus glacialis_Scotland,06_07_08_09_10_11_12,
+2015,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2016,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2017,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2018,Fulmarus glacialis_Scotland,01_02_04_05_06_07_08_09_10_11_12,yes
+2019,Fulmarus glacialis_Scotland,01_02_04_05_06_07,no
+2015,Fulmarus glacialis_Svalbard,08_09_10_11_12,no
+2016,Fulmarus glacialis_Svalbard,01_02_04_09_10_11_12,no
+2017,Fulmarus glacialis_Svalbard,01_02_04_09_10_11_12,no
+2018,Fulmarus glacialis_Svalbard,01_02_04_08_09_10_11_12,no
+2019,Fulmarus glacialis_Svalbard,01_02_04_05,no
+2008,Fulmarus glacialoides_Pointe Geologie,04_05_06_07_08_10,3?
+2011,Fulmarus glacialoides_Pointe Geologie,04_05_06_07_08_09_10,3?
+2012,Fulmarus glacialoides_Pointe Geologie,04_05_06_07_08_09_10,3?
+2016,Hydrobates castro_Berlengas,10_11,no
+2017,Hydrobates castro_Berlengas,01_02_03_04_05_06_07_08_09_11_12,no
+2018,Hydrobates castro_Berlengas,01_02_03_04_05_06_07_08_09,no
+2012,Hydrobates leucorhous_Nova Scotia,07_08,
+2013,Hydrobates leucorhous_Nova Scotia,07_08_09,3
+2014,Hydrobates leucorhous_Nova Scotia,07_08_09,3
+2015,Hydrobates leucorhous_Nova Scotia,07_08_09,3
+2009,Pachyptila belcheri_New Island,11_12,
+2010,Pachyptila belcheri_New Island,01_02_04_05_06_07_08_09_10_11_12,3
+2011,Pachyptila belcheri_New Island,01_02_04_05_06_07_08_09_10_11_12,3
+2012,Pachyptila belcheri_New Island,12,
+2013,Pachyptila belcheri_New Island,01_02_04_05_06_07_08_09_10_11_12,3
+2010,Pachyptila desolata_South Georgia,01_02_03_04_05_06_07_08_09_10_11_12,no
+2011,Pachyptila desolata_South Georgia,01_02_04_05_06_07_08_09_10_11_12,no
+2012,Pachyptila desolata_South Georgia,01_02,no
+2014,Pachyptila macgillivrayi_Gough,11_12,no
+2015,Pachyptila macgillivrayi_Gough,01_02_04_05_06_07_08_09_10_11_12,no
+2016,Pachyptila macgillivrayi_Gough,01_02_04_05_06_07_08,no
+2009,Pachyptila vittata_Gough,10_11_12,no
+2010,Pachyptila vittata_Gough,01_02_04_05_06_07_08_09,no
+2014,Pachyptila vittata_Gough,10_11_12,no
+2015,Pachyptila vittata_Gough,01_02_04_05_06_07_08_09_10_11_12,no
+2016,Pachyptila vittata_Gough,01_02_04_05_06_07_08,no
+2010,Pelecanoides urinatrix_North Island,11_12,no
+2011,Pelecanoides urinatrix_North Island,01_02_04_05_06_07_08_10_11_12,no
+2012,Pelecanoides urinatrix_North Island,01_02_03_04_05_06_07_08,no
+2015,Pelecanoides whenuahouensis_Codfish Island,11_12,no
+2016,Pelecanoides whenuahouensis_Codfish Island,01_02_03_04_05_06_07_08_09,no
+2017,Pelecanoides whenuahouensis_Codfish Island,11_12,no
+2018,Pelecanoides whenuahouensis_Codfish Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2019,Pelecanoides whenuahouensis_Codfish Island,01_02_03_04_05_06_07_08_09_10_11,no
+2006,Procellaria aequinoctialis_Kerguelen,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2007,Procellaria aequinoctialis_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,3?
+2008,Procellaria aequinoctialis_Kerguelen,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2009,Procellaria aequinoctialis_Kerguelen,1,
+2009,Procellaria aequinoctialis_Prince Edward Islands,12,
+2010,Procellaria aequinoctialis_Prince Edward Islands,01_02_03_04_05_06_07_08_09_10_11_12,no
+2011,Procellaria aequinoctialis_Prince Edward Islands,01_02_03_04_05_06_07_08_09_10_11_12,no
+2012,Procellaria aequinoctialis_Prince Edward Islands,01_02_03_04_05_06_07_08_09_10,no
+2003,Procellaria aequinoctialis_South Georgia,02_03_04_05_06_07_08_09_10,no
+2009,Procellaria aequinoctialis_South Georgia,12,no
+2010,Procellaria aequinoctialis_South Georgia,1,no
+2015,Procellaria aequinoctialis_South Georgia,01_02_03_04_05_06_07_08_09_10_11,no
+2014,Procellaria cinerea_Gough,05_06_07_08_09_10_11_12,no
+2015,Procellaria cinerea_Gough,01_02_03_04_05_06_07_08_09_10_11_12,no
+2016,Procellaria cinerea_Gough,01_02_03_04_05_06_07_08,no
+2007,Procellaria cinerea_Kerguelen,04_05_06_07_08_09_10_11_12,
+2008,Procellaria cinerea_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,yes
+2009,Procellaria cinerea_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Procellaria cinerea_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Procellaria cinerea_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Procellaria cinerea_Kerguelen,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Procellaria cinerea_Kerguelen,01_02_04,
+2009,Procellaria cinerea_Prince Edward Islands,05_06_07_08_09_10_11_12,no
+2010,Procellaria cinerea_Prince Edward Islands,01_02_03_04_05,no
+2013,Procellaria cinerea_Prince Edward Islands,05_06_07_08_09_10_11_12,no
+2014,Procellaria cinerea_Prince Edward Islands,01_02_03_04_05_06_07_08_09_10_11_12,no
+2015,Procellaria cinerea_Prince Edward Islands,01_02_03_04_05_06_07_08_09_10_11_12,no
+2016,Procellaria cinerea_Prince Edward Islands,01_02_03_04_05_06,no
+2005,Procellaria parkinsoni_Great Barrier Island,12,no
+2006,Procellaria parkinsoni_Great Barrier Island,1,no
+2007,Procellaria parkinsoni_Great Barrier Island,12,no
+2008,Procellaria parkinsoni_Great Barrier Island,01_03_04_05_06_07_08_09_10_11_12,no
+2009,Procellaria parkinsoni_Great Barrier Island,1,no
+2009,Pterodroma arminjoniana_Round Island,11_12,
+2010,Pterodroma arminjoniana_Round Island,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2011,Pterodroma arminjoniana_Round Island,01_02_03_04_05_06_07_08_09_10_11_12,3?
+2012,Pterodroma arminjoniana_Round Island,01_02_03_04_05_06_07_08_10_11_12,3?
+2013,Pterodroma arminjoniana_Round Island,01_02,
+2007,Pterodroma arminjoniana_Trindade Island,01_02_04,no
+2013,Pterodroma arminjoniana_Trindade Island,11_12,no
+2014,Pterodroma arminjoniana_Trindade Island,01_02_04_05_06_07_08_09,no
+2007,Pterodroma cookii_Codfish Island,12,no
+2008,Pterodroma cookii_Codfish Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2009,Pterodroma cookii_Codfish Island,01_02,no
+2007,Pterodroma cookii_Little Barrier Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2008,Pterodroma cookii_Little Barrier Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2009,Pterodroma cookii_Little Barrier Island,1,no
+2008,Pterodroma deserta_Madeira,07_08_09_10_11_12,
+2009,Pterodroma deserta_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2010,Pterodroma deserta_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2011,Pterodroma deserta_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2012,Pterodroma deserta_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2013,Pterodroma deserta_Madeira,01_02_03_04_05_06_07_08,
+2007,Pterodroma feae_Cape Verde,04_05_06_07_08_09_10_11_12,3?
+2008,Pterodroma feae_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,3?
+2009,Pterodroma feae_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,3?
+2010,Pterodroma feae_Cape Verde,01_02,no
+2010,Pterodroma incerta_Gough,08_09_10_11_12,no
+2011,Pterodroma incerta_Gough,01_02_04_05_06_07_08_09_10_11_12,no
+2012,Pterodroma incerta_Gough,01_02_04_05_06_07_08_09_10_11_12,no
+2013,Pterodroma incerta_Gough,01_02_04_05_06_07_08,no
+2009,Pterodroma inexpectata_Lake HaurokoPetrel Island,02_04_05_06_07_08_09_10_11_12,no
+2010,Pterodroma inexpectata_Lake HaurokoPetrel Island,01_02_04_05_06_07_08_09_10_11_12,no
+2011,Pterodroma inexpectata_Lake HaurokoPetrel Island,01_02,no
+2011,Pterodroma lessonii_Adams Island,01_02_03_04_05_06_07_08_09_10_11_12,3
+2012,Pterodroma lessonii_Adams Island,01_02_03_04_05_06_07_08_09_10_11_12,3
+2013,Pterodroma lessonii_Adams Island,01_02_03_04_05_06_07_08_09_10_11_12,3
+2014,Pterodroma lessonii_Adams Island,1,
+2010,Pterodroma leucoptera_Cabbage Tree Island,03_04_05_06_07_08_09_10_11_12,no
+2011,Pterodroma leucoptera_Cabbage Tree Island,01_02,no
+2012,Pterodroma leucoptera_Cabbage Tree Island,01_02_03,no
+2007,Pterodroma madeira_Madeira,07_08_09_10_11_12,no
+2008,Pterodroma madeira_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,no
+2009,Pterodroma madeira_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,no
+2010,Pterodroma madeira_Madeira,01_02_03_04_05_06_07,no
+2008,Pterodroma magentae_Chatham Islands,10_11_12,no
+2009,Pterodroma magentae_Chatham Islands,01_02_03_04_05_06_07_08_09_10,no
+2010,Pterodroma magentae_Chatham Islands,12,no
+2011,Pterodroma magentae_Chatham Islands,01_02_03_04_05_06_07_08_09_10_11_12,no
+2012,Pterodroma magentae_Chatham Islands,01_02_03_04_05_06_07_08_09,no
+2011,Pterodroma mollis_Antipodes,01_02_03_04_05_06_07_08_09_10_11_12,no
+2012,Pterodroma mollis_Antipodes,01_02_03_04_05_06_07_08_09_10_11_12,no
+2013,Pterodroma mollis_Antipodes,1,no
+2009,Pterodroma mollis_Gough,11_12,
+2010,Pterodroma mollis_Gough,01_02_04_05_06_07_08_09_10_11_12,3
+2011,Pterodroma mollis_Gough,01_02_04_05_06_07_08_09_10_11_12,3
+2012,Pterodroma mollis_Gough,01_02_04_05_06_07_08_09_10_11_12,3
+2013,Pterodroma mollis_Gough,1,
+2009,Pterodroma pycrofti_Red Mercury Island,12,no
+2010,Pterodroma pycrofti_Red Mercury Island,01_02_04_05_06_07_08_09_10_11_12,no
+2011,Pterodroma pycrofti_Red Mercury Island,1,no
+2011,Pterodroma ultima_Henderson Island,07_08_09_10_11_12,no
+2012,Pterodroma ultima_Henderson Island,01_02_03_04_05_06_07_08_09_10_11_12,no
+2013,Pterodroma ultima_Henderson Island,01_02_03_04_05_06_07,no
+2012,Puffinus bailloni_Seychelles,08_09_10_11_12,no
+2013,Puffinus bailloni_Seychelles,01_02_03_04_05_06_07_08_09_10_11_12,no
+2014,Puffinus bailloni_Seychelles,01_02_03_04_05_06_07,no
+2007,Puffinus lherminieri_Cape Verde,04_05_06_07_08_09_10_11_12,
+2008,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2009,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Puffinus lherminieri_Cape Verde,01_02_04_05_06_07_08_09_10_11_12,yes
+2014,Puffinus lherminieri_Cape Verde,01_02,
+2010,Puffinus lherminieri_Madeira,02_03_04_05_06_07_08_09_10_11_12,
+2011,Puffinus lherminieri_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,3
+2012,Puffinus lherminieri_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,3
+2013,Puffinus lherminieri_Madeira,01_02_03_04_05_06_07_08_09_10_11_12,3
+2014,Puffinus lherminieri_Madeira,01_02_03_04,
+2006,Puffinus puffinus_Heimaey,05_06_07_08_09_10_11_12,
+2007,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2008,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2009,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2010,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2011,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2012,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2013,Puffinus puffinus_Heimaey,01_02_04_05_06_07_08_09_10_11_12,yes
+2014,Puffinus puffinus_Heimaey,01_02_04_05_06,
+1999,Puffinus puffinus_UK,07_08_09_10_11_12,
+2000,Puffinus puffinus_UK,01_02_03_04_05_06,
+2005,Puffinus puffinus_UK,06_07_08_09_10_11_12,
+2006,Puffinus puffinus_UK,01_02_03_04_07_08_09_10_11_12,
+2007,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2008,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2009,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2010,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2011,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2012,Puffinus puffinus_UK,01_02_03_04_05_06_07_08_12,
+2013,Puffinus puffinus_UK,01_02,
+2006,Puffinus yelkouan_Iles Hyeres,03_04_05_06_07_08_09_10_11_12,
+2007,Puffinus yelkouan_Iles Hyeres,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2008,Puffinus yelkouan_Iles Hyeres,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2009,Puffinus yelkouan_Iles Hyeres,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2010,Puffinus yelkouan_Iles Hyeres,01_02_03_04,
+2011,Puffinus yelkouan_Iles Hyeres,05_06_07_08_09_10_11_12,
+2012,Puffinus yelkouan_Iles Hyeres,01_02_03_04_05_06_07_08_09_10_11_12,yes
+2013,Puffinus yelkouan_Iles Hyeres,01_02,
+2008,Puffinus yelkouan_Malta,06_07_08_09_10_11_12,no
+2009,Puffinus yelkouan_Malta,01_02_03_04_06_07_08_09_10_11_12,no
+2010,Puffinus yelkouan_Malta,01_02_03_04_05_06,no
