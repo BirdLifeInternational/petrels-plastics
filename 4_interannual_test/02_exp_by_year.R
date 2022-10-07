@@ -64,10 +64,10 @@ getwd()
 
 land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
-dir_demClasses <- "outputs/03_kernels_by_year"
+dir_demClasses <- "outputs/01_kernels_by_year"
 
 ## DIRECTION TO YOUR RESULTS
-dir_1by1 <- "outputs/04_aggregate_1by1_grid_by_year"
+dir_1by1 <- "outputs/02_aggregate_1by1_grid_by_year"
 
 dir.create(dir_1by1) 
 dir.create(paste0(dir_1by1,"/maps/"))
@@ -76,7 +76,7 @@ dir.create(paste0(dir_1by1,"/na_maps/"))
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
 #read in plastics data
-plastics <- raster::raster("outputs/00_PlasticsRaster.tif")
+plastics <- raster::raster("input_data/00_PlasticsRaster.tif")
 
 plot(log(plastics))
 
@@ -200,7 +200,7 @@ names(dat) <- c("species","population","year","sp_pop","sp_pop_year","exposure_s
 
 head(dat)
 
-write.csv(dat, "outputs/04_exposure_scores_by_year.csv",
+write.csv(dat, "outputs/02_exposure_scores_by_year.csv",
           row.names = F)  
 head(nas)
 nas$percent_na <- nas$nas/nas$vals*100

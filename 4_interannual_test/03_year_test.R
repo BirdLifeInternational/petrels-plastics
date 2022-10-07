@@ -12,7 +12,7 @@ ms_theme <- theme_bw()+
   #theme(legend.position = "none")+
   theme(axis.text=element_text(colour="black"))
 
-years <- read.csv("C:/Users/bethany.clark/OneDrive - BirdLife International/Methods/petrels-plastics/1_full_analysis_petrels/outputs/04_exposure_scores_by_year.csv")
+years <- read.csv("outputs/04_exposure_scores_by_year.csv")
 table(years$sp_pop)
 
 #find all populations with matching months tracked in >3 different years

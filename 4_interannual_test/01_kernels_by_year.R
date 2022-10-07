@@ -34,10 +34,10 @@ proj_wgs84 <- sp::CRS(sp::proj4string(land))
 
 ## TO SAVE KERNEL RESULTS
 ## Create a folder in your computer to save kernel results 
-dir.create("outputs/03_kernels_by_year")
-dir.create("outputs/03_kernels_by_year/locations_plots")
-dir.create("outputs/03_kernels_by_year/kde_plots")
-dir_kernels <- "outputs/03_kernels_by_year/"
+dir.create("outputs/01_kernels_by_year")
+dir.create("outputs/01_kernels_by_year/locations_plots")
+dir.create("outputs/01_kernels_by_year/kde_plots")
+dir_kernels <- "outputs/01_kernels_by_year/"
 
 ################# LOADING SPP DATA ##################
 data_std <- "input_data/02_pops/" #this is from the outputs of 1_full_analysis_petrels
@@ -298,6 +298,6 @@ for(dataset_number in 1:length(files)){ #
 }
   
   
-write.csv(years_all,"interrannual.csv",row.names = F)
+write.csv(years_all,"outputs/01_interrannual.csv",row.names = F)
 
 
