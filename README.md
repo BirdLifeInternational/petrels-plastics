@@ -12,9 +12,11 @@ The input data folder contains the files and required to run the analysis except
 ### 2_analysis_with_example_datasets
 This folder contains a simplified version of the code that removes any code relating to the specific datasets in the study. The input folder contains all the files required to run the analysis for three example tracking datasets that are included in the folder.
 
+### 3_sampling_frequency_test
+This contains the full code used to test the correlation between exposure scores using low and high resolution tracking data.
+
 ### 4_interannual_test
 This contains the full code used for the long-term trend across years analysis presented in the linked publication. 
-The input data folder contains the files and required to run the analysis except for the raw tracking data because those files cannot be shared publically. However, we have included the relevant outputs needed to create all figures and tables. 
 
 ## How to Run
 Both folders contain codes that should be run in the order provided by the numbers in the script names:
