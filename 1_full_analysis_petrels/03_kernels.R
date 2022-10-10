@@ -26,9 +26,6 @@ library(tidyverse)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## check we are still in the base project "1_full_analysis_petrels" folder
-getwd()
-
 ## PROJECTIONS
 land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
 proj_wgs84 <- sp::CRS(sp::proj4string(land))

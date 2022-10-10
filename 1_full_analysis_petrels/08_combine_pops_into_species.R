@@ -97,7 +97,10 @@ df_species <- pops %>%
 #test the correlation between weighted and unweighted means
 df_species_multipop <- subset(df_species, n_pops != 1)
 
-cor.test(df_species_multipop$species_exposure,df_species_multipop$unweighted_mean)
+hist(df_species_multipop$species_exposure)
+cor.test(df_species_multipop$species_exposure,
+         df_species_multipop$unweighted_mean,
+         method = "kendall")
 plot(df_species_multipop$species_exposure,df_species_multipop$unweighted_mean)
 
 df_species$seasons <- NA

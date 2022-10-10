@@ -182,6 +182,9 @@ write.csv(pops, "outputs/07_exposure_scores_by_season.csv",
 head(pops)
 
 #Test differences between using published breeding schedules and those estimated from the tracking data ####
+
+pops <- read.csv("outputs/07_exposure_scores_by_season.csv")
+
 pops$tracks_breeding  <- as.character(pops$tracks_breeding)
 pops$tracks_nonbreeding <- as.character(pops$tracks_nonbreeding)
 pops$ref_breeding <- as.character(pops$ref_breeding)
@@ -229,5 +232,8 @@ for (i in 1:nrow(pops)){
 plot(pops$br_exposure_ref,pops$br_exposure_tracks)
 plot(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks)
 
-cor.test(pops$br_exposure_ref,pops$br_exposure_tracks)
-cor.test(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks)
+hist(pops$br_exposure_ref)
+hist(pops$nonbr_exposure_ref)
+
+cor.test(pops$br_exposure_ref,pops$br_exposure_tracks, method = "kendall")
+cor.test(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks, method = "kendall")

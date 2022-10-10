@@ -59,9 +59,6 @@ sessionInfo()
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## check we're in the home proj folder "1_full_analysis_petrels"
-getwd()
-
 land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
 dir_demClasses <- "outputs/03_kernels"

@@ -29,9 +29,6 @@ str_split_n <- function(string, pattern, n) {
 
 ## GENERAL DIRECTIONS AND FILES ####
 
-## check we're still in rproj home directory "1_full_analysis_petrels"
-getwd()
-
 pop_rasters <- "outputs/05_populations"
 files <- list.files(pop_rasters, pattern="tif$");files
 

@@ -13,10 +13,7 @@ library(tidyverse)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## check we're still in rproj home directory "1_full_analysis_petrels"
-getwd()
-
-## DIRECTION TO YOUR RASTERS 
+## DIRECTION TO RASTERS 
 dir_1by1 <- "outputs/04_aggregate_1by1_grid"
 
 dat <- read.csv("outputs/04_exposure_scores_by_month.csv")

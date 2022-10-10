@@ -24,10 +24,6 @@ library(cowplot)
 #and so we might need to return to previous versions.
 
 ## Input data ####
-
-## check we're still in rproj home directory "1_full_analysis_petrels"
-getwd()
-
 land <- rgdal::readOGR(dsn = paste0("input_data/baselayer"), layer = "world-dissolved") 
 
 bird_dist <- raster::raster("outputs/08_all_species_distribution.tif")

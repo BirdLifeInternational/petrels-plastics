@@ -12,9 +12,6 @@ library(viridis)
 
 ## GENERAL DIR
 
-## check we're still in rproj home directory "1_full_analysis_petrels"
-getwd()
-
 eezs_used <- read.csv("outputs/11_eezs_used_all_species.csv")
 dat <- read.csv("outputs/12_species_country_scores.csv")
 

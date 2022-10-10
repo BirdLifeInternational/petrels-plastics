@@ -27,9 +27,6 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## check we're still in rproj home directory "1_full_analysis_petrels"
-getwd()
-
 ## PROJECTIONS
 land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 proj_wgs84 <- sp::CRS(sp::proj4string(land))
