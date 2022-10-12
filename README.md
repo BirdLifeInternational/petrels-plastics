@@ -19,7 +19,10 @@ This contains the full code used to test the correlation between exposure scores
 This contains the full code used for the long-term trend across years analysis presented in the linked publication. 
 
 ## How to Run
-Both folders contain codes that should be run in the order provided by the numbers in the script names:
+
+Open the R Project file in the folder, e.g. `1_full_analysis_petrels.Rproj`.
+
+All folders contain codes that should be run in the order provided by the numbers in the script names:
 - 00_plastics_raster
   - If needed, read in the plastic model estimate csvs, take and average and write out as a raster .tif
 - 01_cleaning_data
