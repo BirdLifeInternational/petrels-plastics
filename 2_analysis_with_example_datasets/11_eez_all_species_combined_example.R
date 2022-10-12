@@ -182,7 +182,7 @@ all_sovereigns <- c(eezs_used$SOVEREIGN1,eezs_used$SOVEREIGN2,eezs_used$SOVEREIG
 unique(all_sovereigns) 
 length(unique(all_sovereigns)) - 2 #high seas and NA are not sovereigns
 
-write.csv(eezs_used,"11_eezs_used_all_species.csv",
+write.csv(eezs_used,"outputs/11_eezs_used_all_species.csv",
           row.names = F)
 
 
