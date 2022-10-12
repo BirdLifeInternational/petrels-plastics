@@ -60,16 +60,13 @@ sessionInfo()
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "Drive:/folder" 
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
-## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
-
-dir_demClasses <- paste0(dir,"/outputs/03_kernels")
+## DIRECTION TO YOUR RASTERS 
+dir_rasters <- "outputs/03_kernels"
 
 ## DIRECTION TO YOUR RESULTS
-dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
+dir_1by1 <- "outputs/04_aggregate_1by1_grid"
 
 dir.create(dir_1by1) 
 dir.create(paste0(dir_1by1,"/maps/"))
@@ -78,7 +75,7 @@ dir.create(paste0(dir_1by1,"/na_maps/"))
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
 #read in plastics data
-plastics <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 
 plot(log(plastics))
 
@@ -109,7 +106,7 @@ area <- (sin(pi/180*(lat + RES[2]/2)) - sin(pi/180*(lat - RES[2]/2))) * (RES[1] 
 r_area <- setValues(plastics, rep(area, each=ncol(plastics))) # gives the area of each grid cell in meters 
 plot(r_area, col=colsviri)
 
-files <- list.files(dir_demClasses, full.names = TRUE,pattern="tif"); files
+files <- list.files(dir_rasters, full.names = TRUE,pattern="tif"); files
 
 dat <- data.frame()
 result <- c()
@@ -124,6 +121,7 @@ nas$files <- NULL
 for (i in 1:length(files)){#
   
   a <- raster(files[i])
+  name <- names(a)
   nas$name[i] <- name
   
   a[is.na(a)] <- 0 
@@ -152,7 +150,7 @@ for (i in 1:length(files)){#
   a_proj2[is.na(plastics)] <- NA
   
   ## exporting results
-  raster_name_1 <- gsub(dir_demClasses, "", files[i])
+  raster_name_1 <- gsub(dir_rasters, "", files[i])
   print(raster_name_1) 
   
   raster_name_2 <- paste0(dir_1by1, raster_name_1)
@@ -197,15 +195,13 @@ for (i in 1:length(files)){#
   print(i)
 }
 
-write.csv(dat, paste0(dir, "/outputs/04_exposure_scores_by_month.csv"),
+write.csv(dat, "outputs/04_exposure_scores_by_month.csv",
           row.names = F)  
 head(nas)
 nas$percent_na <- nas$nas/nas$vals*100
 
-#2 don't exist
 nas_no_na <- subset(nas,vals > 0)
 mean(nas_no_na$percent_na)
-#1.86% nas 11/4/2021
 
 
 

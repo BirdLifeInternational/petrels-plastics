@@ -26,19 +26,16 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- "Drive:/folder" 
-
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(dir,"/baselayer"), layer = "world-dissolved") #Changed - BC  
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 proj_wgs84 <- CRS(proj4string(land))
 
 ## TO SAVE RESULTS
-dir.create(paste0(dir,"/outputs/06_phenology/")) 
-dir_phen <- paste0(dir,"/outputs/06_phenology") 
+dir.create("outputs/06_phenology/") 
+dir_phen <- "outputs/06_phenology"
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std);files
 
 pops <- as.data.frame(files)
@@ -184,5 +181,5 @@ for(dataset_number in c(1:length(files))){ #
 }
 
 
-write.csv(pops,paste0(dir,"/outputs/06_phenology.csv"),
+write.csv(pops,"outputs/06_phenology.csv",
           row.names = F)

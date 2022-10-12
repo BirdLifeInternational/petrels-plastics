@@ -7,11 +7,11 @@ rm(list=ls())
 library(raster)
 library(rgdal)
 library(dplyr)
+library(RColorBrewer)
 
 ## paste home directory here
 dir_input <- "input_data/plastics_data/"
 dir_output <- "outputs/"
-dir.create(dir_output)
 
 #Data to read in ----
 Lebreton <- as.matrix(read.csv(paste0(dir_input,"lebretonmodel_abundance.csv"), header = F))
@@ -62,4 +62,35 @@ plot(log(plastics))
 raster_name <- paste0(dir_output,"00_PlasticsRaster.tif")
 writeRaster(plastics, filename = raster_name,
             format="GTiff", overwrite=TRUE)
+
+
+#Plot difference in coverage between the three models ####
+land <- rgdal::readOGR(dsn = paste0("input_data/baselayer"), layer = "world-dissolved") 
+
+VanSeb_01 <- ifelse(VanSeb>0,1,0)
+VanSeb_01 <- ifelse(is.na(VanSeb_01),0,VanSeb_01)
+
+Lebreton_01 <- ifelse(Lebreton>0,1,0)
+Lebreton_01 <- ifelse(is.na(Lebreton_01),0,Lebreton_01)
+
+Maximenko_01 <- ifelse(Maximenko>0,1,0)
+Maximenko_01 <- ifelse(is.na(Maximenko_01),0,Maximenko_01)
+
+sum01 <- VanSeb_01+Lebreton_01+Maximenko_01
+sum01_r <- shift(rotate(raster(sum01, 
+                               xmn = 0, xmx= 360, ymn=-90, ymx=90, 
+                               crs="+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")), 
+                               dx=0.5)
+
+yelblus <- c(brewer.pal(n = 5, name = "YlGnBu"),"#00172e")
+
+plot(sum01_r,col=c("white",yelblus[3:5]),breaks = c(-1:3))
+plot(land, col="grey75", add=T)
+
+png("outputs/00_plastics_model_coverage.png", 
+    width=1379,height=750)
+plot(sum01_r,col=c("white",yelblus[3:5]),breaks = c(-1:3))
+plot(land, col="grey75", add=T)
+dev.off()
+
 

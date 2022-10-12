@@ -28,18 +28,14 @@ str_split_n <- function(string, pattern, n) {
 }
 
 ## GENERAL DIRECTIONS AND FILES ####
-
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
-
-pop_rasters <- paste0(dir,"/outputs/05_populations")
+pop_rasters <- "outputs/05_populations"
 files <- list.files(pop_rasters, pattern="tif");files
 
-outputs <- paste0(dir,"/outputs/12_breeding_countries")
+outputs <- "outputs/12_breeding_countries"
 dir.create(outputs)
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
 p_sum1    <- plastics2/sum(getValues(plastics2))
@@ -47,13 +43,13 @@ p_sum1[is.na(plastics)] <- NA
 
 ####### CONVERT INTO A 1X1 DEGREE RESOLUTION ########
 
-pops <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))  
+pops <- read.csv("outputs/07_exposure_scores_by_season.csv")
 pops$tracks_breeding <- NULL
 pops$tracks_nonbreeding <- NULL
 pops$ref_breeding <- NULL
 pops$ref_nonbreeding <- NULL
 
-pop_exposure <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))  
+pop_exposure <- read.csv("outputs/05_exposure_scores_by_population.csv") 
 
 #add up the species ####
 
@@ -62,41 +58,7 @@ pops$species <- str_split_n(pops$species_pop,"_",1)
 head(pops)
 pops$seasons <- ifelse(is.na(pops$nonbreeding),0.5,1)
 
-pops$breeding_country <- c("New Zealand", "Australia","Australia",
-                           "New Zealand","Chile","UK","UK","New Zealand",
-                           "UK","New Zealand","USA","Australia",
-                           "Australia","Mauritius","France","France",
-                           "Seychelles","Australia","Portugal","Spain",
-                           "Cape Verde","Portugal","Portugal","Portugal",
-                           "Spain","Portugal","Spain","Spain","Italy",
-                           "Italy","Malta","Italy","Italy","Tunisia",
-                           "Cape Verde","Japan","South Korea","Japan",
-                           "Japan","Antarctica","Antarctica","Norway",
-                           "Iceland","Canada","Denmark","Norway","Norway",
-                           "UK","Norway","Antarctica","Antarctica",
-                           "France","UK","Portugal","Portugal","UK",
-                           "Canada","Cape Verde","Canada","Canada",
-                           "Canada","Portugal","Spain","Italy","Ireland",
-                           "Malta","UK","UK","France","UK","France","UK",
-                           "UK","New Zealand","Australia","UK","UK",
-                           "Antarctica","Cape Verde","Portugal","Peru",
-                           "UK","Australia","New Zealand","UK","New Zealand",
-                           "New Zealand","France","France","South Africa",
-                           "UK","New Zealand","UK","France","South Africa",
-                           "UK","New Zealand","New Zealand","France",
-                           "France","Mauritius","Brazil","New Zealand",
-                           "France","UK","Australia","New Zealand",
-                           "New Zealand","Portugal","Cape Verde",
-                           "New Zealand","Dominican Republic","UK",
-                           "New Zealand","New Zealand","Australia","France",
-                           "South Africa","Portugal","New Zealand",
-                           "New Zealand","UK","Australia","New Zealand",
-                           "Australia","Ecuador","New Zealand","USA",
-                           "Australia","UK","New Zealand","Australia",
-                           "Seychelles","New Zealand","New Zealand",
-                           "Portugal","Cape Verde","Portugal","Spain",
-                           "USA","Mexico","Iceland","Ireland","UK",
-                           "France","Malta","Antarctica","Antarctica")
+pops$breeding_country <- c("Portugal","UK")
 table(pops$breeding_country)
 length(unique(pops$breeding_country))
 
@@ -104,7 +66,7 @@ length(unique(pops$breeding_country))
 #this will weight by number of tracked months
 #read in pop sizes
 
-pop_sizes <- read.csv(paste0(dir,"/input_data/population_sizes.csv"))
+pop_sizes <- read.csv("input_data/population_sizes.csv")
 pop_sizes$site <- NULL
 pop_sizes$colony <- NULL
 pop_sizes$source_est_n_breeding_pairs <- NULL
@@ -243,6 +205,5 @@ sp_country_list$species <- str_split_n(sp_country_list$sp_country,"_",1)
 sp_country_list$breeding_country <- str_split_n(sp_country_list$sp_country,"_",2)
 sp_country_list
 
-write.csv(sp_country_list,
-          paste0(dir,"/outputs/12_species_country_scores.csv"),
+write.csv(sp_country_list,"outputs/12_species_country_scores.csv",
           row.names = F)

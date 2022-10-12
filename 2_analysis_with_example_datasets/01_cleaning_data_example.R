@@ -458,7 +458,7 @@ for(dataset_number in 1:length(files)){
 skipped_age
 skipped_species
 
-#Went to folder and check whether all GLS files need equinox filtering
+#Optional: go to folder and check whether all GLS files need equinox filtering
 #(some have undergone corrections e.g. with SST)
 #visually judged based on obvious error in the blue locations (equinox periods)
 

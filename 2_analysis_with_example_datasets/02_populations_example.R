@@ -5,8 +5,7 @@
 rm(list=ls())
 library(tidyverse)
 
-## paste home directory here
-dir.create("outputs/02_pops/")
+dir.create("outputs/02_pops")
 
 ################# LOADING SPP DATA ##################
 data_std <- "outputs/01_cleaning_data/"
@@ -50,14 +49,15 @@ write.csv(files_list,"outputs/02_pops.csv",row.names = F)
 pops <- unique(files_list$sp_pop)
 pops
 
-setwd(data_std)                       #Set to the folder with your files
 output <- "outputs/02_pops/"
 
 #read in the files combine datasets into population leve files
 for(i in 1:length(pops)){
   sp_pops <- subset(files_list,sp_pop == pops[i])
   
-  Data<-do.call("rbind",lapply(as.character(sp_pops$files),read.csv,stringsAsFactors = F))  #Read all the files and combine
+  Data<-do.call("rbind",lapply(
+    paste0(data_std,as.character(sp_pops$files)),
+    read.csv,stringsAsFactors = F))  #Read all the files and combine
   print(sp_pops)
   
   print(nrow(Data))
@@ -66,29 +66,28 @@ for(i in 1:length(pops)){
   Data <- Data %>% distinct(dtime,latitude,longitude,bird_track, .keep_all = TRUE)  
   print(nrow(Data))
   
-  write.csv(Data,paste0(output,"/",pops[i],".csv"),row.names=FALSE)  #Write a csv 
+  write.csv(Data,paste0(output,pops[i],".csv"),row.names=FALSE)  #Write a csv 
   
 }
 
-data_std <- output
-files <- list.files(data_std);files
+
 
 #After running script 03 and looking at kernel plots, solve any issues
 #and replace pop level tracking files
 
-df <- read.csv(paste0(data_std,"problem_dataset.csv"))  
+#df <- read.csv(paste0(data_std,"problem_dataset.csv"))  
 
 #code to fix issue
 
-write.csv(df,paste0(data_std,"problem_dataset.csv"),
+#write.csv(df,paste0(data_std,"problem_dataset.csv"),
           row.names=FALSE) 
 
 #read in files to calculate sample sizes
-
+files <- list.files("outputs/02_pops");files
 head(pops)
 #all pops points locations ####
 for(i in 1:length(files)){
-  pop <- read.csv(paste0(output,"/",files[i]))
+  pop <- read.csv(paste0(output,files[i]))
   pop$sp_pop <- substr(files[i],1,nchar(files[i])-4)
   if(i==1){all_pops <- pop} else {all_pops <- rbind(all_pops,pop)}
   print(i)

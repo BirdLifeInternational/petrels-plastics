@@ -1,5 +1,5 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Combing rasters and scores for each month into averages by population
+## Combining rasters and scores for each month into averages by population
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 rm(list=ls()) 
@@ -12,13 +12,10 @@ library(tidyverse)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- paste0("Drive:/Folder") 
-
 ## DIRECTION TO YOUR RASTERS 
-dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
+dir_1by1 <- "outputs/04_aggregate_1by1_grid"
 
-dat <- read.csv(paste0(dir,"/outputs/04_exposure_scores_by_month.csv"))  
+dat <- read.csv("outputs/04_exposure_scores_by_month.csv") 
 head(dat)
 
 #combine by population
@@ -32,12 +29,12 @@ pop_exposure <- dat %>%
   data.frame() ; head(pop_exposure)
 
 #combine into maps per population ####
-dir_out <- paste0(dir,"/outputs/05_populations")
+dir_out <- "outputs/05_populations"
 dir.create(dir_out)
 
 pop_exposure$density_sum <- NA
 
-write.csv(pop_exposure,paste0(dir,"/outputs/05_exposure_scores_by_population.csv"),
+write.csv(pop_exposure,"outputs/05_exposure_scores_by_population.csv",
           row.names = F)  
 
 #Write out bird location distribution rasters for each population

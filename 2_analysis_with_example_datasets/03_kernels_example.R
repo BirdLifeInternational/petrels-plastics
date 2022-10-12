@@ -26,20 +26,19 @@ library(tidyverse)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
 ## PROJECTIONS
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") #Changed - BC  
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 proj_wgs84 <- CRS(proj4string(land))
 
 ## TO SAVE KERNEL RESULTS
 ## Create a folder in your computer to save kernel results 
-dir.create(paste0(dir,"/outputs/03_kernels"))
-dir.create(paste0(dir,"/outputs/03_kernels/locations_plots"))
-dir.create(paste0(dir,"/outputs/03_kernels/kde_plots")) 
-dir_kernels <- paste0(dir,"/outputs/03_kernels") 
+dir.create("outputs/03_kernels")
+dir.create("outputs/03_kernels/locations_plots")
+dir.create("outputs/03_kernels/kde_plots")
+dir_kernels <- "outputs/03_kernels"
 
 ################# LOADING SPP DATA ##################
-data_std <- paste0(dir, "/outputs/02_pops/")
+data_std <- "outputs/02_pops/"
 files <- list.files(data_std);files
 
 dataset_number <- 1

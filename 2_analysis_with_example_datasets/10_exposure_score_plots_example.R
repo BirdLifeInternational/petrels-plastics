@@ -11,17 +11,14 @@ library(cowplot)
 library(ggtext)
 se <- function(x) sqrt(var(x)/length(x))
 
-## paste home directory here
-dir <- ""
-
-pops <- read.csv(paste0(dir,"/outputs/05_exposure_scores_by_population.csv"))
-seasons <- read.csv(paste0(dir,"/outputs/07_exposure_scores_by_season.csv"))
-species <- read.csv(paste0(dir,"/outputs/08_exposure_scores_by_species.csv"))
+pops <- read.csv("outputs/05_exposure_scores_by_population.csv")
+seasons <- read.csv("outputs/07_exposure_scores_by_season.csv")
+species <- read.csv("outputs/08_exposure_scores_by_species.csv")
 
 summary(species$species_exposure)
 
 #add common name & IUCN
-names_iucn <- read.csv(paste0(dir,"/input_data/Species_list_IUCN.csv"))
+names_iucn <- read.csv("input_data/Species_list_IUCN.csv")
 head(names_iucn)
 
 pops$common_name <- names_iucn$common_name[match(pops$species,names_iucn$scientific_name)]
@@ -86,7 +83,7 @@ seasons <- ggplot(abovex,aes(reorder(species_pop, season_diff),season_exposure,
   theme(text=element_text(size = 42),
         axis.text = element_text(colour="black"));seasons
 
-png(paste0(dir,"/outputs/10_season_differences.png"), 
+png("outputs/10_season_differences.png", 
     width=1350,height=1840) 
 par(mfrow=c(1,1))
 seasons
@@ -142,7 +139,7 @@ pops_lower <- subset(pops,species %in% lower$species)
 
 #add in dashed line for the score if plastic was evenly distributed
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 plastics[is.na(plastics)] <- 0 
 p_sum1 <- plastics/sum(getValues(plastics))
 p_sum1_mean <- p_sum1
@@ -187,7 +184,7 @@ lwr_half <- ggplot(lower, aes(reorder(species_label,
         axis.text = element_text(colour="black"))
 plot_grid(upr_half,lwr_half)
 
-png(paste0(dir,"/outputs/10_species_exposure_scores.png"), 
+png("outputs/10_species_exposure_scores.png", 
     width=2000,height=1125)
 par(mfrow=c(1,1))
 plot_grid(upr_half,lwr_half)
@@ -229,7 +226,7 @@ all_iucn <- ggplot(iucn_bars,
   theme(plot.margin=unit(c(1,1,-1,-1),"cm"))+
   theme(text=element_text(size = 55,colour="black"));all_iucn
 
-png(paste0(dir,"/outputs/10_iucn_redlist.png"), 
+png("outputs/10_iucn_redlist.png", 
     width=700,height=2000)
 all_iucn
 dev.off()

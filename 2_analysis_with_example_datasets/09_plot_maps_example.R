@@ -1,7 +1,7 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Plot world maps for plastics, species richness, 
 ## all species distribution, exposure, and
-## exposure with EEZ overlayed. Robinson projection
+## exposure with EEZ overlaid. Robinson projection
 ## Beth Clark 2022
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -22,12 +22,9 @@ library(viridis)#0.5.1
 #that use custom equal area projections centred on the geomean of the data
 #and so we might need to return to previous versions.
 
-## paste home directory here
-dir <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods"
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
-
-bird_dist <- raster(paste0(dir,"/outputs/08_all_species_distribution.tif"))
+bird_dist <- raster("outputs/08_all_species_distribution.tif")
 b <- bird_dist
 b[is.na(b)] <- 0 
 b_sum1 <- b/sum(getValues(b))
@@ -35,7 +32,7 @@ b_sum1[is.na(bird_dist)] <- NA
 b_sum1[b_sum1 == 0] <- NA
 
 #read in plastics data
-plastics <- raster(paste0(dir,"/outputs/00_PlasticsRaster.tif"))
+plastics <- raster("outputs/00_PlasticsRaster.tif")
 
 ## rescale to 1
 plastics2 <- plastics
@@ -89,7 +86,7 @@ encl_rect <-
 cookie <- st_difference(encl_rect, CP_prj)
 
 #plot species richness ####
-colonies <- read.csv(paste0(dir,"/outputs/02_colony_locations.csv"))
+colonies <- read.csv("outputs/02_colony_locations.csv")
 colonies <- subset(colonies,!is.na(colonies$lat_colony))
 
 sp::coordinates(colonies) <- ~lon_colony+lat_colony
@@ -98,7 +95,7 @@ proj4string(colonies) <- proj4string(land)
 colonies_prj <- spTransform(colonies,proj)
 colonies_df <- as.data.frame(colonies_prj)
 
-sp_rich <- raster(paste0(dir,"/outputs/08_species_richness.tif"))
+sp_rich <- raster("outputs/08_species_richness.tif")
 cols_sp_rich <- c("white",
                   colorRampPalette(yelblus)(sp_rich@data@max))
 # convert raster to dataframe for ggplot
@@ -119,7 +116,7 @@ p1 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p1
 
-png(paste0(dir,"/outputs/09_species_richness.png"), 
+png("outputs/09_species_richness.png", 
     width=2000,height=1125)
 p1
 dev.off()
@@ -138,7 +135,7 @@ p2 <- ggplot() +
 
 #plot bird density ####
 
-png(paste0(dir,"/outputs/09_allspecies_density.png"),
+png("outputs/09_allspecies_density.png",
     width=2000,height=1125)
 p2
 dev.off()
@@ -165,7 +162,7 @@ p3 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p3
 
-png(paste0(dir,"/outputs/09_plastic_capped_10percent.png"), 
+png("outputs/09_plastic_capped_10percent.png", 
     width=2000,height=1125)
 p3
 dev.off()
@@ -192,7 +189,7 @@ p4 <- ggplot() +
           data = cookie, size = .5) +
   xlab("") + ylab("");p4
 
-png(paste0(dir,"/outputs/09_exposure_capped_1percent.png"), 
+png("outputs/09_exposure_capped_1percent.png", 
     width=2000,height=1125)
 p4
 dev.off()
@@ -201,7 +198,7 @@ dev.off()
 #plot overlap + eez ####
 
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
-eez <- readOGR(dsn=paste0(dir,"/input_data/EEZ_land_union_v3_202003"), layer = "EEZ_Land_v3_202030") 
+eez <- readOGR(dsn="input_data/EEZ_land_union_v3_202003", layer = "EEZ_Land_v3_202030") 
 
 eez_sf <- st_as_sf(eez)
 eez_prj <- eez_sf %>% st_transform(proj)
@@ -216,7 +213,7 @@ p5 <- ggplot() +
   geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
   xlab("") + ylab("");p5
 
-png(paste0(dir,"/outputs/09_exposure_capped1percent_eez.png"), width=2000,height=1125)
+png("outputs/09_exposure_capped1percent_eez.png", width=2000,height=1125)
 p5
 dev.off()
 dev.off()

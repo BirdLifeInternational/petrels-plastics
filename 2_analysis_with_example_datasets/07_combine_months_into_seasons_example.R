@@ -16,23 +16,18 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-## paste home directory here
-dir <- paste0("C:/Users/bethany.clark/OneDrive - BirdLife International/",
-              "Methods") 
-
-land <- readOGR(dsn=paste0(dir,"/input_data/baselayer"), layer = "world-dissolved") 
+land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
 
 ## DIRECTION TO YOUR RASTERS 
-dir_1by1 <- paste0(dir,"/outputs/04_aggregate_1by1_grid")
+dir_1by1 <- "outputs/04_aggregate_1by1_grid"
 files <- list.files(dir_1by1, full.names = TRUE,pattern="tif"); head(files)
 
-dir_seasons <- paste0(dir,"/outputs/07_seasons")
+dir_seasons <- "outputs/07_seasons"
 dir.create(dir_seasons)
-dir.create(paste0(dir_seasons,"/maps/")) 
 dir.create(paste0(dir_seasons,"/maps_pdf/")) 
 
 #read in exposure scores
-dat <- read.csv(paste0(dir,"/outputs/04_exposure_scores_by_month.csv"))  
+dat <- read.csv("outputs/04_exposure_scores_by_month.csv") 
 head(dat)
 dat$month <- substr(dat$sp_pop_month,nchar(dat$sp_pop_month)-1,nchar(dat$sp_pop_month))
 
@@ -41,7 +36,7 @@ dat$month <- substr(dat$sp_pop_month,nchar(dat$sp_pop_month)-1,nchar(dat$sp_pop_
 #pops <- read.csv(paste0(dir,"/outputs/06_phenology.csv"))
 #However in this study, we also recorded published breeding schedules
 #and then use a final dataset that a combination of both sources
-pops <- read.csv(paste0(dir,"/input_data/breeding_months.csv"))
+pops <- read.csv("input_data/breeding_months.csv")
 pops[,8:14] <- NULL
 head(pops)
 
@@ -64,7 +59,8 @@ cols <- colorRampPalette(yelblus)(255)
 colsviri <- cols[20:255]
 
 #read in plastics data
-plastics <- raster("C:/Users/bethany.clark/OneDrive - BirdLife International/Data/AverageForBeth2.tif")
+plastics <- raster("outputs/00_PlasticsRaster.tif")
+
 ## rescale to 1
 plastics2 <- plastics
 plastics2[is.na(plastics2)] <- 0 
@@ -74,7 +70,7 @@ p_sum1[is.na(plastics)] <- NA
 #
 
 
-collocs <- read.csv(paste0(dir,"/outputs/02_colony_locations.csv"))
+collocs <- read.csv("outputs/02_colony_locations.csv")
 collocs$sp_pop <- paste(collocs$species,collocs$population,sep="_")
 
 for (i in 1:nrow(pops)){
@@ -171,7 +167,7 @@ for (i in 1:nrow(pops)){
 }
 
 
-write.csv(pops,paste0(dir,"/outputs/07_exposure_scores_by_season.csv"),
+write.csv(pops,"outputs/07_exposure_scores_by_season.csv",
           row.names = F)  
 
 head(pops)
@@ -224,5 +220,5 @@ for (i in 1:nrow(pops)){
 plot(pops$br_exposure_ref,pops$br_exposure_tracks)
 plot(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks)
 
-cor.test(pops$br_exposure_ref,pops$br_exposure_tracks)
-cor.test(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks)
+cor.test(pops$br_exposure_ref,pops$br_exposure_tracks, method = "kendall")
+cor.test(pops$nonbr_exposure_ref,pops$nonbr_exposure_tracks, method = "kendall")
