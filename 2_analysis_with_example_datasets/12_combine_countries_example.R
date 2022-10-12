@@ -29,7 +29,7 @@ str_split_n <- function(string, pattern, n) {
 
 ## GENERAL DIRECTIONS AND FILES ####
 pop_rasters <- "outputs/05_populations"
-files <- list.files(pop_rasters, pattern="tif");files
+files <- list.files(pop_rasters, pattern="tif$");files
 
 outputs <- "outputs/12_breeding_countries"
 dir.create(outputs)
@@ -89,48 +89,52 @@ countries <- pops %>%
                                                     pop_x_seasons),
             unweighted_mean = mean(population_exposure),
             
-            )%>%
+  )%>%
   data.frame();countries
+
 multicountry <- countries[countries$count > 1,]
 
-head(pops)
-
-multipop_species <- unique(multicountry$species)
-for(i in 1:length(multipop_species)){
-  species <- subset(pops,species == multipop_species[i])
-  species$sp_pop_country <- paste(species$species_pop,species$breeding_country,sep="_")
-  species$popsize_weighting <- 1
-
-  all_countries <- as.data.frame(table(species$breeding_country))
-  multi_pop_countries <- all_countries[all_countries$Freq > 1,]
+if(nrow(multicountry)>0){
   
-  if(nrow(multi_pop_countries) > 0){
-  for(j in 1:nrow(multi_pop_countries)){
-
-    sp_country <- subset(species,breeding_country == multi_pop_countries$Var1[j])
-    sp_country$popsize_weighting <- NA
+  multipop_species <- unique(multicountry$species)
+  for(i in 1:length(multipop_species)){
+    species <- subset(pops,species == multipop_species[i])
+    species$sp_pop_country <- paste(species$species_pop,species$breeding_country,sep="_")
+    species$popsize_weighting <- 1
     
-    total <- sum(sp_country$pop_x_seasons)
-    sp_country$popsize_weighting <- sp_country$pop_x_seasons/total    
+    all_countries <- as.data.frame(table(species$breeding_country))
+    multi_pop_countries <- all_countries[all_countries$Freq > 1,]
     
-     
-    for(k in 1:nrow(sp_country)){
-      species$popsize_weighting[species$sp_pop_country == sp_country$sp_pop_country[k]] <- sp_country$popsize_weighting[k]
+    if(nrow(multi_pop_countries) > 0){
+      for(j in 1:nrow(multi_pop_countries)){
+        
+        sp_country <- subset(species,breeding_country == multi_pop_countries$Var1[j])
+        sp_country$popsize_weighting <- NA
+        
+        total <- sum(sp_country$pop_x_seasons)
+        sp_country$popsize_weighting <- sp_country$pop_x_seasons/total    
+        
+        
+        for(k in 1:nrow(sp_country)){
+          species$popsize_weighting[species$sp_pop_country == sp_country$sp_pop_country[k]] <- sp_country$popsize_weighting[k]
+        }
+        
+      }
     }
+    print(i)
     
+    if(i == 1){
+      all_sp <- species
+    } else {
+      all_sp <- rbind(all_sp,species)
+    }
   }
-  }
-  print(i)
 
-  if(i == 1){
-    all_sp <- species
-  } else {
-    all_sp <- rbind(all_sp,species)
-  }
+  pops$weighting <- all_sp$popsize_weighting[match(pops$species_pop,all_sp$species_pop)]
+  pops$weighting <- ifelse(is.na(pops$weighting),1,pops$weighting)
+} else {
+  pops$weighting <- 1
 }
-
-pops$weighting <- all_sp$popsize_weighting[match(pops$species_pop,all_sp$species_pop)]
-pops$weighting <- ifelse(is.na(pops$weighting),1,pops$weighting)
 
 #match to pops
 pops$sp_country <- paste(pops$species,pops$breeding_country,sep="_")
@@ -141,7 +145,7 @@ species_weights$seasons <- NA
 
 for (i in 1:length(species)){
   
-  sp_files <- list.files(pop_rasters, pattern=species[i]);sp_files
+  sp_files <- list.files(pop_rasters, pattern=paste0(species[i],".*\\.tif$"));sp_files
   sp_weightings <- pops[pops$species == species[i],];sp_weightings
   
   species_weights$seasons[i] <- max(sp_weightings$seasons)
@@ -154,7 +158,7 @@ sp_country_list$seasons <- NA
 sp_country_list$n_pops <- NA
 sp_country_list$score <- NA
 
-all_files <- list.files(pop_rasters, pattern=".tif");all_files
+all_files <- list.files(pop_rasters, pattern=".tif$");all_files
 
 for (i in 1:nrow(sp_country_list)){
   
@@ -162,7 +166,7 @@ for (i in 1:nrow(sp_country_list)){
   sp_country_list$n_pops[i] <- nrow(sp_country_df)
   
   sp_country_df_files <- paste0(sp_country_df$species_pop,".tif")
-
+  
   for(j in 1:length(sp_country_df_files)){
     
     a <- raster(paste0(pop_rasters,"/",sp_country_df_files[j]))
@@ -178,14 +182,13 @@ for (i in 1:nrow(sp_country_list)){
   #raster_name <- paste0(dir,"/scripts_results/06_countries_over/",
   #                      sp_country_list$sp_country[i],".tif")
   #writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
-
+  
   #plot(rast_sum,main=species[i])
   ## rescale to 1
   a_proj2 <- rast_sum
   a_proj2[is.na(rast_sum)] <- 0 
   
   b_sum1    <- rast_sum/sum(getValues(a_proj2))
-
   
   #overlap
   over <- b_sum1 * p_sum1
@@ -195,7 +198,7 @@ for (i in 1:nrow(sp_country_list)){
   over_val <- round(sum(getValues(over_score))*1000000,4)
   
   sp_country_list$score[i] <- over_val
-  raster_name <- paste0(dir,"/outputs/12_breeding_countries/",
+  raster_name <- paste0("outputs/12_breeding_countries/",
                         sp_country_list$sp_country[i],".tif")
   writeRaster(over, filename=raster_name, format="GTiff", overwrite=TRUE)
   print(i)
