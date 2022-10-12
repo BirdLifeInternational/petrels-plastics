@@ -30,7 +30,7 @@ lu=function (x=x) length(unique(x))
 
 ######### GENERAL DIRECTORIES AND FILES ##############
 
-## paste home directory here
+## specify/create directories
 dir <- "outputs/01_cleaning_data/"
 dir_eq <- paste0(dir,"/equinox/")
 dir_maps <- paste0(dir_eq,"/maps/")
@@ -94,7 +94,7 @@ for(dataset_number in 1:length(files)){
     #create a bespoke equal areas projections
     mean_loc <- geosphere::geomean(cbind(df$longitude,df$latitude))
     DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
-                         "+lat_0=",mean_loc[2]))
+                         " +lat_0=",mean_loc[2]))
     #remove non-adults
     df <- subset(df,age != "immature")
     print(table(df$age))

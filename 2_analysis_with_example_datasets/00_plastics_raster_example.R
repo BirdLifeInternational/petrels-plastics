@@ -1,7 +1,7 @@
 #Import plastics data, average between three models
 #Convert into an Atlantic-centred plastic density raster
 #Win Cowger & Beth Clark 2021
-rm(list=ls()) 
+rm(list=ls())
 
 # Load packages and data ####
 library(raster)
@@ -9,7 +9,7 @@ library(rgdal)
 library(dplyr)
 library(RColorBrewer)
 
-## paste home directory here
+## specify/create directories
 dir_input <- "input_data/plastics_data/"
 dir_output <- "outputs/"
 

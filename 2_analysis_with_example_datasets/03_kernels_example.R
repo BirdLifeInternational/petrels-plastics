@@ -110,7 +110,7 @@ for(dataset_number in 1:length(files)){ #
       
       mean_loc <- geomean(cbind(tracks_wgs$longitude,tracks_wgs$latitude))
       DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
-                           "+lat_0=",mean_loc[2])) 
+                           " +lat_0=",mean_loc[2])) 
       
       so.grid.proj <- spTransform(so.grid, CRS=DgProj)
       coords <- so.grid.proj@coords

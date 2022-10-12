@@ -57,8 +57,7 @@ equinoxes$sep_start <- equinoxes$sep - (7*24*60*60)
 equinoxes$sep_end <- equinoxes$sep + (21*24*60*60)
 
 ## DIRECTION OF THE ORIGINAL SPECIES FILES (AS DOWNLOADED FROM THE SEABIRD TRACKING DATABASE)
-#datasets <- "input_data/tracking_data/"
-datasets <- "C:/Users/bethany.clark/OneDrive - BirdLife International/Methods/input_tracking_data/"
+datasets <- "input_data/tracking_data/"
 
 files <- list.files(datasets, pattern = "csv");files
 

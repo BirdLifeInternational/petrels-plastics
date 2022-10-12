@@ -104,8 +104,7 @@ df_species$seasons <- NA
 
 for (i in 1:length(df_species$species)){
   
-  sp_files <- list.files(pop_rasters, pattern=df_species$species[i]);sp_files
-  sp_weightings <- pops[pops$species == df_species$species[i],];sp_weightings
+  sp_files <- list.files(pop_rasters, pattern=paste0(df_species$species[i],".*\\.tif$"));sp_files
   
   for(j in 1:length(sp_files)){
     

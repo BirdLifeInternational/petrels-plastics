@@ -73,15 +73,15 @@ for(i in 1:length(pops)){
 
 
 #After running script 03 and looking at kernel plots, solve any issues
-#and replace pop level tracking files
+#and replace pop level tracking files, then continue below
 
-#df <- read.csv(paste0(data_std,"problem_dataset.csv"))  
+# df <- read.csv(paste0(data_std,"problem_dataset.csv"))  
 
 #code to fix issue
 
-#write.csv(df,paste0(data_std,"problem_dataset.csv"),
-          row.names=FALSE) 
+# write.csv(df,paste0(data_std,"problem_dataset.csv"),row.names=FALSE) 
 
+#Continue from here
 #read in files to calculate sample sizes
 files <- list.files("outputs/02_pops");files
 head(pops)

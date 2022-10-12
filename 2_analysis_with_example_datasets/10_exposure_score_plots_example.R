@@ -5,6 +5,7 @@
 
 rm(list=ls()) 
 
+library(raster)
 library(tidyverse)
 library(viridis)
 library(cowplot)
