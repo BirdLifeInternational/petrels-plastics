@@ -3,6 +3,8 @@ Global assessment of marine plastic exposure for oceanic birds.
 
 Link to publication when available: 
 
+Each folder contains a separate analysis and an R project file, which, when opened, automatically sets the working directory to that folder. All filepaths are then relative from there.
+
 ## Folder descriptions
 
 ### 1_full_analysis_petrels
