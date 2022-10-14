@@ -66,13 +66,9 @@ seasons_plot$species_pop <-  ifelse(seasons_plot$species_pop == "Incorrect name"
                            "Correct name",
                            seasons_plot$species_pop)
 
-#20 species with biggest season differences
-abovex <- subset(seasons_plot,season_diff > 23) #edit to suitable value
-nrow(abovex)
+seasons_plot$species_pop <- paste0(seasons_plot$species_pop," ")
 
-abovex$species_pop <- paste0(abovex$species_pop," ")
-
-seasons <- ggplot(abovex,aes(reorder(species_pop, season_diff),season_exposure,
+seasons <- ggplot(seasons_plot,aes(reorder(species_pop, season_diff),season_exposure,
                              season_exposure,group=species_pop)) +
   theme_bw()+
   coord_flip() +
@@ -99,44 +95,21 @@ species$species_label <- paste0(species$common_name,
                                species$iucn)
 
 #split in half for plotting
-species$half <- ifelse(species$species_exposure > 
-                       median(species$species_exposure),"upr","lwr")
-table(species$half)
-upper <- species[species$half=="upr",]
-lower <- species[species$half=="lwr",]
-
-max(species$species_exposure)
-
-upr_half <- ggplot(upper,
+plot_species <- ggplot(species,
                    aes(reorder(species,species_exposure),
                        species_exposure)) +
   geom_point(size=4) +
   coord_flip() +
+  scale_y_continuous(limits = c(0,max(species$species_exposure)*1.05),expand = c(0,0))+
   xlab("") + ylab("Plastic exposure score") +
-  scale_y_continuous(limits = c(0,575),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw() 
-lwr_half <- ggplot(lower,
-                   aes(reorder(species,species_exposure),
-                       species_exposure)) +
-  geom_point(size=4) +
-  coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
-  scale_y_continuous(limits = c(0,575),expand = c(0,0))+
-  theme(axis.ticks = element_blank())+
-  theme_bw() 
-plot_grid(upr_half,lwr_half)
 
 #add the population level scores ####
 
 head(pops)
 max(pops$population_exposure)
-
-pops$species_label <- species$species_label[
-                          match(pops$species,
-                                species$species)]
-pops_upper <- subset(pops,species %in% upper$species)
-pops_lower <- subset(pops,species %in% lower$species)
+pops$species_label <- species$species_label[match(pops$species,species$species)]
 
 #add in dashed line for the score if plastic was evenly distributed
 #read in plastics data
@@ -154,41 +127,26 @@ above_mean <- subset(species,species_exposure > mean_plastic_score)
 above_mean
 table(above_mean$iucn) 
 
-upr_half <- ggplot(upper, aes(reorder(species_label,
+sp_pops <- ggplot(species, aes(reorder(species_label,
                                       species_exposure),
                                       species_exposure)) +
   geom_point(size=6) +
   geom_point(aes(species_label,population_exposure),
-             data = pops_upper,
+             data = pops,
              size=7,alpha=0.2,shape=18) +
   coord_flip() +
   xlab("") + ylab("Plastic exposure score") +
-  scale_y_continuous(limits = c(0,700),expand = c(0,0))+
+  scale_y_continuous(limits = c(0,max(pops$population_exposure)*1.05),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw()+ 
   theme(text=element_text(size = 25),
-        axis.text = element_text(colour="black"));upr_half
+        axis.text = element_text(colour="black"));sp_pops
 
-lwr_half <- ggplot(lower, aes(reorder(species_label,
-                                      species_exposure),
-                                      species_exposure)) +
-  geom_point(size=6) +
-  geom_point(aes(species_label,population_exposure),
-             data = pops_lower,
-             size=7,alpha=0.2,shape=18) +
-  coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
-  scale_y_continuous(limits = c(0,700),expand = c(0,0))+
-  theme(axis.ticks = element_blank())+
-  theme_bw() + 
-  theme(text=element_text(size = 25),
-        axis.text = element_text(colour="black"))
-plot_grid(upr_half,lwr_half)
 
 png("outputs/10_species_exposure_scores.png", 
     width=2000,height=1125)
 par(mfrow=c(1,1))
-plot_grid(upr_half,lwr_half)
+sp_pops
 dev.off()
 dev.off()
 
