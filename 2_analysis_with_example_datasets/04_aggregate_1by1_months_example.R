@@ -106,7 +106,7 @@ area <- (sin(pi/180*(lat + RES[2]/2)) - sin(pi/180*(lat - RES[2]/2))) * (RES[1] 
 r_area <- setValues(plastics, rep(area, each=ncol(plastics))) # gives the area of each grid cell in meters 
 plot(r_area, col=colsviri)
 
-files <- list.files(dir_rasters, full.names = TRUE,pattern="tif"); files
+files <- list.files(dir_rasters, full.names = TRUE,pattern=".*\\.tif$"); files
 
 dat <- data.frame()
 result <- c()

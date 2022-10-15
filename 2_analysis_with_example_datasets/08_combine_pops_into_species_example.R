@@ -34,7 +34,7 @@ outputs <-"outputs/08_species"
 dir.create(outputs)
 
 pop_rasters <- "outputs/05_populations"
-files <- list.files(pop_rasters, pattern="tif");files
+files <- list.files(pop_rasters, pattern=".*\\.tif$");files
 
 pops <- read.csv("outputs/05_exposure_scores_by_population.csv")
 tracked_seasons <- read.csv("input_data/breeding_months.csv")
@@ -106,6 +106,8 @@ for (i in 1:length(df_species$species)){
   
   sp_files <- list.files(pop_rasters, pattern=paste0(df_species$species[i],".*\\.tif$"));sp_files
   
+  sp_weightings <- subset(pops, pops$species == df_species$species[i])
+  
   for(j in 1:length(sp_files)){
     
     a <- raster(paste0(pop_rasters,"/",sp_files[j]))
@@ -117,6 +119,8 @@ for (i in 1:length(df_species$species)){
     }
     
   }
+  
+  
   df_species$seasons[i] <- max(sp_weightings$seasons)
   raster_name <- paste0("outputs/08_species/",df_species$species[i],".tif")
   writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)

@@ -70,6 +70,7 @@ skipped_species <- data.frame()
 ################# LOADING SPP DATA ##################
 
 #loop through tracking data files
+dataset_number <- 1
 for(dataset_number in 1:length(files)){ 
   print(paste(dataset_number,files[dataset_number]))
   
@@ -87,7 +88,7 @@ for(dataset_number in 1:length(files)){
   df <- subset(df, latitude < 90 & latitude > -90)
   df <- subset(df, longitude < 180 & longitude > -180)
   
-
+  
   #Check the scientific name is in the list of chosen species
   if(df$scientific_name[1] %in% species_list$scientific_name){
     
@@ -417,11 +418,15 @@ for(dataset_number in 1:length(files)){
       df <- df_all_wgs
       df$original_track_id <- NULL
       df$equinox <- NA
-
+      
       ############ EXPORT RESULTS #########
-
+      
       site <- str_remove(df$site_name[1],"/")
       colony <- str_remove(df$colony_name[1],"/")
+      
+      if(site == "South Georgia (Islas Georgias del Sur)"){
+        site <- "South Georgia"
+      }
       
       write.csv(df, paste0(dir,  
                            df$scientific_name[1],"_",site,"_",colony,"_",
@@ -492,7 +497,7 @@ for(dataset_number in 1:length(files)){
   #remove data with impossible lat/lons
   df <- subset(df, latitude < 90 & latitude > -90)
   df <- subset(df, longitude < 180 & longitude > -180)
-
+  
   ###### CHECKING DATA AND CREATING DTIME COLUMN in timestamp format ######
   df$bird_id <- factor(df$bird_id)
   df$track_id <- factor(df$track_id)
@@ -548,7 +553,7 @@ for(dataset_number in 1:length(files)){
       a <- sub_col[sub_col$device==dev[j],]
       
       if (a$device[1]=="GLS"){
-
+        
         col_df <- as.data.frame(a)
         col_df$track_time <- NA
         col_df$date_gmt <- NULL

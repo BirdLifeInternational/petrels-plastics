@@ -63,7 +63,7 @@ plot(eez,col="blue")
 
 eez_proj <- eez
 
-sp_files <- list.files("outputs/12_breeding_countries/", pattern = ".*.tif$");sp_files
+sp_files <- list.files("outputs/12_breeding_countries/", pattern = ".*\\.tif$");sp_files
 
 #eezs table
 eezs <- as.data.frame(sp_files)
@@ -106,10 +106,8 @@ for (i in 1:length(sp_files)){
   
 }
 
-labels <- as.data.frame(str_split_fixed(eezs_used$sp_country,pattern = "_",n=2))
-eezs_used$species <- labels$V1
-eezs_used$breeding_country <- labels$V2
-
+eezs_used$species <- str_split_fixed(eezs_used$sp_country,pattern = "_",n=2)[,1]
+eezs_used$breeding_country <- str_split_fixed(eezs_used$sp_country,pattern = "_",n=2)[,2]
 
 eezs_used$UNION <- ifelse(is.na(eezs_used$UNION),"High Seas",eezs_used$UNION)
 eezs_used$TERRITORY1 <- ifelse(is.na(eezs_used$TERRITORY1),"High Seas",eezs_used$TERRITORY1)
@@ -199,10 +197,6 @@ length(unique(eezs_used$group))
 
 head(eezs_used)
 
-eezs_used$npops <- eezs_country$npops[match(eezs_used$breeding_country,
-                                            eezs_country$breeding_country)]
-
-
 #replace sci names
 #comma instead of _ for label
 #make own country different
@@ -229,7 +223,7 @@ eezs_used$sp_country <- paste(eezs_used$species,eezs_used$breeding_country,sep="
 eezs_used$common_country <- dat$common_country[match(eezs_used$sp_country,dat$sp_country)]
 
 eezs <- ggplot(eezs_used,aes(x=prop,y=common_country,
-                          fill=prop,label = group))+
+                             fill=prop,label = group))+
   geom_col(color="white") +
   scale_fill_viridis(option="inferno",direction=-1) +
   geom_text(position = position_stack(vjust = 0.5),
@@ -251,11 +245,14 @@ dev.off()
 
 
 #Table for supplementary ####
+#group eezs with less than a threshold proportion of score 
+score_threshold <- 0.05
+
 i<-1
 for(i in 1:nrow(dat)){
   species_df <- eezs_used[eezs_used$sp_country == dat$sp_country[i],]
   
-  if(nrow(species_df > 1)){
+  if(nrow(species_df) > 1){
     species_df_crop <- species_df[species_df$prop >= score_threshold,]
     species_df_crop_low <- species_df[species_df$prop < score_threshold,]
     

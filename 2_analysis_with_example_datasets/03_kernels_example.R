@@ -198,7 +198,7 @@ for(dataset_number in 1:length(files)){ #
       #rast_mask[rast_mask == 0] <- NA
       rast_mask_final <- mask(rast_mask_sum1, mask_proj_pol, inverse = TRUE)
       rast_mask_final2 <- rast_mask_final 
-
+      
       #PLOT & SAVE ####
       mask_wgs84 <- projectRaster(rast_mask_final2,crs=proj_wgs84, over = F)
       

@@ -29,7 +29,7 @@ str_split_n <- function(string, pattern, n) {
 
 ## GENERAL DIRECTIONS AND FILES ####
 pop_rasters <- "outputs/05_populations"
-files <- list.files(pop_rasters, pattern="tif$");files
+files <- list.files(pop_rasters, pattern=".*\\.tif$");files
 
 outputs <- "outputs/12_breeding_countries"
 dir.create(outputs)

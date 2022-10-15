@@ -46,9 +46,6 @@ col_birds <- c(colorRampPalette(yelblus)(1000))
 # define Robinson projection
 proj <- "+proj=robin"
 
-# load an example land shapefile from rnaturalearth dataset
-#world <- ne_countries(scale = "medium", returnclass = "sf")
-
 # project shapefile and raster to Robinson projection
 land_sf <- st_as_sf(land)
 world_prj <- land_sf %>% st_transform(proj)
@@ -106,8 +103,8 @@ p1 <- ggplot() +
   theme_minimal() +
   scale_fill_gradientn(colors = cols_sp_rich)+
   theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = X08_species_richness),
-              data = r_df) +
+  geom_tile(aes(x = x, y = y, fill = X08_species_richness),
+            data = r_df) +
   geom_sf(aes(), colour = NA, fill = "grey75", 
           data = world_prj) +
   geom_point(aes(x=lon_colony,y=lat_colony),
@@ -127,8 +124,8 @@ p2 <- ggplot() +
   theme_minimal() +
   scale_fill_gradientn(colors = col_birds)+
   theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = X08_all_species_distribution),
-              data = bat_df) +
+  geom_tile(aes(x = x, y = y, fill = X08_all_species_distribution),
+            data = bat_df) +
   geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
   geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
   xlab("") + ylab("");p2
@@ -154,8 +151,8 @@ p3 <- ggplot() +
   theme_minimal() +
   scale_fill_viridis(option="inferno",direction=-1)+
   theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = X00_PlasticsRaster),
-              data = p_df) +
+  geom_tile(aes(x = x, y = y, fill = X00_PlasticsRaster),
+            data = p_df) +
   geom_sf(aes(), colour = NA, fill = "grey75", 
           data = world_prj) +
   geom_sf(aes(), fill = "white", color = "black", 
@@ -182,8 +179,8 @@ p4 <- ggplot() +
   theme_minimal() +
   scale_fill_viridis(option="inferno",direction=-1)+
   theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = layer),
-              data = exposure_df) +
+  geom_tile(aes(x = x, y = y, fill = layer),
+            data = exposure_df) +
   geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
   geom_sf(aes(), fill = "white", color = "black", 
           data = cookie, size = .5) +
@@ -206,8 +203,8 @@ p5 <- ggplot() +
   theme_minimal() +
   scale_fill_viridis(option="inferno",direction=-1)+
   theme(legend.position = "none")+
-  geom_raster(aes(x = x, y = y, fill = layer),
-              data = exposure_df) +
+  geom_tile(aes(x = x, y = y, fill = layer),
+            data = exposure_df) +
   geom_sf(aes(), fill = NA, colour = "#2684ff", data = eez_prj) +
   geom_sf(aes(), colour = NA, fill = "grey75", data = world_prj) +
   geom_sf(aes(), fill = "white", color = "black", data = cookie, size = .5) +
@@ -217,3 +214,4 @@ png("outputs/09_exposure_capped1percent_eez.png", width=2000,height=1125)
 p5
 dev.off()
 dev.off()
+

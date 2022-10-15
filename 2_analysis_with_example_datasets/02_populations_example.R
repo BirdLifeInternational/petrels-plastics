@@ -13,18 +13,10 @@ data_std <- "outputs/01_cleaning_data/"
 files <- list.files(data_std,pattern = ".csv");files
 
 files_list <- as.data.frame(files)
-files_list$species <- NA
-files_list$site <- NA
-files_list$colony <- NA
 
-for(i in 1:nrow(files_list)){
-  
-  name <- strsplit(files[i],"_")
-  files_list$species[i] <- name[[1]][1]
-  files_list$site[i] <- name[[1]][2]
-  files_list$colony[i] <- name[[1]][3]
-  
-}
+files_list$species <- str_split_fixed(files,"_",n=4)[,1]
+files_list$site <- str_split_fixed(files,"_",n=4)[,2]
+files_list$colony <- str_split_fixed(files,"_",n=4)[,3]
 
 files_list$pop <- files_list$site
 
@@ -33,7 +25,6 @@ files_list$pop <- files_list$site
 
 #for each population
 #e.g. files_list$pop <- ifelse(files_list$pop %in% c("Colony1","Colony2"), "Population name",files_list$pop)
-files_list$pop <- ifelse(files_list$pop == "South Georgia (Islas Georgias del Sur)", "South Georgia",files_list$pop)
 large_sites <- c("Portugal")
 files_list$pop <- ifelse(files_list$pop %in% large_sites, files_list$colony,files_list$pop)
 
@@ -159,14 +150,6 @@ head(pops)
 hist(all_years)
 
 mean(all_years)
-
-length(all_years[all_years > 2008 & all_years < 2020])
-
-length(all_years[all_years > 2008 & all_years < 2020])/length(all_years)
-
-pops$year_range <- paste0(pops$min_year,"-",pops$max_year)
-
-sum(pops$yrs09_19)/148 #change 148 to number of populations
 
 mean(pops$mean_year)
 mean(pops$min_year)
