@@ -1,3 +1,3 @@
-"scientific_name","common_name","population","individuals","locations","unique_months","n_years","year_range","mean_year","years"
-"Calonectris borealis","Cory's Shearwater","Berlengas",10,3161,9,2,"2006-2007",2006,"2007_2006"
-"Procellaria aequinoctialis","White-chinned Petrel","South Georgia",22,2880,11,3,"2003-2015",2011,"2015_2014_2003"
+"scientific_name","common_name","population","individuals","locations","unique_months","n_years","mean_year","years"
+"Calonectris borealis","Cory's Shearwater","Berlengas",10,3161,9,2,2006,"2007_2006"
+"Procellaria aequinoctialis","White-chinned Petrel","South Georgia",22,2880,11,3,2011,"2015_2014_2003"
