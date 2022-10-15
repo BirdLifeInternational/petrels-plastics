@@ -28,9 +28,8 @@ str_split_n <- function(string, pattern, n) {
 }
 
 ## GENERAL DIRECTIONS AND FILES ####
-
 pop_rasters <- "outputs/05_populations"
-files <- list.files(pop_rasters, pattern="tif$");files
+files <- list.files(pop_rasters, pattern=".*\\.tif$");files
 
 outputs <- "outputs/12_breeding_countries"
 dir.create(outputs)
@@ -94,6 +93,9 @@ pops$breeding_country <- c("New Zealand", "Australia","Australia",
                            "Portugal","Cape Verde","Portugal","Spain",
                            "USA","Mexico","Iceland","Ireland","UK",
                            "France","Malta","Antarctica","Antarctica")
+pops$species_pop <- ifelse(pops$species_pop == "Ardenna pacifica_Lowendal and Houtman Abrolhoss","Ardenna pacifica_Lowendal & Houtman Abrolhoss",pops$species_pop)
+pops$species_pop <- ifelse(pops$species_pop == "Fulmarus glacialis_Bjornoya","Fulmarus glacialis_Bjørnøya",pops$species_pop)
+
 table(pops$breeding_country)
 length(unique(pops$breeding_country))
 

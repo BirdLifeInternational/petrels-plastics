@@ -12,19 +12,9 @@ dir.create("outputs/02_pops/")
 data_std <- "outputs/01_cleaning_data/"
 files <- list.files(data_std,pattern = ".csv");files
 
-files_list <- as.data.frame(files)
-files_list$species <- NA
-files_list$site <- NA
-files_list$colony <- NA
-
-for(i in 1:nrow(files_list)){
-  
-  name <- strsplit(files[i],"_")
-  files_list$species[i] <- name[[1]][1]
-  files_list$site[i] <- name[[1]][2]
-  files_list$colony[i] <- name[[1]][3]
-  
-}
+files_list$species <- str_split_fixed(files,"_",n=4)[,1]
+files_list$site <- str_split_fixed(files,"_",n=4)[,2]
+files_list$colony <- str_split_fixed(files,"_",n=4)[,3]
 
 #Rename sites and populations with shorter names that do not contain
 #special characters & group together populations

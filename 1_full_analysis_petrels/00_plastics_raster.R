@@ -9,15 +9,14 @@ library(rgdal)
 library(dplyr)
 library(RColorBrewer)
 
-## set up input and output folders
-dir_input <- "input_data/plastics_data/"
-dir_output <- "outputs/"
-dir.create(dir_output)
+## specify/create directories
+dir.create("outputs/")
 
 #Data to read in ----
-Lebreton <- as.matrix(read.csv(paste0(dir_input,"lebretonmodel_abundance.csv"), header = F))
-Maximenko <- as.matrix(read.csv(paste0(dir_input,"maximenkomodel_abundance.csv"), header = F))
-VanSeb <- as.matrix(read.csv(paste0(dir_input,"vansebillemodel_abundance.csv"), header = F))
+Lebreton <- as.matrix(read.csv("input_data/plastics_data/lebretonmodel_abundance.csv", header = F))
+Maximenko <- as.matrix(read.csv("input_data/plastics_data/maximenkomodel_abundance.csv", header = F))
+VanSeb <- as.matrix(read.csv("input_data/plastics_data/vansebillemodel_abundance.csv", header = F))
+
 
 #Data Cleanup ----
 df <- data.frame(van = as.vector(VanSeb), max = as.vector(Maximenko), leb = as.vector(Lebreton))
@@ -60,12 +59,12 @@ plastics[cellFromCol(plastics,181)] <- cols$mean
 plot(log(plastics))
 
 #save the raster
-raster_name <- paste0(dir_output,"00_PlasticsRaster.tif")
+raster_name <- "outputs/00_PlasticsRaster.tif"
 writeRaster(plastics, filename = raster_name,
             format="GTiff", overwrite=TRUE)
 
 #Plot difference in coverage between the three models ####
-land <- rgdal::readOGR(dsn = paste0("input_data/baselayer"), layer = "world-dissolved") 
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
 
 VanSeb_01 <- ifelse(VanSeb>0,1,0)
 VanSeb_01 <- ifelse(is.na(VanSeb_01),0,VanSeb_01)

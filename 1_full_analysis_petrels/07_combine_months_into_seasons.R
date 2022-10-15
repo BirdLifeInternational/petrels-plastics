@@ -23,7 +23,7 @@ land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved")
 
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- "outputs/04_aggregate_1by1_grid"
-files <- list.files(dir_1by1, full.names = TRUE,pattern="tif$"); head(files)
+files <- list.files(dir_1by1, full.names = TRUE,pattern=".*\\.tif$"); head(files)
 
 dir_seasons <- "outputs/07_seasons"
 dir.create(dir_seasons)

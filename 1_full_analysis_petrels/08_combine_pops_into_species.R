@@ -37,7 +37,7 @@ outputs <- "/outputs/08_species"
 dir.create(outputs)
 
 pop_rasters <- "outputs/05_populations"
-files <- list.files(pop_rasters, pattern="tif$");files  # adjusted to not return .tif.aux.xml
+files <- list.files(pop_rasters, pattern=".*\\.tif$");files  # adjusted to not return .tif.aux.xml
 
 pops <- read.csv("outputs/05_exposure_scores_by_population.csv")  
 tracked_seasons <- read.csv("input_data/breeding_months.csv")
@@ -107,8 +107,8 @@ df_species$seasons <- NA
 
 for (i in 1:length(df_species$species)){
   
-  sp_files <- list.files(pop_rasters, pattern=df_species$species[i]);sp_files  # TODO: update to find only .tif not .tif.aux.xml files
-  sp_weightings <- pops[pops$species == df_species$species[i],];sp_weightings
+  sp_files <- list.files(pop_rasters, pattern= paste0(df_species$species[i],".*\\.tif$"));sp_files  
+  sp_weightings <- subset(pops, pops$species == df_species$species[i]);sp_weightings
   
   for(j in 1:length(sp_files)){
     

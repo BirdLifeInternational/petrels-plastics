@@ -48,9 +48,6 @@ col_birds <- c(colorRampPalette(yelblus)(1000))
 # define Robinson projection
 proj <- "+proj=robin"
 
-# load an example land shapefile from rnaturalearth dataset
-#world <- ne_countries(scale = "medium", returnclass = "sf")
-
 # project shapefile and raster to Robinson projection
 land_sf <- sf::st_as_sf(land)
 world_prj <- land_sf %>% sf::st_transform(proj)

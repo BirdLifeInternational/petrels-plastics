@@ -46,7 +46,7 @@ write.csv(pop_exposure,"outputs/05_exposure_scores_by_population.csv",
 
 for (i in 1:nrow(pop_exposure)){
   
-  months <- list.files(dir_1by1, pattern = paste0(pop_exposure$sp_pop[i], ".*.tif$"))  # updated to match only the .tif, not the .tif.aux.xml file.
+  months <- list.files(dir_1by1, pattern = paste0(pop_exposure$sp_pop[i], ".*\\.tif$"))  # updated to match only the .tif, not the .tif.aux.xml file.
   
   for(j in 1:length(months)){
     a <- raster::raster(paste0(dir_1by1,"/",months[j]))
