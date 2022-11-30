@@ -122,6 +122,7 @@ unique(eezs_used$POL_TYPE)
 
 
 table(eezs_used$POL_TYPE)
+table(eezs_used$TERRITORY1)
 
 pol_type <- eezs_used %>%
   group_by(POL_TYPE) %>% 
@@ -157,7 +158,15 @@ eezs_used2 <- rbind(eezs_used_notjoint,joint_regime,joint_regime2)
 eezs_used <- eezs_used2
 
 #for landlocked countries, add to nearest country
-#Vatican + San Marino = Itlay
+#Vatican + San Marino = Italy
+
+## quick map to show that San Marino and The Vatican do not have an EEZ
+## they are merged with Italy to avoid having NAs in the dataset in later analyses.
+# library(leaflet)
+# leaflet() %>%
+#   addTiles() %>%
+#   addPolygons(data = eez) %>%
+#   addPolygons(data = eez[eez$SOVEREIGN1 == "San Marino",], color = "red")
 
 italy <- c("Vatican City","San Marino")
 

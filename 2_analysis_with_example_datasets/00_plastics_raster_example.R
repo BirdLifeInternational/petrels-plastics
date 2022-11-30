@@ -59,8 +59,8 @@ plot(log(plastics))
 
 #save the raster
 raster_name <- "outputs/00_PlasticsRaster.tif"
-writeRaster(plastics, filename = raster_name,
-            format="GTiff", overwrite=TRUE)
+raster::writeRaster(plastics, filename = raster_name,
+                    format="GTiff", overwrite=TRUE)
 
 
 #Plot difference in coverage between the three models ####

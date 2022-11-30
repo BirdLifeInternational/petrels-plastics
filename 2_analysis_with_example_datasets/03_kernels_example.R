@@ -202,8 +202,8 @@ for(dataset_number in 1:length(files)){ #
       #PLOT & SAVE ####
       mask_wgs84 <- projectRaster(rast_mask_final2,crs=proj_wgs84, over = F)
       
-      writeRaster(mask_wgs84, filename = KDERasName_sum, 
-                  format = "GTiff", overwrite = TRUE)
+      raster::writeRaster(mask_wgs84, filename = KDERasName_sum, 
+                          format = "GTiff", overwrite = TRUE)
       
       ## Plot
       png(filename = paste0(dir_kernels, "/kde_plots/", KDE_ref, ".png"))

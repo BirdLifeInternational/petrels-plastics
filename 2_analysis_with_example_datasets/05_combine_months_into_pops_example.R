@@ -41,7 +41,8 @@ write.csv(pop_exposure,"outputs/05_exposure_scores_by_population.csv",
 
 for (i in 1:nrow(pop_exposure)){
   
-  months <- list.files(dir_1by1, pattern = pop_exposure$sp_pop[i])
+  # months <- list.files(dir_1by1, pattern = pop_exposure$sp_pop[i])
+  months <- list.files(dir_1by1, pattern = paste0(pop_exposure$sp_pop[i], ".*\\.tif$"))
   
   for(j in 1:length(months)){
     a <- raster(paste0(dir_1by1,"/",months[j]))
@@ -53,7 +54,7 @@ for (i in 1:nrow(pop_exposure)){
   }
   rast_sum <- rast_sum/count
   raster_name <- paste0(dir_out,"/",pop_exposure$sp_pop[i],".tif")
-  writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
+  raster::writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
   
   rast_sum[is.na(rast_sum)] <- 0
   density_sum <- sum(getValues(rast_sum))

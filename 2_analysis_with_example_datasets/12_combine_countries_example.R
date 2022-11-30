@@ -181,7 +181,7 @@ for (i in 1:nrow(sp_country_list)){
   sp_country_list$seasons[i] <- max(sp_country_df$seasons)
   #raster_name <- paste0(dir,"/scripts_results/06_countries_over/",
   #                      sp_country_list$sp_country[i],".tif")
-  #writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
+  #raster::writeRaster(rast_sum, filename=raster_name, format="GTiff", overwrite=TRUE)
   
   #plot(rast_sum,main=species[i])
   ## rescale to 1

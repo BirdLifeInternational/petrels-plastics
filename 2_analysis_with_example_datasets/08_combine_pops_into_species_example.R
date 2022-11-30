@@ -152,11 +152,11 @@ for (i in 1:nrow(df_species)){
 
 plot(a_all)
 raster_name_dist <- "outputs/08_all_species_distribution.tif"
-writeRaster(a_all, filename=raster_name_dist, 
+raster::writeRaster(a_all, filename=raster_name_dist, 
             format="GTiff", overwrite=TRUE)
 
 plot(a_all_flat)
 raster_name_richness <- "outputs/08_species_richness.tif"
-writeRaster(a_all_flat, filename=raster_name_richness, 
+raster::writeRaster(a_all_flat, filename=raster_name_richness, 
             format="GTiff", overwrite=TRUE)
 

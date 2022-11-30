@@ -59,8 +59,6 @@ plot(eez[37,],add=T,col="red");eez[37,]
 
 rm(eez_file)
 
-plot(eez,col="blue")
-
 eez_proj <- eez
 
 sp_files <- list.files("outputs/12_breeding_countries/", pattern = ".*\\.tif$");sp_files
@@ -71,7 +69,7 @@ eezs$n_used <- NA
 eezs$eezs_used <- NA
 eezs$eezs_sovereigns_used <- NA
 
-i <- 1
+# i <- 1
 for (i in 1:length(sp_files)){
   
   a <- raster(paste0("outputs/12_breeding_countries/",sp_files[i]))
@@ -128,7 +126,7 @@ eezs_used$AREA_KM2 <- ifelse(eezs_used$POL_TYPE == "High Seas",219116810,eezs_us
 
 table(eezs_used$POL_TYPE)
 
-#all joint regimes have only 2 soveriegns.
+#all joint regimes have only 2 sovereigns.
 #divide the total in half and add to the totals of each country
 
 joint_regime <- subset(eezs_used,POL_TYPE == "Joint regime (EEZ)")
@@ -154,7 +152,9 @@ eezs_used2 <- rbind(eezs_used_notjoint,joint_regime,joint_regime2)
 eezs_used <- eezs_used2
 
 #for landlocked countries, add to nearest country
-#Vatican + San Marino = Itlay
+#Vatican + San Marino = Italy
+#San Marino and The Vatican do not have an EEZ
+#they are merged with Italy to avoid having NAs in the dataset in later analyses.
 
 italy <- c("Vatican City","San Marino")
 
@@ -248,7 +248,7 @@ dev.off()
 #group eezs with less than a threshold proportion of score 
 score_threshold <- 0.05
 
-i<-1
+# i<-1
 for(i in 1:nrow(dat)){
   species_df <- eezs_used[eezs_used$sp_country == dat$sp_country[i],]
   
@@ -295,8 +295,8 @@ all_pops$prop <- NULL
 
 pops_table <- all_pops %>% 
   pivot_wider(names_from = Label,values_from = c(group,Percent)) %>%
-  select(c(species,breeding_country,group_1,Percent_1,
-           group_2,Percent_2,group_3,Percent_3,group_4,Percent_4)) %>%
+  dplyr::select(c(species,breeding_country,group_1,Percent_1,
+                  group_2,Percent_2,group_3,Percent_3,group_4,Percent_4)) %>%
   data.frame()
 head(pops_table)
 

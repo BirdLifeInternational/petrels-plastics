@@ -155,7 +155,7 @@ for (i in 1:length(files)){#
   
   raster_name_2 <- paste0(dir_1by1, raster_name_1)
   
-  writeRaster(a_proj2, filename=raster_name_2, format="GTiff", overwrite=TRUE)
+  raster::writeRaster(a_proj2, filename=raster_name_2, format="GTiff", overwrite=TRUE)
   
   over <- a_proj2 * p_sum1
   
