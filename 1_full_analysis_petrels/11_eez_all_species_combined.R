@@ -15,13 +15,17 @@ library(sf)#0.9-4
 library(tidyverse)#1.3.0
 library(sp) #1.3-2
 library(viridis)#0.5.1
+library(svglite)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## check we're still in rproj home directory "1_full_analysis_petrels"
 getwd()
 
-land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 pops <- read.csv("outputs/06_phenology.csv")
 
@@ -193,6 +197,7 @@ eezs_country <- eezs_used %>%
             label = "total") %>%
   data.frame()
 
+#For visualisation, combine the scores for all countries scoring below 
 eezs_country
 eezs_country$category <- ifelse(eezs_country$total < 2.575042e-07,
                             "low exposure countries",eezs_country$sovereigns)
@@ -228,7 +233,7 @@ eezs_country_highexposure$category <- factor(eezs_country_highexposure$category,
 eezs_country_highexposure$percent <- (eezs_country_highexposure$total/
                                       sum(eezs_country_highexposure$total))*100
 
-
+#plot a stacked bar of all species combined
 plot1 <- ggplot(eezs_country_highexposure,aes(
                 x=label,y=total,fill=category))+
   geom_bar(stat="identity",position="fill",colour="white") +
@@ -241,9 +246,28 @@ plot1
 dev.off()
 dev.off()
 
+#produce a greyscale version of the previous plot
+greys <- c(brewer.pal(n = 9, name = "Greys"))
+col_eez <- c(rev(colorRampPalette(greys)(15)))[1:14]
 
+eezs_greyscale <- ggplot(eezs_country_highexposure,aes(
+  x=label,y=total,fill=category))+
+  geom_bar(stat="identity",position="fill",colour="white") +
+  scale_fill_manual(values = col_eez)+
+  theme_bw(); eezs_greyscale
+
+#save as svg for journal plot requirements
+ggsave(filename = "outputs/11_eez_allspecies_grey.svg",
+       plot = eezs_greyscale, 
+       width = 1000, height = 2000, unit = "px") 
+
+#save plot source data
 write.csv(eezs_country,
           "outputs/11_eezs_by_country.csv",
                  row.names=F)
+
+write.csv(eezs_country_highexposure,
+          "outputs/11_eezs_by_country_plot.csv",
+          row.names=F)
 
 

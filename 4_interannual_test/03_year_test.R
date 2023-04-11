@@ -12,7 +12,7 @@ ms_theme <- theme_bw()+
   #theme(legend.position = "none")+
   theme(axis.text=element_text(colour="black"))
 
-years <- read.csv("outputs/04_exposure_scores_by_year.csv")
+years <- read.csv("outputs/02_exposure_scores_by_year.csv")
 table(years$sp_pop)
 
 #find all populations with matching months tracked in >3 different years
@@ -67,8 +67,6 @@ low_scorers <- subset(multiyear,exposure_score < 100)
 
 
 high <- ggplot(data=high_scorers,aes(x = year, y= exposure_score, fill=sp_pop, colour=sp_pop)) + 
-  #scale_color_viridis()+
-  #scale_y_continuous(expand = c(0,0),limits = c(0, 50)) +
   geom_point(aes(size=4, 
                  alpha = 0.6))+
   geom_smooth(method=lm, level = 0)+
@@ -79,7 +77,6 @@ high <- ggplot(data=high_scorers,aes(x = year, y= exposure_score, fill=sp_pop, c
   ms_theme;high
 
 low <- ggplot(data=low_scorers,aes(x = year, y= exposure_score, fill=sp_pop, colour=sp_pop)) + 
-  #scale_color_viridis()+
   scale_y_continuous(expand = c(0,0),limits = c(0, 12)) +
   geom_point(aes(size=4, 
                  alpha = 0.6))+
@@ -111,3 +108,35 @@ png("outputs/03_year_plot_low.png",
 low
 dev.off()
 dev.off()
+
+high_svg <- ggplot(data=high_scorers,aes(x = year, y= exposure_score, 
+                                         fill=sp_pop, colour=sp_pop)) + 
+  geom_point(aes(alpha = 0.6))+
+  geom_smooth(method=lm, level = 0)+
+  scale_y_continuous(expand = c(0,0),limits = c(0, 700)) +
+  scale_colour_manual(values = viridis(4, option = "inferno")[2:3])+
+  scale_fill_manual(values = viridis(4, option = "inferno")[2:3])+
+  ylab("Exposure risk score")+xlab("Year")+
+  ms_theme;high_svg
+
+low_svg <- ggplot(data=low_scorers,aes(x = year, y= exposure_score, 
+                                       fill=sp_pop, colour=sp_pop)) + 
+  scale_y_continuous(expand = c(0,0),limits = c(0, 12)) +
+  geom_point(aes(alpha = 0.6))+
+  geom_smooth(method=lm, level =0)+
+  scale_colour_viridis_d(option = "inferno")+
+  scale_fill_viridis_d(option = "inferno")+
+  ylab("Exposure risk score")+xlab("Year")+
+  ms_theme;low_svg
+
+
+ggsave(filename = "outputs/03_year_plot_high.svg",
+       plot = high_svg, 
+       width = 2800, height = 1800, unit = "px") 
+
+ggsave(filename = "outputs/03_year_plot_low.svg",
+       plot = low_svg, 
+       width = 2800, height = 1800, unit = "px") 
+
+write.csv(multiyear,"outputs/03_exposure_scores_by_year_multiyear.csv",
+          row.names = F)

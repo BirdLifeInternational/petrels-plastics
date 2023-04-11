@@ -22,7 +22,10 @@ library(viridis)#0.5.1
 #that use custom equal area projections centred on the geomean of the data
 #and so we might need to return to previous versions.
 
-land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 bird_dist <- raster("outputs/08_all_species_distribution.tif")
 b <- bird_dist

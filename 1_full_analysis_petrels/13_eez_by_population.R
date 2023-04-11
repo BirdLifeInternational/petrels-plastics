@@ -18,6 +18,7 @@ library(gridExtra)
 library(sf)
 library(tidyverse)
 library(rgeos)
+library(svglite)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
@@ -27,7 +28,10 @@ library(rgeos)
 
 ## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
 
-land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") #Changed - BC  
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 pops <- read.csv("outputs/06_phenology.csv")
 
@@ -125,20 +129,10 @@ write.csv(eezs,"outputs/13_eezs_per_species.csv",row.names = F)
 eezs_used <- read.csv("outputs/13_eezs_used_per_species.csv")
 dat <- read.csv("outputs/12_species_country_scores.csv")
 
-#plot top scores ####
-#subset to top 40 species_countries
 
-#comment out 3 rows below to work out n species per eez
-#top40 <- dat[dat$score > 14,]
-#t40_eezs <- eezs_used[eezs_used$pop %in% top40$sp_country,]
-#eezs_used <- t40_eezs
-
+# investigate results ####
 #too many overlapping claims to ignore
 #for overlapping claims, 
-
-#eezs_used$cat <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
-#                        "Overlapping claim",eezs_used$TERRITORY1)
-
 eezs_used$group <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
                           paste(eezs_used$SOVEREIGN1,
                                 eezs_used$SOVEREIGN2,
@@ -152,9 +146,7 @@ unique(eezs_used$group)
 
 length(unique(eezs_used$group))
 
-
-
-#too much going on, need to simplify
+# too much to plot, need to simplify for visualisation
 # order from highest to lowest
 # group countries below the mean into low impact group
 
@@ -164,20 +156,19 @@ eezs_group <- eezs_used %>%
             nspp = length(unique(species))) %>%
   data.frame();eezs_group
 
-
 #loop through each species_country and lump together everything that falls 
 #below threshold of proportion of score
 
 score_threshold <- 0.05
 
-top40 <- subset(dat, score > score_threshold)
-#top40 <- dat
-
-top40 <- top40[order(top40$score),]
+#plot top scores ####
+#(above 15.3, the value if plastic was evenly distributed globally
+dat <- dat[order(-dat$score),]
+top_scoring <- subset(dat, score > 15.3)
 
 i<-1
-for(i in 1:nrow(top40)){
-  species_df <- eezs_used[eezs_used$sp_country == top40$sp_country[i],]
+for(i in 1:nrow(top_scoring)){
+  species_df <- eezs_used[eezs_used$sp_country == top_scoring$sp_country[i],]
   
   if(nrow(species_df) > 1){
     species_df_crop <- species_df[species_df$prop >= score_threshold,]
@@ -229,7 +220,7 @@ all_sp$group <- ifelse(all_sp$group == "Japan/Russia" &
 #all_sp$pop <- as.factor(all_sp$pop)
 
 #all_sp$pop <- factor(all_sp$pop, 
-#                           level = top40$sp_country)
+#                           level = top_scoring$sp_country)
 
 #replace sci names
 #comma instead of _ for label
@@ -238,15 +229,15 @@ all_sp$group <- ifelse(all_sp$group == "Japan/Russia" &
 names <- read.csv("input_data/Species_list_IUCN.csv")
 head(names)
 
-top40$common_name <- names$common_name[match(top40$species,names$scientific_name)]
-top40$iucn <- names$IUCN[match(top40$species,names$scientific_name)]
-head(top40)
+top_scoring$common_name <- names$common_name[match(top_scoring$species,names$scientific_name)]
+top_scoring$iucn <- names$IUCN[match(top_scoring$species,names$scientific_name)]
+head(top_scoring)
 
 dat$sci_name_pop <- dat$sp_country 
-top40$country <- str_split_fixed(top40$sp_country,"_",n=2)[,2]
-top40$common_country <- paste0(top40$common_name,", ",top40$country)
+top_scoring$country <- str_split_fixed(top_scoring$sp_country,"_",n=2)[,2]
+top_scoring$common_country <- paste0(top_scoring$common_name,", ",top_scoring$country)
 
-head(top40)
+head(top_scoring)
 all_sp$common_name <- names$common_name[match(all_sp$species,names$scientific_name)]
 all_sp$common_country <- paste0(all_sp$common_name,", ",all_sp$breeding_country)
 all_sp$iucn <- names$IUCN[match(all_sp$species,names$scientific_name)]
@@ -278,13 +269,13 @@ eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
         axis.title = element_text(size=30),
         axis.text = element_text(colour = "black"));eezs
 
-png(paste0("outputs/13_top40_eezs_sum",score_threshold,".png"), width=2000,height=1350)
+png(paste0("outputs/13_top_scoring_eezs_sum",score_threshold,"_test.png"), width=2000,height=1350)
 par(mfrow=c(1,1))
 eezs
 dev.off()
 dev.off()
 
-png(paste0("outputs/13_top40_eezs",score_threshold,"legend.png"), width=2000,height=1350)
+png(paste0("outputs/13_top_scoring_eezs",score_threshold,"legend.png"), width=2000,height=1350)
 par(mfrow=c(1,1))
 ggplot(all_sp,aes(x=prop,y=common_country_iucn,fill=prop,label = group_label))+
   geom_col(color="white") +
@@ -343,7 +334,7 @@ eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
         axis.title = element_text(size=30),
         axis.text = element_text(colour = "black"));eezs
 
-png(paste0("outputs/13_top40_eezs",score_threshold,"legend_newcols.png"), width=2000,height=1350)
+png(paste0("outputs/13_top_scoring_eezs",score_threshold,"legend_newcols.png"), width=2000,height=1350)
 par(mfrow=c(1,1))
 eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
                           label = group_label))+

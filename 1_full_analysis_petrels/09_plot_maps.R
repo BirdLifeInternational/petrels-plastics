@@ -24,7 +24,11 @@ library(cowplot)
 #and so we might need to return to previous versions.
 
 ## Input data ####
-land <- rgdal::readOGR(dsn = paste0("input_data/baselayer"), layer = "world-dissolved") 
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
+ice <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_antarctic_ice_shelves_polys")
 
 bird_dist <- raster::raster("outputs/08_all_species_distribution.tif")
 b <- bird_dist

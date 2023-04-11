@@ -58,8 +58,10 @@ sessionInfo()
 #  [33] crayon_1.5.0    
 
 ######### GENERAL DIRECTIONS AND FILES ##############
-
-land <- rgdal::readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 dir_demClasses <- "outputs/03_kernels"
 

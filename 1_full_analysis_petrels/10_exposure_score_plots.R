@@ -9,6 +9,7 @@ library(tidyverse)
 library(viridis)
 library(cowplot)
 library(ggtext)
+library(svglite)
 se <- function(x) sqrt(var(x)/length(x))
 
 ## check we're still in rproj home directory "1_full_analysis_petrels"
@@ -134,7 +135,7 @@ seasons <- ggplot(abovex,aes(reorder(species_pop, season_diff),season_exposure,
   scale_colour_manual(values = c("grey","black"))+
   geom_line(colour="#696969",size=2)+   geom_point(aes(colour=season),size=8) +
   theme(legend.position = "none")+
-  ylab("\nSeason-specific plastic exposure")+ 
+  ylab("\nSeason-specific plastic exposure risk for tracked petrels")+ 
   theme(text=element_text(size = 42),
         axis.text = element_text(colour="black"));seasons
 
@@ -144,6 +145,24 @@ par(mfrow=c(1,1))
 seasons
 dev.off()
 dev.off()
+
+#format to save as svg file
+seasons_svg <- ggplot(abovex,aes(reorder(species_pop, season_diff),season_exposure,
+                             season_exposure,group=species_pop)) +
+  theme_bw()+
+  coord_flip() +
+  xlab("") +
+  scale_colour_manual(values = c("grey","black"))+
+  geom_line(colour="#696969")+   geom_point(aes(colour=season)) +
+  theme(legend.position = "none")+
+  ylab("\nSeason-specific plastic exposure risk for tracked petrels")+ 
+  theme(axis.text = element_text(colour="black"));seasons_svg
+
+ggsave(filename = "outputs/10_season_differences.svg",
+       plot = seasons_svg, width=5.1, height=6.74)  
+
+write.csv(abovex,"outputs/10_season_differences_plot.csv",
+          row.names = F)
 
 #plot species scores ####
 head(species)
@@ -166,7 +185,7 @@ upr_half <- ggplot(upper,
                        species_exposure)) +
   geom_point(size=4) +
   coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
+  xlab("") + ylab("Plastic exposure risk score") +
   scale_y_continuous(limits = c(0,575),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw() 
@@ -175,7 +194,7 @@ lwr_half <- ggplot(lower,
                        species_exposure)) +
   geom_point(size=4) +
   coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
+  xlab("") + ylab("Plastic exposure risk score") +
   scale_y_continuous(limits = c(0,575),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw() 
@@ -218,7 +237,7 @@ upr_half <- ggplot(upper, aes(reorder(species_label,
   geom_hline(yintercept = mean_plastic_score, 
              linetype='dashed')+
   coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
+  xlab("") + ylab("Plastic exposure risk score") +
   scale_y_continuous(limits = c(0,700),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw()+ 
@@ -235,20 +254,59 @@ lwr_half <- ggplot(lower, aes(reorder(species_label,
   geom_hline(yintercept = mean_plastic_score, 
              linetype='dashed')+
   coord_flip() +
-  xlab("") + ylab("Plastic exposure score") +
+  xlab("") + ylab("Plastic exposure risk score") +
   scale_y_continuous(limits = c(0,700),expand = c(0,0))+
   theme(axis.ticks = element_blank())+
   theme_bw() + 
   theme(text=element_text(size = 25),
         axis.text = element_text(colour="black"))
-plot_grid(upr_half,lwr_half)
+plot_cols <- plot_grid(upr_half,lwr_half)
 
 png("outputs/10_species_exposure_scores.png", 
     width=2000,height=1125)
 par(mfrow=c(1,1))
-plot_grid(upr_half,lwr_half)
+plot_cols
 dev.off()
 dev.off()
+
+#plot as svg
+upr_half <- ggplot(upper, aes(reorder(species_label,
+                                      species_exposure),
+                              species_exposure)) +
+  geom_point() +
+  geom_point(aes(species_label,population_exposure),
+             data = pops_upper,
+             alpha=0.2,shape=18,size=3) +
+  geom_hline(yintercept = mean_plastic_score, 
+             linetype='dashed')+
+  coord_flip() +
+  xlab("") + ylab("Plastic exposure risk score") +
+  scale_y_continuous(limits = c(0,700),expand = c(0,0))+
+  theme(axis.ticks = element_blank())+
+  theme_bw()+ 
+  theme(axis.text = element_text(colour="black"));upr_half
+
+lwr_half <- ggplot(lower, aes(reorder(species_label,
+                                      species_exposure),
+                              species_exposure)) +
+  geom_point() +
+  geom_point(aes(species_label,population_exposure),
+             data = pops_lower,
+             alpha=0.2,shape=18, size = 3) +
+  geom_hline(yintercept = mean_plastic_score, 
+             linetype='dashed')+
+  coord_flip() +
+  xlab("") + ylab("Plastic exposure risk score") +
+  scale_y_continuous(limits = c(0,700),expand = c(0,0))+
+  theme(axis.ticks = element_blank())+
+  theme_bw() + 
+  theme(axis.text = element_text(colour="black"))
+plot_cols <- plot_grid(upr_half,lwr_half)
+
+ggsave(filename = "outputs/10_species_exposure_scores.svg",
+       plot = plot_cols, 
+       width = 4000, height = 2250, unit = "px")  
+
 
 # plot iucn red list categories ####
 head(species)
@@ -290,3 +348,25 @@ png("outputs/10_iucn_redlist.png",
 all_iucn
 dev.off()
 dev.off()
+
+all_iucn_svg <- ggplot(iucn_bars,
+                   aes(y=prop,x=type,label=iucn,
+                       fill=factor(iucn,levels=c("CR","EN","VU","NT","LC")))) +
+  geom_bar(position="stack", stat="identity") +
+  scale_fill_manual(values = c("#A60808","#E22929","#EA6666","#F3A3A3",
+                               "grey"))+
+  theme(axis.ticks = element_blank())+
+  theme_bw() + 
+  theme(legend.position = "none")+
+  labs(fill = "IUCN\nRed List\nCategory")+
+  scale_y_continuous(labels = scales::percent,expand=c(0,0))+
+  xlab("")+ylab("")+
+  #theme(plot.margin=unit(c(1,1,-1,-1),"cm"))+
+  theme(text=element_text(colour="black"));all_iucn_svg
+
+ggsave(filename = "outputs/10_iucn_redlist.svg",
+       plot = all_iucn_svg, 
+       width = 700, height = 2000, unit = "px") 
+
+write.csv(iucn,"outputs/10_iucn_redlist.csv",
+          row.names = F)

@@ -22,7 +22,10 @@ library(rgeos)
 
 ## DIRECTION TO YOUR RASTERS (ALL DEM CLASSES COMBINED AND BY YEAR QUARTER)
 
-land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") #Changed - BC  
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 pops <- read.csv("outputs/06_phenology.csv")
 

@@ -16,7 +16,10 @@ library(RColorBrewer)
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 
-land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved") 
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 ## DIRECTION TO YOUR RASTERS 
 dir_1by1 <- "outputs/04_aggregate_1by1_grid"

@@ -64,7 +64,11 @@ writeRaster(plastics, filename = raster_name,
             format="GTiff", overwrite=TRUE)
 
 #Plot difference in coverage between the three models ####
-land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "world-dissolved") 
+
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land") 
 
 VanSeb_01 <- ifelse(VanSeb>0,1,0)
 VanSeb_01 <- ifelse(is.na(VanSeb_01),0,VanSeb_01)
@@ -91,5 +95,4 @@ png("outputs/00_plastics_model_coverage.png",
 plot(sum01_r,col=c("white",yelblus[3:5]),breaks = c(-1:3))
 plot(land, col="grey75", add=T)
 dev.off()
-
 

@@ -43,7 +43,11 @@ dir.create(paste0(dir,"/equinox_filtered/"))
 dir.create(paste0(dir,"/maps/"))
 
 ## PROJECTIONS
-land <- readOGR(dsn="input_data/baselayer", layer = "world-dissolved")  
+
+#Read in land file for visualisation:
+#Natural Earth land 1:10m polygons version 5.1.1 
+#downloaded from www.naturalearthdata.com/
+land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
 
 #Read in a list of the names of the target species for the study
 species_list <- read.csv(paste0("input_data/Species_list_IUCN.csv"))
