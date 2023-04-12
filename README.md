@@ -162,3 +162,16 @@ All folders contain codes that should be run in the order provided by the number
 Methods for calculating marine plastic exposure scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure, and percentages within spatial boundaries can be used to identify and rank regions of high exposure among all species and relate these to specific populations from specific jurisdictions.
 
 ![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
+
+
+## References
+
+### Example tracking datasets
+
+The example tracking datasets are provided only for use with the code in this repository. References for these datasets are below. Please contact the authors of these papers if you wish to use the tracking datasets for any other purpose.
+
+Phillips, R.A., Silk, J.R.D., Croxall, J.P. and Afanasyev, V. (2006) Year-round distribution of white-chinned petrels from South Georgia: relationships with oceanography and fisheries. Biological Conservation 129, 336-347. https://doi.org/10.1016/j.biocon.2005.10.046
+
+Catry, P., Dias, M.P., Phillips, R.A., Granadeiro, J.P. (2011) Different Means to the Same End: Long-Distance Migrant Seabirds from Two Colonies Differ in Behaviour, Despite Common Wintering Grounds. PLoS ONE 6, e26079. https://doi.org/10.1371/journal.pone.0026079 
+
+Frankish, C.K., Phillips, R.A., Clay, T.A., Someveille, M. and Manica, A. (2020) Environmental drivers of movement in a threatened seabird: insights from a mechanistic model and implications for conservation. Diversity and Distributions 26, 1315-1329. https://doi.org/10.1111/ddi.13130
