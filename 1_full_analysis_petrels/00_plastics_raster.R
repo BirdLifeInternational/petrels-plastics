@@ -17,7 +17,6 @@ Lebreton <- as.matrix(read.csv("input_data/plastics_data/lebretonmodel_abundance
 Maximenko <- as.matrix(read.csv("input_data/plastics_data/maximenkomodel_abundance.csv", header = F))
 VanSeb <- as.matrix(read.csv("input_data/plastics_data/vansebillemodel_abundance.csv", header = F))
 
-
 #Data Cleanup ----
 df <- data.frame(van = as.vector(VanSeb), max = as.vector(Maximenko), leb = as.vector(Lebreton))
 
@@ -87,12 +86,15 @@ sum01_r <- shift(rotate(raster(sum01,
 
 yelblus <- c(brewer.pal(n = 5, name = "YlGnBu"),"#00172e")
 
-plot(sum01_r,col=c("white",yelblus[3:5]),breaks = c(-1:3))
+cols_nmods <- c("#F2F3F400",yelblus[3:5])
+
+
+plot(sum01_r,col=cols_nmods,breaks = c(-1:3))
 plot(land, col="grey75", add=T)
 
 png("outputs/00_plastics_model_coverage.png", 
     width=1379,height=750)
-plot(sum01_r,col=c("white",yelblus[3:5]),breaks = c(-1:3))
+plot(sum01_r, col=cols_nmods, breaks = c(-1:3))
 plot(land, col="grey75", add=T)
 dev.off()
 

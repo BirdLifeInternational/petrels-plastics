@@ -1,5 +1,5 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-## Use eez results and create summary statistics
+## Use EEZ results and create summary statistics
 ## Beth Clark 2022
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -37,7 +37,7 @@ pops <- read.csv("outputs/06_phenology.csv")
 
 species_weights <- read.csv("outputs/08_exposure_scores_by_species.csv")
 
-#eez ####
+#Read in and tidy up eez data ####
 #Flanders Marine Institute (2020). Union of the ESRI Country shapefile and the Exclusive Economic Zones (version 3). Available online at https://www.marineregions.org/. https://doi.org/10.14284/403. Consulted on 2021-03-04.
 eez_file <- readOGR(dsn="input_data/EEZ_land_union_v3_202003", layer = "EEZ_Land_v3_202030") 
 #martin did not use a polygon for highseas, but coded NAs as high seas
@@ -73,8 +73,10 @@ plot(eez,col="blue")
 eez_proj <- eez
 
 sp_files <- list.files("outputs/12_breeding_countries/", pattern = ".*\\.tif$");sp_files
+#sp_files <- list.files("outputs/12_breeding_countries/", pattern = ".*\\.tif$");sp_files
 
-#eezs table
+
+#Create eezs table ####
 eezs <- as.data.frame(sp_files)
 eezs$n_used <- NA
 eezs$eezs_used <- NA
@@ -122,15 +124,15 @@ eezs_used$UNION <- ifelse(is.na(eezs_used$UNION),"High Seas",eezs_used$UNION)
 eezs_used$TERRITORY1 <- ifelse(is.na(eezs_used$TERRITORY1),"High Seas",eezs_used$TERRITORY1)
 eezs_used$SOVEREIGN1 <- ifelse(is.na(eezs_used$SOVEREIGN1),"High Seas",eezs_used$SOVEREIGN1)
 
-write.csv(eezs_used,"outputs/13_eezs_used_per_species.csv",row.names = F)
-write.csv(eezs,"outputs/13_eezs_per_species.csv",row.names = F)
+write.csv(eezs_used,"outputs/13_eezs_used_per_species2.csv",row.names = F)
+write.csv(eezs,"outputs/13_eezs_per_species2.csv",row.names = F)
 
 
 eezs_used <- read.csv("outputs/13_eezs_used_per_species.csv")
 dat <- read.csv("outputs/12_species_country_scores.csv")
 
 
-# investigate results ####
+#Investigate results ####
 #too many overlapping claims to ignore
 #for overlapping claims, 
 eezs_used$group <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
@@ -141,6 +143,7 @@ eezs_used$group <- ifelse(eezs_used$POL_TYPE == "Overlapping claim",
 eezs_used$group <- ifelse(eezs_used$group =="China/NA/NA",
                           "South China Sea",eezs_used$group)
 eezs_used$group <- str_remove(eezs_used$group,"/NA")
+eezs_used$group <- ifelse(is.na(eezs_used$group),"High Seas",eezs_used$group)
 
 unique(eezs_used$group)
 
@@ -161,8 +164,8 @@ eezs_group <- eezs_used %>%
 
 score_threshold <- 0.05
 
-#plot top scores ####
-#(above 15.3, the value if plastic was evenly distributed globally
+#Create df to plot top scoring populations ####
+#(above 15.3, the value if plastic was evenly distributed globally)
 dat <- dat[order(-dat$score),]
 top_scoring <- subset(dat, score > 15.3)
 
@@ -254,73 +257,33 @@ all_sp$group_label <- ifelse(all_sp$group == all_sp$breeding_country,
                              paste0(all_sp$group,"*"),
                              all_sp$group)
 
-eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
-                          fill=prop,label = group_label))+
-  geom_col(color="white") +
-  scale_fill_viridis(option="inferno",direction=-1) +
-  geom_text(position = position_stack(vjust = 0.5),
-            col="white",size=8) +
-  ylab("") +  
-  xlab("Proportion of Plastic Encounter Risk")+
-  theme_bw()+
-  scale_x_continuous(expand = c(0, 0))+
-  theme(legend.position = "position.none",
-        text = element_text(size=rel(6)),
-        axis.title = element_text(size=30),
-        axis.text = element_text(colour = "black"));eezs
+#Plot results ####
 
-png(paste0("outputs/13_top_scoring_eezs_sum",score_threshold,"_test.png"), width=2000,height=1350)
-par(mfrow=c(1,1))
-eezs
-dev.off()
-dev.off()
+#set greyscale matching values in Figure 4b
+greys <- c(brewer.pal(n = 9, name = "Greys"))
+greys_eez <- c(rev(colorRampPalette(greys)(15)))[1:14]
 
-png(paste0("outputs/13_top_scoring_eezs",score_threshold,"legend.png"), width=2000,height=1350)
-par(mfrow=c(1,1))
-ggplot(all_sp,aes(x=prop,y=common_country_iucn,fill=prop,label = group_label))+
-  geom_col(color="white") +
-  scale_fill_viridis(option="inferno",direction=-1) +
-  geom_text(position = position_stack(vjust = 0.5),
-            col="white",size=8) +
-  ylab("") +  
-  xlab("Proportion of Plastic Encounter Risk")+
-  theme_bw()+
-  scale_x_continuous(expand = c(0, 0))+
-  theme(text = element_text(size=rel(6)),
-        axis.title = element_text(size=30),
-        axis.text = element_text(colour = "black"),
-        legend.text = element_text(color = "black", size = 40),
-        legend.key.size = unit(5, 'cm'))
-dev.off()
-dev.off()
+all_sp$fill_col <- greys_eez[14]
+all_sp$fill_col <- ifelse(all_sp$group == "High Seas",greys_eez[1],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Spain",greys_eez[2],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Tunisia",greys_eez[3],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Italy",greys_eez[4],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Libya",greys_eez[5],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Turkey",greys_eez[6],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Algeria",greys_eez[7],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Malta",greys_eez[8],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Greece",greys_eez[9],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "USA",greys_eez[10],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "Japan",greys_eez[11],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "UK",greys_eez[12],all_sp$fill_col)
+all_sp$fill_col <- ifelse(all_sp$group == "New Zealand",greys_eez[13],all_sp$fill_col)
 
+all_sp$text_col <- ifelse(all_sp$group %in% c("High Seas", "Spain", "Tunisia", "Italy", "Libya",
+                                              "Turkey", "Algeria", "Malta", "Greece", "USA", "Japan", 
+                                              "UK", "New Zealand"), "white", "black")
 
-# with colours to match fig 4b
-
-inferno_cols <- cols <- c((inferno(14)))
-
-all_sp$fill_col <- inferno_cols[14]
-all_sp$fill_col <- ifelse(all_sp$group == "High Seas",inferno_cols[1],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Spain",inferno_cols[2],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Tunisia",inferno_cols[3],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Italy",inferno_cols[4],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Libya",inferno_cols[5],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Turkey",inferno_cols[6],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Algeria",inferno_cols[7],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Malta",inferno_cols[8],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Greece",inferno_cols[9],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "USA",inferno_cols[10],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "Japan",inferno_cols[11],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "UK",inferno_cols[12],all_sp$fill_col)
-all_sp$fill_col <- ifelse(all_sp$group == "New Zealand",inferno_cols[13],all_sp$fill_col)
-
-all_sp$text_col <- ifelse(all_sp$group %in% c("High Seas","Spain", "Tunisia", "Italy", "Libya",
-                                              "Turkey", "Algeria", "Malta","Greece", "USA","Japan", 
-                                              "UK", "New Zealand"),"white","black")
-
-
-eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
-                          label = group_label))+
+eezs_grey <- ggplot(all_sp,aes(x=prop,y=common_country,
+                               label = group_label))+
   geom_col(color="white",fill=all_sp$fill_col) +
   #scale_fill_viridis(option="inferno",direction=-1,discrete=T) +
   geom_text(position = position_stack(vjust = 0.5),
@@ -332,12 +295,13 @@ eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
   theme(legend.position = "position.none",
         text = element_text(size=rel(6)),
         axis.title = element_text(size=30),
-        axis.text = element_text(colour = "black"));eezs
+        axis.text = element_text(colour = "black"));eezs_grey
 
-png(paste0("outputs/13_top_scoring_eezs",score_threshold,"legend_newcols.png"), width=2000,height=1350)
+#save plot as png
+png(paste0("outputs/13_top_scoring_eezs",score_threshold,"grey.png"), width=2000,height=1350)
 par(mfrow=c(1,1))
-eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
-                          label = group_label))+
+eezs_grey <- ggplot(all_sp,aes(x=prop,y=common_country,
+                               label = group_label))+
   geom_col(color="white",fill=all_sp$fill_col) +
   #scale_fill_viridis(option="inferno",direction=-1,discrete=T) +
   geom_text(position = position_stack(vjust = 0.5),
@@ -349,12 +313,32 @@ eezs <- ggplot(all_sp,aes(x=prop,y=common_country,
   theme(legend.position = "position.none",
         text = element_text(size=rel(6)),
         axis.title = element_text(size=30),
-        axis.text = element_text(colour = "black"));eezs
+        axis.text = element_text(colour = "black"));eezs_grey
 dev.off()
 dev.off()
 
-#Table for supplementary ####
+#reformat to save plot as svg for journal plot requirements
+eezs_grey_svg <- ggplot(all_sp,aes(x=prop,y=common_country,
+                                   label = group_label))+
+  geom_col(color="white",fill=all_sp$fill_col) +
+  #scale_fill_viridis(option="inferno",direction=-1,discrete=T) +
+  geom_text(position = position_stack(vjust = 0.5),
+            col=all_sp$text_col,size=4) +
+  ylab("") +  
+  xlab("\nPercentage of Plastic Encounter Risk")+
+  theme_bw()+
+  scale_x_continuous(expand = c(0, 0),labels = scales::percent)+
+  theme(legend.position = "position.none",
+        text = element_text(size=rel(6)),
+        axis.title = element_text(size=15),
+        axis.text = element_text(colour = "black",size = 12));eezs_grey_svg
 
+#save as svg
+ggsave(filename = "outputs/13_top_scoring_eezs.svg",
+       plot = eezs_grey_svg, 
+       width = 4000, height = 2700, unit = "px") 
+
+#Create table for supplementary ####
 i<-1
 for(i in 1:nrow(dat)){
   species_df <- eezs_used[eezs_used$sp_country == dat$sp_country[i],]
@@ -412,5 +396,4 @@ head(pops_table)
 
 write.csv(pops_table,"outputs/13_eezs_percent_allpops.csv",
           row.names = F)
-
 

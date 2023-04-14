@@ -1,17 +1,17 @@
-
+#Clear r workspace and load packages
 rm(list=ls()) 
 
 library(DHARMa)
 library(tidyverse)
 library(viridis)
 
+#Set theme for plots
 ms_theme <- theme_bw()+
   theme(text = element_text(size=18)) +
-  #theme(axis.title.x = element_text(margin = margin(t = 10))) +
   theme(legend.text=element_text(size=15)) +
-  #theme(legend.position = "none")+
   theme(axis.text=element_text(colour="black"))
 
+#Read in the data
 years <- read.csv("outputs/02_exposure_scores_by_year.csv")
 table(years$sp_pop)
 
@@ -88,8 +88,9 @@ low <- ggplot(data=low_scorers,aes(x = year, y= exposure_score, fill=sp_pop, col
 
 hist(multiyear$exposure_score)
 
+#Run a generalised linear model with a Gamma distribution 
 m1 <- glm(exposure_score ~ sp_pop + year, 
-          family = Gamma (link = "inverse"),
+          family = Gamma,
           data = multiyear)
 plot(simulateResiduals(m1))
 drop1(m1, test = "Chisq")
