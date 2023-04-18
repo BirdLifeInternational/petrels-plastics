@@ -1,5 +1,5 @@
 # petrels-plastics
-Global assessment of marine plastic exposure for oceanic birds.
+Global assessment of marine plastic exposure risk for oceanic birds.
 
 Link to publication when available: 
 
@@ -24,10 +24,13 @@ This contains the full code used for the long-term trend across years analysis p
 
 The example tracking datasets are provided only for use with the code in this repository. References for these datasets are below. Please contact the authors of these papers if you wish to use the tracking datasets for any other purpose.
 
+https://data.seabirdtracking.org/dataset/609
 - Phillips, R.A., Silk, J.R.D., Croxall, J.P. and Afanasyev, V. (2006) Year-round distribution of white-chinned petrels from South Georgia: relationships with oceanography and fisheries. Biological Conservation 129, 336-347. https://doi.org/10.1016/j.biocon.2005.10.046
 
+https://data.seabirdtracking.org/dataset/609
 - Catry, P., Dias, M.P., Phillips, R.A., Granadeiro, J.P. (2011) Different Means to the Same End: Long-Distance Migrant Seabirds from Two Colonies Differ in Behaviour, Despite Common Wintering Grounds. PLoS ONE 6, e26079. https://doi.org/10.1371/journal.pone.0026079 
 
+https://data.seabirdtracking.org/dataset/1386
 - Frankish, C.K., Phillips, R.A., Clay, T.A., Someveille, M. and Manica, A. (2020) Environmental drivers of movement in a threatened seabird: insights from a mechanistic model and implications for conservation. Diversity and Distributions 26, 1315-1329. https://doi.org/10.1111/ddi.13130
 
 ## How to Run
