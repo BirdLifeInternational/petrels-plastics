@@ -1,0 +1,330 @@
+"species","breeding_country","group_1","Percent_1","group_2","Percent_2","group_3","Percent_3","group_4","Percent_4","group_5","Percent_5","group_6","Percent_6","group_7","Percent_7"
+"Puffinus yelkouan","Malta","Turkey",31.1094956115201,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","Malta",NA,NA,"Libya",17.1826914368765,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","Malta",NA,NA,NA,NA,"Italy",14.3269173845854,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","Malta",NA,NA,NA,NA,NA,NA,"Greece",11.8595850721109,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","Malta",NA,NA,NA,NA,NA,NA,NA,NA,"Tunisia",10.0553760774708,NA,NA,NA,NA
+"Puffinus yelkouan","Malta",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Malta",8.46742728841541,"16",6.99850712902085
+"Hydrobates pelagicus","Spain","Spain",46.3450654720244,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Spain",NA,NA,"Algeria",37.670733808637,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Spain",NA,NA,NA,NA,"Spain/Morocco",5.84044091865242,"4",10.1437598006861,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Italy","Tunisia",39.8371150090157,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Italy",NA,NA,"Italy",21.8897329104557,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Italy",NA,NA,NA,NA,"Libya",20.1129859875818,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Italy",NA,NA,NA,NA,NA,NA,"Malta",16.8169647631708,"52",1.34320132977593,NA,NA,NA,NA
+"Hydrobates pelagicus","Malta","Italy",32.595045292108,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Malta",NA,NA,"Tunisia",29.1526454157262,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Malta",NA,NA,NA,NA,"Libya",19.9719533593904,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Malta",NA,NA,NA,NA,NA,NA,"Malta",14.7120094142467,"21",3.56834651852859,NA,NA,NA,NA
+"Puffinus mauretanicus","Spain","Spain",67.0970681289113,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus mauretanicus","Spain",NA,NA,"Algeria",28.8316083402754,"9",4.07132353081339,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","France","Spain",29.963213348345,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","France",NA,NA,"Turkey",23.1304711026325,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","France",NA,NA,NA,NA,"Algeria",15.3622660368067,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus yelkouan","France",NA,NA,NA,NA,NA,NA,"Italy",13.159764209504,"49",18.3842853027118,NA,NA,NA,NA
+"Calonectris diomedea","Tunisia","Tunisia",38.8914740238209,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Tunisia",NA,NA,"Italy",23.7475511882782,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Tunisia",NA,NA,NA,NA,"Libya",23.5837738420171,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Tunisia",NA,NA,NA,NA,NA,NA,"Malta",11.2183923464326,"51",2.55880859945123,NA,NA,NA,NA
+"Hydrobates pelagicus","Italy","Italy",42.6888445549188,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Italy",NA,NA,"Spain",27.7637552928093,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Italy",NA,NA,NA,NA,"Algeria",13.7877584730172,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Italy",NA,NA,NA,NA,NA,NA,"France",11.3331844879604,"3",4.42645719129431,NA,NA,NA,NA
+"Calonectris diomedea","Malta","Libya",29.5434830106519,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Malta",NA,NA,"Italy",27.769980459257,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Malta",NA,NA,NA,NA,"Tunisia",21.1854086401678,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Malta",NA,NA,NA,NA,NA,NA,"Malta",19.2106567328656,"54",2.29047115705766,NA,NA,NA,NA
+"Calonectris diomedea","Spain","Spain",49.8641822315584,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris diomedea","Spain",NA,NA,"Algeria",34.1305360639414,"65",16.0052817045002,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma sandwichensis","USA","High Seas",78.253229930566,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma sandwichensis","USA",NA,NA,"United States",21.6609998986896,"3",0.0857701707444576,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus newelli","USA","High Seas",70.7661381063224,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus newelli","USA",NA,NA,"United States",29.2320639900629,"2",0.00179790361467941,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cookii","New Zealand","High Seas",96.5541592906291,"40",3.44584070937089,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","USA","United States",77.2648096931945,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","USA",NA,NA,"High Seas",22.7351903068055,"0",0,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea","China",36.8935358067735,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea",NA,NA,"Malaysia",21.6314033344517,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea",NA,NA,NA,NA,"Philippines",10.4668679014381,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea",NA,NA,NA,NA,NA,NA,"South Korea",8.6771839999642,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea",NA,NA,NA,NA,NA,NA,NA,NA,"Indonesia",7.70490219046743,NA,NA,NA,NA
+"Calonectris leucomelas","South Korea",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Vietnam",5.82492271210997,"15",8.80118405479513
+"Procellaria conspicillata","UK","High Seas",79.6834295946726,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria conspicillata","UK",NA,NA,"United Kingdom",12.0957854170764,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria conspicillata","UK",NA,NA,NA,NA,"Brazil",7.23905736475678,"5",0.981727623494212,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","New Zealand","High Seas",70.3258964933898,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","New Zealand",NA,NA,"United States",28.7331549675499,"16",0.940948539060273,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","Japan","Japan",80.1553386423843,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris leucomelas","Japan",NA,NA,"High Seas",17.5359448885565,"19",2.30871646905913,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma arminjoniana","Brazil","High Seas",93.1988079255586,"17",6.80119207444142,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma solandri","Australia","High Seas",75.2070856864663,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma solandri","Australia",NA,NA,"Japan",17.2835764365796,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma solandri","Australia",NA,NA,NA,NA,"Australia",5.67962436761773,"14",1.82971350933632,NA,NA,NA,NA,NA,NA
+"Pachyptila vittata","UK","High Seas",81.732946471212,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila vittata","UK",NA,NA,"United Kingdom",18.2431624761859,"3",0.023891052602182,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","New Zealand","High Seas",61.1619627049084,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","New Zealand",NA,NA,"Japan",25.9216047991436,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","New Zealand",NA,NA,NA,NA,"New Zealand",9.12700965485549,"38",3.78942284109245,NA,NA,NA,NA,NA,NA
+"Pterodroma ultima","UK","High Seas",97.1382269083841,"10",2.86177309161592,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","Australia","Japan",26.4439527933873,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","Australia",NA,NA,"China",26.3822650256415,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","Australia",NA,NA,NA,NA,"Australia",19.571697447244,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna carneipes","Australia",NA,NA,NA,NA,NA,NA,"High Seas",18.4670585544239,"23",9.13502617930334,NA,NA,NA,NA
+"Pterodroma baraui","France","High Seas",80.4537129699392,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma baraui","France",NA,NA,"France",7.69174961314464,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma baraui","France",NA,NA,NA,NA,"Madagascar",5.52661469233142,"12",6.32792272458479,NA,NA,NA,NA,NA,NA
+"Pterodroma incerta","UK","High Seas",81.0070084623218,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma incerta","UK",NA,NA,"Brazil",8.97776089171473,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma incerta","UK",NA,NA,NA,NA,"United Kingdom",5.69028470964144,"7",4.32494593632199,NA,NA,NA,NA,NA,NA
+"Ardenna bulleri","New Zealand","High Seas",88.8510487851293,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna bulleri","New Zealand",NA,NA,"New Zealand",8.60430100760745,"25",2.5446502072633,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma mollis","UK","High Seas",90.654148764113,"10",9.34585123588706,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma arminjoniana","Mauritius","High Seas",64.860880443512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma arminjoniana","Mauritius",NA,NA,"Republic of Mauritius",24.7121561172331,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma arminjoniana","Mauritius",NA,NA,NA,NA,"France",7.19893418441046,"18",3.22802925484445,NA,NA,NA,NA,NA,NA
+"Bulweria bulwerii","Spain","High Seas",90.3160953453403,"21",9.68390465465974,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria aterrima","France","High Seas",60.5006852858535,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria aterrima","France",NA,NA,"France",12.1549340344095,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria aterrima","France",NA,NA,NA,NA,"Madagascar",10.4424447024045,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria aterrima","France",NA,NA,NA,NA,NA,NA,"Republic of Mauritius",9.68476685514353,"31",7.21716912218904,NA,NA,NA,NA
+"Ardenna grisea","New Zealand","High Seas",65.3820324615533,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna grisea","New Zealand",NA,NA,"Japan",22.2753641545572,"56",12.3426033838895,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides urinatrix","Australia","Australia",100,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Mauritius","High Seas",46.5604916077637,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Mauritius",NA,NA,"Republic of Mauritius",29.7607007951739,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Mauritius",NA,NA,NA,NA,"France",13.7244916610843,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Mauritius",NA,NA,NA,NA,NA,NA,"France/Madagascar/Republic of Mauritius",6.22252122722461,"12",3.73179470875352,NA,NA,NA,NA
+"Procellaria aequinoctialis","France","High Seas",78.6992361798475,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","France",NA,NA,"South Africa",13.6113405705677,"28",7.68942324958486,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cahow","UK","High Seas",59.4266732622255,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cahow","UK",NA,NA,"United Kingdom",25.7755510609797,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cahow","UK",NA,NA,NA,NA,"United States",7.13549667661395,"17",7.6622790001809,NA,NA,NA,NA,NA,NA
+"Pterodroma inexpectata","New Zealand","High Seas",93.8577535680066,"33",6.1422464319934,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Portugal","High Seas",65.4382543261346,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Portugal",NA,NA,"Portugal",15.3934159828973,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Portugal",NA,NA,NA,NA,"South Africa",7.14556452566308,"69",12.0227651653051,NA,NA,NA,NA,NA,NA
+"Pterodroma hasitata","Dominican Republic","United States",30.1710106815457,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma hasitata","Dominican Republic",NA,NA,"Bahamas",29.8944565579041,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma hasitata","Dominican Republic",NA,NA,NA,NA,"High Seas",26.1773251783431,"28",13.7572075822071,NA,NA,NA,NA,NA,NA
+"Pterodroma deserta","Portugal","High Seas",70.4815145901469,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma deserta","Portugal",NA,NA,"Portugal",7.12605055519703,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma deserta","Portugal",NA,NA,NA,NA,"Brazil",6.36420376530724,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma deserta","Portugal",NA,NA,NA,NA,NA,NA,"Portugal",6.2943159638568,"33",9.73391512549205,NA,NA,NA,NA
+"Bulweria bulwerii","Portugal","High Seas",75.4198123260548,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bulweria bulwerii","Portugal",NA,NA,"Portugal",11.3103429083188,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bulweria bulwerii","Portugal",NA,NA,NA,NA,"Portugal",5.43769308598231,"22",7.83215167964409,NA,NA,NA,NA,NA,NA
+"Pachyptila macgillivrayi","UK","High Seas",69.2448469286962,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila macgillivrayi","UK",NA,NA,"United Kingdom",30.7401590381117,"4",0.0149940331920197,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila turtur","Australia","Australia",97.8257604577464,"1",2.17423954225363,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","South Africa","South Africa",58.0890070661171,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","South Africa",NA,NA,"High Seas",41.0002457834082,"6",0.910747150474688,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates castro","UK","High Seas",91.3281708749727,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates castro","UK",NA,NA,"United Kingdom",8.67182912502729,"0",0,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Australia","Australia",63.9821106537365,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Australia",NA,NA,"High Seas",21.7698879663837,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Australia",NA,NA,NA,NA,"Indonesia",12.1105210966012,"8",2.13748028327856,NA,NA,NA,NA,NA,NA
+"Pachyptila desolata","France","High Seas",94.1498372342037,"10",5.85016276579634,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna gravis","UK","High Seas",50.4507404566647,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna gravis","UK",NA,NA,"Argentina",19.6794397929286,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna gravis","UK",NA,NA,NA,NA,"United Kingdom",13.0345499935067,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna gravis","UK",NA,NA,NA,NA,NA,NA,"Uruguay",6.57719995589175,"59",10.2580698010082,NA,NA,NA,NA
+"Calonectris edwardsii","Cape Verde","Brazil",53.3516270428167,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris edwardsii","Cape Verde",NA,NA,"High Seas",28.4374954753885,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris edwardsii","Cape Verde",NA,NA,NA,NA,"Uruguay",9.12345203381082,"15",9.08742544798395,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Spain","High Seas",54.4877945458021,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Spain",NA,NA,"South Africa",12.2555557360228,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Spain",NA,NA,NA,NA,"Spain",12.1994225913097,NA,NA,NA,NA,NA,NA,NA,NA
+"Calonectris borealis","Spain",NA,NA,NA,NA,NA,NA,"Portugal",8.67080754976101,"41",12.3864195771044,NA,NA,NA,NA
+"Puffinus puffinus","UK","High Seas",24.8065097889442,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","UK",NA,NA,"Argentina",16.4514319396089,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","UK",NA,NA,NA,NA,"France",10.9046371112877,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","UK",NA,NA,NA,NA,NA,NA,"Spain",9.49115014549728,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","UK",NA,NA,NA,NA,NA,NA,NA,NA,"United Kingdom",8.96328225606888,"88",29.3829887585931,NA,NA
+"Pterodroma macroptera","South Africa","High Seas",80.5082217571644,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma macroptera","South Africa",NA,NA,"South Africa",18.1425769337985,"2",1.34920130903705,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","UK","High Seas",53.0205182425425,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","UK",NA,NA,"United Kingdom",45.6736691993899,"10",1.30581255806756,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","France","High Seas",42.2564609518715,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","France",NA,NA,"France",17.7773428355549,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","France",NA,NA,NA,NA,"France",15.2206716807151,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","France",NA,NA,NA,NA,NA,NA,"Republic of Mauritius",12.7740150039169,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","France",NA,NA,NA,NA,NA,NA,NA,NA,"Madagascar",5.03250351118187,"22",6.93900601675971,NA,NA
+"Pterodroma leucoptera","Australia","High Seas",62.5356754796462,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma leucoptera","Australia",NA,NA,"Australia",30.1632222122164,"34",7.30110230813745,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus gavia","New Zealand","New Zealand",85.182140684088,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus gavia","New Zealand",NA,NA,"Australia",7.64585714941666,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus gavia","New Zealand",NA,NA,NA,NA,"High Seas",7.10271407667809,"1",0.0692880898172008,NA,NA,NA,NA,NA,NA
+"Hydrobates monteiroi","Portugal","Portugal",88.9652641874057,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates monteiroi","Portugal",NA,NA,"High Seas",11.0347358125943,"0",0,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates castro","Portugal","Portugal",38.5850827839224,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates castro","Portugal",NA,NA,"High Seas",30.7980138394029,"62",30.6169033766747,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates furcatus","Canada","High Seas",42.6272550811266,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates furcatus","Canada",NA,NA,"Canada",30.4328282626939,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates furcatus","Canada",NA,NA,NA,NA,"United States",26.5435789527538,"1",0.396337703425773,NA,NA,NA,NA,NA,NA
+"Pterodroma cervicalis","Australia","Australia",55.8243018619709,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cervicalis","Australia",NA,NA,"High Seas",25.7670572583878,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cervicalis","Australia",NA,NA,NA,NA,"Australia",8.66514475041231,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma cervicalis","Australia",NA,NA,NA,NA,NA,NA,"New Zealand",8.24627705129171,"2",1.49721907793725,NA,NA,NA,NA
+"Puffinus lherminieri","Portugal","High Seas",43.4106290269368,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus lherminieri","Portugal",NA,NA,"Portugal",28.110733797949,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus lherminieri","Portugal",NA,NA,NA,NA,"Portugal",14.4373250276454,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus lherminieri","Portugal",NA,NA,NA,NA,NA,NA,"Spain",6.49265886222067,"21",7.5486532852481,NA,NA,NA,NA
+"Pterodroma neglecta","Australia","Australia",60.6850775362635,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma neglecta","Australia",NA,NA,"High Seas",25.4546370862513,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma neglecta","Australia",NA,NA,NA,NA,"New Zealand",12.4349295000254,"2",1.42535587745983,NA,NA,NA,NA,NA,NA
+"Pelagodroma marina","Portugal","Portugal",58.2830073365219,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelagodroma marina","Portugal",NA,NA,"Spain",35.4652229298081,"3",6.25176973367007,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","Australia","High Seas",48.6290811826682,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","Australia",NA,NA,"Australia",35.0805582405601,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","Australia",NA,NA,NA,NA,"Australia",8.84060312140462,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma nigripennis","Australia",NA,NA,NA,NA,NA,NA,"New Zealand",6.43976708696426,"2",1.00999036840278,NA,NA,NA,NA
+"Puffinus assimilis","Australia","Australia",49.4311207629419,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus assimilis","Australia",NA,NA,"High Seas",48.2202134209444,"5",2.34866581611366,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma madeira","Portugal","High Seas",64.6610484980983,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma madeira","Portugal",NA,NA,"Portugal",17.1114609103604,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma madeira","Portugal",NA,NA,NA,NA,"Portugal",9.80154830137158,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma madeira","Portugal",NA,NA,NA,NA,NA,NA,"Spain",5.11978384850163,"24",3.30615844166811,NA,NA,NA,NA
+"Procellaria parkinsoni","New Zealand","High Seas",41.6487974250141,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria parkinsoni","New Zealand",NA,NA,"Colombia",13.3110953282306,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria parkinsoni","New Zealand",NA,NA,NA,NA,"New Zealand",12.0569410815713,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria parkinsoni","New Zealand",NA,NA,NA,NA,NA,NA,"Ecuador",11.6056677200138,NA,NA,NA,NA,NA,NA
+"Procellaria parkinsoni","New Zealand",NA,NA,NA,NA,NA,NA,NA,NA,"Chile",6.19651434923058,"40",15.1809840959397,NA,NA
+"Puffinus opisthomelas","Mexico","Mexico",95.8997293770635,"2",4.10027062293653,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma magentae","New Zealand","High Seas",82.7894697805476,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma magentae","New Zealand",NA,NA,"New Zealand",7.94977476702532,"16",9.2607554524271,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma gouldi","New Zealand","New Zealand",46.7152711848092,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma gouldi","New Zealand",NA,NA,"High Seas",36.5506788638765,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma gouldi","New Zealand",NA,NA,NA,NA,"Australia",9.56732874174494,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma gouldi","New Zealand",NA,NA,NA,NA,NA,NA,"Australia",7.16672120956938,"0",0,NA,NA,NA,NA
+"Procellaria cinerea","South Africa","High Seas",88.1327026314431,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","South Africa",NA,NA,"United Kingdom",8.65343059579027,"5",3.21386677276662,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna tenuirostris","Australia","Japan",25.0736616414736,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna tenuirostris","Australia",NA,NA,"High Seas",24.5735660835188,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna tenuirostris","Australia",NA,NA,NA,NA,"Australia",17.1812332182471,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna tenuirostris","Australia",NA,NA,NA,NA,NA,NA,"Russia",16.8731853415345,NA,NA,NA,NA,NA,NA
+"Ardenna tenuirostris","Australia",NA,NA,NA,NA,NA,NA,NA,NA,"Japan/Russia",12.4060472778535,"21",3.89230643737253,NA,NA
+"Pelecanoides urinatrix","New Zealand","New Zealand",97.0600253352782,"1",2.93997466472183,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila desolata","UK","High Seas",95.0627420544331,"8",4.93725794556687,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Seychelles","High Seas",53.209485775956,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Seychelles",NA,NA,"Seychelles",12.8792794266513,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna pacifica","Seychelles",NA,NA,NA,NA,"Republic of Mauritius",11.3823322473808,"19",22.5289025500119,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Iceland","Argentina",44.8812631206418,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Iceland",NA,NA,"High Seas",27.6348527393374,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Iceland",NA,NA,NA,NA,"Brazil",11.8849951407124,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Iceland",NA,NA,NA,NA,NA,NA,"Uruguay",8.24603812910007,"42",7.3528508702083,NA,NA,NA,NA
+"Puffinus huttoni","New Zealand","New Zealand",99.9961667754044,"1",0.00383322459562775,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus assimilis","New Zealand","New Zealand",70.942345968816,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus assimilis","New Zealand",NA,NA,"High Seas",28.7604054119656,"3",0.297248619218403,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","UK","High Seas",31.8404952248863,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","UK",NA,NA,"Brazil",26.7781396480963,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","UK",NA,NA,NA,NA,"Argentina",21.8503203060523,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","UK",NA,NA,NA,NA,NA,NA,"Uruguay",14.4365062946344,"5",5.09453852633081,NA,NA,NA,NA
+"Pterodroma leucoptera","France","High Seas",52.809910979369,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma leucoptera","France",NA,NA,"Australia",31.3430050296024,"21",15.8470839910286,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma axillaris","New Zealand","High Seas",87.4148639263757,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma axillaris","New Zealand",NA,NA,"New Zealand",5.01270385906071,"12",7.57243221456359,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates leucorhous","Canada","High Seas",70.3054205185232,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates leucorhous","Canada",NA,NA,"United States",13.341910699627,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates leucorhous","Canada",NA,NA,NA,NA,"Canada",10.7781041230088,"13",5.57456465884107,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","France","High Seas",91.6497240811155,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","France",NA,NA,"France",6.98615937040319,"5",1.36411654848131,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria westlandica","New Zealand","New Zealand",90.8657776270182,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria westlandica","New Zealand",NA,NA,"High Seas",5.95395971340442,"4",3.18026265957742,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus bailloni","Seychelles","Seychelles",46.7443367537741,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus bailloni","Seychelles",NA,NA,"High Seas",27.2339080106821,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus bailloni","Seychelles",NA,NA,NA,NA,"Madagascar",9.5308546720248,"19",16.4909005635189,NA,NA,NA,NA,NA,NA
+"Ardenna creatopus","Chile","United States",45.9273849631304,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna creatopus","Chile",NA,NA,"Mexico",27.5447429437958,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna creatopus","Chile",NA,NA,NA,NA,"Chile",9.65537896928899,NA,NA,NA,NA,NA,NA,NA,NA
+"Ardenna creatopus","Chile",NA,NA,NA,NA,NA,NA,"High Seas",6.01371563808077,"13",10.8587774857041,NA,NA,NA,NA
+"Ardenna grisea","UK","High Seas",83.5615273304586,"27",16.4384726695414,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma pycrofti","New Zealand","New Zealand",80.072553017272,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma pycrofti","New Zealand",NA,NA,"High Seas",19.88239937526,"3",0.0450476074680202,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria rostrata","France","France",61.0130848572046,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria rostrata","France",NA,NA,"Australia",12.8427843217611,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria rostrata","France",NA,NA,NA,NA,"High Seas",12.3104552599588,NA,NA,NA,NA,NA,NA,NA,NA
+"Pseudobulweria rostrata","France",NA,NA,NA,NA,NA,NA,"Vanuatu",8.36672409410007,NA,NA,NA,NA,NA,NA
+"Pseudobulweria rostrata","France",NA,NA,NA,NA,NA,NA,NA,NA,"France/Vanuatu",5.02703532520659,"3",0.439916141768757,NA,NA
+"Pterodroma mollis","New Zealand","High Seas",57.2744042860908,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma mollis","New Zealand",NA,NA,"New Zealand",41.6262705236674,"2",1.09932519024183,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Ireland","Ireland",72.2781078925833,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Ireland",NA,NA,"United Kingdom",19.4287414441232,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus puffinus","Ireland",NA,NA,NA,NA,"High Seas",7.89895002835963,"4",0.394200634933952,NA,NA,NA,NA,NA,NA
+"Pachyptila turtur","New Zealand","New Zealand",97.1689101969083,"1",2.83108980309168,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","UK","United Kingdom",34.5295589545525,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","UK",NA,NA,"Norway",22.7348398542171,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","UK",NA,NA,NA,NA,"High Seas",8.75000230646042,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","UK",NA,NA,NA,NA,NA,NA,"Denmark",7.32422930156412,"18",26.6613695832059,NA,NA,NA,NA
+"Hydrobates pelagicus","Ireland","Ireland",83.5308290453017,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Ireland",NA,NA,"High Seas",8.54688228222559,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","Ireland",NA,NA,NA,NA,"United Kingdom",7.9222886724727,"0",0,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","New Zealand","High Seas",41.8402884618062,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","New Zealand",NA,NA,"New Zealand",37.910322374719,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","New Zealand",NA,NA,NA,NA,"Chile",11.5027979924128,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria aequinoctialis","New Zealand",NA,NA,NA,NA,NA,NA,"Chile",5.35135301288421,"12",3.39523815817779,NA,NA,NA,NA
+"Pterodroma feae","Cape Verde","High Seas",74.4090603532855,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma feae","Cape Verde",NA,NA,"Cape Verde",10.542277748936,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma feae","Cape Verde",NA,NA,NA,NA,"Spain",6.91602537583657,"12",8.13263652194193,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Norway","Norway",31.5071984956564,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Norway",NA,NA,"Russia",25.4616555006236,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Norway",NA,NA,NA,NA,"High Seas",14.4379788271801,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Norway",NA,NA,NA,NA,NA,NA,"Norway",11.5838908547706,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Norway",NA,NA,NA,NA,NA,NA,NA,NA,"Norway",5.4246120437412,"17",11.5846642780282,NA,NA
+"Pachyptila belcheri","France","High Seas",98.1459174577398,"9",1.85408254226021,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus lherminieri","Cape Verde","High Seas",74.990087881072,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Puffinus lherminieri","Cape Verde",NA,NA,"Cape Verde",12.0233659058682,"12",12.9865462130598,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","UK","United Kingdom",62.541780944163,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates pelagicus","UK",NA,NA,"Norway",30.941057179135,"5",6.51716187670198,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Denmark","High Seas",29.7420653588815,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Denmark",NA,NA,"Norway",20.2504865386872,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Denmark",NA,NA,NA,NA,"United Kingdom",14.9700038705416,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Denmark",NA,NA,NA,NA,NA,NA,"Denmark",13.3428059318602,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Denmark",NA,NA,NA,NA,NA,NA,NA,NA,"Iceland",5.9429209578805,"16",15.7517173421489,NA,NA
+"Pterodroma lessonii","New Zealand","High Seas",78.3154505283959,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma lessonii","New Zealand",NA,NA,"Australia",10.5306487727951,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma lessonii","New Zealand",NA,NA,NA,NA,"New Zealand",7.97503558568828,"7",3.17886511312064,NA,NA,NA,NA,NA,NA
+"Daption capense","Antarctica","New Zealand",59.0641653005572,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Daption capense","Antarctica",NA,NA,"Australia",24.0371971437017,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Daption capense","Antarctica",NA,NA,NA,NA,"High Seas",15.9813489872177,"2",0.917288568523437,NA,NA,NA,NA,NA,NA
+"Bulweria bulwerii","Cape Verde","High Seas",71.0048084855918,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bulweria bulwerii","Cape Verde",NA,NA,"Cape Verde",21.9726777849276,"16",7.02251372948062,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma phaeopygia","Ecuador","Ecuador",63.9364781964682,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma phaeopygia","Ecuador",NA,NA,"High Seas",18.5333856449158,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pterodroma phaeopygia","Ecuador",NA,NA,NA,NA,"Costa Rica",7.46534530025472,"6",10.0647908583613,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Iceland","High Seas",36.6028248903861,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Iceland",NA,NA,"Denmark",18.8493236703588,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Iceland",NA,NA,NA,NA,"Iceland",17.2960343873296,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Iceland",NA,NA,NA,NA,NA,NA,"Norway",8.43670089010854,"11",18.8151161618169,NA,NA,NA,NA
+"Procellaria cinerea","New Zealand","New Zealand",50.5951627395141,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Procellaria cinerea","New Zealand",NA,NA,"High Seas",49.2471302827656,"5",0.157706977720246,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Canada","High Seas",58.1467419890678,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Canada",NA,NA,"Canada",20.5273926880261,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Canada",NA,NA,NA,NA,"Denmark",14.8453798588128,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialis","Canada",NA,NA,NA,NA,NA,NA,"Ireland",6.29552900838981,"1",0.184956455703457,NA,NA,NA,NA
+"Pelagodroma marina","Cape Verde","Cape Verde",95.4238501179474,"6",4.57614988205265,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides whenuahouensis","New Zealand","New Zealand",74.1814621233476,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides whenuahouensis","New Zealand",NA,NA,"High Seas",24.8947578721086,"3",0.923780004543797,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates jabejabe","Cape Verde","Cape Verde",92.9321608008985,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Hydrobates jabejabe","Cape Verde",NA,NA,"High Seas",6.44676155346817,"4",0.621077645633324,NA,NA,NA,NA,NA,NA,NA,NA
+"Halobaena caerulea","France","High Seas",76.7793564424873,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Halobaena caerulea","France",NA,NA,"France",20.7238835281147,"10",2.49676002939803,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila belcheri","UK","High Seas",45.4955188925886,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila belcheri","UK",NA,NA,"Argentina",42.1852861330466,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pachyptila belcheri","UK",NA,NA,NA,NA,"United Kingdom",9.37457285849689,"6",2.94462211586791,NA,NA,NA,NA,NA,NA
+"Pelecanoides georgicus","UK","High Seas",89.0841759698049,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides georgicus","UK",NA,NA,"United Kingdom",7.8515403691847,"2",3.06428366101035,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides garnotii","Peru","Peru",95.1836290024869,"1",4.81637099751313,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides urinatrix","UK","High Seas",68.7037062047619,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides urinatrix","UK",NA,NA,"United Kingdom",25.2722697328431,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pelecanoides urinatrix","UK",NA,NA,NA,NA,"United Kingdom",5.92492451701117,"2",0.0990995453837702,NA,NA,NA,NA,NA,NA
+"Halobaena caerulea","UK","High Seas",89.0555875027269,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Halobaena caerulea","UK",NA,NA,"United Kingdom",7.60867108856337,"6",3.33574140870976,NA,NA,NA,NA,NA,NA,NA,NA
+"Thalassoica antarctica","Antarctica","High Seas",86.558485485166,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Thalassoica antarctica","Antarctica",NA,NA,"United Kingdom",6.03781582569943,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Thalassoica antarctica","Antarctica",NA,NA,NA,NA,"United Kingdom",5.1476788419522,"7",2.25601984718233,NA,NA,NA,NA,NA,NA
+"Oceanites oceanicus","UK","Antarctica",97.244682638019,"1",2.75531736198105,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialoides","Antarctica","High Seas",71.7974745745585,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialoides","Antarctica",NA,NA,"Antarctica",19.5398405382046,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Fulmarus glacialoides","Antarctica",NA,NA,NA,NA,"Australia",5.33030999842291,"7",3.33237488881393,NA,NA,NA,NA,NA,NA
+"Pagodroma nivea","Antarctica","High Seas",78.0759468702422,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Pagodroma nivea","Antarctica",NA,NA,"Antarctica",19.1738118694034,"5",2.75024126035439,NA,NA,NA,NA,NA,NA,NA,NA
