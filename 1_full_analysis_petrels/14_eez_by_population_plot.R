@@ -246,6 +246,12 @@ ggsave(filename = "outputs/14_top_scoring_eezs.svg",
        plot = eezs_grey_svg, 
        width = 4000, height = 2700, unit = "px") 
 
+#save source data for fig 4c
+source_dat <- all_sp %>%
+  select(common_country,group_label,prop)
+write.csv(source_dat,"outputs/14_eezs_percent_topscoring.csv",
+          row.names = F)
+
 #Create table for supplementary ####
 i<-1
 for(i in 1:nrow(dat)){
