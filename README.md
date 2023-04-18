@@ -1,5 +1,5 @@
 # petrels-plastics
-Global assessment of marine plastic exposure for oceanic birds.
+Global assessment of marine plastic exposure risk for oceanic birds.
 
 Link to publication when available: 
 
@@ -19,6 +19,19 @@ This contains the full code used to test the correlation between exposure scores
 
 ### 4_interannual_test
 This contains the full code used for the long-term trend across years analysis presented in the linked publication. 
+
+## Example tracking datasets
+
+The example tracking datasets are provided only for use with the code in this repository. References for these datasets are below. Please contact the authors of these papers if you wish to use the tracking datasets for any other purpose.
+
+https://data.seabirdtracking.org/dataset/609
+- Phillips, R.A., Silk, J.R.D., Croxall, J.P. and Afanasyev, V. (2006) Year-round distribution of white-chinned petrels from South Georgia: relationships with oceanography and fisheries. Biological Conservation 129, 336-347. https://doi.org/10.1016/j.biocon.2005.10.046
+
+https://data.seabirdtracking.org/dataset/609
+- Catry, P., Dias, M.P., Phillips, R.A., Granadeiro, J.P. (2011) Different Means to the Same End: Long-Distance Migrant Seabirds from Two Colonies Differ in Behaviour, Despite Common Wintering Grounds. PLoS ONE 6, e26079. https://doi.org/10.1371/journal.pone.0026079 
+
+https://data.seabirdtracking.org/dataset/1386
+- Frankish, C.K., Phillips, R.A., Clay, T.A., Someveille, M. and Manica, A. (2020) Environmental drivers of movement in a threatened seabird: insights from a mechanistic model and implications for conservation. Diversity and Distributions 26, 1315-1329. https://doi.org/10.1111/ddi.13130
 
 ## How to Run
 
@@ -48,13 +61,13 @@ All folders contain codes that should be run in the order provided by the number
   - For each population for each month, read in the tracking location density rasters
   - Reformat the grid cells for each tracking data raster to match the plastic raster in 1x1 degrees
   - Scale so that the plastics raster and bird location rasters sum to 1
-  - Multiply plastic x bird raster to produce exposure map
-  - Sum scores in each exposure map to produce exposure score
-  - Export exposure maps as tifs and images
-  - Export exposure scores for each month for each population as csv
+  - Multiply plastic x bird raster to produce exposure risk map
+  - Sum scores in each exposure risk map to produce exposure risk score
+  - Export exposure risk maps as tifs and images
+  - Export exposure risk scores for each month for each population as csv
 - 05_combine_by_population
   - Read in rasters for each population, export 1 mean raster per population
-  - Import the monthly exposure scores and export mean by population
+  - Import the monthly exposure risk scores and export mean by population
 - 06_phenology
   - Read in tracking data csvs for each population
   - Calculate distance to the colony for each location
@@ -64,36 +77,42 @@ All folders contain codes that should be run in the order provided by the number
 - 07_combine_by_seasons
   - Read in rasters for each month
   - Read in breeding schedules (from phenology script or literature)
-  - Export 1 mean exposure map per population per season
-  - Import the monthly exposure scores and export mean by population
+  - Export 1 mean exposure risk map per population per season
+  - Import the monthly exposure risk scores and export mean by population
   - Test for differences from using different breeding schedules (literature v 06_phenology script)
 - 08_combine_by_species
   - Read in rasters for each population
   - Read in population sizes 
   - Read in breeding schedules (from phenology script or literature)
   - Export 1 mean raster per species weighted by population size and seasons tracked
-  - Import the monthly exposure scores and export mean by species weighted by population size and seasons tracked
+  - Import the monthly exposure risk scores and export mean by species weighted by population size and seasons tracked
 - 09_plot maps
   - Read in the all species maps from 08_combine_by_species and the plastic raster and creates world maps for Fig. 1 and Fig. 4a
     - Species richness with study colony locations
     - All species tracking location distribution
     - Plastic density estimate
-    - Exposure of petrels to plastics
-    - Exposure overlayed with EEZ outlines
+    - Exposure risk of petrels to plastics
+    - Exposure risk overlayed with EEZ outlines
   - Read in distributions for case studies and produces maps for Fig. 3
     - European Storm-petrels from 5 colonies
     - Yelkuoan and Scopoli's Shearwaters from Malta
     - Cook's Petrels from 2 colonies
 - 10_exposure_score_plots
-  - Read in the csvs of exposure scores by season and species and creates plots in Fig. 2 and Fig. 3a
+  - Read in the csvs of exposure risk scores by season and species and creates plots in Fig. 2 and Fig. 3a
 - 11_eez_all_species_combined
-  - Calculate proportions of exposure among marine political regions (EEZs and the high seas)
+  - Calculate proportions of exposure risk among marine political regions (EEZs and the high seas)
   - Plot the results for Fig. 4b
 - 12_combine_countries
   - Combine population distributions by country for each species
 - 13_eez_by_population
-  - Calculation the proportion of exposure in each EEZ (or high seas) for each species in each breeing country
+  - Calculation the proportion of exposure risk in each EEZ (or high seas) for each species in each breeing country
+- 14_eez_by_population_plot
   - Plot the results for Fig. 4c
+
+## Graphical representation of the method 
+Methods for calculating marine plastic exposure risk scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure risk to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure risk, and percentages within spatial boundaries can be used to identify and rank regions of high exposure risk among all species and relate these to specific populations from specific jurisdictions.
+
+![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
 
 ## Input files
 - 00_plastics_raster
@@ -115,7 +134,7 @@ All folders contain codes that should be run in the order provided by the number
   - Kernel density rasters ".tif" produced by "03_kernels" in folder "outputs"
 - 05_combine_by_population
   - Monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
-  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Exposure risk scores in file "/outputs/05_exposure_scores_by_month.csv"
 - 06_phenology
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
   - Cleaned tracking data csvs per population produced by script "02_populations" in folder "outputs"
@@ -123,10 +142,10 @@ All folders contain codes that should be run in the order provided by the number
   - World land boundary shapefile "world-dissolved" in folder input_data/baselayer"
   - Plastics density raster "/outputs/00_PlasticsRaster.tif
   - Monthly tracking data distribution .tifs in folder "/outputs/04_aggregate_1by1_grid"
-  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Exposure risk scores in file "/outputs/05_exposure_scores_by_month.csv"
   - Breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
 - 08_combine_by_species
-  - Exposure scores in file "/outputs/05_exposure_scores_by_month.csv"
+  - Exposure risk scores in file "/outputs/05_exposure_scores_by_month.csv"
   - Breeding schedules from "/input_data/breeding_months.csv" or "/outputs/06_phenology.csv"
   - "population_sizes.csv" in folder "input_data"
 - 09_plot_maps
@@ -156,22 +175,5 @@ All folders contain codes that should be run in the order provided by the number
 - 13_eez_by_population
   - "/outputs/11_eezs_used_all_species.csv"
   - "/outputs/12_species_country_scores.csv"
- 
-
-## Graphical representation of the method 
-Methods for calculating marine plastic exposure scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure, and percentages within spatial boundaries can be used to identify and rank regions of high exposure among all species and relate these to specific populations from specific jurisdictions.
-
-![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
-
-
-## References
-
-### Example tracking datasets
-
-The example tracking datasets are provided only for use with the code in this repository. References for these datasets are below. Please contact the authors of these papers if you wish to use the tracking datasets for any other purpose.
-
-Phillips, R.A., Silk, J.R.D., Croxall, J.P. and Afanasyev, V. (2006) Year-round distribution of white-chinned petrels from South Georgia: relationships with oceanography and fisheries. Biological Conservation 129, 336-347. https://doi.org/10.1016/j.biocon.2005.10.046
-
-Catry, P., Dias, M.P., Phillips, R.A., Granadeiro, J.P. (2011) Different Means to the Same End: Long-Distance Migrant Seabirds from Two Colonies Differ in Behaviour, Despite Common Wintering Grounds. PLoS ONE 6, e26079. https://doi.org/10.1371/journal.pone.0026079 
-
-Frankish, C.K., Phillips, R.A., Clay, T.A., Someveille, M. and Manica, A. (2020) Environmental drivers of movement in a threatened seabird: insights from a mechanistic model and implications for conservation. Diversity and Distributions 26, 1315-1329. https://doi.org/10.1111/ddi.13130
+- 14_eez_by_population_plot
+  - "/outputs/13_eezs_used_per_species.csv"
