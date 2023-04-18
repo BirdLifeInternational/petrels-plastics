@@ -16,6 +16,51 @@ library(tidyverse)
 library(ggplot2)
 library(RColorBrewer)
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base     
+
+#other attached packages:
+#[1] RColorBrewer_1.1-2 forcats_0.5.1      dplyr_1.0.8       
+#[4] purrr_0.3.4        readr_2.1.2        tidyr_1.2.0       
+#[7] tibble_3.1.6       ggplot2_3.3.5      tidyverse_1.3.2   
+#[10] stringr_1.4.0      viridis_0.6.2      viridisLite_0.4.0 
+#[13] cowplot_1.1.1      rgdal_1.4-8        raster_3.1-5      
+#[16] sp_1.5-0          
+
+#loaded via a namespace (and not attached):
+#[1] tidyselect_1.1.2    haven_2.4.3         lattice_0.20-45    
+#[4] gargle_1.2.0        colorspace_2.0-3    vctrs_0.3.8        
+#[7] generics_0.1.2      utf8_1.2.2          rlang_1.0.6        
+#[10] pillar_1.7.0        withr_2.5.0         glue_1.6.2         
+#[13] DBI_1.1.2           dbplyr_2.1.1        readxl_1.3.1       
+#[16] modelr_0.1.8        lifecycle_1.0.3     munsell_0.5.0      
+#[19] gtable_0.3.0        cellranger_1.1.0    rvest_1.0.2        
+#[22] codetools_0.2-18    tzdb_0.2.0          fansi_1.0.2        
+#[25] broom_0.7.12        Rcpp_1.0.8          scales_1.2.1       
+#[28] backports_1.4.1     googlesheets4_1.0.0 jsonlite_1.8.0     
+#[31] fs_1.5.2            gridExtra_2.3       hms_1.1.1          
+#[34] stringi_1.7.6       grid_4.1.2          cli_3.3.0          
+#[37] tools_4.1.2         magrittr_2.0.2      crayon_1.5.0       
+#[40] pkgconfig_2.0.3     ellipsis_0.3.2      xml2_1.3.3         
+#[43] reprex_2.0.1        googledrive_2.0.0   lubridate_1.8.0    
+#[46] assertthat_0.2.1    httr_1.4.2          rstudioapi_0.13    
+#[49] R6_2.5.1            compiler_4.1.2   
+
 subset_safely <- function(x, index) {
   if (length(x) < index) {
     return(NA_character_)

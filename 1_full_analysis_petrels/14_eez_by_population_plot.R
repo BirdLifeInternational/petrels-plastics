@@ -10,6 +10,48 @@ library(RColorBrewer)
 library(svglite)
 library(stringr)
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base    
+
+#other attached packages:
+#[1] svglite_2.1.1      RColorBrewer_1.1-2 forcats_0.5.1     
+#[4] stringr_1.4.0      dplyr_1.0.8        purrr_0.3.4       
+#[7] readr_2.1.2        tidyr_1.2.0        tibble_3.1.6      
+#[10] ggplot2_3.3.5      tidyverse_1.3.2   
+
+#loaded via a namespace (and not attached):
+#[1] Rcpp_1.0.8          pillar_1.7.0        compiler_4.1.2     
+#[4] cellranger_1.1.0    dbplyr_2.1.1        tools_4.1.2        
+#[7] lubridate_1.8.0     jsonlite_1.8.0      googledrive_2.0.0  
+#[10] lifecycle_1.0.3     gargle_1.2.0        gtable_0.3.0       
+#[13] pkgconfig_2.0.3     rlang_1.0.6         reprex_2.0.1       
+#[16] DBI_1.1.2           cli_3.3.0           rstudioapi_0.13    
+#[19] haven_2.4.3         xml2_1.3.3          withr_2.5.0        
+#[22] httr_1.4.2          systemfonts_1.0.4   hms_1.1.1          
+#[25] generics_0.1.2      vctrs_0.3.8         fs_1.5.2           
+#[28] googlesheets4_1.0.0 grid_4.1.2          tidyselect_1.1.2   
+#[31] glue_1.6.2          R6_2.5.1            fansi_1.0.2        
+#[34] readxl_1.3.1        tzdb_0.2.0          modelr_0.1.8       
+#[37] magrittr_2.0.2      backports_1.4.1     scales_1.2.1       
+#[40] ellipsis_0.3.2      rvest_1.0.2         assertthat_0.2.1   
+#[43] colorspace_2.0-3    utf8_1.2.2          stringi_1.7.6      
+#[46] munsell_0.5.0       broom_0.7.12        crayon_1.5.0
+
 #Read in the outputs from script 13 ####
 eezs_used <- read.csv("outputs/13_eezs_used_per_species.csv")
 dat <- read.csv("outputs/12_species_country_scores.csv")

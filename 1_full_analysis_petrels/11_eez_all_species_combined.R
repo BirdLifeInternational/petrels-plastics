@@ -17,6 +17,53 @@ library(sp) #1.3-2
 library(viridis)#0.5.1
 library(svglite)
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base     
+
+#other attached packages:
+#[1] svglite_2.1.1      viridis_0.6.2      viridisLite_0.4.0 
+#[4] forcats_0.5.1      stringr_1.4.0      dplyr_1.0.8       
+#[7] purrr_0.3.4        readr_2.1.2        tidyr_1.2.0       
+#[10] tibble_3.1.6       ggplot2_3.3.5      tidyverse_1.3.2   
+#[13] sf_1.0-7           RColorBrewer_1.1-2 rgeos_0.5-9       
+#[16] rgdal_1.4-8        raster_3.1-5       sp_1.5-0          
+
+#loaded via a namespace (and not attached):
+#[1] Rcpp_1.0.8          lubridate_1.8.0     lattice_0.20-45    
+#[4] class_7.3-19        assertthat_0.2.1    utf8_1.2.2         
+#[7] R6_2.5.1            cellranger_1.1.0    backports_1.4.1    
+#[10] reprex_2.0.1        e1071_1.7-9         httr_1.4.2         
+#[13] pillar_1.7.0        rlang_1.0.6         googlesheets4_1.0.0
+#[16] readxl_1.3.1        rstudioapi_0.13     googledrive_2.0.0  
+#[19] munsell_0.5.0       proxy_0.4-26        broom_0.7.12       
+#[22] compiler_4.1.2      modelr_0.1.8        systemfonts_1.0.4  
+#[25] pkgconfig_2.0.3     tidyselect_1.1.2    gridExtra_2.3      
+#[28] codetools_0.2-18    fansi_1.0.2         crayon_1.5.0       
+#[31] tzdb_0.2.0          dbplyr_2.1.1        withr_2.5.0        
+#[34] grid_4.1.2          jsonlite_1.8.0      gtable_0.3.0       
+#[37] lifecycle_1.0.3     DBI_1.1.2           magrittr_2.0.2     
+#[40] units_0.8-0         scales_1.2.1        KernSmooth_2.23-20 
+#[43] cli_3.3.0           stringi_1.7.6       fs_1.5.2           
+#[46] xml2_1.3.3          ellipsis_0.3.2      generics_0.1.2     
+#[49] vctrs_0.3.8         tools_4.1.2         glue_1.6.2         
+#[52] hms_1.1.1           colorspace_2.0-3    gargle_1.2.0       
+#[55] classInt_0.4-3      rvest_1.0.2         haven_2.4.3
+
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## check we're still in rproj home directory "1_full_analysis_petrels"

@@ -24,6 +24,53 @@ library(adehabitatHR)
 library(raster)
 library(tidyverse)
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base        
+
+#other attached packages:
+#[1] forcats_0.5.1       stringr_1.4.0       dplyr_1.0.8        
+#[4] purrr_0.3.4         readr_2.1.2         tidyr_1.2.0        
+#[7] tibble_3.1.6        ggplot2_3.3.5       tidyverse_1.3.2    
+#[10] raster_3.1-5        adehabitatHR_0.4.19 adehabitatLT_0.3.25
+#[13] CircStats_0.2-6     boot_1.3-28         MASS_7.3-54        
+#[16] adehabitatMA_0.3.14 ade4_1.7-19         deldir_1.0-6       
+#[19] geosphere_1.5-14    rgdal_1.4-8         rgeos_0.5-9        
+#[22] sp_1.5-0           
+
+#loaded via a namespace (and not attached):
+#[1] Rcpp_1.0.8          lubridate_1.8.0     lattice_0.20-45    
+#[4] assertthat_0.2.1    utf8_1.2.2          R6_2.5.1           
+#[7] cellranger_1.1.0    backports_1.4.1     reprex_2.0.1       
+#[10] httr_1.4.2          pillar_1.7.0        rlang_1.0.6        
+#[13] googlesheets4_1.0.0 readxl_1.3.1        rstudioapi_0.13    
+#[16] googledrive_2.0.0   munsell_0.5.0       broom_0.7.12       
+#[19] compiler_4.1.2      modelr_0.1.8        pkgconfig_2.0.3    
+#[22] tidyselect_1.1.2    codetools_0.2-18    fansi_1.0.2        
+#[25] withr_2.5.0         crayon_1.5.0        tzdb_0.2.0         
+#[28] dbplyr_2.1.1        grid_4.1.2          jsonlite_1.8.0     
+#[31] gtable_0.3.0        lifecycle_1.0.3     DBI_1.1.2          
+#[34] magrittr_2.0.2      scales_1.2.1        cli_3.3.0          
+#[37] stringi_1.7.6       fs_1.5.2            xml2_1.3.3         
+#[40] ellipsis_0.3.2      generics_0.1.2      vctrs_0.3.8        
+#[43] tools_4.1.2         glue_1.6.2          hms_1.1.1          
+#[46] colorspace_2.0-3    gargle_1.2.0        rvest_1.0.2        
+#[49] haven_2.4.3        
+
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## PROJECTIONS

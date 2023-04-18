@@ -35,27 +35,36 @@ library(viridis)
 sessionInfo()
 #R version 4.1.2 (2021-11-01)
 #Platform: x86_64-w64-mingw32/x64 (64-bit)
-#Running under: Windows 10 x64 (build 19044)
-#
+#Running under: Windows 10 x64 (build 19045)
+
 #Matrix products: default
-#
+
 #locale:
-#  [1] LC_COLLATE=English_United Kingdom.1252  LC_CTYPE=English_United Kingdom.1252    LC_MONETARY=English_United Kingdom.1252
-#  [4] LC_NUMERIC=C                            LC_TIME=English_United Kingdom.1252    
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
 
 #attached base packages:
-#  [1] stats     graphics  grDevices utils     datasets  methods   base     
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base   
 
 #other attached packages:
-#  [1] viridis_0.6.2      viridisLite_0.4.0  RColorBrewer_1.1-2 stringr_1.4.0      cowplot_1.1.1      rgdal_1.4-8        raster_3.1-5      
-#  [8] sp_1.3-2          
+#[1] viridis_0.6.2      viridisLite_0.4.0  RColorBrewer_1.1-2
+#[4] stringr_1.4.0      cowplot_1.1.1      rgdal_1.4-8       
+#[7] raster_3.1-5       sp_1.5-0          
 
 #loaded via a namespace (and not attached):
-#  [1] Rcpp_1.0.8       pillar_1.7.0     compiler_4.1.2   tools_4.1.2      lifecycle_1.0.1  tibble_3.1.6     gtable_0.3.0     lattice_0.20-45 
-#  [9] pkgconfig_2.0.3  rlang_1.0.1      cli_3.3.0        DBI_1.1.2        gridExtra_2.3    dplyr_1.0.8      generics_0.1.2   vctrs_0.3.8     
-#  [17] grid_4.1.2       tidyselect_1.1.2 glue_1.6.2       R6_2.5.1         fansi_1.0.2      ggplot2_3.3.5    purrr_0.3.4      magrittr_2.0.2  
-#  [25] scales_1.1.1     codetools_0.2-18 ellipsis_0.3.2   assertthat_0.2.1 colorspace_2.0-3 utf8_1.2.2       stringi_1.7.6    munsell_0.5.0   
-#  [33] crayon_1.5.0    
+#[1] Rcpp_1.0.8       pillar_1.7.0     compiler_4.1.2   tools_4.1.2     
+#[5] lifecycle_1.0.3  tibble_3.1.6     gtable_0.3.0     lattice_0.20-45 
+#[9] pkgconfig_2.0.3  rlang_1.0.6      cli_3.3.0        DBI_1.1.2       
+#[13] rstudioapi_0.13  gridExtra_2.3    dplyr_1.0.8      generics_0.1.2  
+#[17] vctrs_0.3.8      grid_4.1.2       tidyselect_1.1.2 glue_1.6.2      
+#[21] R6_2.5.1         fansi_1.0.2      ggplot2_3.3.5    purrr_0.3.4     
+#[25] magrittr_2.0.2   scales_1.2.1     codetools_0.2-18 ellipsis_0.3.2  
+#[29] assertthat_0.2.1 colorspace_2.0-3 utf8_1.2.2       stringi_1.7.6   
+#[33] munsell_0.5.0    crayon_1.5.0   
 
 ######### GENERAL DIRECTIONS AND FILES ##############
 #Read in land file for visualisation:

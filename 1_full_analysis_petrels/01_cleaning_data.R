@@ -28,6 +28,50 @@ library(stringr)
 library(trip)
 lu=function (x=x) length(unique(x))
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base     
+
+#other attached packages:
+#[1] trip_1.8.5          stringr_1.4.0       rgeos_0.5-9        
+#[4] adehabitatHR_0.4.19 adehabitatLT_0.3.25 CircStats_0.2-6    
+#[7] boot_1.3-28         MASS_7.3-54         adehabitatMA_0.3.14
+#[10] ade4_1.7-19         deldir_1.0-6        geosphere_1.5-14   
+#[13] rgdal_1.4-8         sp_1.5-0           
+
+#loaded via a namespace (and not attached):
+#[1] tidyselect_1.1.2      terra_1.5-21          purrr_0.3.4          
+#[4] splines_4.1.2         lattice_0.20-45       spatstat.utils_2.3-1 
+#[7] vctrs_0.3.8           generics_0.1.2        mgcv_1.8-38          
+#[10] utf8_1.2.2            rlang_1.0.6           spatstat.data_2.2-0  
+#[13] pillar_1.7.0          glue_1.6.2            DBI_1.1.2            
+#[16] crsmeta_0.3.0         lifecycle_1.0.3       spatstat.core_2.4-2  
+#[19] raster_3.1-5          codetools_0.2-18      traipse_0.2.5        
+#[22] fansi_1.0.2           reproj_0.4.2          Rcpp_1.0.8           
+#[25] tensor_1.5            abind_1.4-5           proj4_1.0-11         
+#[28] stringi_1.7.6         dplyr_1.0.8           spatstat.sparse_2.1-1
+#[31] polyclip_1.10-0       grid_4.1.2            cli_3.3.0            
+#[34] tools_4.1.2           magrittr_2.0.2        goftest_1.2-3        
+#[37] tibble_3.1.6          crayon_1.5.0          pkgconfig_2.0.3      
+#[40] ellipsis_0.3.2        spatstat.random_2.2-0 Matrix_1.3-4         
+#[43] assertthat_0.2.1      rstudioapi_0.13       R6_2.5.1             
+#[46] rpart_4.1-15          spatstat.geom_2.4-0   nlme_3.1-153         
+#[49] compiler_4.1.2  
+
 ######### GENERAL DIRECTORIES AND FILES ##############
 
 ## set up input and output folders
