@@ -24,15 +24,60 @@ library(adehabitatHR)
 library(raster)
 library(tidyverse)
 
+sessionInfo()
+#R version 4.1.2 (2021-11-01)
+#Platform: x86_64-w64-mingw32/x64 (64-bit)
+#Running under: Windows 10 x64 (build 19045)
+
+#Matrix products: default
+
+#locale:
+#[1] LC_COLLATE=English_United Kingdom.1252 
+#[2] LC_CTYPE=English_United Kingdom.1252   
+#[3] LC_MONETARY=English_United Kingdom.1252
+#[4] LC_NUMERIC=C                           
+#[5] LC_TIME=English_United Kingdom.1252    
+
+#attached base packages:
+#[1] stats     graphics  grDevices utils     datasets  methods  
+#[7] base        
+
+#other attached packages:
+#[1] forcats_0.5.1       stringr_1.4.0       dplyr_1.0.8        
+#[4] purrr_0.3.4         readr_2.1.2         tidyr_1.2.0        
+#[7] tibble_3.1.6        ggplot2_3.3.5       tidyverse_1.3.2    
+#[10] raster_3.1-5        adehabitatHR_0.4.19 adehabitatLT_0.3.25
+#[13] CircStats_0.2-6     boot_1.3-28         MASS_7.3-54        
+#[16] adehabitatMA_0.3.14 ade4_1.7-19         deldir_1.0-6       
+#[19] geosphere_1.5-14    rgdal_1.4-8         rgeos_0.5-9        
+#[22] sp_1.5-0           
+
+#loaded via a namespace (and not attached):
+#[1] Rcpp_1.0.8          lubridate_1.8.0     lattice_0.20-45    
+#[4] assertthat_0.2.1    utf8_1.2.2          R6_2.5.1           
+#[7] cellranger_1.1.0    backports_1.4.1     reprex_2.0.1       
+#[10] httr_1.4.2          pillar_1.7.0        rlang_1.0.6        
+#[13] googlesheets4_1.0.0 readxl_1.3.1        rstudioapi_0.13    
+#[16] googledrive_2.0.0   munsell_0.5.0       broom_0.7.12       
+#[19] compiler_4.1.2      modelr_0.1.8        pkgconfig_2.0.3    
+#[22] tidyselect_1.1.2    codetools_0.2-18    fansi_1.0.2        
+#[25] withr_2.5.0         crayon_1.5.0        tzdb_0.2.0         
+#[28] dbplyr_2.1.1        grid_4.1.2          jsonlite_1.8.0     
+#[31] gtable_0.3.0        lifecycle_1.0.3     DBI_1.1.2          
+#[34] magrittr_2.0.2      scales_1.2.1        cli_3.3.0          
+#[37] stringi_1.7.6       fs_1.5.2            xml2_1.3.3         
+#[40] ellipsis_0.3.2      generics_0.1.2      vctrs_0.3.8        
+#[43] tools_4.1.2         glue_1.6.2          hms_1.1.1          
+#[46] colorspace_2.0-3    gargle_1.2.0        rvest_1.0.2        
+#[49] haven_2.4.3        
+
 ######### GENERAL DIRECTIONS AND FILES ##############
 
 ## PROJECTIONS
-
 #Read in land file for visualisation:
 #Natural Earth land 1:10m polygons version 5.1.1 
 #downloaded from www.naturalearthdata.com/
 land <- rgdal::readOGR(dsn = "input_data/baselayer", layer = "ne_10m_land")
-
 proj_wgs84 <- CRS(proj4string(land))
 
 ## TO SAVE KERNEL RESULTS
@@ -50,7 +95,7 @@ dataset_number <- 1
 for(dataset_number in 1:length(files)){ #
   print(dataset_number)
   print(files[dataset_number])
-  name_png <- str_remove(files[dataset_number],".csv")
+  name_png <- stringr::str_remove(files[dataset_number],".csv")
   df <- read.csv(paste0(data_std,files[dataset_number]))  
   
   head(df)
@@ -110,14 +155,14 @@ for(dataset_number in 1:length(files)){ #
       so.grid <- expand.grid(LON = seq(lon_min, lon_max, by=1), 
                              LAT = seq(lat_min, lat_max, by=1))
       
-      coordinates(so.grid) <- ~LON+LAT
-      proj4string(so.grid) <- proj4string(land)
+      sp::coordinates(so.grid) <- ~LON+LAT
+      sp::proj4string(so.grid) <- proj4string(land)
       
-      mean_loc <- geomean(cbind(tracks_wgs$longitude,tracks_wgs$latitude))
-      DgProj <- CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
+      mean_loc <- geosphere::geomean(cbind(tracks_wgs$longitude,tracks_wgs$latitude))
+      DgProj <- sp::CRS(paste0("+proj=laea +lon_0=",mean_loc[1],
                            " +lat_0=",mean_loc[2])) 
       
-      so.grid.proj <- spTransform(so.grid, CRS=DgProj)
+      so.grid.proj <- sp::spTransform(so.grid, CRS=DgProj)
       coords <- so.grid.proj@coords
       
       c <- min(coords[,1])-1000000   ## to check my min lon
@@ -129,22 +174,22 @@ for(dataset_number in 1:length(files)){ #
       a <- seq(c, d, by=10000)
       b <- seq(e, f, by=10000)
       null.grid <- expand.grid(x=a,y=b)
-      coordinates(null.grid) <- ~x+y
-      gridded(null.grid) <- TRUE
+      sp::coordinates(null.grid) <- ~x+y
+      sp::gridded(null.grid) <- TRUE
       class(null.grid)
       
-      coordinates(tracks_wgs) <- ~longitude+latitude
-      proj4string(tracks_wgs) <- proj4string(land)
-      tracks <- spTransform(tracks_wgs, CRS=DgProj)
+      sp::coordinates(tracks_wgs) <- ~longitude+latitude
+      sp::proj4string(tracks_wgs) <- sp::proj4string(land)
+      tracks <- sp::spTransform(tracks_wgs, CRS=DgProj)
       
       tracks$month <- factor(tracks@data$month)
       KDE_ref <- paste0(str_remove(files[dataset_number],".csv"), "_", 
                         months[month_number])
       
-      kudl <- kernelUD(tracks[,"month"], 
+      kudl <- adehabitatHR::kernelUD(tracks[,"month"], 
                        grid = null.grid, h = 200000)  ## smoothing factor equals 200 km for GLS data
       #image(kudl)
-      vud <- getvolumeUD(kudl)
+      vud <- adehabitatHR::getvolumeUD(kudl)
       ## store the volume under the UD (as computed by getvolumeUD)
       ## of the first animal in fud
       fud <- vud[[1]]
@@ -157,14 +202,14 @@ for(dataset_number in 1:length(files)){ #
       hr95 <- data.frame(hr95)
       ## Converts to a SpatialPixelsDataFrame
       coordinates(hr95) <- coordinates(fud)
-      gridded(hr95) <- TRUE
+      sp::gridded(hr95) <- TRUE
       
       ## display the results
-      kde_spixdf <- estUDm2spixdf(kudl)
+      kde_spixdf <- adehabitatHR::estUDm2spixdf(kudl)
       kern95 <- kde_spixdf
       
-      stk_100 <- stack(kern95)
-      stk_95 <- stack(hr95)
+      stk_100 <- raster::stack(kern95)
+      stk_95 <- raster::stack(hr95)
       
       sum_all_100 <- stk_100[[1]]
       sum_all_95 <- stk_95[[1]]
@@ -181,13 +226,13 @@ for(dataset_number in 1:length(files)){ #
       colNotNA <- which(colSums(x.matrix) != nrow(rast))
       rowNotNA <- which(rowSums(x.matrix) != ncol(rast))
       
-      croppedExtent <- extent(rast, 
+      croppedExtent <- raster::extent(rast, 
                               r1 = rowNotNA[1]-2, 
                               r2 = rowNotNA[length(rowNotNA)]+2,
                               c1 = colNotNA[1]-2, 
                               c2 = colNotNA[length(colNotNA)]+2)
       
-      cropped <- crop(rast, croppedExtent)
+      cropped <- raster::crop(rast, croppedExtent)
       cropped[is.na(cropped)] <- 0
       #plot(cropped)
       
@@ -196,16 +241,16 @@ for(dataset_number in 1:length(files)){ #
       mask_proj_pol <- as(mask_proj, "SpatialPolygons")   ## converting SpatialPolygonsDataFrame to SpatialPolygons
       
       ## set to NA cells that overlap mask (land)
-      rast_mask_na <- mask(cropped, mask_proj_pol, inverse = TRUE)
+      rast_mask_na <- raster::mask(cropped, mask_proj_pol, inverse = TRUE)
       rast_mask <- rast_mask_na
       rast_mask[is.na(rast_mask)] <- 0
-      rast_mask_sum1 <- rast_mask/sum(getValues(rast_mask))
+      rast_mask_sum1 <- rast_mask/sum(raster::getValues(rast_mask))
       #rast_mask[rast_mask == 0] <- NA
-      rast_mask_final <- mask(rast_mask_sum1, mask_proj_pol, inverse = TRUE)
+      rast_mask_final <- raster::mask(rast_mask_sum1, mask_proj_pol, inverse = TRUE)
       rast_mask_final2 <- rast_mask_final 
       
       #PLOT & SAVE ####
-      mask_wgs84 <- projectRaster(rast_mask_final2,crs=proj_wgs84, over = F)
+      mask_wgs84 <- raster::projectRaster(rast_mask_final2,crs=proj_wgs84, over = F)
       
       raster::writeRaster(mask_wgs84, filename = KDERasName_sum, 
                           format = "GTiff", overwrite = TRUE)
