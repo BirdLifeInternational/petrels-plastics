@@ -1,6 +1,6 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Mapping the global distribution of seabird populations
-## R script to run kernel analysis (per individual and then merged) 
+## R script to run kernel analysis (per population) 
 ## Ana Carneiro May 2018 + Beth Clark Mar 2020-May2022
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
