@@ -3,7 +3,7 @@ Clark et al. (2023) Global assessment of marine plastic exposure risk for oceani
 
 Link to publication: https://doi.org/10.1038/s41467-023-38900-z
 
-Zenodo release: 
+Zenodo release: https://doi.org/10.5281/zenodo.7814662
 
 Each folder contains a separate analysis and an R project file, which, when opened, automatically sets the working directory to that folder. All filepaths are then relative from there.
 
