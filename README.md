@@ -1,7 +1,8 @@
 # petrels-plastics
-Global assessment of marine plastic exposure risk for oceanic birds.
+Clark et al. (2023) Global assessment of marine plastic exposure risk for oceanic birds. Nature Communications.
 
-Link to publication when available: 
+Link to publication: https://doi.org/10.1038/s41467-023-38900-z
+Zenodo release: 
 
 Each folder contains a separate analysis and an R project file, which, when opened, automatically sets the working directory to that folder. All filepaths are then relative from there.
 
@@ -32,6 +33,11 @@ https://data.seabirdtracking.org/dataset/609
 
 https://data.seabirdtracking.org/dataset/1386
 - Frankish, C.K., Phillips, R.A., Clay, T.A., Someveille, M. and Manica, A. (2020) Environmental drivers of movement in a threatened seabird: insights from a mechanistic model and implications for conservation. Diversity and Distributions 26, 1315-1329. https://doi.org/10.1111/ddi.13130
+
+## Graphical representation of the method 
+Methods for calculating marine plastic exposure risk scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure risk to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure risk, and percentages within spatial boundaries can be used to identify and rank regions of high exposure risk among all species and relate these to specific populations from specific jurisdictions.
+
+![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
 
 ## How to Run
 
@@ -109,11 +115,6 @@ All folders contain codes that should be run in the order provided by the number
 - 14_eez_by_population_plot
   - Plot the results for Fig. 4c
 
-## Graphical representation of the method 
-Methods for calculating marine plastic exposure risk scores from tracking data. Input datasets are represented by rectangles, method steps are represented by white rounded rectangles, sections of related method steps are represented by grey rounded rectangles, and outputs are represented by circles. Scores can be used to compare exposure risk to plastic pollution among populations, seasons, and species. Maps can be used to locate areas of high plastic exposure risk, and percentages within spatial boundaries can be used to identify and rank regions of high exposure risk among all species and relate these to specific populations from specific jurisdictions.
-
-![8_plastic_modeling_flowchart_suppl](https://user-images.githubusercontent.com/56324426/184148175-6b1633d7-ca93-4b10-9593-b201377fb755.png)
-
 ## Input files
 - 00_plastics_raster
   - In folder "/input_data/plastics_data/": "lebretonmodel_abundance.csv", "maximenkomodel_abundance.csv" & "vansebillemodel_abundance.csv"
@@ -177,3 +178,6 @@ Methods for calculating marine plastic exposure risk scores from tracking data. 
   - "/outputs/12_species_country_scores.csv"
 - 14_eez_by_population_plot
   - "/outputs/13_eezs_used_per_species.csv"
+
+## Other Datasets
+Access can be obtained by making a request to the owners of each dataset using the mechanisms provided by each database. Zoatrack (https://zoatrack.org/) under dataset IDs: 57, 93, 102–112, 159, 253, 254, 762, 817. Movebank (https://www.movebank.org/) under dataset IDs: 944960474, 200628745, 241140274. SEATRACK (https://seapop.no/en/seatrack/) for relevant northern fulmar data. U.S. Geological Survey data release: doi:10.5066/P9NTEXM6.  Seabird Tracking Database (https://www.seabirdtracking.org/) under dataset IDs: 434, 438, 439, 448, 466, 467, 506–511, 517, 518, 554, 555, 561, 571, 607, 609, 610, 627, 628, 634, 635, 637, 639, 658, 659, 662, 663, 667, 668, 670, 672–678, 683, 684, 686, 694–696, 704–706, 708–715, 736, 741, 783–786, 788, 789, 826, 827, 829–831, 836–842, 844, 854, 858–872, 879, 883–886, 888–893, 900, 945, 946, 949, 951–954, 959–963, 966, 967, 970–983, 986–998, 1004, 1028, 1029, 1031–1033, 1055–1061, 1081, 1083, 1084, 1086–1091, 1120, 1121, 1140–1142, 1233–1236, 1238, 1239, 1258, 1259, 1279, 1280, 1282, 1285–1289, 1298, 1314, 1317, 1326, 1343–1347, 1360–1362, 1375, 1386, 1401, 1404, 1409, 1410, 1413–1415, 1422–1425, 1440, 1443, 1449, 1452, 1453, 1460, 1461, 1463, 1481, 1482, 1485–1488, 1494, 1497–1500, 1520–1523, 1541, 1544, 1546, 1549–1551, 1553–1558, 1562–1570, 1574–1577, 1579–1582, 1585–1592, 1594–9, 1600, 1602, 1603, 1606–1608, 1610, 1618, 1619, 1621–1625, 1630, 1665, 1668–1672, 1690, 1711–1717, 1738, 1908–1923, 2036–2038, 2042, 2044–2046–2049, 2051–2056, 2059, 2060, 2063–2066.
