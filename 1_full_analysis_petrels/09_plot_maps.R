@@ -220,9 +220,17 @@ dev.off()
 #plot exposure ####
 exposure <- b_sum1 * p_sum1
 exposure[exposure == 0] <- NA
+
+raster::writeRaster(exposure, filename="outputs/09_all_species_exposure.tif", 
+                    format="GTiff", overwrite=TRUE)
+
 e_cap <- exposure
 e_max <- (max(raster::getValues(exposure),na.rm = T))/100
 e_cap[e_cap > e_max] <- e_max
+
+raster::writeRaster(e_cap, filename="outputs/09_all_species_exposure_capped.tif", 
+                    format="GTiff", overwrite=TRUE)
+
 exposure_proj <- raster::projectRaster(e_cap, crs = proj)
 
 # convert raster to dataframe for ggplot
